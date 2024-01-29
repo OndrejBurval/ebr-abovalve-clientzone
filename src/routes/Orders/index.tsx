@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import OrderTable from "@/components/OrderTable";
 import OrderTableSkeleton from "@/components/OrderTableSkeleton";
 
-import Layout from "@/layout/Default";
+import Layout from "@/layout";
 
 const Root = () => {
 	const { t } = useTranslation();

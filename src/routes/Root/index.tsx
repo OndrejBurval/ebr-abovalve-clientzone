@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
 import { useQuery } from "react-query";
 
 import { useTranslation } from "react-i18next";
 
-import Layout from "@/Layout/Default.tsx";
+import Layout from "@/layout";
 
 import OrderTable from "@/components/OrderTable";
 import OrderTableSkeleton from "@/components/OrderTableSkeleton";

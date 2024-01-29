@@ -1,4 +1,4 @@
-import Layout from "@/layout/Default";
+import Layout from "@/layout";
 import BillingAddress from "@/components/BillingAddress";
 import MailingAddress from "@/components/MailingAddress";
 import OrderItemsTable from "@/components/OrderItemsTable";
