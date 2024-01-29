@@ -1,16 +1,20 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useQuery } from "react-query";
-import { getOrders } from "./index.hook";
+
 import { useTranslation } from "react-i18next";
+
+import Layout from "@/Layout/Default.tsx";
 
 import OrderTable from "@/components/OrderTable";
 import OrderTableSkeleton from "@/components/OrderTableSkeleton";
 
-import Layout from "@/layout/Default";
+import { getOrders } from "./index.hook";
 
-const Root = () => {
-	const { t } = useTranslation();
-
+export default function Root() {
 	const { data, isLoading, isError, error } = useQuery("orders", getOrders);
+
+	const { t } = useTranslation();
 
 	if (isError) {
 		return <div> Error: {error instanceof Error ? error.message : ""} </div>;
@@ -18,10 +22,12 @@ const Root = () => {
 
 	return (
 		<Layout>
-			<h1> {t("objednavky")} </h1>
-			{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
+			<h1> {t("mujUcet")} </h1>
+
+			<section>
+				<h2>{t("objednavky")}</h2>
+				{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
+			</section>
 		</Layout>
 	);
-};
-
-export default Root;
+}

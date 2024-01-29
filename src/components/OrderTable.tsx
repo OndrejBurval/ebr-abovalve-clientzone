@@ -1,5 +1,6 @@
 import type { Order } from "@/types/Order";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type OrderItem = {
 	order: Order;
@@ -13,6 +14,8 @@ type Props = {
 };
 
 const OrderTable = ({ items }: Props) => {
+	const { t } = useTranslation();
+
 	if (!items || items.length === 0) {
 		return <p>No orders found</p>;
 	}
@@ -26,10 +29,10 @@ const OrderTable = ({ items }: Props) => {
 		<table>
 			<thead>
 				<tr className="text-left">
-					<th className="px-5"> Číslo objednávky </th>
-					<th className="px-5 min-w-28"> Datum </th>
-					<th className="px-5"> Cena </th>
-					<th className="px-5"> Stav </th>
+					<th className="px-5"> {t("cisloObjednavky")} </th>
+					<th className="px-5 min-w-28"> {t("datum")} </th>
+					<th className="px-5"> {t("cena")} </th>
+					<th className="px-5"> {t("stav")} </th>
 					<th className="px-5"></th>
 				</tr>
 			</thead>
@@ -46,7 +49,7 @@ const OrderTable = ({ items }: Props) => {
 						<td className="px-5"> --- </td>
 						<td className="px-5">
 							<Link to={`/objednavka/${item.order.id}`}>
-								<button>Detail</button>
+								<button>{t("detail")}</button>
 							</Link>
 						</td>
 					</tr>

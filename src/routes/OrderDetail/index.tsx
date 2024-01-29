@@ -1,7 +1,7 @@
 import Layout from "@/layout/Default";
 import BillingAddress from "@/components/BillingAddress";
 import MailingAddress from "@/components/MailingAddress";
-import OrderItemsTable from "@/components/Order/OrderItemsTable";
+import OrderItemsTable from "@/components/OrderItemsTable";
 
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
@@ -13,8 +13,8 @@ const Detail = () => {
 	const { id } = useParams<{ id: string }>();
 	const navigate = useNavigate();
 
-	const { data, isLoading, error, isError, isFetched, isFetching } = useQuery(
-		"orderItems",
+	const { data, isLoading, isFetched } = useQuery(
+		`orderItems-${id}`,
 		() => getOrderItems(parseInt(id)),
 		{
 			refetchOnWindowFocus: false,
@@ -22,7 +22,7 @@ const Detail = () => {
 	);
 
 	const { data: orderInfo, isFetched: infoIsFetched } = useQuery(
-		"order",
+		`order-${id}`,
 		() => getOrder(parseInt(id)),
 		{
 			refetchOnWindowFocus: false,
@@ -40,12 +40,8 @@ const Detail = () => {
 		return dateObj.toLocaleDateString("cs-CZ");
 	};
 
-	if (isLoading || isFetching) {
+	if (isLoading) {
 		return <div> Loading... </div>;
-	}
-
-	if (isError) {
-		return <div> Error: {error instanceof Error ? error.message : ""} </div>;
 	}
 
 	return (

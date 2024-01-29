@@ -1,8 +1,20 @@
-import type Product from "../../types/Product";
+import ordersJson from "@/api/test/orders.json";
 
-const getProducts = (): Promise<Product[]> => {
-	// fetch from https://fakestoreapi.com/products
-	return fetch("https://fakestoreapi.com/products").then((res) => res.json());
+import type { Order } from "@/types/Order";
+
+type ResponseItem = {
+	order: Order;
+	orderItems: {
+		"@id": string;
+	};
 };
 
-export { getProducts };
+const getOrders = (): Promise<ResponseItem[]> => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve(ordersJson);
+		}, 500);
+	});
+};
+
+export { getOrders };
