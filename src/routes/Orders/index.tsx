@@ -7,7 +7,7 @@ import OrderTableSkeleton from "@/components/OrderTableSkeleton";
 
 import Layout from "@/layout";
 
-const Root = () => {
+const Orders = () => {
 	const { t } = useTranslation();
 
 	const { data, isLoading, isError, error } = useQuery("orders", getOrders);
@@ -17,11 +17,10 @@ const Root = () => {
 	}
 
 	return (
-		<Layout>
-			<h1> {t("objednavky")} </h1>
+		<Layout title={t("objednavky")}>
 			{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
 		</Layout>
 	);
 };
 
-export default Root;
+export default Orders;

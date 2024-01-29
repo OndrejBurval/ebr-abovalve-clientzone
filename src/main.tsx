@@ -11,6 +11,8 @@ import "@/i18n";
 import Root from "@/routes/Root/index";
 import Orders from "@/routes/Orders/index";
 import OrderDetail from "@/routes/OrderDetail";
+import RegistrationData from "@/routes/RegistrationData";
+import Complaint from "./routes/Complaint";
 
 import ErrorPage from "@/error-page";
 
@@ -35,6 +37,16 @@ const router = createBrowserRouter([
 	{
 		path: "/objednavka/:id",
 		element: <OrderDetail />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/registracni-udaje",
+		element: <RegistrationData />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/reklamace",
+		element: <Complaint />,
 		errorElement: <ErrorPage />,
 	},
 ]);

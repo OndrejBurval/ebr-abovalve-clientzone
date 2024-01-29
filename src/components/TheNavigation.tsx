@@ -8,9 +8,9 @@ const Navigation = () => {
 		<header>
 			<nav className="flex gap-5">
 				<Link to="/muj-ucet">{t("mujUcet")}</Link>
-				<Link to="/muj-ucet">{t("registracniUdaje")}</Link>
+				<Link to="/registracni-udaje">{t("registracniUdaje")}</Link>
 				<Link to="/objednavky">{t("objednavky")}</Link>
-				<Link to="/muj-ucet">{t("reklamace")}</Link>
+				<Link to="/reklamace">{t("reklamace")}</Link>
 				<Link to="/muj-ucet">{t("odhlasitSe")}</Link>
 
 				<button onClick={() => i18n.changeLanguage("en")}>lang</button>

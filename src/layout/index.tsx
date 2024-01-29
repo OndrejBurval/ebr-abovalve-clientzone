@@ -3,15 +3,18 @@ import { ReactNode } from "react";
 import Navigation from "@/components/TheNavigation";
 
 type Props = {
-	children: ReactNode;
+	title?: string;
+	children?: ReactNode;
 };
 
-const Default = ({ children }: Props) => {
+const Default = ({ children, title }: Props) => {
 	return (
 		<>
 			<Navigation />
 
-			<main>{children}</main>
+			{title ? <h1>{title}</h1> : null}
+
+			<main>{children ? children : null}</main>
 		</>
 	);
 };

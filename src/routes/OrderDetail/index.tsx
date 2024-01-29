@@ -45,9 +45,7 @@ const Detail = () => {
 	}
 
 	return (
-		<Layout>
-			<h1> Objednávka číslo: {id}</h1>
-
+		<Layout title={`Objednávka číslo: ${id}`}>
 			<ul className="order--detail--info">
 				<li>
 					<strong>Datum založení:</strong>

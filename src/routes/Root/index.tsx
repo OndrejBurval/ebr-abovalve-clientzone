@@ -6,6 +6,7 @@ import Layout from "@/layout";
 
 import OrderTable from "@/components/OrderTable";
 import OrderTableSkeleton from "@/components/OrderTableSkeleton";
+import UserCard from "@/components/UserCard";
 
 import { getOrders } from "./index.hook";
 
@@ -23,8 +24,19 @@ export default function Root() {
 			<h1> {t("mujUcet")} </h1>
 
 			<section>
-				<h2>{t("objednavky")}</h2>
-				{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
+				<div>
+					<h2>{t("objednavky")}</h2>
+					{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
+				</div>
+
+				<div>
+					<UserCard
+						title="Váš obchodní zástupce"
+						name="Jaroslav Novák"
+						phone="777 666 777"
+						email="jaroslav-novak@email.cz"
+					/>
+				</div>
 			</section>
 		</Layout>
 	);
