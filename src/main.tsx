@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import Root from "./routes/Root/index";
 import Orders from "./routes/Orders/index";
+import OrderDetail from "./routes/Orders/detail";
+
 import ErrorPage from "./error-page";
 
 const queryClient = new QueryClient();
@@ -17,8 +19,18 @@ const router = createBrowserRouter([
 		errorElement: <ErrorPage />,
 	},
 	{
-		path: "/orders",
+		path: "/muj-ucet",
+		element: <Root />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/objednavky",
 		element: <Orders />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/objednavka/:id",
+		element: <OrderDetail />,
 		errorElement: <ErrorPage />,
 	},
 ]);

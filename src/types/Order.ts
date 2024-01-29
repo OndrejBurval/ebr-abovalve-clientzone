@@ -18,10 +18,14 @@ type Order = {
 };
 
 type OrderItem = {
-	order: Order;
-	orderItems: {
-		"@id": string;
-	};
+	id: number;
+	navision_code: string;
+	navision_order_code: string;
+	name: string;
+	unit: string;
+	quantity: number;
+	total_cost: number;
+	unit_cost: number;
 };
 
 export type { Order, OrderItem };

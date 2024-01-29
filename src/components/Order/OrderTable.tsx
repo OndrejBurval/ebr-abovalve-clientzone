@@ -1,4 +1,5 @@
-import type { Order } from "../types/Order";
+import type { Order } from "@/types/Order";
+import { Link } from "react-router-dom";
 
 type OrderItem = {
 	order: Order;
@@ -34,8 +35,8 @@ const OrderTable = ({ items }: Props) => {
 			</thead>
 			<tbody>
 				{items.map((item) => (
-					<tr key={item.orderItems["@id"]}>
-						<td className="px-5"> {item.order.id} </td>
+					<tr key={item.order.id}>
+						<td className="px-5"> {item.order.navision_code} </td>
 						<td className="px-5 min-w-28">
 							{getDateString(item.order.order_date)}
 						</td>
@@ -44,7 +45,9 @@ const OrderTable = ({ items }: Props) => {
 						</td>
 						<td className="px-5"> --- </td>
 						<td className="px-5">
-							<button> Detail </button>
+							<Link to={`/objednavka/${item.order.id}`}>
+								<button>Detail</button>
+							</Link>
 						</td>
 					</tr>
 				))}

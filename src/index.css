@@ -3,3 +3,6 @@
 @tailwind utilities;
 
 
+th, td {
+    padding: .5rem;
+}

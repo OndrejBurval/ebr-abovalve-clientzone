@@ -1,16 +1,20 @@
 import ordersJson from "@/api/test/orders.json";
-import type { Order } from "@/types/Order";
+import orderItems2 from "@/api/test/orderItems2.json";
+import orderItems3 from "@/api/test/orderItems3.json";
+import orderItems4 from "@/api/test/orderItems4.json";
 
-type OrderItem = {
+const orderItemsJsons = [null, orderItems2, orderItems3, orderItems4];
+
+import type { Order, OrderItem } from "@/types/Order";
+
+type ResponseItem = {
 	order: Order;
 	orderItems: {
 		"@id": string;
 	};
 };
 
-type Response = OrderItem[];
-
-const getOrders = (): Promise<Response> => {
+const getOrders = (): Promise<ResponseItem[]> => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
 			resolve(ordersJson);
@@ -18,4 +22,26 @@ const getOrders = (): Promise<Response> => {
 	});
 };
 
-export { getOrders };
+const getOrder = (id: number): Promise<Order | null> => {
+	return new Promise((resolve) => {
+		const item = ordersJson.find((item) => item.order.id === id);
+
+		setTimeout(() => {
+			if (item) {
+				resolve(item.order);
+			} else {
+				resolve(null);
+			}
+		}, 500);
+	});
+};
+
+const getOrderItems = (id: number): Promise<OrderItem[]> => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve(orderItemsJsons[id] as OrderItem[]);
+		}, 500);
+	});
+};
+
+export { getOrders, getOrder, getOrderItems };
