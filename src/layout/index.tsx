@@ -1,18 +1,21 @@
 import { ReactNode } from "react";
 
 import Navigation from "@/components/TheNavigation";
+import Skeleton from "@/components/ui/Skeleton";
 
 type Props = {
 	title?: string;
 	children?: ReactNode;
+	isLoading?: boolean;
 };
 
-const Default = ({ children, title }: Props) => {
+const Default = ({ children, title, isLoading }: Props) => {
 	return (
 		<>
 			<Navigation />
 
-			{title ? <h1>{title}</h1> : null}
+			{isLoading ? <Skeleton className="w-52" /> : null}
+			{title && !isLoading ? <h1>{title}</h1> : null}
 
 			<main>{children ? children : null}</main>
 		</>

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+import logo from "@/assets/logo.png";
+
 const Navigation = () => {
 	const { t, i18n } = useTranslation();
 
@@ -12,12 +14,17 @@ const Navigation = () => {
 			<div className="cHeader__inner">
 				<div className="cHeader__component cHeader__logo">
 					<a href="/" className="cHeader__link" title="Zpět na hlavní stranu">
-						<img alt="logo" title="logo" />
+						<img alt="logo" title="logo" src={logo} />
 					</a>
 				</div>
 
 				<div className="cHeader__component cHeader__mainNav">
 					<ul className="nav">
+						<li className="nav__item">
+							<Link className="nav__item__in" to="/">
+								{t("produktovyKatalog")}
+							</Link>
+						</li>
 						<li className="nav__item">
 							<Link className="nav__item__in" to="/muj-ucet">
 								{t("mujUcet")}
@@ -39,14 +46,19 @@ const Navigation = () => {
 							</Link>
 						</li>
 						<li className="nav__item">
-							<Link className="nav__item__in" to="/muj-ucet">
+							<a
+								className="nav__item__in"
+								href={`/clientzone_logout/${i18n.language}`}>
 								{t("odhlasitSe")}
-							</Link>
+							</a>
 						</li>
 					</ul>
 				</div>
 
 				<div className="cHeader__component cHeader__cta">
+					<button className="btn btn--cta" onClick={toggleLanguage}>
+						Poptávka
+					</button>
 					<button className="btn btn--cta" onClick={toggleLanguage}>
 						lang
 					</button>

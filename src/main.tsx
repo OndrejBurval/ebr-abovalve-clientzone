@@ -12,7 +12,8 @@ import Root from "@/routes/Root/index";
 import Orders from "@/routes/Orders/index";
 import OrderDetail from "@/routes/OrderDetail";
 import RegistrationData from "@/routes/RegistrationData";
-import Complaint from "./routes/Complaint";
+import Complaint from "@/routes/Complaint";
+import ComplaintDetail from "@/routes/ComplaintDetail";
 
 import ErrorPage from "@/error-page";
 
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
 	{
 		path: "/reklamace",
 		element: <Complaint />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/reklamace/:id",
+		element: <ComplaintDetail />,
 		errorElement: <ErrorPage />,
 	},
 ]);

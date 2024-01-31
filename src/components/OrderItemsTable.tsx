@@ -1,12 +1,22 @@
 import type { OrderItem } from "@/types/Order";
 import Skeleton from "@/components/ui/Skeleton";
+import { useTranslation } from "react-i18next";
 
 type Props = {
 	items?: OrderItem[];
+	totalPriceExcVat?: number;
+	currencyCode?: string;
 	isLoading?: boolean;
 };
 
-const OrderItemsTable = ({ items, isLoading }: Props) => {
+const OrderItemsTable = ({
+	items,
+	isLoading,
+	totalPriceExcVat,
+	currencyCode,
+}: Props) => {
+	const { t } = useTranslation();
+
 	if ((!items || items.length === 0) && !isLoading) {
 		return <p>No order items found</p>;
 	}
@@ -27,21 +37,36 @@ const OrderItemsTable = ({ items, isLoading }: Props) => {
 			<tbody>
 				{!isLoading &&
 					items.map((item) => (
-						<tr key={item.id}>
-							<td> {item.id} </td>
-							<td> {item.name} </td>
-							<td> {item.quantity} </td>
-							<td> {item.unit_cost} </td>
-							<td> {item.total_cost} </td>
-							<td>
-								<input
-									type="checkbox"
-									name={`orderAgain-${item.id}`}
-									id={`orderAgain-${item.id}`}
-								/>
-							</td>
-						</tr>
+						<>
+							<tr key={item.id}>
+								<td> {item.id} </td>
+								<td> {item.name} </td>
+								<td> {item.quantity} </td>
+								<td>
+									{item.unit_cost}&nbsp;{currencyCode}
+								</td>
+								<td>
+									{item.total_cost}&nbsp;{currencyCode}
+								</td>
+								<td>
+									<input
+										type="checkbox"
+										name={`orderAgain-${item.id}`}
+										id={`orderAgain-${item.id}`}
+									/>
+								</td>
+							</tr>
+						</>
 					))}
+
+				{!isLoading ? (
+					<tr>
+						<td colSpan={4}>{t("celkemBezDph")}</td>
+						<td colSpan={2}>
+							{totalPriceExcVat || ""}&nbsp;{currencyCode}
+						</td>
+					</tr>
+				) : null}
 
 				{isLoading &&
 					Array(3)

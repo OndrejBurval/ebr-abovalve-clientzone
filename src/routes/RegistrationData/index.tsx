@@ -4,6 +4,7 @@ import Layout from "@/layout";
 
 import Card from "@/components/ui/Card";
 import UserCard from "@/components/UserCard";
+import Pen from "@/components/svg/Pen";
 
 const RegistrationData = () => {
 	const { t } = useTranslation();
@@ -15,21 +16,28 @@ const RegistrationData = () => {
 					<strong>eBRANA s.r.o.</strong>
 					<ul>
 						<li>Jan Novak</li>
-						<li>novak@seznam.cz</li>
+						<li>
+							<a href="mailto:novak@seznam.cz">novak@seznam.cz</a>
+						</li>
+						<li>
+							<a href="/" className="btn btn--primary">
+								{t("zmenitHeslo")}
+							</a>
+						</li>
 					</ul>
 				</Card>
 
-				<Card title={t("zakladniPrehled")}>
+				<Card title={t("zakladniPrehled")} className="card--basicOverview">
 					<ul>
-						<li>
+						<li className="info">
 							<span>{t("fakturyTentoRokCelkem")}</span>
 							<span>-</span>
 						</li>
-						<li>
+						<li className="info">
 							<span>{t("fakturyPoSplatnosti")}</span>
 							<span>-</span>
 						</li>
-						<li>
+						<li className="info">
 							<span>{t("rozpracovaneObjednavky")}</span>
 							<span>-</span>
 						</li>
@@ -37,6 +45,8 @@ const RegistrationData = () => {
 				</Card>
 
 				<Card title={t("kontaktniUdaje")}>
+					<Pen />
+
 					<ul>
 						<li>sekretářka</li>
 						<li>Jan Novák</li>
@@ -50,6 +60,8 @@ const RegistrationData = () => {
 				</Card>
 
 				<Card title={t("fakturacniAdresa")}>
+					<Pen />
+
 					<ul>
 						<li>eBRÁNA s.r.o.</li>
 						<li>Milheimova 1010</li>
@@ -63,6 +75,8 @@ const RegistrationData = () => {
 				</Card>
 
 				<Card title={t("dorucovaciAdresa")}>
+					<Pen />
+
 					<ul>
 						<li>eBRÁNA s.r.o.</li>
 						<li>Milheimova 1010</li>

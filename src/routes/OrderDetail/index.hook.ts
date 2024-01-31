@@ -33,27 +33,20 @@ const getOrderItems = (id: number): Promise<OrderItem[]> => {
 	});
 };
 
-const useDetailPage = (id: number) => {
+const useOrderDetailPage = (id: number) => {
 	const navigate = useNavigate();
 
 	if (isNaN(id)) {
 		navigate("/objednavky");
 	}
 
-	const { data, isLoading, isFetched } = useQuery(
-		`orderItems-${id}`,
-		() => getOrderItems(id),
-		{
-			refetchOnWindowFocus: false,
-		}
+	const { data, isLoading, isFetched } = useQuery(`orderItems-${id}`, () =>
+		getOrderItems(id)
 	);
 
 	const { data: orderInfo, isFetched: infoIsFetched } = useQuery(
 		`order-${id}`,
-		() => getOrder(id),
-		{
-			refetchOnWindowFocus: false,
-		}
+		() => getOrder(id)
 	);
 
 	useEffect(() => {
@@ -66,4 +59,4 @@ const useDetailPage = (id: number) => {
 	return { data, isLoading, orderInfo };
 };
 
-export { useDetailPage };
+export { useOrderDetailPage };

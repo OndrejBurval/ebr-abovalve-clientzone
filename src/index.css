@@ -32,6 +32,12 @@ nav a {
     grid-column: 4 / 5;
 }
 
+.orderDetail--wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+}
+
 .card {
     border: solid 1px #dfdfdf;
     padding: 1rem;
@@ -61,5 +67,11 @@ nav a {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    gap: 1rem;
+}
+
+li.info {
+    display: grid;
+    grid-template-columns: 1fr auto;
     gap: 1rem;
 }

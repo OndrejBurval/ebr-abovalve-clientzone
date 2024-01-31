@@ -1,1 +1,107 @@
-[{"order":{"id":1,"navision_code":"231OP00251","state":"","opportunity_id":"","description":"","order_date":"2023-11-13 00:00:00","requested_delivery_date":"2023-11-09 00:00:00","promised_delivery_date":"0001-01-01 00:00:00","due_date":"2024-01-12 00:00:00","currency_code":"EUR","total_without_vat":0.0,"total_with_vat":0.0,"total_vat":0.0,"shipping_name":"test 8.11-2","shipping_street":"street","shipping_city":"city"},"orderItems":{"@id":"\/api\/platform\/custom\/order\/1\/items"}},{"order":{"id":2,"navision_code":"231OP00002","state":"","opportunity_id":"","description":"","order_date":"2023-11-10 00:00:00","requested_delivery_date":"0001-01-01 00:00:00","promised_delivery_date":"0001-01-01 00:00:00","due_date":"2023-11-10 00:00:00","currency_code":"USD","total_without_vat":0.0,"total_with_vat":0.0,"total_vat":0.0,"shipping_name":"Pact Engineering FZC","shipping_street":"M3 10 & 12 Sharjah Airport I.F.Z.","shipping_city":"Sharjah"},"orderItems":{"@id":"\/api\/platform\/custom\/order\/2\/items"}},{"order":{"id":3,"navision_code":"231OP00001","state":"","opportunity_id":"","description":"","order_date":"2023-11-10 00:00:00","requested_delivery_date":"0001-01-01 00:00:00","promised_delivery_date":"0001-01-01 00:00:00","due_date":"2023-11-10 00:00:00","currency_code":"USD","total_without_vat":0.0,"total_with_vat":0.0,"total_vat":0.0,"shipping_name":"Pact Engineering FZC","shipping_street":"M3 10 & 12 Sharjah Airport I.F.Z.","shipping_city":"Sharjah"},"orderItems":{"@id":"\/api\/platform\/custom\/order\/3\/items"}},{"order":{"id":4,"navision_code":"231OP00250","state":"","opportunity_id":"","description":"","order_date":"2023-11-10 00:00:00","requested_delivery_date":"0001-01-01 00:00:00","promised_delivery_date":"0001-01-01 00:00:00","due_date":"2023-12-10 00:00:00","currency_code":"EUR","total_without_vat":0.0,"total_with_vat":0.0,"total_vat":0.0,"shipping_name":"Bhatia Brothers Fze","shipping_street":"P.O.Box 1275","shipping_city":"Jebel Ali - Dubai"},"orderItems":{"@id":"\/api\/platform\/custom\/order\/4\/items"}},{"order":{"id":5,"navision_code":"231OP00248","state":"","opportunity_id":"","description":"","order_date":"2023-11-10 00:00:00","requested_delivery_date":"0001-01-01 00:00:00","promised_delivery_date":"0001-01-01 00:00:00","due_date":"2023-11-10 00:00:00","currency_code":"USD","total_without_vat":0.0,"total_with_vat":0.0,"total_vat":0.0,"shipping_name":"Pact Engineering FZC","shipping_street":"M3 10 & 12 Sharjah Airport I.F.Z.","shipping_city":"Sharjah"},"orderItems":{"@id":"\/api\/platform\/custom\/order\/5\/items"}}]
+[
+	{
+		"order": {
+			"id": 1,
+			"navision_code": "231OP00251",
+			"state": "",
+			"opportunity_id": "",
+			"description": "",
+			"order_date": "2023-11-13 00:00:00",
+			"requested_delivery_date": "2023-11-09 00:00:00",
+			"promised_delivery_date": "0001-01-01 00:00:00",
+			"due_date": "2024-01-12 00:00:00",
+			"currency_code": "EUR",
+			"total_without_vat": 21.0,
+			"total_with_vat": 30.0,
+			"total_vat": 0.0,
+			"shipping_name": "test 8.11-2",
+			"shipping_street": "street",
+			"shipping_city": "city"
+		},
+		"orderItems": { "@id": "/api/platform/custom/order/1/items" }
+	},
+	{
+		"order": {
+			"id": 2,
+			"navision_code": "231OP00002",
+			"state": "",
+			"opportunity_id": "",
+			"description": "",
+			"order_date": "2023-11-10 00:00:00",
+			"requested_delivery_date": "0001-01-01 00:00:00",
+			"promised_delivery_date": "0001-01-01 00:00:00",
+			"due_date": "2023-11-10 00:00:00",
+			"currency_code": "USD",
+			"total_without_vat": 0.0,
+			"total_with_vat": 0.0,
+			"total_vat": 0.0,
+			"shipping_name": "Pact Engineering FZC",
+			"shipping_street": "M3 10 & 12 Sharjah Airport I.F.Z.",
+			"shipping_city": "Sharjah"
+		},
+		"orderItems": { "@id": "/api/platform/custom/order/2/items" }
+	},
+	{
+		"order": {
+			"id": 3,
+			"navision_code": "231OP00001",
+			"state": "",
+			"opportunity_id": "",
+			"description": "",
+			"order_date": "2023-11-10 00:00:00",
+			"requested_delivery_date": "0001-01-01 00:00:00",
+			"promised_delivery_date": "0001-01-01 00:00:00",
+			"due_date": "2023-11-10 00:00:00",
+			"currency_code": "USD",
+			"total_without_vat": 0.0,
+			"total_with_vat": 0.0,
+			"total_vat": 0.0,
+			"shipping_name": "Pact Engineering FZC",
+			"shipping_street": "M3 10 & 12 Sharjah Airport I.F.Z.",
+			"shipping_city": "Sharjah"
+		},
+		"orderItems": { "@id": "/api/platform/custom/order/3/items" }
+	},
+	{
+		"order": {
+			"id": 4,
+			"navision_code": "231OP00250",
+			"state": "",
+			"opportunity_id": "",
+			"description": "",
+			"order_date": "2023-11-10 00:00:00",
+			"requested_delivery_date": "0001-01-01 00:00:00",
+			"promised_delivery_date": "0001-01-01 00:00:00",
+			"due_date": "2023-12-10 00:00:00",
+			"currency_code": "EUR",
+			"total_without_vat": 0.0,
+			"total_with_vat": 0.0,
+			"total_vat": 0.0,
+			"shipping_name": "Bhatia Brothers Fze",
+			"shipping_street": "P.O.Box 1275",
+			"shipping_city": "Jebel Ali - Dubai"
+		},
+		"orderItems": { "@id": "/api/platform/custom/order/4/items" }
+	},
+	{
+		"order": {
+			"id": 5,
+			"navision_code": "231OP00248",
+			"state": "",
+			"opportunity_id": "",
+			"description": "",
+			"order_date": "2023-11-10 00:00:00",
+			"requested_delivery_date": "0001-01-01 00:00:00",
+			"promised_delivery_date": "0001-01-01 00:00:00",
+			"due_date": "2023-11-10 00:00:00",
+			"currency_code": "USD",
+			"total_without_vat": 0.0,
+			"total_with_vat": 0.0,
+			"total_vat": 0.0,
+			"shipping_name": "Pact Engineering FZC",
+			"shipping_street": "M3 10 & 12 Sharjah Airport I.F.Z.",
+			"shipping_city": "Sharjah"
+		},
+		"orderItems": { "@id": "/api/platform/custom/order/5/items" }
+	}
+]

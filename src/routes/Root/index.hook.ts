@@ -11,8 +11,10 @@ type ResponseItem = {
 
 const getOrders = (): Promise<ResponseItem[]> => {
 	return new Promise((resolve) => {
+		const limit = 3;
+
 		setTimeout(() => {
-			resolve(ordersJson);
+			resolve(ordersJson.slice(0, limit));
 		}, 500);
 	});
 };

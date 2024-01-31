@@ -9,9 +9,13 @@ import OrderTableSkeleton from "@/components/OrderTableSkeleton";
 import UserCard from "@/components/UserCard";
 
 import { getOrders } from "./index.hook";
+import { Link } from "react-router-dom";
 
 export default function Root() {
-	const { data, isLoading, isError, error } = useQuery("orders", getOrders);
+	const { data, isLoading, isError, error } = useQuery(
+		"orders-limited",
+		getOrders
+	);
 
 	const { t } = useTranslation();
 
@@ -20,16 +24,15 @@ export default function Root() {
 	}
 
 	return (
-		<Layout>
-			<h1> {t("mujUcet")} </h1>
-
-			<section>
-				<div>
+		<Layout title={t("klientskaZona")}>
+			<section className="clientZone--dashboard">
+				<div className="clientZone--dashboard--orders">
 					<h2>{t("objednavky")}</h2>
 					{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
+					<Link to="/objednavky">{t("dalsiObjednavky")}</Link>
 				</div>
 
-				<div>
+				<div className="clientZone--dashboard--userCard">
 					<UserCard
 						title="Váš obchodní zástupce"
 						name="Jaroslav Novák"

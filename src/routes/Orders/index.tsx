@@ -10,11 +10,7 @@ import Layout from "@/layout";
 const Orders = () => {
 	const { t } = useTranslation();
 
-	const { data, isLoading, isError, error } = useQuery("orders", getOrders);
-
-	if (isError) {
-		return <div> Error: {error instanceof Error ? error.message : ""} </div>;
-	}
+	const { data, isLoading } = useQuery("orders", getOrders);
 
 	return (
 		<Layout title={t("objednavky")}>
