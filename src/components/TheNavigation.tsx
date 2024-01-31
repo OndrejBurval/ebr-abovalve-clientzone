@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useWebConfig } from "@/composables/useWebConfig";
 
 import logo from "@/assets/logo.png";
 
 const Navigation = () => {
+	const { produktyLink } = useWebConfig();
 	const { t, i18n } = useTranslation();
 
 	const toggleLanguage = () =>
@@ -21,9 +23,9 @@ const Navigation = () => {
 				<div className="cHeader__component cHeader__mainNav">
 					<ul className="nav">
 						<li className="nav__item">
-							<Link className="nav__item__in" to="/">
+							<a className="nav__item__in" href={produktyLink || "/"}>
 								{t("produktovyKatalog")}
-							</Link>
+							</a>
 						</li>
 						<li className="nav__item">
 							<Link className="nav__item__in" to="/muj-ucet">

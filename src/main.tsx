@@ -9,6 +9,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "@/i18n";
 
+import "./composables/useWebConfig";
+
 // Pages
 import Root from "@/routes/Root/index";
 import Orders from "@/routes/Orders/index";
