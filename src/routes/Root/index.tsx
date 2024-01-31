@@ -10,6 +10,7 @@ import UserCard from "@/components/UserCard";
 
 import { getOrders } from "./index.hook";
 import { Link } from "react-router-dom";
+import Card from "@/components/ui/Card";
 
 export default function Root() {
 	const { data, isLoading, isError, error } = useQuery(
@@ -27,18 +28,22 @@ export default function Root() {
 		<Layout title={t("klientskaZona")}>
 			<section className="clientZone--dashboard">
 				<div className="clientZone--dashboard--orders">
-					<h2>{t("objednavky")}</h2>
-					{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
-					<Link to="/objednavky">{t("dalsiObjednavky")}</Link>
+					<Card>
+						<h2>{t("objednavky")}</h2>
+						{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
+						<Link to="/objednavky">{t("dalsiObjednavky")}</Link>
+					</Card>
 				</div>
 
 				<div className="clientZone--dashboard--userCard">
-					<UserCard
-						title="Váš obchodní zástupce"
-						name="Jaroslav Novák"
-						phone="777 666 777"
-						email="jaroslav-novak@email.cz"
-					/>
+					<Card>
+						<UserCard
+							title={t("vasObchodniZastupce")}
+							name="Jaroslav Novák"
+							phone="777 666 777"
+							email="jaroslav-novak@email.cz"
+						/>
+					</Card>
 				</div>
 			</section>
 		</Layout>

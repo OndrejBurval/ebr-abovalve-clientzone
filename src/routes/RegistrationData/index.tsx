@@ -85,12 +85,14 @@ const RegistrationData = () => {
 					</ul>
 				</Card>
 
-				<UserCard
-					title="Váš obchodní zástupce"
-					name="Jaroslav Novák"
-					phone="777 666 777"
-					email="jaroslav-novak@email.cz"
-				/>
+				<Card>
+					<UserCard
+						title="Váš obchodní zástupce"
+						name="Jaroslav Novák"
+						phone="777 666 777"
+						email="jaroslav-novak@email.cz"
+					/>
+				</Card>
 			</section>
 		</Layout>
 	);

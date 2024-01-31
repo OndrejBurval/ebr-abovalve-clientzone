@@ -30,7 +30,7 @@ const ComplaintTable = ({ items, isLoading }: Props) => {
 
 			<tbody>
 				{!isLoading &&
-					items.map((item, index) => (
+					items.map((_, index) => (
 						<tr key={index}>
 							<td> -- </td>
 							<td> -- </td>

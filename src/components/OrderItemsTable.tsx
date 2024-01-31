@@ -1,6 +1,6 @@
+import { useTranslation } from "react-i18next";
 import type { OrderItem } from "@/types/Order";
 import Skeleton from "@/components/ui/Skeleton";
-import { useTranslation } from "react-i18next";
 
 type Props = {
 	items?: OrderItem[];
@@ -25,38 +25,36 @@ const OrderItemsTable = ({
 		<table>
 			<thead className="text-left">
 				<tr>
-					<th> Kód produktu </th>
-					<th> Název </th>
-					<th> Množství </th>
-					<th> Cena za ks </th>
-					<th> Cena celkem </th>
-					<th> Znovu objednat </th>
+					<th> {t("kodProduktu")} </th>
+					<th> {t("nazev")} </th>
+					<th> {t("mnozstvi")} </th>
+					<th> {t("cenaZaKus")} </th>
+					<th> {t("cenaCelkem")} </th>
+					<th> {t("znovuObjednat")} </th>
 				</tr>
 			</thead>
 
 			<tbody>
 				{!isLoading &&
 					items.map((item) => (
-						<>
-							<tr key={item.id}>
-								<td> {item.id} </td>
-								<td> {item.name} </td>
-								<td> {item.quantity} </td>
-								<td>
-									{item.unit_cost}&nbsp;{currencyCode}
-								</td>
-								<td>
-									{item.total_cost}&nbsp;{currencyCode}
-								</td>
-								<td>
-									<input
-										type="checkbox"
-										name={`orderAgain-${item.id}`}
-										id={`orderAgain-${item.id}`}
-									/>
-								</td>
-							</tr>
-						</>
+						<tr key={item.id}>
+							<td> {item.id} </td>
+							<td> {item.name} </td>
+							<td> {item.quantity} </td>
+							<td>
+								{item.unit_cost}&nbsp;{currencyCode}
+							</td>
+							<td>
+								{item.total_cost}&nbsp;{currencyCode}
+							</td>
+							<td>
+								<input
+									type="checkbox"
+									name={`orderAgain-${item.id}`}
+									id={`orderAgain-${item.id}`}
+								/>
+							</td>
+						</tr>
 					))}
 
 				{!isLoading ? (

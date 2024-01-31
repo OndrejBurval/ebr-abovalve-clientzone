@@ -1,4 +1,6 @@
 import "./index.css";
+// Styly z lokální implementace
+import "./localstyles.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";

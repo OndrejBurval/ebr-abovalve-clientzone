@@ -9,11 +9,13 @@ const ComplaintDetail = () => {
 	const { id } = useParams<{ id: string }>();
 
 	return (
-		<Layout title={`${t("reklamaceCislo")}: ${id}`}>
-			<Link to="/reklamace" className="btn btn--primary">
-				{t("zpetNaReklamace")}
-			</Link>
-
+		<Layout
+			title={`${t("reklamaceCislo")}: ${id}`}
+			header={
+				<Link to="/reklamace" className="btn btn--primary">
+					{t("zpetNaReklamace")}
+				</Link>
+			}>
 			<div className="complaintPage--wrapper">
 				<Card>
 					<ul>

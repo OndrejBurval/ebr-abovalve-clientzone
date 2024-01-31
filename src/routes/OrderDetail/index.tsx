@@ -22,11 +22,13 @@ const Detail = () => {
 	}
 
 	return (
-		<Layout title={`${t("objednavkaCislo")}: ${id}`}>
-			<Link to="/objednavky" className="btn btn--primary">
-				{t("zpetNaObjednavky")}
-			</Link>
-
+		<Layout
+			title={`${t("objednavkaCislo")}: ${id}`}
+			header={
+				<Link to="/objednavky" className="btn btn--primary">
+					{t("zpetNaObjednavky")}
+				</Link>
+			}>
 			<div className="orderDetail--wrapper">
 				<Card title={t("zakladniPrehled")} className="orderDetail--info">
 					<ul>
