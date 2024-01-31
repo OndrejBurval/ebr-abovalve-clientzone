@@ -1,11 +1,13 @@
 import type { OrderItem } from "@/types/Order";
+import Skeleton from "@/components/ui/Skeleton";
 
 type Props = {
-	items: OrderItem[];
+	items?: OrderItem[];
+	isLoading?: boolean;
 };
 
-const OrderItemsTable = ({ items }: Props) => {
-	if (!items || items.length === 0) {
+const OrderItemsTable = ({ items, isLoading }: Props) => {
+	if ((!items || items.length === 0) && !isLoading) {
 		return <p>No order items found</p>;
 	}
 
@@ -23,22 +25,38 @@ const OrderItemsTable = ({ items }: Props) => {
 			</thead>
 
 			<tbody>
-				{items.map((item) => (
-					<tr key={item.id}>
-						<td> {item.id} </td>
-						<td> {item.name} </td>
-						<td> {item.quantity} </td>
-						<td> {item.unit_cost} </td>
-						<td> {item.total_cost} </td>
-						<td>
-							<input
-								type="checkbox"
-								name={`orderAgain-${item.id}`}
-								id={`orderAgain-${item.id}`}
-							/>
-						</td>
-					</tr>
-				))}
+				{!isLoading &&
+					items.map((item) => (
+						<tr key={item.id}>
+							<td> {item.id} </td>
+							<td> {item.name} </td>
+							<td> {item.quantity} </td>
+							<td> {item.unit_cost} </td>
+							<td> {item.total_cost} </td>
+							<td>
+								<input
+									type="checkbox"
+									name={`orderAgain-${item.id}`}
+									id={`orderAgain-${item.id}`}
+								/>
+							</td>
+						</tr>
+					))}
+
+				{isLoading &&
+					Array(3)
+						.fill(null)
+						.map((_, index) => (
+							<tr key={index}>
+								{Array(6)
+									.fill(null)
+									.map((_, innerIndex) => (
+										<td key={innerIndex}>
+											<Skeleton />
+										</td>
+									))}
+							</tr>
+						))}
 			</tbody>
 		</table>
 	);

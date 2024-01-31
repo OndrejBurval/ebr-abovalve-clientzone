@@ -49,7 +49,7 @@ const OrderTable = ({ items }: Props) => {
 						<td className="px-5"> --- </td>
 						<td className="px-5">
 							<Link to={`/objednavka/${item.order.id}`}>
-								<button>{t("detail")}</button>
+								<button className="btn btn--primary">{t("detail")}</button>
 							</Link>
 						</td>
 					</tr>

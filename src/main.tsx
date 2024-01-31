@@ -51,10 +51,16 @@ const router = createBrowserRouter([
 	},
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-	<React.StrictMode>
-		<QueryClientProvider client={queryClient}>
-			<RouterProvider router={router} />
-		</QueryClientProvider>
-	</React.StrictMode>
-);
+const rootEl = document.getElementById("root");
+
+if (rootEl) {
+	ReactDOM.createRoot(document.getElementById("root")!).render(
+		<React.StrictMode>
+			<QueryClientProvider client={queryClient}>
+				<RouterProvider router={router} />
+			</QueryClientProvider>
+		</React.StrictMode>
+	);
+} else if (!rootEl && import.meta.env.DEV) {
+	throw new Error("Root element not found");
+}

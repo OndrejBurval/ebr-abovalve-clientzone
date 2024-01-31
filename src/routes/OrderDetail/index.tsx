@@ -1,56 +1,38 @@
 import Layout from "@/layout";
+import PageLoading from "@/routes/OrderDetail/index.loading";
 import BillingAddress from "@/components/BillingAddress";
 import MailingAddress from "@/components/MailingAddress";
 import OrderItemsTable from "@/components/OrderItemsTable";
 
 import { useParams } from "react-router-dom";
-import { useQuery } from "react-query";
-import { getOrderItems, getOrder } from "./index.hook";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDetailPage } from "./index.hook";
+import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useDateString } from "@/composables/useDateString";
 
 const Detail = () => {
+	const { t } = useTranslation();
+
 	const { id } = useParams<{ id: string }>();
-	const navigate = useNavigate();
+	const { data, isLoading, orderInfo } = useDetailPage(parseInt(id));
 
-	const { data, isLoading, isFetched } = useQuery(
-		`orderItems-${id}`,
-		() => getOrderItems(parseInt(id)),
-		{
-			refetchOnWindowFocus: false,
-		}
-	);
-
-	const { data: orderInfo, isFetched: infoIsFetched } = useQuery(
-		`order-${id}`,
-		() => getOrder(parseInt(id)),
-		{
-			refetchOnWindowFocus: false,
-		}
-	);
-
-	useEffect(() => {
-		if ((isFetched && !data) || (infoIsFetched && !orderInfo)) {
-			navigate("/404");
-		}
-	}, [isFetched, data, navigate, orderInfo, infoIsFetched]);
-
-	const getDateString = (date: string) => {
-		const dateObj = new Date(date);
-		return dateObj.toLocaleDateString("cs-CZ");
-	};
+	const orderDate = useDateString(orderInfo?.order_date);
 
 	if (isLoading) {
-		return <div> Loading... </div>;
+		return <PageLoading />;
 	}
 
 	return (
 		<Layout title={`Objednávka číslo: ${id}`}>
+			<Link to="/objednavky" className="btn btn--primary">
+				{t("zpetNaObjednavky")}
+			</Link>
+
 			<ul className="order--detail--info">
 				<li>
 					<strong>Datum založení:</strong>
 
-					<span> {getDateString(orderInfo.order_date)} </span>
+					<span> {orderDate} </span>
 				</li>
 
 				<li>

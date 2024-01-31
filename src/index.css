@@ -45,3 +45,21 @@ nav a {
     justify-content: center;
     align-items: center;
 }
+
+.cHeader {
+    border-bottom: solid red 2px;
+}
+
+.cHeader__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 1rem;
+}
