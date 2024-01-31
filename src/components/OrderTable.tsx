@@ -25,6 +25,14 @@ const OrderTable = ({ items }: Props) => {
 		return dateObj.toLocaleDateString("cs-CZ");
 	};
 
+	const handleStarClick = (
+		event: React.MouseEvent<SVGSVGElement>,
+		orderId: number
+	) => {
+		event.preventDefault();
+		console.log("Star clicked - ", orderId);
+	};
+
 	return (
 		<table>
 			<thead>
@@ -41,7 +49,7 @@ const OrderTable = ({ items }: Props) => {
 			<tbody>
 				{items.map((item) => (
 					<tr key={item.order.id}>
-						<td className="px-5"> {item.order.navision_code} </td>
+						<td className="px-5"> {item.order.id} </td>
 						<td className="px-5 min-w-28">
 							{getDateString(item.order.order_date)}
 						</td>
@@ -57,6 +65,8 @@ const OrderTable = ({ items }: Props) => {
 						</td>
 						<td className="px-5">
 							<svg
+								onClick={(event) => handleStarClick(event, item.order.id)}
+								className="icon-star"
 								xmlns="http://www.w3.org/2000/svg"
 								width="32"
 								height="32"

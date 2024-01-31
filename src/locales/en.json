@@ -45,5 +45,6 @@
     "kodProduktu": "Product Code",
     "mnozstvi": "Quantity",
     "cenaZaKus": "Price Per Piece",
-    "znovuObjednat": "Reorder"
+    "znovuObjednat": "Reorder",
+    "poptavka": "Demand"
 }

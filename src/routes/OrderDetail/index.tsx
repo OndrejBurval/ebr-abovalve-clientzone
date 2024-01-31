@@ -92,9 +92,6 @@ const Detail = () => {
 					currencyCode={orderInfo.currency_code}
 					totalPriceExcVat={orderInfo.total_without_vat}
 				/>
-				<div className="orderDetail--table--action">
-					<button className="btn btn--primary">{t("pridatDoKosiku")}</button>
-				</div>
 			</section>
 
 			<div className="orderDetail--documents">

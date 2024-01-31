@@ -16,3 +16,9 @@ i18next.use(initReactI18next).init({
 		},
 	},
 });
+
+const htmlLang = document.querySelector("html")?.getAttribute("lang");
+
+if (htmlLang && htmlLang !== i18next.language) {
+	i18next.changeLanguage(htmlLang);
+}

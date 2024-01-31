@@ -57,12 +57,24 @@ const Navigation = () => {
 					</ul>
 				</div>
 
+				<div className="cHeader__component cHeader__lang">
+					<div
+						className="cLang cLang--iconOnly cLang--drop _p _iA js__langswitch "
+						data-a-init-langswitch='{"c.init": {}}'>
+						<a
+							onClick={toggleLanguage}
+							href="#"
+							className="drop-holder cLang--cs js__toogle_langswitch--open cLang--active">
+							<span className="cLang__title">
+								{i18n.language === "cs" ? "CZ" : "EN"}
+							</span>
+						</a>
+					</div>
+				</div>
+
 				<div className="cHeader__component cHeader__cta">
 					<button className="btn btn--cta" onClick={toggleLanguage}>
-						Poptávka
-					</button>
-					<button className="btn btn--cta" onClick={toggleLanguage}>
-						lang
+						{t("poptavka")}
 					</button>
 				</div>
 			</div>
