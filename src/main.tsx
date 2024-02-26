@@ -7,6 +7,7 @@ import ReactDOM from "react-dom/client";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+
 import "@/i18n";
 
 import "./composables/useWebConfig";

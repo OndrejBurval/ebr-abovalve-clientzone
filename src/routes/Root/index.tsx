@@ -1,18 +1,20 @@
 import { useQuery } from "react-query";
-
 import { useTranslation } from "react-i18next";
+import { useUserData } from "@/composables/useUserData";
 
 import Layout from "@/layout";
 
 import OrderTable from "@/components/OrderTable";
 import OrderTableSkeleton from "@/components/OrderTableSkeleton";
 import UserCard from "@/components/UserCard";
+import Card from "@/components/ui/Card";
 
 import { getOrders } from "./index.hook";
 import { Link } from "react-router-dom";
-import Card from "@/components/ui/Card";
 
 export default function Root() {
+	const { userData, userIsLoading } = useUserData();
+
 	const { data, isLoading, isError, error } = useQuery(
 		"orders-limited",
 		getOrders
@@ -37,12 +39,11 @@ export default function Root() {
 
 				<div className="clientZone--dashboard--userCard">
 					<Card>
-						<UserCard
-							title={t("vasObchodniZastupce")}
-							name="Jaroslav Novák"
-							phone="777 666 777"
-							email="jaroslav-novak@email.cz"
-						/>
+						{!userIsLoading ? (
+							<UserCard contact={userData.contact} />
+						) : (
+							<UserCard isLoading={true} />
+						)}
 					</Card>
 				</div>
 			</section>

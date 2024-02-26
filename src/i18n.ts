@@ -17,8 +17,8 @@ i18next.use(initReactI18next).init({
 	},
 });
 
-const htmlLang = document.querySelector("html")?.getAttribute("lang");
+const storageLang = localStorage.getItem("lng");
 
-if (htmlLang && htmlLang !== i18next.language) {
-	i18next.changeLanguage(htmlLang);
+if (storageLang && storageLang !== i18next.language) {
+	i18next.changeLanguage(storageLang);
 }

@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useUserData } from "@/composables/useUserData";
 
 import Layout from "@/layout";
 
@@ -7,91 +8,122 @@ import UserCard from "@/components/UserCard";
 import Pen from "@/components/svg/Pen";
 
 const RegistrationData = () => {
+	const { userData, userIsLoading } = useUserData();
 	const { t } = useTranslation();
 
 	return (
 		<Layout title={t("registracniUdaje")}>
 			<section className="registrationData--wrapper">
+				<Card isLoading={userIsLoading}>
+					{!userIsLoading && userData.user && (
+						<ul>
+							<>
+								<li>
+									{`${userData.user.first_name} ${userData.user.last_name}`}
+								</li>
+								<li>
+									<a href={`mailto:${userData.user.email}`}>
+										{userData.user.email}
+									</a>
+								</li>
+								<li>
+									<a href="/" className="btn btn--primary">
+										{t("zmenitHeslo")}
+									</a>
+								</li>
+							</>
+						</ul>
+					)}
+				</Card>
+
+				<Card
+					title={t("zakladniPrehled")}
+					className="card--basicOverview"
+					isLoading={userIsLoading}>
+					{!userIsLoading && userData.account && (
+						<ul>
+							<li className="info">
+								<span>{t("fakturyTentoRokCelkem")}</span>
+								<span> {userData.account.invoice_balance_due_total || 0} </span>
+							</li>
+							<li className="info">
+								<span>{t("fakturyPoSplatnosti")}</span>
+								<span> -</span>
+							</li>
+							<li className="info">
+								<span>{t("rozpracovaneObjednavky")}</span>
+								<span>-</span>
+							</li>
+						</ul>
+					)}
+				</Card>
+
+				<Card title={t("kontaktniUdaje")} isLoading={userIsLoading}>
+					{!userIsLoading && userData.user && (
+						<>
+							<Pen />
+
+							<ul>
+								<li>
+									{`${userData.user.first_name} ${userData.user.last_name}`}
+								</li>
+								<li>
+									<a href={`tel:${userData.user.phone.replace(/\s/g, "")}`}>
+										{userData.user.phone}
+									</a>
+								</li>
+								<li>
+									<a href={`mailto:${userData.user.email.replace(/\s/g, "")}`}>
+										{userData.user.email}
+									</a>
+								</li>
+							</ul>
+						</>
+					)}
+				</Card>
+
+				<Card title={t("fakturacniAdresa")} isLoading={userIsLoading}>
+					{!userIsLoading && userData.account && (
+						<>
+							<Pen />
+
+							<ul>
+								<li>{userData.account.name || ""}</li>
+								<li>{userData.account.billing_street} </li>
+								<li>
+									{`${userData.account.billing_city} ${userData.account.billing_zip}`}
+								</li>
+								<li>{userData.account.billing_country}</li>
+								<li>{userData.account.navision_code || ""}</li>
+							</ul>
+						</>
+					)}
+				</Card>
+
+				<Card title={t("dorucovaciAdresa")} isLoading={userIsLoading}>
+					{!userIsLoading && userData.account && (
+						<>
+							<Pen />
+
+							<ul>
+								<li>{userData.account.name || ""}</li>
+								<li>{userData.account.shipping_street} </li>
+								<li>
+									{`${userData.account.shipping_city} ${userData.account.shipping_zip}`}
+								</li>
+								<li>{userData.account.shipping_country}</li>
+								<li>{userData.account.navision_code || ""}</li>
+							</ul>
+						</>
+					)}
+				</Card>
+
 				<Card>
-					<strong>eBRANA s.r.o.</strong>
-					<ul>
-						<li>Jan Novak</li>
-						<li>
-							<a href="mailto:novak@seznam.cz">novak@seznam.cz</a>
-						</li>
-						<li>
-							<a href="/" className="btn btn--primary">
-								{t("zmenitHeslo")}
-							</a>
-						</li>
-					</ul>
-				</Card>
-
-				<Card title={t("zakladniPrehled")} className="card--basicOverview">
-					<ul>
-						<li className="info">
-							<span>{t("fakturyTentoRokCelkem")}</span>
-							<span>-</span>
-						</li>
-						<li className="info">
-							<span>{t("fakturyPoSplatnosti")}</span>
-							<span>-</span>
-						</li>
-						<li className="info">
-							<span>{t("rozpracovaneObjednavky")}</span>
-							<span>-</span>
-						</li>
-					</ul>
-				</Card>
-
-				<Card title={t("kontaktniUdaje")}>
-					<Pen />
-
-					<ul>
-						<li>sekretářka</li>
-						<li>Jan Novák</li>
-						<li>
-							<a href="tel:+420666666666">666 666 666</a>
-						</li>
-						<li>
-							<a href="mailto:novak@seznam.cz"> novak@seznam.cz</a>
-						</li>
-					</ul>
-				</Card>
-
-				<Card title={t("fakturacniAdresa")}>
-					<Pen />
-
-					<ul>
-						<li>eBRÁNA s.r.o.</li>
-						<li>Milheimova 1010</li>
-						<li>Pardubice 530 02</li>
-						<li>Česká republika</li>
-						<li>259 90 99, CZ2525252</li>
-						<li>
-							<a href="mailto:novak@seznam.cz">novak@seznam.cz</a>
-						</li>
-					</ul>
-				</Card>
-
-				<Card title={t("dorucovaciAdresa")}>
-					<Pen />
-
-					<ul>
-						<li>eBRÁNA s.r.o.</li>
-						<li>Milheimova 1010</li>
-						<li>Pardubice 530 02</li>
-						<li>Česká republika</li>
-					</ul>
-				</Card>
-
-				<Card>
-					<UserCard
-						title="Váš obchodní zástupce"
-						name="Jaroslav Novák"
-						phone="777 666 777"
-						email="jaroslav-novak@email.cz"
-					/>
+					{!userIsLoading ? (
+						<UserCard contact={userData.contact} />
+					) : (
+						<UserCard isLoading={true} />
+					)}
 				</Card>
 			</section>
 		</Layout>
