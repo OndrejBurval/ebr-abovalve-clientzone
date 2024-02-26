@@ -13,7 +13,6 @@ export const useBasket = () => {
     function saveBasket(data: Basket | null = null) {
         const basketToSave = data ? data : basket;
         localStorage.setItem("basket", JSON.stringify(basketToSave));
-        console.log("Basket saved - ", basket, data)
     }
 
     function add(product: Product, quantity = 1) {
@@ -25,11 +24,28 @@ export const useBasket = () => {
                 return [...basket, { ...product, quantity }]}
             );
         } else {
-            console.log("Item already in basket, updating quantity");
             basket[index].quantity += quantity;
             setBasket([...basket]);
             saveBasket();
         }
+    }
+
+    function addMultiple(products: Product[]) {
+        const basketData = [...basket];
+
+        products.forEach((product) => {
+            const index = basketData.findIndex((item) => item.id === product.id);
+            const quantity = product?.quantity || 1;
+
+            if (index === -1) {
+                basketData.push({ ...product, quantity });
+            } else {
+                basketData[index].quantity += quantity;
+            }
+        });
+
+        setBasket([...basketData]);
+        saveBasket([...basketData]);
     }
 
     function remove(id: number, quantity: "ONE" | "ALL" = "ONE") {
@@ -62,6 +78,7 @@ export const useBasket = () => {
     return {
         items: basket,
         add,
+        addMultiple,
         remove,
         clear
     };

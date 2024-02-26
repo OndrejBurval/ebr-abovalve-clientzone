@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
+import { useBasket } from "@/composables/useBasket";
 import type { OrderItem } from "@/types/Order";
 import Skeleton from "@/components/ui/Skeleton";
+import Product from "@/types/Product";
 
 type Props = {
 	items?: OrderItem[];
@@ -16,6 +18,7 @@ const OrderItemsTable = ({
 	currencyCode,
 }: Props) => {
 	const { t } = useTranslation();
+	const basket = useBasket();
 
 	if ((!items || items.length === 0) && !isLoading) {
 		return <p>No order items found</p>;
@@ -25,11 +28,12 @@ const OrderItemsTable = ({
 		event.preventDefault();
 
 		const formData = new FormData(event.currentTarget);
+
 		const productsToOrder = Array.from(formData.entries()).map(
-			([_, productId]) => productId
+			([_, product]) => JSON.parse(product as string) as Product
 		);
 
-		console.log("Products to order: ", productsToOrder);
+		basket.addMultiple(productsToOrder);
 	};
 
 	return (
@@ -64,7 +68,12 @@ const OrderItemsTable = ({
 										type="checkbox"
 										name={`orderAgain-${item.id}`}
 										id={`orderAgain-${item.id}`}
-										value={item.id}
+										value={JSON.stringify({
+											id: item.id,
+											name: item.name,
+											price: item.unit_cost,
+											quantity: item.quantity,
+										})}
 									/>
 								</td>
 							</tr>
