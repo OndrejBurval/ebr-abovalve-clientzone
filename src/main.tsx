@@ -19,6 +19,7 @@ import OrderDetail from "@/routes/OrderDetail";
 import RegistrationData from "@/routes/RegistrationData";
 import Complaint from "@/routes/Complaint";
 import ComplaintDetail from "@/routes/ComplaintDetail";
+import Basket from "./routes/Basket";
 
 import ErrorPage from "@/error-page";
 
@@ -58,6 +59,11 @@ const router = createBrowserRouter([
 	{
 		path: "/reklamace/:id",
 		element: <ComplaintDetail />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/kosik",
+		element: <Basket />,
 		errorElement: <ErrorPage />,
 	},
 ]);
