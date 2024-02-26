@@ -7,18 +7,7 @@ const Detail = () => {
 	const cardMap = Array(3)
 		.fill(0)
 		.map((_, i) => {
-			return (
-				<Card key={i}>
-					<ul>
-						<li>
-							<Skeleton />
-						</li>
-						<li>
-							<Skeleton />
-						</li>
-					</ul>
-				</Card>
-			);
+			return <Card key={i} isLoading={true} />;
 		});
 
 	return (

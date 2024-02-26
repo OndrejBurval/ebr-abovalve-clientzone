@@ -6,7 +6,7 @@ import { useQuery } from "react-query";
 const getComplaints = (): Promise<Complaint[]> => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
-			resolve(complaintJson);
+			resolve(complaintJson.map((item) => item.complaint));
 		}, 500);
 	});
 };

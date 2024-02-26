@@ -17,7 +17,7 @@ const OrderTable = ({ items }: Props) => {
 	const { t } = useTranslation();
 
 	if (!items || items.length === 0) {
-		return <p>No orders found</p>;
+		return <p>{t("zadneObjednavky")}</p>;
 	}
 
 	const getDateString = (date: string) => {

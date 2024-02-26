@@ -1,10 +1,12 @@
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
+import { useDateString } from "@/composables/useDateString";
+
 import Skeleton from "@/components/ui/Skeleton";
 import type Complaint from "@/types/Complaint";
-import { Link } from "react-router-dom";
 
 type Props = {
-	items?: Complaint[];
+	items: Complaint[];
 	isLoading?: boolean;
 };
 
@@ -30,15 +32,19 @@ const ComplaintTable = ({ items, isLoading }: Props) => {
 
 			<tbody>
 				{!isLoading &&
-					items.map((_, index) => (
+					items.map((item, index) => (
 						<tr key={index}>
-							<td> -- </td>
-							<td> -- </td>
-							<td> -- </td>
-							<td> -- </td>
-							<td> -- </td>
+							<td> {item.case_number} </td>
+							<td> {item.name} </td>
+							<td>{new Date(item.date_create).toLocaleDateString("cs-CZ")}</td>
 							<td>
-								<Link to="/reklamace/1">{t("detail")}</Link>
+								{item.status === "Closed"
+									? new Date(item.date_update).toLocaleDateString("cs-CZ")
+									: "-"}
+							</td>
+							<td> {item.status || ""} </td>
+							<td>
+								<Link to={`relamace/${item.id} `}>{t("detail")}</Link>
 							</td>
 						</tr>
 					))}

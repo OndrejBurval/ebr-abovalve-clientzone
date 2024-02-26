@@ -1,5 +1,4 @@
 import { useQuery } from 'react-query';
-import userJson from '@/api/test/loggedContact.json';
 
 import type User from '@/types/User';
 import type Account from '@/types/Account';
@@ -12,11 +11,13 @@ type LoggedUser = {
 }
 
 const getUser = async (): Promise<LoggedUser> => {
-    return new Promise((resolve) => {
-		setTimeout(() => {
-			resolve(userJson);
-		}, 500);
-	});
+    const res = await fetch(`/api/platform/custom/logged-contact${import.meta.env.DEV ? '.json' : ''}`)
+    
+    if (!res.ok) {
+        throw new Error('User network response error')
+    }
+    
+    return await res.json()
 }
 
 export const useUserData = () => {

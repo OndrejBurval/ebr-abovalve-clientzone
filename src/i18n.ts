@@ -5,7 +5,7 @@ import cs from "./locales/cs.json";
 import en from "./locales/en.json";
 
 i18next.use(initReactI18next).init({
-	debug: true,
+	debug: false,
 	fallbackLng: "cs",
 	resources: {
 		cs: {

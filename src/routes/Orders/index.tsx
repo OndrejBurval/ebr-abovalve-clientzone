@@ -1,5 +1,4 @@
-import { useQuery } from "react-query";
-import { getOrders } from "./index.hook";
+import { useOrdersPage } from "./index.hook";
 import { useTranslation } from "react-i18next";
 
 import OrderTable from "@/components/OrderTable";
@@ -9,8 +8,7 @@ import Layout from "@/layout";
 
 const Orders = () => {
 	const { t } = useTranslation();
-
-	const { data, isLoading } = useQuery("orders", getOrders);
+	const { data, isLoading } = useOrdersPage();
 
 	return (
 		<Layout title={t("objednavky")}>
