@@ -6,6 +6,8 @@ import BillingAddress from "@/components/BillingAddress";
 import DeliveryAddress from "@/components/DeliveryAddress";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
+import OrderConfirmModal from "@/components/OrderConfirmModal";
+import Snackbar from "@mui/material/Snackbar";
 
 import { useTranslation } from "react-i18next";
 import { useBasket } from "@/composables/useBasket";
@@ -13,12 +15,23 @@ import { useUserData } from "@/composables/useUserData";
 import { useState } from "react";
 
 const Basket = () => {
-	const [note, setNote] = useState("");
-	const [delivery, setDelivery] = useState(null);
-
 	const { t } = useTranslation();
 	const basket = useBasket();
 	const { userData, userIsLoading } = useUserData();
+
+	// User input
+	const [note, setNote] = useState("");
+	const [delivery, setDelivery] = useState(null);
+
+	// Modal
+	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [openModal, setOpenModal] = useState(false);
+	const [isCompleted, setIsCompleted] = useState(false);
+	const [hasError, setHasError] = useState(false);
+
+	// Snacbar
+	const [openSnackbar, setOpenSnackbar] = useState(false);
+	const [snackbarMessage, setSnackbarMessage] = useState("");
 
 	const handleClick = () => {
 		console.log("Add to basket");
@@ -30,14 +43,53 @@ const Basket = () => {
 		basket.clear();
 	};
 
-	const handleSubmit = () => {
-		console.log("Submit order");
-		console.table(basket.items);
-		console.log("Note: ", note);
-		console.log("Delivery: ", delivery);
-		setDelivery("1");
-		setNote("");
-		basket.clear();
+	const handleSubmit = async () => {
+		if (!validateInput()) return;
+
+		setOpenModal(true);
+		setIsSubmitting(true);
+
+		try {
+			console.table(basket.items);
+			console.log("Note: ", note);
+			console.log("Delivery: ", delivery);
+
+			const res = await fetch("/api/order", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					items: basket.items,
+					note,
+					delivery,
+				}),
+			});
+
+			if (!res.ok || res.status !== 200) {
+				throw new Error("Orders network response error");
+			}
+
+			setDelivery("1");
+			setNote("");
+			basket.clear();
+			setIsCompleted(true);
+		} catch (e) {
+			console.error(e);
+			setHasError(true);
+		} finally {
+			setIsSubmitting(false);
+		}
+	};
+
+	const validateInput = () => {
+		if (!delivery) {
+			setOpenSnackbar(true);
+			setSnackbarMessage(t("vyberteDopravu"));
+			return false;
+		}
+
+		return true;
 	};
 
 	const deliveryPayment = [
@@ -103,6 +155,21 @@ const Basket = () => {
 					</button>
 				</div>
 			)}
+
+			<OrderConfirmModal
+				open={openModal}
+				hasError={hasError}
+				isCompleted={isCompleted}
+				isSubmitting={isSubmitting}
+			/>
+			<Snackbar
+				open={openSnackbar}
+				autoHideDuration={5000}
+				className="snackbar-error"
+				anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+				onClose={() => setOpenSnackbar(false)}
+				message={snackbarMessage}
+			/>
 		</Layout>
 	);
 };
