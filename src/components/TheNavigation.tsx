@@ -48,6 +48,11 @@ const Navigation = () => {
 							</Link>
 						</li>
 						<li className="nav__item">
+							<Link className="nav__item__in" to="/kosik">
+								{t("kosik")}
+							</Link>
+						</li>
+						<li className="nav__item">
 							<a
 								className="nav__item__in"
 								href={`/clientzone_logout/${i18n.language}`}>

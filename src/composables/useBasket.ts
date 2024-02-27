@@ -6,6 +6,13 @@ export const useBasket = () => {
     const [basket, setBasket] = useState<Basket | []>(loadBasket());
     
     function loadBasket() {
+        const newSession = !document.cookie.includes("basket");
+
+        if (newSession) {
+            document.cookie = "basket=true";
+            localStorage.removeItem("basket");
+        }
+
         const basket = localStorage.getItem("basket");
         return basket ? JSON.parse(basket) : [];
     }
@@ -28,6 +35,23 @@ export const useBasket = () => {
             setBasket([...basket]);
             saveBasket();
         }
+    }
+
+    function addQuantity(id: number, quantity: number = 1) {
+        if (!quantity || quantity < 1) {
+            return;
+        }
+
+        const index = basket.findIndex((item) => item.id === id);
+
+        if (index === -1) {
+            console.error("Item not found in basket");
+            return;
+        }
+
+        basket[index].quantity = quantity;
+        setBasket([...basket]);
+        saveBasket();
     }
 
     function addMultiple(products: Product[]) {
@@ -80,6 +104,7 @@ export const useBasket = () => {
         add,
         addMultiple,
         remove,
-        clear
+        clear,
+        addQuantity
     };
 }

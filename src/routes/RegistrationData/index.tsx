@@ -6,6 +6,8 @@ import Layout from "@/layout";
 import Card from "@/components/ui/Card";
 import UserCard from "@/components/UserCard";
 import Pen from "@/components/svg/Pen";
+import DeliveryAddress from "@/components/DeliveryAddress";
+import BillingAddress from "@/components/BillingAddress";
 
 const RegistrationData = () => {
 	const { userData, userIsLoading } = useUserData();
@@ -86,16 +88,7 @@ const RegistrationData = () => {
 					{!userIsLoading && userData.account && (
 						<>
 							<Pen />
-
-							<ul>
-								<li>{userData.account.name || ""}</li>
-								<li>{userData.account.billing_street} </li>
-								<li>
-									{`${userData.account.billing_city} ${userData.account.billing_zip}`}
-								</li>
-								<li>{userData.account.billing_country}</li>
-								<li>{userData.account.navision_code || ""}</li>
-							</ul>
+							<BillingAddress data={userData.account} />
 						</>
 					)}
 				</Card>
@@ -104,16 +97,7 @@ const RegistrationData = () => {
 					{!userIsLoading && userData.account && (
 						<>
 							<Pen />
-
-							<ul>
-								<li>{userData.account.name || ""}</li>
-								<li>{userData.account.shipping_street} </li>
-								<li>
-									{`${userData.account.shipping_city} ${userData.account.shipping_zip}`}
-								</li>
-								<li>{userData.account.shipping_country}</li>
-								<li>{userData.account.navision_code || ""}</li>
-							</ul>
+							<DeliveryAddress data={userData.account} />
 						</>
 					)}
 				</Card>

@@ -1,6 +1,5 @@
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { useDateString } from "@/composables/useDateString";
 
 import Skeleton from "@/components/ui/Skeleton";
 import type Complaint from "@/types/Complaint";
