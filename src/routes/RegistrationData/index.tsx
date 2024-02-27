@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { useUserData } from "@/composables/useUserData";
+import { useWebConfig } from "@/composables/useWebConfig";
 
 import Layout from "@/layout";
 
@@ -12,6 +13,7 @@ import BillingAddress from "@/components/BillingAddress";
 const RegistrationData = () => {
 	const { userData, userIsLoading } = useUserData();
 	const { t } = useTranslation();
+	const { formLink } = useWebConfig();
 
 	return (
 		<Layout title={t("registracniUdaje")}>
@@ -63,7 +65,7 @@ const RegistrationData = () => {
 				<Card title={t("kontaktniUdaje")} isLoading={userIsLoading}>
 					{!userIsLoading && userData.user && (
 						<>
-							<Pen />
+							<Pen link={formLink || "/muj-ucet-form"} />
 
 							<ul>
 								<li>
@@ -87,7 +89,7 @@ const RegistrationData = () => {
 				<Card title={t("fakturacniAdresa")} isLoading={userIsLoading}>
 					{!userIsLoading && userData.account && (
 						<>
-							<Pen />
+							<Pen link={formLink || "/muj-ucet-form"} />
 							<BillingAddress data={userData.account} />
 						</>
 					)}
@@ -96,7 +98,7 @@ const RegistrationData = () => {
 				<Card title={t("dorucovaciAdresa")} isLoading={userIsLoading}>
 					{!userIsLoading && userData.account && (
 						<>
-							<Pen />
+							<Pen link={formLink || "/muj-ucet-form"} />
 							<DeliveryAddress data={userData.account} />
 						</>
 					)}

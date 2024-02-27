@@ -4,6 +4,8 @@ import BasketTable from "@/components/BasketTable";
 import Card from "@/components/ui/Card";
 import BillingAddress from "@/components/BillingAddress";
 import DeliveryAddress from "@/components/DeliveryAddress";
+import TextField from "@mui/material/TextField";
+import Autocomplete from "@mui/material/Autocomplete";
 
 import { useTranslation } from "react-i18next";
 import { useBasket } from "@/composables/useBasket";
@@ -12,7 +14,7 @@ import { useState } from "react";
 
 const Basket = () => {
 	const [note, setNote] = useState("");
-	const [delivery, setDelivery] = useState("1");
+	const [delivery, setDelivery] = useState(null);
 
 	const { t } = useTranslation();
 	const basket = useBasket();
@@ -37,6 +39,21 @@ const Basket = () => {
 		setNote("");
 		basket.clear();
 	};
+
+	const deliveryPayment = [
+		{
+			id: 1,
+			name: "Doprava 1",
+		},
+		{
+			id: 2,
+			name: "Doprava 2",
+		},
+		{
+			id: 3,
+			name: "Doprava 3",
+		},
+	];
 
 	return (
 		<Layout title={`${t("kosik")}`}>
@@ -71,12 +88,14 @@ const Basket = () => {
 					</Card>
 
 					<Card title={t("dopravaPlatba")}>
-						<select
-							onChange={(e) => setDelivery(e.currentTarget.value)}
-							defaultValue={delivery}>
-							<option value="1">Doprava 1</option>
-							<option value="2">Doprava 2</option>
-						</select>
+						<Autocomplete
+							id="delivery-payment"
+							onChange={(_: any, newValue: string | null) => {
+								setDelivery(newValue);
+							}}
+							options={deliveryPayment.map((option) => option.name)}
+							renderInput={(params) => <TextField {...params} />}
+						/>
 					</Card>
 
 					<button className="btn" onClick={handleSubmit}>

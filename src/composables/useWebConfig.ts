@@ -2,6 +2,7 @@ const configElement = document.querySelector(".clientZoneConfig");
 
 type WebConfig = {
 	produktyLink?: string;
+    formLink?: string;
 };
 
 const useWebConfig = (): WebConfig => {

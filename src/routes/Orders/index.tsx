@@ -12,7 +12,11 @@ const Orders = () => {
 
 	return (
 		<Layout title={t("objednavky")}>
-			{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
+			{isLoading ? (
+				<OrderTableSkeleton />
+			) : (
+				<OrderTable items={data} showFilter />
+			)}
 		</Layout>
 	);
 };
