@@ -98,23 +98,21 @@ const Basket = () => {
 			<div className="basket--wrapper">
 				{basket.items.length > 0 ? (
 					<div>
-						<div className="userData--basket">
-							<Card isLoading={userIsLoading}>
-								{!userIsLoading && userData.account && (
-									<>
-										<div className="billing">
-											<strong>{t("fakturacniAdresa")}</strong>
-											<BillingAddress data={userData.account} />
-										</div>
+						<Card isLoading={userIsLoading} className="userData--connected">
+							{!userIsLoading && userData.account && (
+								<>
+									<div className="billing">
+										<strong>{t("fakturacniAdresa")}</strong>
+										<BillingAddress data={userData.account} />
+									</div>
 
-										<div className="delivery">
-											<strong> {t("dorucovaciAdresa")}</strong>
-											<DeliveryAddress data={userData.account} />
-										</div>
-									</>
-								)}
-							</Card>
-						</div>
+									<div className="delivery">
+										<strong> {t("dorucovaciAdresa")}</strong>
+										<DeliveryAddress data={userData.account} />
+									</div>
+								</>
+							)}
+						</Card>
 						<div className="userInput">
 							<Card className="selectCard">
 								<div className="delivery--input">

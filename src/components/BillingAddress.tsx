@@ -4,6 +4,7 @@ import AccountSvg from "@/components/svg/Account";
 import City from "@/components/svg/City";
 import Globe from "@/components/svg/Globe";
 import Document from "@/components/svg/Document";
+import Pen from "@/components/svg/Pen";
 
 type Props = {
 	data: Account;
@@ -13,6 +14,8 @@ const BillingAddress = ({ data }: Props) => {
 	return (
 		<>
 			<ul className="userData--info">
+				<Pen link="/muj-ucet-formular" />
+
 				{data.name && (
 					<li>
 						<AccountSvg />

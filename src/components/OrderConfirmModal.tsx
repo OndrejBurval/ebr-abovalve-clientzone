@@ -54,7 +54,7 @@ const OrderConfirmModal = ({
 
 			{!isSubmitting && (
 				<DialogActions>
-					<button onClick={handleClose} autoFocus>
+					<button onClick={handleClose} autoFocus className="btn">
 						{buttonText}
 					</button>
 				</DialogActions>

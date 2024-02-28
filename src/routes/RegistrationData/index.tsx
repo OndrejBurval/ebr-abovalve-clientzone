@@ -67,8 +67,6 @@ const RegistrationData = () => {
 				<Card title={t("kontaktniUdaje")} isLoading={userIsLoading}>
 					{!userIsLoading && userData.user && (
 						<>
-							<Pen link={formLink || "/muj-ucet-form"} />
-
 							<ul>
 								<li>
 									{`${userData.user.first_name} ${userData.user.last_name}`}
@@ -88,20 +86,18 @@ const RegistrationData = () => {
 					)}
 				</Card>
 
-				<Card title={t("fakturacniAdresa")} isLoading={userIsLoading}>
+				<Card isLoading={userIsLoading} className="userData--connected">
 					{!userIsLoading && userData.account && (
 						<>
-							<Pen link={formLink || "/muj-ucet-form"} />
-							<BillingAddress data={userData.account} />
-						</>
-					)}
-				</Card>
+							<div className="billing">
+								<strong>{t("fakturacniAdresa")}</strong>
+								<BillingAddress data={userData.account} />
+							</div>
 
-				<Card title={t("dorucovaciAdresa")} isLoading={userIsLoading}>
-					{!userIsLoading && userData.account && (
-						<>
-							<Pen link={formLink || "/muj-ucet-form"} />
-							<DeliveryAddress data={userData.account} />
+							<div className="delivery">
+								<strong> {t("dorucovaciAdresa")}</strong>
+								<DeliveryAddress data={userData.account} />
+							</div>
 						</>
 					)}
 				</Card>

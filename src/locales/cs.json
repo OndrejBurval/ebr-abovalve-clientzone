@@ -47,5 +47,17 @@
     "cenaZaKus": "Cena za kus",
     "znovuObjednat": "Znovu objednat",
     "poptavka": "Poptávka",
-    "naDotaz": "Na dotaz"
+    "naDotaz": "Na dotaz",
+    "objednavkaHotova": "Objednávka hotová",
+    "objednavkaHotovaPopis": "Vaše objednávka byla úspěšně odeslána. V nejbližší době Vás budeme kontaktovat ohledně potvrzení objednávky.",
+    "objednavkaHotovaTlacitko": "Zpět na objednávky",
+    "objednavkaChyba": "Objednávka chyba",
+    "objednavkaChybaPopis": "Při odesílání objednávky došlo k chybě. Zkuste to prosím znovu.",
+    "objednavkaChybaTlacitko": "Zkusi to znovu",
+    "kosik": "Košík",
+    "poznamkaObjednavky": "Poznámka k objednávce",
+    "odeslatObjednavku": "Odeslat objednávku",
+    "celkem": "Celkem",
+    "produkty": "Produkty",
+    "upravitUdaje": "Upravit údaje"
 }
