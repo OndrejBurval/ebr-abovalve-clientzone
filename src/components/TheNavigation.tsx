@@ -47,11 +47,7 @@ const Navigation = () => {
 								{t("reklamace")}
 							</Link>
 						</li>
-						<li className="nav__item">
-							<Link className="nav__item__in" to="/kosik">
-								{t("kosik")}
-							</Link>
-						</li>
+
 						<li className="nav__item">
 							<a
 								className="nav__item__in"
@@ -78,9 +74,9 @@ const Navigation = () => {
 				</div>
 
 				<div className="cHeader__component cHeader__cta">
-					<button className="btn btn--cta" onClick={toggleLanguage}>
-						{t("poptavka")}
-					</button>
+					<Link className="nav__item__in" to="/kosik">
+						{t("kosik")}
+					</Link>
 				</div>
 			</div>
 		</header>

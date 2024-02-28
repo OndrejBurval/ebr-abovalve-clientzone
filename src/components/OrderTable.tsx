@@ -140,7 +140,7 @@ const YearFilter = ({ data, onYearSelect }: YearFilterProps) => {
 	return (
 		<div className="filter">
 			<button
-				className="btn"
+				className="btn btn--all"
 				onClick={() => {
 					onYearSelect(0);
 					setCheckedState(Array(data.length).fill(false));

@@ -1,6 +1,6 @@
 import Layout from "@/layout";
 
-import BasketTable from "@/components/BasketTable";
+import ProductList from "@/components/ProductList";
 import Card from "@/components/ui/Card";
 import BillingAddress from "@/components/BillingAddress";
 import DeliveryAddress from "@/components/DeliveryAddress";
@@ -33,16 +33,6 @@ const Basket = () => {
 	const [openSnackbar, setOpenSnackbar] = useState(false);
 	const [snackbarMessage, setSnackbarMessage] = useState("");
 
-	const handleClick = () => {
-		console.log("Add to basket");
-		basket.add({ id: 2, name: "Product 3", price: 200 });
-	};
-
-	const handleClear = () => {
-		console.log("Clear basket");
-		basket.clear();
-	};
-
 	const handleSubmit = async () => {
 		if (!validateInput()) return;
 
@@ -50,10 +40,6 @@ const Basket = () => {
 		setIsSubmitting(true);
 
 		try {
-			console.table(basket.items);
-			console.log("Note: ", note);
-			console.log("Delivery: ", delivery);
-
 			const res = await fetch("/api/order", {
 				method: "POST",
 				headers: {
@@ -108,53 +94,68 @@ const Basket = () => {
 	];
 
 	return (
-		<Layout title={`${t("kosik")}`}>
-			<button onClick={handleClick}>Add</button>
-			<button onClick={handleClear}>clear</button>
+		<Layout title={`${t("kosik")}`} className="basket">
+			<div className="basket--wrapper">
+				{basket.items.length > 0 ? (
+					<div>
+						<div className="userData--basket">
+							<Card isLoading={userIsLoading}>
+								{!userIsLoading && userData.account && (
+									<>
+										<div className="billing">
+											<strong>{t("fakturacniAdresa")}</strong>
+											<BillingAddress data={userData.account} />
+										</div>
 
-			<BasketTable
-				items={basket.items}
-				onQuantityChange={basket.addQuantity}
-				onRemove={(id: number) => basket.remove(id, "ALL")}
-			/>
+										<div className="delivery">
+											<strong> {t("dorucovaciAdresa")}</strong>
+											<DeliveryAddress data={userData.account} />
+										</div>
+									</>
+								)}
+							</Card>
+						</div>
+						<div className="userInput">
+							<Card className="selectCard">
+								<div className="delivery--input">
+									<label>{t("doprava")}</label>
+									<Autocomplete
+										id="delivery-payment"
+										onChange={(_: any, newValue: string | null) => {
+											setDelivery(newValue);
+										}}
+										options={deliveryPayment.map((option) => option.name)}
+										renderInput={(params) => <TextField {...params} />}
+									/>
+								</div>
 
-			{basket.items.length > 0 && (
-				<div className="basket--data">
-					<Card title={t("fakturacniAdresa")} isLoading={userIsLoading}>
-						{!userIsLoading && userData.account && (
-							<BillingAddress data={userData.account} />
-						)}
-					</Card>
+								<div className="note--input">
+									<label>{t("poznamkaObjednavky")}</label>
+									<textarea
+										value={note}
+										rows={3}
+										onChange={(e) => setNote(e.target.value)}></textarea>
+								</div>
 
-					<Card title={t("dorucovaciAdresa")} isLoading={userIsLoading}>
-						{!userIsLoading && userData.account && (
-							<DeliveryAddress data={userData.account} />
-						)}
-					</Card>
+								<div className="btn--wrapper">
+									<button className="btn" onClick={handleSubmit}>
+										{t("odeslatObjednavku")}
+									</button>
+								</div>
+							</Card>
+						</div>
+					</div>
+				) : (
+					t("kosikJePrazdny")
+				)}
 
-					<Card title={t("poznamkaObjednacky")}>
-						<textarea
-							value={note}
-							rows={3}
-							onChange={(e) => setNote(e.target.value)}></textarea>
-					</Card>
-
-					<Card title={t("dopravaPlatba")}>
-						<Autocomplete
-							id="delivery-payment"
-							onChange={(_: any, newValue: string | null) => {
-								setDelivery(newValue);
-							}}
-							options={deliveryPayment.map((option) => option.name)}
-							renderInput={(params) => <TextField {...params} />}
-						/>
-					</Card>
-
-					<button className="btn" onClick={handleSubmit}>
-						{t("odeslatObjednavku")}
-					</button>
-				</div>
-			)}
+				<ProductList
+					products={basket.items}
+					interactive
+					onQuantityChange={basket.updateQuantity}
+					onRemove={basket.remove}
+				/>
+			</div>
 
 			<OrderConfirmModal
 				open={openModal}

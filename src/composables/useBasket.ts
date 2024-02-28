@@ -6,10 +6,10 @@ export const useBasket = () => {
     const [basket, setBasket] = useState<Basket | []>(loadBasket());
     
     function loadBasket() {
-        const newSession = !document.cookie.includes("basket");
+        const newSession = !document.cookie.includes("basket_session");
 
         if (newSession) {
-            document.cookie = "basket=true";
+            document.cookie = "basket_session=true; path=/";
             localStorage.removeItem("basket");
         }
 
@@ -23,21 +23,23 @@ export const useBasket = () => {
     }
 
     function add(product: Product, quantity = 1) {
-        const index = basket.findIndex((item) => item.id === product.id);
-
-        if (index === -1) {
-            setBasket(() => {
-                saveBasket([...basket, { ...product, quantity }])
-                return [...basket, { ...product, quantity }]}
-            );
-        } else {
-            basket[index].quantity += quantity;
-            setBasket([...basket]);
-            saveBasket();
-        }
+        setBasket((prevBasket) => {
+            const index = prevBasket.findIndex((item) => item.id === product.id);
+    
+            if (index === -1) {
+                const newBasket = [...prevBasket, { ...product, quantity }];
+                saveBasket(newBasket);
+                return newBasket;
+            } else {
+                const newBasket = [...prevBasket];
+                newBasket[index].quantity += quantity;
+                saveBasket(newBasket);
+                return newBasket;
+            }
+        });
     }
 
-    function addQuantity(id: number, quantity: number = 1) {
+    function updateQuantity(id: string, quantity: number = 1) {
         if (!quantity || quantity < 1) {
             return;
         }
@@ -72,7 +74,7 @@ export const useBasket = () => {
         saveBasket([...basketData]);
     }
 
-    function remove(id: number, quantity: "ONE" | "ALL" = "ONE") {
+    function remove(id: string, quantity: "ONE" | "ALL" = "ONE") {
         const index = basket.findIndex((item) => item.id === id);
 
         if (index === -1) {
@@ -105,6 +107,6 @@ export const useBasket = () => {
         addMultiple,
         remove,
         clear,
-        addQuantity
+        updateQuantity
     };
 }

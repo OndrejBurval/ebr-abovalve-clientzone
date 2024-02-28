@@ -6,6 +6,7 @@ import type { OrderItem } from "@/types/Order";
 import Snackbar from "@mui/material/Snackbar";
 import Skeleton from "@/components/ui/Skeleton";
 import Product from "@/types/Product";
+import Checkbox from "@mui/material/Checkbox";
 
 type Props = {
 	items?: OrderItem[];
@@ -69,8 +70,7 @@ const OrderItemsTable = ({
 				<thead className="text-left">
 					<tr>
 						<th>
-							<input
-								type="checkbox"
+							<Checkbox
 								name="orderAgainAll"
 								id="orderAgainAll"
 								checked={checkedStateAll}
@@ -95,8 +95,7 @@ const OrderItemsTable = ({
 						items.map((item, index) => (
 							<tr key={item.id}>
 								<td>
-									<input
-										type="checkbox"
+									<Checkbox
 										checked={checkedState[index]}
 										name={`orderAgain-${item.id}`}
 										id={`orderAgain-${item.id}`}
@@ -132,7 +131,9 @@ const OrderItemsTable = ({
 
 					{!isLoading ? (
 						<tr>
-							<td colSpan={4}>{t("celkemBezDph")}</td>
+							<td colSpan={4}>
+								<strong>{t("celkemBezDph")}</strong>
+							</td>
 							<td colSpan={2}>
 								{totalPriceExcVat || ""}&nbsp;{currencyCode}
 							</td>

@@ -31,7 +31,9 @@ const RegistrationData = () => {
 									</a>
 								</li>
 								<li>
-									<a href="/" className="btn btn--primary">
+									<a
+										href={formLink || "/muj-ucet-form"}
+										className="btn btn--primary">
 										{t("zmenitHeslo")}
 									</a>
 								</li>

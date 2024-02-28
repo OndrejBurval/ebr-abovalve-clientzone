@@ -1,4 +1,4 @@
-import "./index.css";
+import "./index.scss";
 // Styly z lokální implementace
 import "./localstyles.css";
 
@@ -20,6 +20,7 @@ import RegistrationData from "@/routes/RegistrationData";
 import Complaint from "@/routes/Complaint";
 import ComplaintDetail from "@/routes/ComplaintDetail";
 import Basket from "./routes/Basket";
+import UserForm from "./routes/UserForm";
 
 import ErrorPage from "@/error-page";
 
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
 	{
 		path: "/kosik",
 		element: <Basket />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/muj-ucet-formular",
+		element: <UserForm />,
 		errorElement: <ErrorPage />,
 	},
 ]);
