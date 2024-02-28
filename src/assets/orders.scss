@@ -1,0 +1,23 @@
+.orderDetail {
+	&--wrapper {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	&--table {
+		margin-bottom: 2rem;
+		&--action {
+			text-align: right;
+		}
+	}
+
+	&--info {
+		font-size: 0.9rem;
+
+		li {
+			line-height: 1.4;
+		}
+	}
+}

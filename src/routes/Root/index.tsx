@@ -31,7 +31,7 @@ export default function Root() {
 			<section className="clientZone--dashboard">
 				<div className="clientZone--dashboard--orders">
 					<Card>
-						<h2>{t("objednavky")}</h2>
+						<h3>{t("objednavky")}</h3>
 						{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
 						<Link to="/objednavky">{t("dalsiObjednavky")}</Link>
 					</Card>

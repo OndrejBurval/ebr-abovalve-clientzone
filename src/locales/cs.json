@@ -59,5 +59,9 @@
     "odeslatObjednavku": "Odeslat objednávku",
     "celkem": "Celkem",
     "produkty": "Produkty",
-    "upravitUdaje": "Upravit údaje"
+    "upravitUdaje": "Upravit údaje",
+    "kosikJePrazdny": "Košík je prázdný",
+    "produktyBylyPridanyDoKosiku": "Produkty byly přidány do košíku",
+    "produktBylPridanDoKosiku": "Produkt byl přidán do košíku",
+    "vse": "Vše"
 }

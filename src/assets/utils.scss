@@ -1,0 +1,77 @@
+.skeleton {
+	display: block;
+	height: 2rem;
+	min-width: 3rem;
+	background-color: #efefef;
+	border-radius: 1rem;
+
+	animation: pulse 0.75s infinite alternate;
+
+	@keyframes pulse {
+		0% {
+			opacity: 1;
+		}
+		100% {
+			opacity: 0.5;
+		}
+	}
+
+	tbody tr:nth-child(odd) & {
+		background-color: #e2e2e2;
+	}
+}
+
+li.info {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 1rem;
+}
+
+.card {
+	border: solid 1px #dfdfdf;
+	padding: 1rem;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
+	position: relative;
+
+	table {
+		box-shadow: none;
+	}
+
+	.icon-pen {
+		position: absolute;
+		inset: 1rem 1rem auto auto;
+
+		svg {
+			width: 1.5rem;
+		}
+	}
+
+	h3 {
+		padding-bottom: 0.25rem;
+		margin-bottom: 0.25rem;
+		position: relative;
+		font-size: 1rem;
+		font-weight: 600;
+
+		&::before {
+			content: unset;
+		}
+	}
+
+	ul {
+		margin-bottom: 0;
+	}
+
+	li {
+		margin-bottom: 0.5rem;
+	}
+}
+
+.userCard {
+	p {
+		line-height: 1;
+	}
+	h3 {
+		font-weight: 500 !important;
+	}
+}

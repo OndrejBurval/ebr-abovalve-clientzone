@@ -5,8 +5,16 @@ import City from "@/components/svg/City";
 import Globe from "@/components/svg/Globe";
 import Pen from "@/components/svg/Pen";
 
+type SimpleData = {
+	name: string;
+	shipping_street: string;
+	shipping_city: string;
+	shipping_zip: string;
+	shipping_country: string;
+};
+
 type Props = {
-	data: Account;
+	data: Account | SimpleData;
 };
 
 const DeliveryAddress = ({ data }: Props) => {

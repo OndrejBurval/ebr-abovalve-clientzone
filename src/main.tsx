@@ -1,6 +1,11 @@
-import "./index.scss";
 // Styly z lokální implementace
 import "./localstyles.css";
+
+// Styly pro lokální implementaci
+import "./assets/index.scss";
+import "./assets/utils.scss";
+import "./assets/registrationData.scss";
+import "./assets/orders.scss";
 
 import React from "react";
 import ReactDOM from "react-dom/client";

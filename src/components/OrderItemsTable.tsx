@@ -131,10 +131,10 @@ const OrderItemsTable = ({
 
 					{!isLoading ? (
 						<tr>
-							<td colSpan={4}>
+							<td colSpan={5}>
 								<strong>{t("celkemBezDph")}</strong>
 							</td>
-							<td colSpan={2}>
+							<td>
 								{totalPriceExcVat || ""}&nbsp;{currencyCode}
 							</td>
 						</tr>

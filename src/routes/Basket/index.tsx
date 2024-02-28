@@ -97,62 +97,64 @@ const Basket = () => {
 		<Layout title={`${t("kosik")}`} className="basket">
 			<div className="basket--wrapper">
 				{basket.items.length > 0 ? (
-					<div>
-						<Card isLoading={userIsLoading} className="userData--connected">
-							{!userIsLoading && userData.account && (
-								<>
-									<div className="billing">
-										<strong>{t("fakturacniAdresa")}</strong>
-										<BillingAddress data={userData.account} />
-									</div>
+					<>
+						<div>
+							<Card isLoading={userIsLoading} className="userData--connected">
+								{!userIsLoading && userData.account && (
+									<>
+										<div className="billing">
+											<strong>{t("fakturacniAdresa")}</strong>
+											<BillingAddress data={userData.account} />
+										</div>
 
-									<div className="delivery">
-										<strong> {t("dorucovaciAdresa")}</strong>
-										<DeliveryAddress data={userData.account} />
-									</div>
-								</>
-							)}
-						</Card>
-						<div className="userInput">
-							<Card className="selectCard">
-								<div className="delivery--input">
-									<label>{t("doprava")}</label>
-									<Autocomplete
-										id="delivery-payment"
-										onChange={(_: any, newValue: string | null) => {
-											setDelivery(newValue);
-										}}
-										options={deliveryPayment.map((option) => option.name)}
-										renderInput={(params) => <TextField {...params} />}
-									/>
-								</div>
-
-								<div className="note--input">
-									<label>{t("poznamkaObjednavky")}</label>
-									<textarea
-										value={note}
-										rows={3}
-										onChange={(e) => setNote(e.target.value)}></textarea>
-								</div>
-
-								<div className="btn--wrapper">
-									<button className="btn" onClick={handleSubmit}>
-										{t("odeslatObjednavku")}
-									</button>
-								</div>
+										<div className="delivery">
+											<strong> {t("dorucovaciAdresa")}</strong>
+											<DeliveryAddress data={userData.account} />
+										</div>
+									</>
+								)}
 							</Card>
+							<div className="userInput">
+								<Card className="selectCard">
+									<div className="delivery--input">
+										<label>{t("doprava")}</label>
+										<Autocomplete
+											id="delivery-payment"
+											onChange={(_: any, newValue: string | null) => {
+												setDelivery(newValue);
+											}}
+											options={deliveryPayment.map((option) => option.name)}
+											renderInput={(params) => <TextField {...params} />}
+										/>
+									</div>
+
+									<div className="note--input">
+										<label>{t("poznamkaObjednavky")}</label>
+										<textarea
+											value={note}
+											rows={3}
+											onChange={(e) => setNote(e.target.value)}></textarea>
+									</div>
+
+									<div className="btn--wrapper">
+										<button className="btn" onClick={handleSubmit}>
+											{t("odeslatObjednavku")}
+										</button>
+									</div>
+								</Card>
+							</div>
 						</div>
-					</div>
+
+						<ProductList
+							products={basket.items}
+							interactive
+							onQuantityChange={basket.updateQuantity}
+							onRemove={basket.remove}
+						/>
+					</>
 				) : (
 					t("kosikJePrazdny")
 				)}
-
-				<ProductList
-					products={basket.items}
-					interactive
-					onQuantityChange={basket.updateQuantity}
-					onRemove={basket.remove}
-				/>
 			</div>
 
 			<OrderConfirmModal

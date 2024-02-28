@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDateString } from "@/composables/useDateString";
 
+import BillingAddress from "@/components/BillingAddress";
+import DeliveryAddress from "@/components/DeliveryAddress";
+
 const Detail = () => {
 	const { t } = useTranslation();
 
@@ -62,26 +65,35 @@ const Detail = () => {
 					</ul>
 				</Card>
 
-				<Card title={t("fakturacniAdresa")}>
-					<ul>
-						<li>eBRÁNA s.r.o.</li>
-						<li>Milheimova 1010</li>
-						<li>Pardubice 530 02</li>
-						<li>Česká republika</li>
-						<li>259 90 99, CZ2525252</li>
-						<li>
-							<a href="mailto:novak@seznam.cz">novak@seznam.cz</a>
-						</li>
-					</ul>
-				</Card>
+				<Card isLoading={isLoading} className="userData--connected">
+					<>
+						<div className="billing">
+							<strong>{t("fakturacniAdresa")}</strong>
+							<BillingAddress
+								data={{
+									name: "--",
+									billing_street: "--",
+									billing_city: "--",
+									billing_zip: "--",
+									billing_country: "--",
+									navision_code: "--",
+								}}
+							/>
+						</div>
 
-				<Card title={t("dorucovaciAdresa")}>
-					<ul>
-						<li>eBRÁNA s.r.o.</li>
-						<li>Milheimova 1010</li>
-						<li>Pardubice 530 02</li>
-						<li>Česká republika</li>
-					</ul>
+						<div className="delivery">
+							<strong> {t("dorucovaciAdresa")}</strong>
+							<DeliveryAddress
+								data={{
+									name: "--",
+									shipping_street: "--",
+									shipping_city: "--",
+									shipping_zip: "--",
+									shipping_country: "--",
+								}}
+							/>
+						</div>
+					</>
 				</Card>
 			</div>
 
@@ -94,7 +106,7 @@ const Detail = () => {
 				/>
 			</section>
 
-			<div className="orderDetail--documents">
+			<div className="orderDetail--documents none">
 				<Card title={t("dokumenty")}>
 					<ul>
 						<li className="info">

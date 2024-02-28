@@ -8,6 +8,9 @@ import Card from "@/components/ui/Card";
 import UserCard from "@/components/UserCard";
 import DeliveryAddress from "@/components/DeliveryAddress";
 import BillingAddress from "@/components/BillingAddress";
+import PhoneSvg from "@/components/svg/Phone";
+import MailSvg from "@/components/svg/Mail";
+import AccountSvg from "@/components/svg/Account";
 
 const RegistrationData = () => {
 	const { userData, userIsLoading } = useUserData();
@@ -43,7 +46,7 @@ const RegistrationData = () => {
 
 				<Card
 					title={t("zakladniPrehled")}
-					className="card--basicOverview"
+					className="card--basicOverview "
 					isLoading={userIsLoading}>
 					{!userIsLoading && userData.account && (
 						<ul>
@@ -63,22 +66,37 @@ const RegistrationData = () => {
 					)}
 				</Card>
 
-				<Card title={t("kontaktniUdaje")} isLoading={userIsLoading}>
+				<Card
+					title={t("kontaktniUdaje")}
+					isLoading={userIsLoading}
+					className="userData--contact userData--info">
 					{!userIsLoading && userData.user && (
 						<>
 							<ul>
 								<li>
-									{`${userData.user.first_name} ${userData.user.last_name}`}
+									<AccountSvg />
+
+									<p>
+										{`${userData.user.first_name} ${userData.user.last_name}`}
+									</p>
 								</li>
 								<li>
-									<a href={`tel:${userData.user.phone.replace(/\s/g, "")}`}>
-										{userData.user.phone}
-									</a>
+									<PhoneSvg />
+									<p>
+										<a href={`tel:${userData.user.phone.replace(/\s/g, "")}`}>
+											{userData.user.phone}
+										</a>
+									</p>
 								</li>
 								<li>
-									<a href={`mailto:${userData.user.email.replace(/\s/g, "")}`}>
-										{userData.user.email}
-									</a>
+									<MailSvg />
+
+									<p>
+										<a
+											href={`mailto:${userData.user.email.replace(/\s/g, "")}`}>
+											{userData.user.email}
+										</a>
+									</p>
 								</li>
 							</ul>
 						</>

@@ -6,8 +6,17 @@ import Globe from "@/components/svg/Globe";
 import Document from "@/components/svg/Document";
 import Pen from "@/components/svg/Pen";
 
+type DefaultData = {
+	name: string;
+	billing_street: string;
+	billing_city: string;
+	billing_zip: string;
+	billing_country: string;
+	navision_code: string;
+};
+
 type Props = {
-	data: Account;
+	data: Account | DefaultData;
 };
 
 const BillingAddress = ({ data }: Props) => {
