@@ -18,7 +18,7 @@ type Order = {
 };
 
 type OrderItem = {
-	id: number;
+	id: string;
 	navision_code: string;
 	navision_order_code: string;
 	name: string;

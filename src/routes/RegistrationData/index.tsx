@@ -6,7 +6,6 @@ import Layout from "@/layout";
 
 import Card from "@/components/ui/Card";
 import UserCard from "@/components/UserCard";
-import Pen from "@/components/svg/Pen";
 import DeliveryAddress from "@/components/DeliveryAddress";
 import BillingAddress from "@/components/BillingAddress";
 
