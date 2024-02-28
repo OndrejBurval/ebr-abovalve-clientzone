@@ -63,5 +63,12 @@
     "kosikJePrazdny": "Košík je prázdný",
     "produktyBylyPridanyDoKosiku": "Produkty byly přidány do košíku",
     "produktBylPridanDoKosiku": "Produkt byl přidán do košíku",
-    "vse": "Vše"
+    "vse": "Vše",
+    "ulice": "Ulice",
+    "mesto": "Město",
+    "psc": "PSČ",
+    "stat": "Stát",
+    "povinnePole": "Povinná položka",
+    "ulozit": "Uložit",
+    "ulozitUdaje": "Uložit údaje"
 }

@@ -4,8 +4,8 @@ import type User from '@/types/User';
 import type Account from '@/types/Account';
 import type Contact from '@/types/Contact';
 
-type LoggedUser = {
-    user: User;
+export type LoggedUser = {
+    user?: User;
     account: Account;
     contact: Contact;
 }

@@ -1,5 +1,6 @@
 import Tooltip from "@mui/material/Tooltip";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 type Props = {
 	link?: string;
@@ -13,9 +14,9 @@ const Pen = ({ link }: Props) => {
 	if (link) {
 		return (
 			<Tooltip title={t("upravitUdaje")}>
-				<a
+				<Link
 					className="icon-pen"
-					href={link}
+					to={link}
 					dangerouslySetInnerHTML={{ __html: svg }}
 				/>
 			</Tooltip>

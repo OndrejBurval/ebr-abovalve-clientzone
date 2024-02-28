@@ -6,7 +6,7 @@ import Globe from "@/components/svg/Globe";
 import Document from "@/components/svg/Document";
 import Pen from "@/components/svg/Pen";
 
-type DefaultData = {
+type SimpleData = {
 	name: string;
 	billing_street: string;
 	billing_city: string;
@@ -16,7 +16,7 @@ type DefaultData = {
 };
 
 type Props = {
-	data: Account | DefaultData;
+	data: Account | SimpleData;
 };
 
 const BillingAddress = ({ data }: Props) => {
