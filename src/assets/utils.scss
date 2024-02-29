@@ -65,6 +65,12 @@ li.info {
 	li {
 		margin-bottom: 0.5rem;
 	}
+
+	&--contact {
+		.icon-pen {
+			inset: auto 1rem 1rem auto !important;
+		}
+	}
 }
 
 .userCard {

@@ -15,13 +15,14 @@ type SimpleData = {
 
 type Props = {
 	data: Account | SimpleData;
+	disableEdit?: boolean;
 };
 
-const DeliveryAddress = ({ data }: Props) => {
+const DeliveryAddress = ({ data, disableEdit }: Props) => {
 	return (
 		<>
 			<ul className="userData--info">
-				<Pen link="/muj-ucet-formular?delivery=true" />
+				{!disableEdit && <Pen link="/muj-ucet-formular?delivery=true" />}
 
 				{data.name && (
 					<li>

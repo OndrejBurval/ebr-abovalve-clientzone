@@ -5,6 +5,7 @@ type Contact = {
     surname: string;
     title: string;
     phone: string;
+    email?: string;
     portal_active: boolean;
     assigned_user_id: string;
     extern_id: string;

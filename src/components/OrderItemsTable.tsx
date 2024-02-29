@@ -33,7 +33,6 @@ const OrderItemsTable = ({
 
 	useEffect(() => {
 		if (items) {
-			console.log("Items: ", items);
 			setCheckedState(new Array(items.length).fill(false));
 		}
 	}, [items]);

@@ -75,5 +75,11 @@
     "fetchFailed": "Načítání dat selhalo",
     "zpetNaUvod": "Zpět na úvodní stránku",
     "udajeUlozeny": "Údaje byly úspěšně uloženy",
-    "chybaPriUkladani": "Při ukládání došlo k chybě"
+    "chybaPriUkladani": "Při ukládání došlo k chybě",
+    "emailNeniPlatny": "Email není platný",
+    "telefonNeniPlatny": "Telefon není platný",
+    "jmeno": "Jméno",
+    "prijmeni": "Příjmení",
+    "email": "Email",
+    "telefon": "Telefon"
 }

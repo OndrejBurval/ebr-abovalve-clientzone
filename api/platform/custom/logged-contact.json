@@ -5,7 +5,7 @@
 		"name": "Thomas",
 		"surname": "Roggenbuck",
 		"title": "Technischer Verkauf DAZ",
-		"phone": "",
+		"phone": "666 666 666",
 		"portal_active": false,
 		"assigned_user_id": "85126385-a78d-250a-a84c-57c7cbcfb464",
 		"extern_id": "f0182be6-6996-11e8-8605-42010a9c0002",
@@ -27,7 +27,7 @@
 		"open_opportunities_count": 0,
 		"phone_office": "",
 		"phone_alternate": "",
-		"ein": "",
+        "ein": "",
 		"tin": "",
 		"vat_payer": false,
 		"extern_id": 0,
@@ -35,7 +35,8 @@
 		"price_group": "ABO Deutschland",
 		"payment_method": "p\u0159evodn\u00edm p\u0159\u00edkazem",
 		"invoice_balance_due_total": 0.0,
-		"date_modified": "2024-01-16 00:00:01"
+		"date_modified": "2024-01-16 00:00:01",
+        "portal_priv_admin": true
 	},
 	"user": {
 		"id": 4,

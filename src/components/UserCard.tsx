@@ -1,13 +1,13 @@
-import type Contact from "@/types/Contact";
-import Skeleton from "./ui/Skeleton";
 import { useTranslation } from "react-i18next";
+import type User from "@/types/User";
+import Skeleton from "./ui/Skeleton";
 
 type Props = {
 	isLoading?: boolean;
-	contact?: Contact;
+	user?: User;
 };
 
-const UserCard = ({ contact, isLoading }: Props) => {
+const UserCard = ({ user, isLoading }: Props) => {
 	const { t } = useTranslation();
 
 	return (
@@ -27,7 +27,7 @@ const UserCard = ({ contact, isLoading }: Props) => {
 				<Skeleton />
 			) : (
 				<>
-					<UserData {...contact} />
+					<UserData {...user} />
 					<h3>{t("vasObchodniZastupce")}</h3>
 				</>
 			)}
@@ -35,12 +35,12 @@ const UserCard = ({ contact, isLoading }: Props) => {
 	);
 };
 
-const UserData = (contact: Contact) => {
+const UserData = (user: User) => {
 	return (
 		<>
-			{contact.name && <p>{`${contact.name} ${contact.surname}`}</p>}
-			{contact.phone && (
-				<a href={`tel:${contact.phone.replace(/ /g, "")}`}> {contact.phone} </a>
+			{user.name && <p>{`${user.first_name} ${user.last_name}`}</p>}
+			{user.phone && (
+				<a href={`tel:${user.phone.replace(/ /g, "")}`}> {user.phone} </a>
 			)}
 		</>
 	);

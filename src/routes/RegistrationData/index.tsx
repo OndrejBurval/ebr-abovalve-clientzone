@@ -11,6 +11,7 @@ import BillingAddress from "@/components/BillingAddress";
 import PhoneSvg from "@/components/svg/Phone";
 import MailSvg from "@/components/svg/Mail";
 import AccountSvg from "@/components/svg/Account";
+import Pen from "@/components/svg/Pen";
 
 const RegistrationData = () => {
 	const { userData, userIsLoading } = useUserData();
@@ -23,26 +24,52 @@ const RegistrationData = () => {
 				className={`registrationData--wrapper ${
 					!userData?.user ? "noUserData" : ""
 				}`}>
-				<Card isLoading={userIsLoading} className="card--basicInfo">
-					{!userIsLoading && userData.user && (
+				<Card
+					isLoading={userIsLoading}
+					className="card--basicInfo userData--contact userData--info">
+					{!userIsLoading && userData.contact && (
 						<ul>
-							<>
+							<li>
+								<AccountSvg />
+
+								<p>{`${userData.contact.name} ${userData.contact.surname}`}</p>
+							</li>
+
+							<li>
+								<MailSvg />
+								<p>
+									{userData.contact.email ? (
+										<a href={`mailto:${userData.contact.email || ""}`}>
+											{userData.contact.email}
+										</a>
+									) : (
+										"--"
+									)}
+								</p>
+							</li>
+
+							{userData.contact.phone && (
 								<li>
-									{`${userData.user.first_name} ${userData.user.last_name}`}
+									<PhoneSvg />
+									<p>
+										{userData.contact.phone ? (
+											<a
+												href={`tel:${userData.contact.phone.replace(
+													/\s/g,
+													""
+												)}`}>
+												{userData.contact.phone}
+											</a>
+										) : (
+											"--"
+										)}
+									</p>
 								</li>
-								<li>
-									<a href={`mailto:${userData.user.email}`}>
-										{userData.user.email}
-									</a>
-								</li>
-								<li>
-									<a
-										href={formLink || "/muj-ucet-form"}
-										className="btn btn--primary">
-										{t("zmenitHeslo")}
-									</a>
-								</li>
-							</>
+							)}
+
+							<a href={formLink} className="btn">
+								{t("zmenitHeslo")}
+							</a>
 						</ul>
 					)}
 				</Card>
@@ -73,34 +100,48 @@ const RegistrationData = () => {
 					title={t("kontaktniUdaje")}
 					isLoading={userIsLoading}
 					className="userData--contact userData--info card--contact">
-					{!userIsLoading && userData.user && (
+					{!userIsLoading && userData.contact && (
 						<>
 							<ul>
+								<Pen link="/kontakt-udaje" />
 								<li>
 									<AccountSvg />
 
 									<p>
-										{`${userData.user.first_name} ${userData.user.last_name}`}
+										{`${userData.contact.name} ${userData.contact.surname}`}
 									</p>
 								</li>
-								<li>
-									<PhoneSvg />
-									<p>
-										<a href={`tel:${userData.user.phone.replace(/\s/g, "")}`}>
-											{userData.user.phone}
-										</a>
-									</p>
-								</li>
+
 								<li>
 									<MailSvg />
-
 									<p>
-										<a
-											href={`mailto:${userData.user.email.replace(/\s/g, "")}`}>
-											{userData.user.email}
-										</a>
+										{userData.contact.email ? (
+											<a href={`mailto:${userData.contact.email || ""}`}>
+												{userData.contact.email}
+											</a>
+										) : (
+											"--"
+										)}
 									</p>
 								</li>
+								{userData.contact.phone && (
+									<li>
+										<PhoneSvg />
+										<p>
+											{userData.contact.phone ? (
+												<a
+													href={`tel:${userData.contact.phone.replace(
+														/\s/g,
+														""
+													)}`}>
+													{userData.contact.phone}
+												</a>
+											) : (
+												"--"
+											)}
+										</p>
+									</li>
+								)}
 							</ul>
 						</>
 					)}
@@ -111,24 +152,28 @@ const RegistrationData = () => {
 						<>
 							<div className="billing">
 								<strong>{t("fakturacniAdresa")}</strong>
-								<BillingAddress data={userData.account} />
+								<BillingAddress
+									data={userData.account}
+									disableEdit={!userData.account.portal_priv_admin}
+								/>
 							</div>
 
 							<div className="delivery">
 								<strong> {t("dorucovaciAdresa")}</strong>
-								<DeliveryAddress data={userData.account} />
+								<DeliveryAddress
+									data={userData.account}
+									disableEdit={!userData.account.portal_priv_admin}
+								/>
 							</div>
 						</>
 					)}
 				</Card>
 
-				<Card>
-					{!userIsLoading ? (
-						<UserCard contact={userData.contact} />
-					) : (
-						<UserCard isLoading={true} />
-					)}
-				</Card>
+				{!userIsLoading && userData.user && (
+					<Card>
+						<UserCard user={userData.user} />
+					</Card>
+				)}
 			</section>
 		</Layout>
 	);

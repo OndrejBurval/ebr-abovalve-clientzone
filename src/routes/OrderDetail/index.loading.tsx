@@ -4,7 +4,7 @@ import Skeleton from "@/components/ui/Skeleton";
 import Card from "@/components/ui/Card";
 
 const Detail = () => {
-	const cardMap = Array(3)
+	const cardMap = Array(2)
 		.fill(0)
 		.map((_, i) => {
 			return <Card key={i} isLoading={true} />;

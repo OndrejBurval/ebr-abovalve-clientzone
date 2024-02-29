@@ -26,6 +26,7 @@ import Complaint from "@/routes/Complaint";
 import ComplaintDetail from "@/routes/ComplaintDetail";
 import Basket from "./routes/Basket";
 import UserForm from "./routes/UserForm";
+import ContactForm from "./routes/ContactForm";
 
 import ErrorPage from "@/error-page";
 
@@ -75,6 +76,11 @@ const router = createBrowserRouter([
 	{
 		path: "/muj-ucet-formular",
 		element: <UserForm />,
+		errorElement: <ErrorPage />,
+	},
+	{
+		path: "/kontakt-udaje",
+		element: <ContactForm />,
 		errorElement: <ErrorPage />,
 	},
 	{

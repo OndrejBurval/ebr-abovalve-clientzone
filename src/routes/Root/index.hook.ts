@@ -1,6 +1,5 @@
-import ordersJson from "@/api/test/orders.json";
-
 import type { Order } from "@/types/Order";
+import { useQuery } from "react-query";
 
 type ResponseItem = {
 	order: Order;
@@ -9,14 +8,17 @@ type ResponseItem = {
 	};
 };
 
-const getOrders = (): Promise<ResponseItem[]> => {
-	return new Promise((resolve) => {
-		const limit = 3;
+const getOrders = async (): Promise<ResponseItem[]> => {
+    const res = await fetch(`/api/platform/custom/orders${import.meta.env.DEV ? '.json' : ''}`)
 
-		setTimeout(() => {
-			resolve(ordersJson.slice(0, limit));
-		}, 500);
-	});
+    if (!res.ok) {
+        throw new Error('Orders network response error')
+    }
+
+    const data = [...await res.json()]
+    return data.slice(0, 3);
 };
 
-export { getOrders };
+export const useRootPage = () => {
+    return useQuery(`orders-root`, getOrders);
+}

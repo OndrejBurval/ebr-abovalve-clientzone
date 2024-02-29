@@ -1,4 +1,3 @@
-import { useQuery } from "react-query";
 import { useTranslation } from "react-i18next";
 import { useUserData } from "@/composables/useUserData";
 
@@ -9,22 +8,13 @@ import OrderTableSkeleton from "@/components/OrderTableSkeleton";
 import UserCard from "@/components/UserCard";
 import Card from "@/components/ui/Card";
 
-import { getOrders } from "./index.hook";
+import { useRootPage } from "./index.hook";
 import { Link } from "react-router-dom";
 
 export default function Root() {
-	const { userData, userIsLoading } = useUserData();
-
-	const { data, isLoading, isError, error } = useQuery(
-		"orders-limited",
-		getOrders
-	);
-
 	const { t } = useTranslation();
-
-	if (isError) {
-		return <div> Error: {error instanceof Error ? error.message : ""} </div>;
-	}
+	const { userData, userIsLoading, userIsFetched } = useUserData();
+	const { data, isLoading } = useRootPage();
 
 	return (
 		<Layout title={t("klientskaZona")}>
@@ -38,13 +28,16 @@ export default function Root() {
 				</div>
 
 				<div className="clientZone--dashboard--userCard">
-					<Card>
-						{!userIsLoading ? (
-							<UserCard contact={userData.contact} />
-						) : (
+					{userIsLoading && (
+						<Card>
 							<UserCard isLoading={true} />
-						)}
-					</Card>
+						</Card>
+					)}
+					{!userIsLoading && userIsFetched && userData?.user && (
+						<Card>
+							<UserCard user={userData?.user} />
+						</Card>
+					)}
 				</div>
 			</section>
 		</Layout>

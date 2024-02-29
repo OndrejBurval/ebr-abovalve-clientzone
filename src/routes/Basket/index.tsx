@@ -96,7 +96,7 @@ const Basket = () => {
 	return (
 		<Layout title={`${t("kosik")}`} className="basket">
 			<div className="basket--wrapper">
-				{basket.items.length > 0 ? (
+				{basket.items.length > 0 && !userIsLoading ? (
 					<>
 						<div>
 							<Card isLoading={userIsLoading} className="userData--connected">
@@ -104,18 +104,35 @@ const Basket = () => {
 									<>
 										<div className="billing">
 											<strong>{t("fakturacniAdresa")}</strong>
-											<BillingAddress data={userData.account} />
+											<BillingAddress
+												data={userData.account}
+												disableEdit={!userData.account.portal_priv_admin}
+											/>
 										</div>
 
 										<div className="delivery">
 											<strong> {t("dorucovaciAdresa")}</strong>
-											<DeliveryAddress data={userData.account} />
+											<DeliveryAddress
+												data={userData.account}
+												disableEdit={!userData.account.portal_priv_admin}
+											/>
 										</div>
 									</>
 								)}
 							</Card>
 							<div className="userInput">
 								<Card className="selectCard">
+									<div className="payment--input">
+										<label>{t("platba")}</label>
+										<input
+											type="text"
+											name="payment"
+											id="payment"
+											value={userData.account.payment_method}
+											readOnly
+										/>
+									</div>
+
 									<div className="delivery--input">
 										<label>{t("doprava")}</label>
 										<Autocomplete

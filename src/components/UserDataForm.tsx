@@ -1,4 +1,4 @@
-import { useForm, SubmitHandler, Controller, set } from "react-hook-form";
+import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useState, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -72,21 +72,27 @@ const UserDataForm = ({ data }: Props) => {
 			: "update-billing-address";
 
 		try {
+			console.log(data);
 			const res = await fetch(`/api/platform/custom/account/${apiPath}`, {
-				method: "PUT",
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
 				body: JSON.stringify({
 					...data,
 				}),
 			});
 
 			if (!res.ok || res.status !== 200) {
-				throw new Error("fetch-failed");
+				const { errors } = await res.json();
+				console.error(errors);
+				throw new Error(errors[0] ? errors[0].message : errors.message);
 			}
 
 			setSnackbarMessage(t("udajeUlozeny"));
 			navigate("/registracni-udaje");
 		} catch (error) {
-			setSnackbarMessage(t("chybaPriUkladani"));
+			setSnackbarMessage(error.message);
 		} finally {
 			setOpenSnackbar(true);
 		}

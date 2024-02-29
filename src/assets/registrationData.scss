@@ -29,13 +29,11 @@
 
 		&.noUserData {
 			@media (min-width: 768px) {
-				grid-template-columns: 2fr 1fr;
+				grid-template-columns: 1fr 2fr;
 			}
-			.card {
-				&--basicInfo,
-				&--contact {
-					display: none;
-				}
+
+			> div {
+				grid-column: span 1;
 			}
 		}
 	}

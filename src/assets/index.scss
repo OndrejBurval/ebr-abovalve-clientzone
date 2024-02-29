@@ -169,13 +169,16 @@ html:has(.icon-logout) .logged-user-only {
 			outline: none;
 		}
 
-		textarea {
+		textarea,
+		input[type="text"] {
 			padding: 1rem;
 			width: 100%;
+			outline: none !important;
 		}
 
 		.MuiInputBase-root,
-		textarea {
+		textarea,
+		input[type="text"] {
 			border: solid 1px #dddddd !important;
 			background-color: #ffffff !important;
 			border-radius: 0;
@@ -184,12 +187,16 @@ html:has(.icon-logout) .logged-user-only {
 			* {
 				border: none !important;
 			}
+
+			fieldset {
+				border: none !important;
+			}
 		}
 
 		.MuiInputBase-root {
-			padding: 0.25rem !important;
+			padding: 0 !important;
+			border: none !important;
 		}
-
 		&--wrapper {
 			display: grid;
 			column-gap: 2rem;

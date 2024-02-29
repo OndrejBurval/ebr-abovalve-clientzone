@@ -43,7 +43,7 @@ const ComplaintTable = ({ items, isLoading }: Props) => {
 							</td>
 							<td> {item.status || ""} </td>
 							<td>
-								<Link to={`relamace/${item.id} `}>{t("detail")}</Link>
+								<Link to={`/reklamace/${item.id} `}>{t("detail")}</Link>
 							</td>
 						</tr>
 					))}

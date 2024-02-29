@@ -1,19 +1,20 @@
-import complaintJson from "@/api/test/complaints.json";
 import type Complaint from "@/types/Complaint";
 
 import { useQuery } from "react-query";
 
-const getComplaints = (): Promise<Complaint[]> => {
-	return new Promise((resolve) => {
-		setTimeout(() => {
-			resolve(complaintJson.map((item) => item.complaint));
-		}, 500);
-	});
-};
-const useComplaintPage = () => {
-	const { data, isFetched, isLoading } = useQuery(`complaints`, getComplaints);
+const getComplaints = async (): Promise<Complaint[]> => {
+    const res = await fetch(`/api/platform/custom/complaints${import.meta.env.DEV ? '.json' : ''}`)
 
-	return { data, isFetched, isLoading };
+    if (!res.ok) {
+        throw new Error('Orders network response error')
+    }
+
+    const data = await res.json()
+    return data.map((item) => item.complaint);
+};
+
+const useComplaintPage = () => {
+	return useQuery(`complaints`, getComplaints);
 };
 
 export { useComplaintPage };

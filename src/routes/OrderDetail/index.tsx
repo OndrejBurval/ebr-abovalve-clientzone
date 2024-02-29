@@ -11,12 +11,14 @@ import { useDateString } from "@/composables/useDateString";
 
 import BillingAddress from "@/components/BillingAddress";
 import DeliveryAddress from "@/components/DeliveryAddress";
+import { useUserData } from "@/composables/useUserData";
 
 const Detail = () => {
 	const { t } = useTranslation();
 
 	const { id } = useParams<{ id: string }>();
 	const { data, isLoading, orderInfo } = useOrderDetailPage(parseInt(id));
+	const { userData } = useUserData();
 
 	const orderDate = useDateString(orderInfo?.order_date);
 
@@ -44,13 +46,13 @@ const Detail = () => {
 						<li className="info">
 							<strong> {t("cenaCelkem")}: </strong>
 							<span>
-								{orderInfo.total_with_vat}&nbsp;{orderInfo.currency_code}
+								{orderInfo.total_without_vat}&nbsp;{orderInfo.currency_code}
 							</span>
 						</li>
 
 						<li className="info">
 							<strong> {t("stav")}: </strong>
-							<span>--</span>
+							<span>{orderInfo.state || ""}</span>
 						</li>
 
 						<li className="info">
@@ -60,7 +62,7 @@ const Detail = () => {
 
 						<li className="info">
 							<strong> {t("platba")}: </strong>
-							<span> --- </span>
+							<span> {userData.account.payment_method} </span>
 						</li>
 					</ul>
 				</Card>
@@ -69,25 +71,17 @@ const Detail = () => {
 					<>
 						<div className="billing">
 							<strong>{t("fakturacniAdresa")}</strong>
-							<BillingAddress
-								data={{
-									name: "--",
-									billing_street: "--",
-									billing_city: "--",
-									billing_zip: "--",
-									billing_country: "--",
-									navision_code: "--",
-								}}
-							/>
+							<BillingAddress disableEdit data={userData.account} />
 						</div>
 
 						<div className="delivery">
 							<strong> {t("dorucovaciAdresa")}</strong>
 							<DeliveryAddress
+								disableEdit
 								data={{
-									name: "--",
-									shipping_street: "--",
-									shipping_city: "--",
+									name: orderInfo.shipping_name,
+									shipping_street: orderInfo.shipping_street,
+									shipping_city: orderInfo.shipping_city,
 									shipping_zip: "--",
 									shipping_country: "--",
 								}}
