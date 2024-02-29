@@ -79,6 +79,14 @@ li.info {
 .clientZone--form {
 	max-width: 600px;
 	margin: auto;
+
+	.MuiInputBase-root {
+		padding: 0 !important;
+	}
+
+	fieldset {
+		border: none !important;
+	}
 	input {
 		box-shadow: none !important;
 		border: solid 1px #dddddd !important;
@@ -87,7 +95,7 @@ li.info {
 		outline: none;
 		transition: 0.25s;
 
-		padding: 0.75rem 1.25rem;
+		padding: 0.75rem 1.25rem !important;
 
 		&:focus {
 			border-color: #afafaf !important;
@@ -102,10 +110,6 @@ li.info {
 
 	label {
 		font-size: 0.85rem;
-	}
-
-	.error input {
-		border-color: #ee1d23 !important;
 	}
 
 	&--inner > div {
@@ -123,4 +127,8 @@ li.info {
 		width: max-content;
 		margin-inline: auto;
 	}
+}
+
+.error > input {
+	border-color: #ee1d23 !important;
 }

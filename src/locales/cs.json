@@ -73,5 +73,7 @@
     "ulozitUdaje": "Uložit údaje",
     "accessDenied": "Přístup odepřen",
     "fetchFailed": "Načítání dat selhalo",
-    "zpetNaUvod": "Zpět na úvodní stránku"
+    "zpetNaUvod": "Zpět na úvodní stránku",
+    "udajeUlozeny": "Údaje byly úspěšně uloženy",
+    "chybaPriUkladani": "Při ukládání došlo k chybě"
 }

@@ -1,7 +1,7 @@
-import { useForm, SubmitHandler, Controller } from "react-hook-form";
+import { useForm, SubmitHandler, Controller, set } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useState, useMemo } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { type LoggedUser } from "@/composables/useUserData";
 
 import { countries } from "countries-list";
@@ -31,16 +31,17 @@ const UserDataForm = ({ data }: Props) => {
 	const { t } = useTranslation();
 	const query = useQuery();
 	const isDeliveryForm = query.get("delivery") === "true";
+	const navigate = useNavigate();
 
 	// Snacbar
 	const [openSnackbar, setOpenSnackbar] = useState(false);
-	const [snackbarMessage] = useState("");
+	const [snackbarMessage, setSnackbarMessage] = useState("");
 
 	const {
 		register,
 		handleSubmit,
 		control,
-		formState: { errors },
+		formState: { errors, isSubmitting },
 	} = useForm<Inputs>({
 		defaultValues: {
 			street: isDeliveryForm
@@ -65,7 +66,31 @@ const UserDataForm = ({ data }: Props) => {
 		}));
 	}, []);
 
-	const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+	const onSubmit: SubmitHandler<Inputs> = async (data) => {
+		const apiPath = isDeliveryForm
+			? "update-shipping-address"
+			: "update-billing-address";
+
+		try {
+			const res = await fetch(`/api/platform/custom/account/${apiPath}`, {
+				method: "PUT",
+				body: JSON.stringify({
+					...data,
+				}),
+			});
+
+			if (!res.ok || res.status !== 200) {
+				throw new Error("fetch-failed");
+			}
+
+			setSnackbarMessage(t("udajeUlozeny"));
+			navigate("/registracni-udaje");
+		} catch (error) {
+			setSnackbarMessage(t("chybaPriUkladani"));
+		} finally {
+			setOpenSnackbar(true);
+		}
+	};
 
 	const errorRequired = <span className="error"> {t("povinnePole")} </span>;
 
@@ -76,7 +101,7 @@ const UserDataForm = ({ data }: Props) => {
 	return (
 		<Card className="clientZone--form" title={formTitle} isLoading={!data}>
 			<form
-				onSubmit={handleSubmit(onSubmit)}
+				onSubmit={handleSubmit(async (data) => await onSubmit(data))}
 				className="clientZone--form--inner">
 				<div className={errors.street ? "error" : ""}>
 					<label>{t("ulice")}</label>
@@ -84,19 +109,19 @@ const UserDataForm = ({ data }: Props) => {
 					{errors.street && errorRequired}
 				</div>
 
-				<div>
+				<div className={errors.city ? "error" : ""}>
 					<label>{t("mesto")}</label>
 					<input {...register("city", { required: true })} />
 					{errors.city && errorRequired}
 				</div>
 
-				<div>
+				<div className={errors.zip ? "error" : ""}>
 					<label>{t("psc")}</label>
 					<input {...register("zip", { required: true })} />
 					{errors.zip && errorRequired}
 				</div>
 
-				<div>
+				<div className={errors.country ? "error" : ""}>
 					<label>{t("stat")}</label>
 
 					<Controller
@@ -115,7 +140,7 @@ const UserDataForm = ({ data }: Props) => {
 					{errors.country && errorRequired}
 				</div>
 
-				<button className="btn" type="submit">
+				<button className="btn" type="submit" disabled={isSubmitting}>
 					{t("ulozitUdaje")}
 				</button>
 
