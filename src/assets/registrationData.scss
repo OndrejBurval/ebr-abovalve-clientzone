@@ -26,5 +26,21 @@
 				grid-column: span 2;
 			}
 		}
+
+		&.noUserData {
+			@media (min-width: 768px) {
+				grid-template-columns: 2fr 1fr;
+			}
+			.card {
+				&--basicInfo,
+				&--contact {
+					display: none;
+				}
+			}
+		}
 	}
+}
+
+.main:has(.noUserData) {
+	max-width: 1000px !important;
 }

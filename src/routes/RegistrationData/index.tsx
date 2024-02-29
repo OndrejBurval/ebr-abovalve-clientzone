@@ -19,8 +19,11 @@ const RegistrationData = () => {
 
 	return (
 		<Layout title={t("registracniUdaje")}>
-			<section className="registrationData--wrapper">
-				<Card isLoading={userIsLoading}>
+			<section
+				className={`registrationData--wrapper ${
+					!userData?.user ? "noUserData" : ""
+				}`}>
+				<Card isLoading={userIsLoading} className="card--basicInfo">
 					{!userIsLoading && userData.user && (
 						<ul>
 							<>
@@ -69,7 +72,7 @@ const RegistrationData = () => {
 				<Card
 					title={t("kontaktniUdaje")}
 					isLoading={userIsLoading}
-					className="userData--contact userData--info">
+					className="userData--contact userData--info card--contact">
 					{!userIsLoading && userData.user && (
 						<>
 							<ul>
