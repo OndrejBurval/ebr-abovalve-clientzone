@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+import { useUserData } from "@/composables/useUserData";
+
 import Navigation from "@/components/TheNavigation";
 import Skeleton from "@/components/ui/Skeleton";
 
@@ -12,6 +14,12 @@ type Props = {
 };
 
 const Default = ({ children, header, title, isLoading, className }: Props) => {
+	const { userIsLoading } = useUserData();
+
+	if (userIsLoading) {
+		return <div className="drawer--spinner"></div>;
+	}
+
 	return (
 		<>
 			<Navigation />

@@ -70,5 +70,8 @@
     "stat": "Stát",
     "povinnePole": "Povinná položka",
     "ulozit": "Uložit",
-    "ulozitUdaje": "Uložit údaje"
+    "ulozitUdaje": "Uložit údaje",
+    "accessDenied": "Přístup odepřen",
+    "fetchFailed": "Načítání dat selhalo",
+    "zpetNaUvod": "Zpět na úvodní stránku"
 }

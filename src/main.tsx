@@ -77,6 +77,11 @@ const router = createBrowserRouter([
 		element: <UserForm />,
 		errorElement: <ErrorPage />,
 	},
+	{
+		path: "/error",
+		element: <ErrorPage />,
+		errorElement: <ErrorPage />,
+	},
 ]);
 
 const rootEl = document.getElementById("root");
