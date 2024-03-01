@@ -1,9 +1,11 @@
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 import { useUserData } from "@/composables/useUserData";
+import { useLocation } from "react-router-dom";
 
 import Navigation from "@/components/TheNavigation";
 import Skeleton from "@/components/ui/Skeleton";
+import Snackbar from "@mui/material/Snackbar";
 
 type Props = {
 	title?: string;
@@ -15,6 +17,12 @@ type Props = {
 
 const Default = ({ children, header, title, isLoading, className }: Props) => {
 	const { userIsLoading } = useUserData();
+	const { state } = useLocation();
+
+	const [snackbar, setSnackbar] = useState({
+		open: state?.snackbar?.open || false,
+		message: state?.snackbar?.message || null,
+	});
 
 	if (userIsLoading) {
 		return <div className="drawer--spinner"></div>;
@@ -35,6 +43,15 @@ const Default = ({ children, header, title, isLoading, className }: Props) => {
 
 				{children ? children : null}
 			</div>
+
+			{snackbar.open && snackbar.message && (
+				<Snackbar
+					open={snackbar.open}
+					autoHideDuration={6000}
+					onClose={() => setSnackbar({ ...snackbar, open: false })}
+					message={snackbar.message}
+				/>
+			)}
 		</>
 	);
 };

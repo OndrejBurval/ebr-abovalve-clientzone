@@ -125,7 +125,7 @@ const YearFilter = ({ data, onYearSelect }: YearFilterProps) => {
 				{t("vse")}
 			</button>
 
-			{uniqueYears.map((year, index) => (
+			{uniqueYears.sort().map((year, index) => (
 				<button
 					key={year}
 					className="btn"

@@ -29,9 +29,9 @@ const useQuery = () => {
 
 const UserDataForm = ({ data }: Props) => {
 	const { t } = useTranslation();
+	const navigate = useNavigate();
 	const query = useQuery();
 	const isDeliveryForm = query.get("delivery") === "true";
-	const navigate = useNavigate();
 
 	// Snacbar
 	const [openSnackbar, setOpenSnackbar] = useState(false);
@@ -72,7 +72,6 @@ const UserDataForm = ({ data }: Props) => {
 			: "update-billing-address";
 
 		try {
-			console.log(data);
 			const res = await fetch(`/api/platform/custom/account/${apiPath}`, {
 				method: "POST",
 				headers: {
@@ -84,13 +83,21 @@ const UserDataForm = ({ data }: Props) => {
 			});
 
 			if (!res.ok || res.status !== 200) {
-				const { errors } = await res.json();
-				console.error(errors);
-				throw new Error(errors[0] ? errors[0].message : errors.message);
+				const resData = await res.json();
+				const errorString = Array.isArray(resData)
+					? resData[0].message
+					: resData.errors.message;
+				throw new Error(errorString);
 			}
 
-			setSnackbarMessage(t("udajeUlozeny"));
-			navigate("/registracni-udaje");
+			navigate("/registracni-udaje", {
+				state: {
+					snackbar: {
+						open: true,
+						message: t("udajeUlozeny"),
+					},
+				},
+			});
 		} catch (error) {
 			setSnackbarMessage(error.message);
 		} finally {

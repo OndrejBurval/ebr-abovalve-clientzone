@@ -1,11 +1,11 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { type LoggedUser } from "@/composables/useUserData";
 
 import Snackbar from "@mui/material/Snackbar";
 import Card from "@/components/ui/Card";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
 	name: string;
@@ -41,7 +41,6 @@ const ContactDataForm = ({ data }: Props) => {
 
 	const onSubmit: SubmitHandler<Inputs> = async (data) => {
 		try {
-			console.log(data);
 			const res = await fetch(`/api/platform/custom/update-contact-person`, {
 				method: "POST",
 				headers: {
@@ -53,13 +52,21 @@ const ContactDataForm = ({ data }: Props) => {
 			});
 
 			if (!res.ok || res.status !== 200) {
-				const { errors } = await res.json();
-				console.error(errors);
-				throw new Error(errors[0] ? errors[0].message : errors.message);
+				const resData = await res.json();
+				const errorString = Array.isArray(resData)
+					? resData[0].message
+					: resData.errors.message;
+				throw new Error(errorString);
 			}
 
-			setSnackbarMessage(t("udajeUlozeny"));
-			navigate("/registracni-udaje");
+			navigate("/registracni-udaje", {
+				state: {
+					snackbar: {
+						open: true,
+						message: t("udajeUlozeny"),
+					},
+				},
+			});
 		} catch (error) {
 			setSnackbarMessage(error.message);
 		} finally {
@@ -109,8 +116,7 @@ const ContactDataForm = ({ data }: Props) => {
 					<input
 						{...register("phone", {
 							pattern: {
-								value:
-									/^[0-9]{9,13}$|^(\+420)?[0-9]{9}$|^(\+420)?[0-9]{3} [0-9]{3} [0-9]{3}$/i,
+								value: /^[0-9]{9,13}$|^(\+420)?[0-9]{9}$/i,
 								message: t("telefonNeniPlatny"),
 							},
 						})}

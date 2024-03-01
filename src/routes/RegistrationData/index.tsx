@@ -82,15 +82,15 @@ const RegistrationData = () => {
 						<ul>
 							<li className="info">
 								<span>{t("fakturyTentoRokCelkem")}</span>
-								<span> {userData.account.invoice_balance_due_total || 0} </span>
+								<span> - </span>
 							</li>
 							<li className="info">
 								<span>{t("fakturyPoSplatnosti")}</span>
-								<span> -</span>
+								<span> - </span>
 							</li>
 							<li className="info">
 								<span>{t("rozpracovaneObjednavky")}</span>
-								<span>-</span>
+								<span> - </span>
 							</li>
 						</ul>
 					)}
@@ -154,7 +154,7 @@ const RegistrationData = () => {
 								<strong>{t("fakturacniAdresa")}</strong>
 								<BillingAddress
 									data={userData.account}
-									disableEdit={!userData.account.portal_priv_admin}
+									disableEdit={!userData.contact.portal_priv_admin}
 								/>
 							</div>
 
@@ -162,7 +162,7 @@ const RegistrationData = () => {
 								<strong> {t("dorucovaciAdresa")}</strong>
 								<DeliveryAddress
 									data={userData.account}
-									disableEdit={!userData.account.portal_priv_admin}
+									disableEdit={!userData.contact.portal_priv_admin}
 								/>
 							</div>
 						</>

@@ -20,7 +20,7 @@ html:has(.icon-logout) .logged-user-only {
 	.main {
 		margin-block: 2rem;
 		max-width: 1410px;
-		padding-inline: 1rem;
+		padding-inline: 1rem !important;
 		margin-inline: auto;
 
 		&--header {

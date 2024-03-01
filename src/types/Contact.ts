@@ -11,6 +11,7 @@ type Contact = {
     extern_id: string;
     account_sugar_id: string;
     date_modified: string;
+    portal_priv_admin?: boolean;
 }
 
 export default Contact;

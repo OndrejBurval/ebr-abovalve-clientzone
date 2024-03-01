@@ -106,7 +106,7 @@ const Basket = () => {
 											<strong>{t("fakturacniAdresa")}</strong>
 											<BillingAddress
 												data={userData.account}
-												disableEdit={!userData.account.portal_priv_admin}
+												disableEdit={!userData.contact.portal_priv_admin}
 											/>
 										</div>
 
@@ -114,7 +114,7 @@ const Basket = () => {
 											<strong> {t("dorucovaciAdresa")}</strong>
 											<DeliveryAddress
 												data={userData.account}
-												disableEdit={!userData.account.portal_priv_admin}
+												disableEdit={!userData.contact.portal_priv_admin}
 											/>
 										</div>
 									</>

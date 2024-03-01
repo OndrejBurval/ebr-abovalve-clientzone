@@ -22,7 +22,6 @@ type Account = {
     payment_method: string;
     invoice_balance_due_total: number;
     date_modified: string;
-    portal_priv_admin?: boolean;
 }
 
 export default Account;
