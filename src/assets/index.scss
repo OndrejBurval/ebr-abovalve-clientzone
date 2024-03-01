@@ -431,3 +431,28 @@ html:has(.icon-logout) .logged-user-only {
 		}
 	}
 }
+
+#root {
+	.mm-panels {
+		position: fixed !important;
+		inset: 0 !important;
+		pointer-events: none;
+
+		.btn {
+			padding: 0.75rem 2rem;
+		}
+
+		.mobileHeader__inner {
+			padding-top: 3rem;
+
+			&.active {
+				pointer-events: all;
+			}
+
+			&:not(.active) {
+				transform: translateY(-100%) !important;
+				pointer-events: none;
+			}
+		}
+	}
+}

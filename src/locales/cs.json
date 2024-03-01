@@ -81,5 +81,6 @@
     "jmeno": "Jméno",
     "prijmeni": "Příjmení",
     "email": "Email",
-    "telefon": "Telefon"
+    "telefon": "Telefon",
+    "zadnePolozkyObjednavky": "Objednávka neobsahuje žádné položky"
 }

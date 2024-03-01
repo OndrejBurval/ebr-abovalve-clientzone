@@ -34,21 +34,27 @@ const useOrderDetailPage = (id: number) => {
 		navigate("/objednavky");
 	}
 
-	const { data, isLoading, isFetched } = useQuery(`orderItems-${id}`, () =>
-		getOrderItems(id)
+	const { data, isLoading } = useQuery(`orderItems-${id}`, () =>
+		getOrderItems(id), {
+            retry: false,
+            refetchOnWindowFocus: false,
+        }
 	);
 
 	const { data: orderInfo, isFetched: infoIsFetched, isLoading: orderIsLoading } = useQuery(
 		`order-${id}`,
-		() => getOrder(id)
+		() => getOrder(id), {
+            retry: false,
+            refetchOnWindowFocus: false,
+        }
 	);
 
 	useEffect(() => {
-		if ((isFetched && !data) || (infoIsFetched && !orderInfo)) {
+		if (infoIsFetched && !orderInfo) {
 			alert("Objednávka nenalezena");
 			navigate("/objednavky");
 		}
-	}, [isFetched, data, navigate, orderInfo, infoIsFetched]);
+	}, [orderInfo, infoIsFetched, navigate]);
 
 	return { data, isLoading: orderIsLoading || isLoading, orderIsLoading, orderInfo };
 };

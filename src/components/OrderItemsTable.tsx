@@ -38,7 +38,7 @@ const OrderItemsTable = ({
 	}, [items]);
 
 	if ((!items || items.length === 0) && !isLoading) {
-		return <p>No order items found</p>;
+		return <p>{t("zadnePolozkyObjednavky")}</p>;
 	}
 
 	const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
