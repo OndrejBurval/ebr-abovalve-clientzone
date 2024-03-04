@@ -17,6 +17,16 @@ html:has(.icon-logout) .logged-user-only {
 }
 
 #root {
+	.cHeader__inner {
+		.nav__item__in {
+			@media (max-width: 850px) {
+				font-size: 0.7rem !important;
+			}
+			@media (max-width: 1500px) {
+				font-size: 0.9rem;
+			}
+		}
+	}
 	.main {
 		margin-block: 2rem;
 		max-width: 1410px;
@@ -225,12 +235,18 @@ html:has(.icon-logout) .logged-user-only {
 	.filter {
 		display: flex;
 		flex-direction: row;
-		flex-wrap: wrap;
+		flex-wrap: nowrap;
 		gap: 0.5rem;
+		overflow-x: auto;
+
+		@media (max-width: 767px) {
+			padding-block: 0.5rem;
+		}
 
 		margin-bottom: 1rem;
 
 		.btn {
+			width: max-content;
 			&:not([data-active="true"]) {
 				background-color: #e2e2e2;
 				color: #002a2a;
@@ -433,6 +449,16 @@ html:has(.icon-logout) .logged-user-only {
 }
 
 #root {
+	.clientZone--dashboard--orders {
+		max-width: calc(100vw - 2rem);
+	}
+	.table--responsive {
+		overflow-x: auto;
+
+		table {
+			min-width: 800px;
+		}
+	}
 	.mm-panels {
 		position: fixed !important;
 		inset: 0 !important;

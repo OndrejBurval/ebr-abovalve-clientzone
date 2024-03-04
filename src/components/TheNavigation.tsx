@@ -83,7 +83,7 @@ const NavItems = ({ t, lang }: NavItemsProps) => {
 type DescHeaderProps = {
 	t: TFunction<"translation">;
 	lang: string;
-	onLanguageChange: () => void;
+	onLanguageChange?: () => void;
 };
 
 const DescHeader = ({ t, lang, onLanguageChange }: DescHeaderProps) => {
@@ -121,7 +121,7 @@ const DescHeader = ({ t, lang, onLanguageChange }: DescHeaderProps) => {
 	);
 };
 
-const MobileHeader = ({ t, lang, onLanguageChange }: DescHeaderProps) => {
+const MobileHeader = ({ t, lang }: DescHeaderProps) => {
 	const [active, setActive] = useState(false);
 
 	return (

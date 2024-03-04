@@ -8,14 +8,19 @@ import Layout from "@/layout";
 
 const Orders = () => {
 	const { t } = useTranslation();
-	const { data, isLoading } = useOrdersPage();
+	const { data, isLoading, nextPage, setYearFilter } = useOrdersPage();
 
 	return (
 		<Layout title={t("objednavky")}>
 			{isLoading ? (
 				<OrderTableSkeleton />
 			) : (
-				<OrderTable items={data} showFilter />
+				<OrderTable
+					items={data}
+					onLoadMore={nextPage}
+					onYearSelect={setYearFilter}
+					showFilter
+				/>
 			)}
 		</Layout>
 	);

@@ -13,15 +13,12 @@ type OrderItem = {
 type Props = {
 	items: OrderItem[];
 	showFilter?: boolean;
+	onLoadMore?: () => void;
+	onYearSelect?: (year: number) => void;
 };
 
-const OrderTable = ({ items, showFilter }: Props) => {
+const OrderTable = ({ items, showFilter, onLoadMore, onYearSelect }: Props) => {
 	const { t } = useTranslation();
-	const [filteredItems, setFilteredItems] = useState<OrderItem[]>([]);
-
-	useEffect(() => {
-		setFilteredItems(items);
-	}, [items]);
 
 	if (!items || items.length === 0) {
 		return <p>{t("zadneObjednavky")}</p>;
@@ -32,53 +29,50 @@ const OrderTable = ({ items, showFilter }: Props) => {
 		return dateObj.toLocaleDateString("cs-CZ");
 	};
 
-	const handleYearSelect = (year: number) => {
-		setFilteredItems(
-			items.filter((item) => {
-				const date = new Date(item.order.order_date);
-				return year === 0 ? true : date.getFullYear() === year;
-			})
-		);
-	};
-
 	return (
 		<>
 			{showFilter && items.length > 0 && (
-				<YearFilter data={items} onYearSelect={handleYearSelect} />
+				<YearFilter data={items} onYearSelect={onYearSelect} />
 			)}
 
-			<table>
-				<thead>
-					<tr className="text-left">
-						<th className="px-5"> {t("cisloObjednavky")} </th>
-						<th className="px-5 min-w-28"> {t("datum")} </th>
-						<th className="px-5"> {t("cena")} </th>
-						<th className="px-5"> {t("stav")} </th>
-						<th className="px-5"> {t("faktura")} </th>
-						<th className="px-5"></th>
-					</tr>
-				</thead>
-				<tbody>
-					{filteredItems.map((item) => (
-						<tr key={item.order.id}>
-							<td className="px-5"> {item.order.id} </td>
-							<td className="px-5 min-w-28">
-								{getDateString(item.order.order_date)}
-							</td>
-							<td className="px-5">
-								{item.order.total_without_vat}&nbsp;{item.order.currency_code}
-							</td>
-							<td className="px-5"> {item.order.state} </td>
-							<td className="px-5"> --- </td>
-							<td className="px-5">
-								<Link to={`/objednavka/${item.order.id}`}>
-									<button className="btn btn--primary">{t("detail")}</button>
-								</Link>
-							</td>
+			<div className="table--responsive">
+				<table>
+					<thead>
+						<tr className="text-left">
+							<th className="px-5"> {t("cisloObjednavky")} </th>
+							<th className="px-5 min-w-28"> {t("datum")} </th>
+							<th className="px-5"> {t("cena")} </th>
+							<th className="px-5"> {t("stav")} </th>
+							<th className="px-5"> {t("faktura")} </th>
+							<th className="px-5"></th>
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{items.map((item) => (
+							<tr key={item.order.id}>
+								<td className="px-5"> {item.order.id} </td>
+								<td className="px-5 min-w-28">
+									{getDateString(item.order.order_date)}
+								</td>
+								<td className="px-5">
+									{item.order.total_without_vat}&nbsp;{item.order.currency_code}
+								</td>
+								<td className="px-5"> {item.order.state} </td>
+								<td className="px-5"> --- </td>
+								<td className="px-5">
+									<Link to={`/objednavka/${item.order.id}`}>
+										<button className="btn btn--primary">{t("detail")}</button>
+									</Link>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
+
+			<button className="btn" onClick={onLoadMore}>
+				{t("nacistDalsi")}
+			</button>
 		</>
 	);
 };
@@ -119,7 +113,7 @@ const YearFilter = ({ data, onYearSelect }: YearFilterProps) => {
 			<button
 				className="btn btn--all"
 				onClick={() => {
-					onYearSelect(0);
+					onYearSelect(null);
 					setCheckedState(Array(data.length).fill(false));
 				}}>
 				{t("vse")}

@@ -17,10 +17,10 @@ const Detail = () => {
 	const { t } = useTranslation();
 
 	const { id } = useParams<{ id: string }>();
-	const { data, isLoading, orderInfo } = useOrderDetailPage(parseInt(id));
+	const { data, isLoading } = useOrderDetailPage(parseInt(id));
 	const { userData } = useUserData();
 
-	const orderDate = useDateString(orderInfo?.order_date);
+	const orderDate = useDateString(data?.order.order_date);
 
 	if (isLoading) {
 		return <PageLoading />;
@@ -46,18 +46,18 @@ const Detail = () => {
 						<li className="info">
 							<strong> {t("cenaCelkem")}: </strong>
 							<span>
-								{orderInfo.total_without_vat}&nbsp;{orderInfo.currency_code}
+								{data.order.total_without_vat}&nbsp;{data.order.currency_code}
 							</span>
 						</li>
 
 						<li className="info">
 							<strong> {t("stav")}: </strong>
-							<span>{orderInfo.state || ""}</span>
+							<span>{data.order.state || ""}</span>
 						</li>
 
 						<li className="info">
 							<strong> {t("doprava")}: </strong>
-							<span> {orderInfo.shipping_name || "--"} </span>
+							<span> {data.order.shipping_name || "--"} </span>
 						</li>
 
 						<li className="info">
@@ -79,9 +79,9 @@ const Detail = () => {
 							<DeliveryAddress
 								disableEdit
 								data={{
-									name: orderInfo.shipping_name,
-									shipping_street: orderInfo.shipping_street,
-									shipping_city: orderInfo.shipping_city,
+									name: data.order.shipping_name,
+									shipping_street: data.order.shipping_street,
+									shipping_city: data.order.shipping_city,
 									shipping_zip: "--",
 									shipping_country: "--",
 								}}
@@ -94,9 +94,9 @@ const Detail = () => {
 			<section className="orderDetail--table">
 				<h3> {t("polozkyObjednavky")} </h3>
 				<OrderItemsTable
-					items={data}
-					currencyCode={orderInfo.currency_code}
-					totalPriceExcVat={orderInfo.total_without_vat}
+					items={data.orderItems}
+					currencyCode={data.order.currency_code}
+					totalPriceExcVat={data.order.total_without_vat}
 				/>
 			</section>
 

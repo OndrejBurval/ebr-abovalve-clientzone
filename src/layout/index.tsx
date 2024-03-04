@@ -32,9 +32,9 @@ const Default = ({ children, header, title, isLoading, className }: Props) => {
 		<>
 			<Navigation />
 
-			{isLoading ? <Skeleton className="w-52" /> : null}
-
 			<div className={`main ${className || ""}`}>
+				{isLoading ? <Skeleton className="w-52" /> : null}
+
 				<div className="main--header">
 					{title && !isLoading ? <h1>{title}</h1> : null}
 
