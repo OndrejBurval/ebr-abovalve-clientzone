@@ -22,7 +22,11 @@ export default function Root() {
 				<div className="clientZone--dashboard--orders">
 					<Card>
 						<h3>{t("objednavky")}</h3>
-						{isLoading ? <OrderTableSkeleton /> : <OrderTable items={data} />}
+						{isLoading ? (
+							<OrderTableSkeleton />
+						) : (
+							<OrderTable items={data?.orders} />
+						)}
 						<Link to="/objednavky">{t("dalsiObjednavky")}</Link>
 					</Card>
 				</div>

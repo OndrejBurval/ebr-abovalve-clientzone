@@ -1,133 +1,89 @@
 import type { Order } from "@/types/Order";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useState, useEffect, useMemo } from "react";
-
-type OrderItem = {
-	order: Order;
-	orderItems: {
-		"@id": string;
-	};
-};
+import type { TFunction } from "i18next";
 
 type Props = {
-	items: OrderItem[];
-	showFilter?: boolean;
+	items: Order[];
+	hasMore?: boolean;
+	isFetching?: boolean;
 	onLoadMore?: () => void;
-	onYearSelect?: (year: number) => void;
 };
 
-const OrderTable = ({ items, showFilter, onLoadMore, onYearSelect }: Props) => {
+const OrderTable = ({ items, hasMore, isFetching, onLoadMore }: Props) => {
 	const { t } = useTranslation();
 
 	if (!items || items.length === 0) {
 		return <p>{t("zadneObjednavky")}</p>;
 	}
 
+	return (
+		<>
+			<Table items={items} t={t} />
+
+			{isFetching && (
+				<div className="table--fetching">
+					<div className="drawer--spinner"></div>
+				</div>
+			)}
+
+			{onLoadMore && hasMore && (
+				<div className="table--actions">
+					<button className="btn" onClick={onLoadMore} disabled={isFetching}>
+						{t("nacistDalsi")}
+					</button>
+				</div>
+			)}
+		</>
+	);
+};
+
+const Table = ({
+	items,
+	t,
+}: {
+	items: Order[];
+	t: TFunction<"translation", undefined>;
+}) => {
 	const getDateString = (date: string) => {
 		const dateObj = new Date(date);
 		return dateObj.toLocaleDateString("cs-CZ");
 	};
 
 	return (
-		<>
-			{showFilter && items.length > 0 && (
-				<YearFilter data={items} onYearSelect={onYearSelect} />
-			)}
-
-			<div className="table--responsive">
-				<table>
-					<thead>
-						<tr className="text-left">
-							<th className="px-5"> {t("cisloObjednavky")} </th>
-							<th className="px-5 min-w-28"> {t("datum")} </th>
-							<th className="px-5"> {t("cena")} </th>
-							<th className="px-5"> {t("stav")} </th>
-							<th className="px-5"> {t("faktura")} </th>
-							<th className="px-5"></th>
+		<div className="table--responsive">
+			<table>
+				<thead>
+					<tr className="text-left">
+						<th className="px-5"> {t("cisloObjednavky")} </th>
+						<th className="px-5 min-w-28"> {t("datum")} </th>
+						<th className="px-5"> {t("cena")} </th>
+						<th className="px-5"> {t("stav")} </th>
+						<th className="px-5"> {t("faktura")} </th>
+						<th className="px-5"></th>
+					</tr>
+				</thead>
+				<tbody>
+					{items.map((item) => (
+						<tr key={item.id}>
+							<td className="px-5"> {item.id} </td>
+							<td className="px-5 min-w-28">
+								{getDateString(item.order_date || "")}
+							</td>
+							<td className="px-5">
+								{item.total_without_vat}&nbsp;{item.currency_code}
+							</td>
+							<td className="px-5"> {item.state} </td>
+							<td className="px-5"> --- </td>
+							<td className="px-5">
+								<Link to={`/objednavka/${item.id}`}>
+									<button className="btn btn--primary">{t("detail")}</button>
+								</Link>
+							</td>
 						</tr>
-					</thead>
-					<tbody>
-						{items.map((item) => (
-							<tr key={item.order.id}>
-								<td className="px-5"> {item.order.id} </td>
-								<td className="px-5 min-w-28">
-									{getDateString(item.order.order_date)}
-								</td>
-								<td className="px-5">
-									{item.order.total_without_vat}&nbsp;{item.order.currency_code}
-								</td>
-								<td className="px-5"> {item.order.state} </td>
-								<td className="px-5"> --- </td>
-								<td className="px-5">
-									<Link to={`/objednavka/${item.order.id}`}>
-										<button className="btn btn--primary">{t("detail")}</button>
-									</Link>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-			</div>
-
-			<button className="btn" onClick={onLoadMore}>
-				{t("nacistDalsi")}
-			</button>
-		</>
-	);
-};
-
-type YearFilterProps = {
-	data: OrderItem[];
-	onYearSelect: (year: number) => void;
-};
-
-const YearFilter = ({ data, onYearSelect }: YearFilterProps) => {
-	const { t } = useTranslation();
-
-	const [checkedState, setCheckedState] = useState(
-		Array(data.length).fill(false)
-	);
-
-	const uniqueYears = useMemo(() => {
-		const years = data.map(({ order }) => {
-			const date = new Date(order.order_date);
-			return date.getFullYear();
-		});
-		return [...new Set(years)];
-	}, [data]);
-
-	const handleYearSelect =
-		(year: number, index: number) =>
-		(_: React.MouseEvent<HTMLButtonElement>) => {
-			onYearSelect(year);
-			setCheckedState(() => {
-				const newState = Array(data.length).fill(false);
-				newState[index] = true;
-				return newState;
-			});
-		};
-
-	return (
-		<div className="filter">
-			<button
-				className="btn btn--all"
-				onClick={() => {
-					onYearSelect(null);
-					setCheckedState(Array(data.length).fill(false));
-				}}>
-				{t("vse")}
-			</button>
-
-			{uniqueYears.sort().map((year, index) => (
-				<button
-					key={year}
-					className="btn"
-					data-active={checkedState[index] ? "true" : "false"}
-					onClick={handleYearSelect(year, index)}>
-					{year}
-				</button>
-			))}
+					))}
+				</tbody>
+			</table>
 		</div>
 	);
 };

@@ -1,4 +1,3 @@
-import complaintJson from "@/api/test/complaints.json";
 import type Complaint from "@/types/Complaint";
 
 import { useQuery } from "react-query";
@@ -6,7 +5,7 @@ import { useQuery } from "react-query";
 const getComplaints = (): Promise<Complaint[]> => {
 	return new Promise((resolve) => {
 		setTimeout(() => {
-			resolve(complaintJson as any);
+			resolve(null as any);
 		}, 500);
 	});
 };
