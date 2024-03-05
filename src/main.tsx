@@ -15,7 +15,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 
 import "@/i18n";
 
-import "./composables/useWebConfig";
+import "./hooks/useWebConfig";
 
 // Pages
 import Root from "@/routes/Root/index";

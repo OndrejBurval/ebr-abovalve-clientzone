@@ -10,8 +10,8 @@ import OrderConfirmModal from "@/components/OrderConfirmModal";
 import Snackbar from "@mui/material/Snackbar";
 
 import { useTranslation } from "react-i18next";
-import { useBasket } from "@/composables/useBasket";
-import { useUserData } from "@/composables/useUserData";
+import { useBasket } from "@/hooks/useBasket";
+import { useUserData } from "@/hooks/useUserData";
 import { useState } from "react";
 
 const Basket = () => {

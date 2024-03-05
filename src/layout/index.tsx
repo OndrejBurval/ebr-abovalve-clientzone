@@ -1,6 +1,6 @@
 import { ReactNode, useState } from "react";
 
-import { useUserData } from "@/composables/useUserData";
+import { useUserData } from "@/hooks/useUserData";
 import { useLocation } from "react-router-dom";
 
 import Navigation from "@/components/TheNavigation";

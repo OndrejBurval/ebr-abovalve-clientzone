@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useUserData } from "@/composables/useUserData";
+import { useUserData } from "@/hooks/useUserData";
 
 import Layout from "@/layout";
 

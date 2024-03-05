@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
-import { useUserData } from "@/composables/useUserData";
-import { useWebConfig } from "@/composables/useWebConfig";
+import { useUserData } from "@/hooks/useUserData";
+import { useWebConfig } from "@/hooks/useWebConfig";
 
 import Layout from "@/layout";
 

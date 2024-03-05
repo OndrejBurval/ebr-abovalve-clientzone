@@ -7,11 +7,11 @@ import { useParams } from "react-router-dom";
 import { useOrderDetailPage } from "@/routes/OrderDetail/index.hook";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useDateString } from "@/composables/useDateString";
+import { useDateString } from "@/hooks/useDateString";
 
 import BillingAddress from "@/components/BillingAddress";
 import DeliveryAddress from "@/components/DeliveryAddress";
-import { useUserData } from "@/composables/useUserData";
+import { useUserData } from "@/hooks/useUserData";
 
 const Detail = () => {
 	const { t } = useTranslation();

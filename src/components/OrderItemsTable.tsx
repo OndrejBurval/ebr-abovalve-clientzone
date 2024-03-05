@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useBasket } from "@/composables/useBasket";
+import { useBasket } from "@/hooks/useBasket";
 import { useEffect, useState } from "react";
 import type { OrderItem } from "@/types/Order";
 

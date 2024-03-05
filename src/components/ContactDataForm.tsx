@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import { type LoggedUser } from "@/composables/useUserData";
+import { type LoggedUser } from "@/hooks/useUserData";
 
 import Snackbar from "@mui/material/Snackbar";
 import Card from "@/components/ui/Card";

@@ -1,6 +1,6 @@
 import Layout from "@/layout/index";
 import ContactDataForm from "@/components/ContactDataForm";
-import { useUserData } from "@/composables/useUserData";
+import { useUserData } from "@/hooks/useUserData";
 
 const ContactForm = () => {
 	const { userIsLoading, userData } = useUserData();

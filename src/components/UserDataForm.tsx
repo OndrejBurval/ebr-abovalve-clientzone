@@ -2,7 +2,7 @@ import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useState, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { type LoggedUser } from "@/composables/useUserData";
+import { type LoggedUser } from "@/hooks/useUserData";
 
 import { countries } from "countries-list";
 
