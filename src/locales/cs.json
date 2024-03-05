@@ -83,5 +83,6 @@
     "email": "Email",
     "telefon": "Telefon",
     "zadnePolozkyObjednavky": "Objednávka neobsahuje žádné položky",
-    "nacistDalsi": "Načíst další"
+    "nacistDalsi": "Načíst další",
+    "zadneObjednavky": "Nemáte žádné objednávky"
 }

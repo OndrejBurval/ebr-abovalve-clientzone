@@ -2,20 +2,26 @@ import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 type Props = {
-	data: number[];
 	onYearSelect: (year: number) => void;
 };
 
-const OrderTableFilter = ({ data, onYearSelect }: Props) => {
+const OrderTableFilter = ({ onYearSelect }: Props) => {
 	const { t } = useTranslation();
 	const [activeYear, setActiveYear] = useState<number | null>(null);
 
-	const sortedData = useMemo(() => data.sort(), [data]);
-
 	const handleYearSelect = (year: number) => {
+		if (year === activeYear) return;
 		setActiveYear(year);
 		onYearSelect(year);
 	};
+
+	const years = useMemo(() => {
+		const year = new Date().getFullYear();
+		return Array.from(
+			new Array(year - 2014),
+			(_, index) => year - index
+		).sort();
+	}, []);
 
 	return (
 		<div className="filter">
@@ -25,7 +31,7 @@ const OrderTableFilter = ({ data, onYearSelect }: Props) => {
 				{t("vse")}
 			</button>
 
-			{sortedData.map((year) => (
+			{years.map((year) => (
 				<button
 					key={year}
 					className="btn"

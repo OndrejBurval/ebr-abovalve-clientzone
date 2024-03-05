@@ -2,34 +2,51 @@ import type { Order } from "@/types/Order";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
+import Skeleton from "./ui/Skeleton";
+import useOrders from "@/hooks/useOrders";
+import OrderTableSeleton from "./OrderTableSkeleton";
+import OrderTableFilter from "./OrderTableFilter";
+import { useState, useEffect } from "react";
 
 type Props = {
-	items: Order[];
-	hasMore?: boolean;
-	isFetching?: boolean;
-	onLoadMore?: () => void;
+	showFilter?: boolean;
+	infiniteLoading?: boolean;
+	limit?: number;
+	page?: string;
 };
 
-const OrderTable = ({ items, hasMore, isFetching, onLoadMore }: Props) => {
+const OrderTable = ({ showFilter, limit, infiniteLoading, page }: Props) => {
+	const [orders, setOrders] = useState<Order[]>([]);
 	const { t } = useTranslation();
+	const { data, loadMore, isFetching, isLoading, setYearFilter } = useOrders(
+		limit,
+		page ? page : "default"
+	);
 
-	if (!items || items.length === 0) {
-		return <p>{t("zadneObjednavky")}</p>;
-	}
+	useEffect(() => {
+		if (data) {
+			setOrders((oldValue) => [...oldValue, ...data.orders]);
+		}
+	}, [data]);
+
+	const handleYearSelect = (year: number) => {
+		setOrders([]);
+		setYearFilter(year);
+	};
 
 	return (
 		<>
-			<Table items={items} t={t} />
+			{showFilter && <OrderTableFilter onYearSelect={handleYearSelect} />}
 
-			{isFetching && (
-				<div className="table--fetching">
-					<div className="drawer--spinner"></div>
-				</div>
+			{isLoading ? (
+				<OrderTableSeleton />
+			) : (
+				<Table items={orders} t={t} isFetching={isFetching && !limit} />
 			)}
 
-			{onLoadMore && hasMore && (
+			{infiniteLoading && orders.length < data?.totalCount && (
 				<div className="table--actions">
-					<button className="btn" onClick={onLoadMore} disabled={isFetching}>
+					<button className="btn" onClick={loadMore} disabled={isFetching}>
 						{t("nacistDalsi")}
 					</button>
 				</div>
@@ -40,9 +57,11 @@ const OrderTable = ({ items, hasMore, isFetching, onLoadMore }: Props) => {
 
 const Table = ({
 	items,
+	isFetching,
 	t,
 }: {
 	items: Order[];
+	isFetching: boolean;
 	t: TFunction<"translation", undefined>;
 }) => {
 	const getDateString = (date: string) => {
@@ -82,6 +101,29 @@ const Table = ({
 							</td>
 						</tr>
 					))}
+
+					{isFetching && (
+						<>
+							<tr className="table--fetching">
+								<td colSpan={6}>
+									<Skeleton />
+								</td>
+							</tr>
+							<tr>
+								<td colSpan={6}>
+									<Skeleton />
+								</td>
+							</tr>
+						</>
+					)}
+
+					{!isFetching && items.length < 1 && (
+						<tr>
+							<td colSpan={6}>
+								<p>{t("zadneObjednavky")}</p>
+							</td>
+						</tr>
+					)}
 				</tbody>
 			</table>
 		</div>
