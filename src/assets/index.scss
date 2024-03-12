@@ -444,6 +444,11 @@ html:has(.icon-logout) .logged-user-only {
 		p {
 			font-size: 0.85rem;
 			margin-bottom: 0;
+
+			span {
+				display: block;
+				font-size: 0.8rem;
+			}
 		}
 	}
 }
@@ -479,6 +484,14 @@ html:has(.icon-logout) .logged-user-only {
 				transform: translateY(-100%) !important;
 				pointer-events: none;
 			}
+		}
+	}
+}
+
+.orderDetail {
+	&--desc {
+		@media (min-width: 768px) {
+			grid-column: span 2;
 		}
 	}
 }

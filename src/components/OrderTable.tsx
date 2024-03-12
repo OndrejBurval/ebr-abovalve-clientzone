@@ -85,7 +85,7 @@ const Table = ({
 				<tbody>
 					{items.map((item) => (
 						<tr key={item.id}>
-							<td className="px-5"> {item.id} </td>
+							<td className="px-5"> {item.navision_code} </td>
 							<td className="px-5 min-w-28">
 								{getDateString(item.order_date || "")}
 							</td>

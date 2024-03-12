@@ -22,6 +22,9 @@ type Account = {
     payment_method: string;
     invoice_balance_due_total: number;
     date_modified: string;
+    reg_id_c?: string;
+    vat_id_c?: string;
+    default_discount_c?: number;
 }
 
 export default Account;

@@ -84,5 +84,21 @@
     "telefon": "Telefon",
     "zadnePolozkyObjednavky": "Objednávka neobsahuje žádné položky",
     "nacistDalsi": "Načíst další",
-    "zadneObjednavky": "Nemáte žádné objednávky"
+    "zadneObjednavky": "Nemáte žádné objednávky",
+    "nakladniDopravce": "Nákladní doprava (paleta)",
+    "namorniDoprava": "Námořní doprava (bedna)",
+    "leteckaDoprava": "Letecká doprava (bedna)",
+    "fca": "FCA (vyzvednutí zákazníkem)",
+    "cfr": "CFR (dodání na určenou adresu)",
+    "baleni": "Balení",
+    "sleva": "Sleva",
+    "spolecnost": "Společnost",
+    "prehled": "Přehled",
+    "poznamka": "Poznámka",
+    "datumObjednani": "Datum objednání",
+    "datumExpirace": "Datum expirace",
+    "cenaCelkemDPH": "Cena celkem s DPH",
+    "cenaCelkemBezDPH": "Cena celkem bez DPH",
+    "ocekavaneDatumExpirace": "Očekávané datum expirace",
+    "archiv": "Archiv"
 }

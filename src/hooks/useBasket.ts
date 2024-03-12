@@ -101,12 +101,17 @@ export const useBasket = () => {
         localStorage.removeItem("basket");
     }
 
+    function getTotalPrice(basket: Product[]) {
+        return basket.reduce((acc: number, item: Product) => acc + item.price * item.quantity, 0);
+    }
+
     return {
         items: basket,
         add,
         addMultiple,
         remove,
         clear,
-        updateQuantity
+        updateQuantity,
+        getTotalPrice
     };
 }

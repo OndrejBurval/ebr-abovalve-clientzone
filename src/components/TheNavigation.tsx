@@ -52,7 +52,7 @@ const NavItems = ({ t, lang }: NavItemsProps) => {
 			</li>
 			<li className="nav__item">
 				<Link className="nav__item__in" to="/muj-ucet">
-					{t("mujUcet")}
+					{t("prehled")}
 				</Link>
 			</li>
 			<li className="nav__item">

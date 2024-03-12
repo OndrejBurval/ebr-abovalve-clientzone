@@ -19,9 +19,36 @@ const Basket = () => {
 	const basket = useBasket();
 	const { userData, userIsLoading } = useUserData();
 
+	const packingOptions = [
+		{
+			label: t("nakladniDopravce"),
+			value: "cargo",
+		},
+		{
+			label: t("namorniDoprava"),
+			value: "ship",
+		},
+		{
+			label: t("leteckaDoprava"),
+			value: "air",
+		},
+	];
+
+	const deliveryOptions = [
+		{
+			label: t("fca"),
+			value: "FCA",
+		},
+		{
+			label: t("cfr"),
+			value: "CFR",
+		},
+	];
+
 	// User input
 	const [note, setNote] = useState("");
-	const [delivery, setDelivery] = useState(null);
+	const [packing, setPacking] = useState(packingOptions[0].value);
+	const [delivery, setDelivery] = useState(deliveryOptions[0].value);
 
 	// Modal
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,21 +61,32 @@ const Basket = () => {
 	const [snackbarMessage, setSnackbarMessage] = useState("");
 
 	const handleSubmit = async () => {
+		console.log("basket.items", basket.items);
+		console.log("note", note);
+		console.log("packing", packing);
+
 		if (!validateInput()) return;
 
 		setOpenModal(true);
 		setIsSubmitting(true);
 
 		try {
-			const res = await fetch("/api/order", {
+			const res = await fetch("/api/platform/custom/create-order", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					items: basket.items,
-					note,
-					delivery,
+					opportunity_type: "order",
+					total_cost: basket.getTotalPrice(basket.items),
+					currency: "CZK",
+					shipping: delivery,
+					packing,
+					user_note: note,
+					order_items: basket.items.map((item) => ({
+						product: item.id,
+						amount: item.quantity,
+					})),
 				}),
 			});
 
@@ -56,8 +94,6 @@ const Basket = () => {
 				throw new Error("Orders network response error");
 			}
 
-			setDelivery("1");
-			setNote("");
 			basket.clear();
 			setIsCompleted(true);
 		} catch (e) {
@@ -69,29 +105,14 @@ const Basket = () => {
 	};
 
 	const validateInput = () => {
-		if (!delivery) {
+		if (!packing) {
 			setOpenSnackbar(true);
-			setSnackbarMessage(t("vyberteDopravu"));
+			setSnackbarMessage(t("vyberteBaleni"));
 			return false;
 		}
 
 		return true;
 	};
-
-	const deliveryPayment = [
-		{
-			id: 1,
-			name: "Doprava 1",
-		},
-		{
-			id: 2,
-			name: "Doprava 2",
-		},
-		{
-			id: 3,
-			name: "Doprava 3",
-		},
-	];
 
 	return (
 		<Layout title={`${t("kosik")}`} className="basket">
@@ -136,12 +157,42 @@ const Basket = () => {
 									<div className="delivery--input">
 										<label>{t("doprava")}</label>
 										<Autocomplete
-											id="delivery-payment"
+											disableClearable
+											disablePortal
+											defaultValue={deliveryOptions[0].label}
+											id="delivery"
 											onChange={(_: any, newValue: string | null) => {
-												setDelivery(newValue);
+												setDelivery(
+													deliveryOptions.find(
+														(option) => option.label === newValue
+													).value
+												);
 											}}
-											options={deliveryPayment.map((option) => option.name)}
-											renderInput={(params) => <TextField {...params} />}
+											options={deliveryOptions.map((option) => option.label)}
+											renderInput={(params) => (
+												<TextField {...params}> foo </TextField>
+											)}
+										/>
+									</div>
+
+									<div className="delivery--input">
+										<label>{t("baleni")}</label>
+										<Autocomplete
+											disableClearable
+											disablePortal
+											defaultValue={packingOptions[0].label}
+											id="packing"
+											onChange={(_: any, newValue: string | null) => {
+												setPacking(
+													packingOptions.find(
+														(option) => option.label === newValue
+													).value
+												);
+											}}
+											options={packingOptions.map((option) => option.label)}
+											renderInput={(params) => (
+												<TextField {...params}> foo </TextField>
+											)}
 										/>
 									</div>
 

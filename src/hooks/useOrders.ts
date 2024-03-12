@@ -48,7 +48,7 @@ const getOrders = async (page = 1, limit = 10, year = null): Promise<OrdersRespo
 
 const useOrders = (PAGE_LIMIT = 10, key: string = "default") => {
     const [page, setPage] = useState(1);
-    const [year, setYear] = useState<number | null>(null);
+    const [year, setYear] = useState<number | null | string>(null);
     
 
     const { data, isFetched, isLoading, isFetching } = useQuery({
@@ -61,8 +61,8 @@ const useOrders = (PAGE_LIMIT = 10, key: string = "default") => {
 
     const loadMore = () => setPage(page + 1)
 
-    const setYearFilter = (year: number) => {
-        setYear(year);
+    const setYearFilter = (year: number | string) => {
+        setYear(year === -1 ? "archive" : year);
         setPage(1);
     };
 

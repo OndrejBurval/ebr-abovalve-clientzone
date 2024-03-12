@@ -1,0 +1,61 @@
+{
+    "order": {
+        "id": 1,
+        "sugar_id": "a0ee7f1a-877d-11ee-bfdc-005056ba93ff",
+        "navision_code": "231OP00025",
+        "state": "",
+        "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+        "opportunity_id": "",
+        "description": "lorem ipsum",
+        "order_date": "2023-11-16 00:00:00",
+        "requested_delivery_date": "2023-11-25 00:00:00",
+        "promised_delivery_date": "2024-03-11 00:00:00",
+        "due_date": "2024-01-15 00:00:00",
+        "currency_code": "CZK",
+        "total_without_vat": 1211.3,
+        "total_with_vat": 0.0,
+        "total_vat": 0.0,
+        "shipping_name": "Richter + Frenzel Praha",
+        "shipping_street": "U Technoplynu 1572\/1",
+        "shipping_city": "Praha 98 - Kyje",
+        "date_modified": "2023-12-07 10:39:03"
+    },
+    "orderItems": [
+        {
+            "id": 1,
+            "sugar_id": "a144b664-877d-11ee-ac8a-005056ba93ff",
+            "navision_code": "CZ101651",
+            "navision_order_code": "231OP00025",
+            "name": " - RAL 5005",
+            "unit": "",
+            "quantity": 0.0,
+            "total_cost": 0.0,
+            "unit_cost": 0.0,
+            "date_modified": "2023-12-07 10:39:03"
+        },
+        {
+            "id": 2,
+            "sugar_id": "a12fb53e-877d-11ee-b292-005056ba93ff",
+            "navision_code": "CZ101651",
+            "navision_order_code": "231OP00025",
+            "name": "CERTIFIKAT - Certicate",
+            "unit": "KS",
+            "quantity": 1.0,
+            "total_cost": 350.0,
+            "unit_cost": 350.0,
+            "date_modified": "2023-12-07 10:39:03"
+        },
+        {
+            "id": 3,
+            "sugar_id": "a114d71e-877d-11ee-b822-005056ba93ff",
+            "navision_code": "CZ101651",
+            "navision_order_code": "231OP00025",
+            "name": "924B10001 - BFV 924B10001 lever",
+            "unit": "KS",
+            "quantity": 1.0,
+            "total_cost": 861.3,
+            "unit_cost": 1566.0,
+            "date_modified": "2023-12-07 10:39:03"
+        }
+    ]
+}

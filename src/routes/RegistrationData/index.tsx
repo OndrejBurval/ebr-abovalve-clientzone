@@ -11,6 +11,7 @@ import BillingAddress from "@/components/BillingAddress";
 import PhoneSvg from "@/components/svg/Phone";
 import MailSvg from "@/components/svg/Mail";
 import AccountSvg from "@/components/svg/Account";
+import CitySvg from "@/components/svg/City";
 import Pen from "@/components/svg/Pen";
 
 const RegistrationData = () => {
@@ -27,12 +28,17 @@ const RegistrationData = () => {
 				<Card
 					isLoading={userIsLoading}
 					className="card--basicInfo userData--contact userData--info">
+					<Pen link="/kontakt-udaje" />
+
 					{!userIsLoading && userData.contact && (
 						<ul>
 							<li>
 								<AccountSvg />
 
-								<p>{`${userData.contact.name} ${userData.contact.surname}`}</p>
+								<p>
+									{`${userData.contact.name} ${userData.contact.surname}`}
+									<span>{userData.contact.title}</span>
+								</p>
 							</li>
 
 							<li>
@@ -81,60 +87,59 @@ const RegistrationData = () => {
 					{!userIsLoading && userData.account && (
 						<ul>
 							<li className="info">
-								<span>{t("fakturyTentoRokCelkem")}</span>
-								<span> - </span>
+								<span>{t("sleva")}</span>
+								<span>
+									{userData.account.default_discount_c
+										? userData.account.default_discount_c
+										: "0"}
+									%
+								</span>
 							</li>
 							<li className="info">
 								<span>{t("fakturyPoSplatnosti")}</span>
-								<span> - </span>
+								<span>
+									{userData.account.invoice_balance_due_total
+										? userData.account.invoice_balance_due_total
+										: "0"}
+								</span>
 							</li>
 							<li className="info">
 								<span>{t("rozpracovaneObjednavky")}</span>
-								<span> - </span>
+								<span>
+									{" "}
+									{userData.account.open_opportunities_count
+										? userData.account.open_opportunities_count
+										: "0"}{" "}
+								</span>
 							</li>
 						</ul>
 					)}
 				</Card>
 
 				<Card
-					title={t("kontaktniUdaje")}
+					title={t("spolecnost")}
 					isLoading={userIsLoading}
 					className="userData--contact userData--info card--contact">
 					{!userIsLoading && userData.contact && (
 						<>
 							<ul>
-								<Pen link="/kontakt-udaje" />
 								<li>
-									<AccountSvg />
+									<CitySvg />
 
-									<p>
-										{`${userData.contact.name} ${userData.contact.surname}`}
-									</p>
+									<p>{`${userData.account.name}`}</p>
 								</li>
 
-								<li>
-									<MailSvg />
-									<p>
-										{userData.contact.email ? (
-											<a href={`mailto:${userData.contact.email || ""}`}>
-												{userData.contact.email}
-											</a>
-										) : (
-											"--"
-										)}
-									</p>
-								</li>
-								{userData.contact.phone && (
+								{userData.account.phone_office && (
 									<li>
 										<PhoneSvg />
 										<p>
-											{userData.contact.phone ? (
+											{userData.account.phone_office ? (
 												<a
-													href={`tel:${userData.contact.phone.replace(
+													href={`tel:${userData.account.phone_office.replace(
 														/\s/g,
 														""
 													)}`}>
-													{userData.contact.phone}
+													{userData.account.phone_office}
 												</a>
 											) : (
 												"--"

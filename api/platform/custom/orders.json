@@ -3,6 +3,136 @@
         {
             "order": {
                 "id": 1,
+                "sugar_id": "a0ee7f1a-877d-11ee-bfdc-005056ba93ff",
+                "navision_code": "231OP00025",
+                "state": "",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "",
+                "description": "",
+                "order_date": "2023-11-16 00:00:00",
+                "requested_delivery_date": "2023-11-25 00:00:00",
+                "promised_delivery_date": "2024-03-11 00:00:00",
+                "due_date": "2024-01-15 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 1211.3,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel Praha",
+                "shipping_street": "U Technoplynu 1572\/1",
+                "shipping_city": "Praha 98 - Kyje",
+                "date_modified": "2023-12-07 10:39:03"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/1"
+            }
+        },
+        {
+            "order": {
+                "id": 2,
+                "sugar_id": "df0f5d9a-7fb8-11ee-bae5-005056ba2a44",
+                "navision_code": "23OP04743",
+                "state": "invoicing",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "e08e54d6-7fa5-11ee-8efc-005056ba2a44",
+                "description": "",
+                "order_date": "2023-11-10 00:00:00",
+                "requested_delivery_date": "2023-11-13 00:00:00",
+                "promised_delivery_date": "0001-01-01 00:00:00",
+                "due_date": "2024-01-12 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 5147.45,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel s.r.o.",
+                "shipping_street": "Hl\u00e1vkova 1088\/17",
+                "shipping_city": "Liberec 14 - Ruprechtice",
+                "date_modified": "2023-11-13 16:00:01"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/2"
+            }
+        },
+        {
+            "order": {
+                "id": 3,
+                "sugar_id": "55b0bb26-7fda-11ee-817a-005056ba2a44",
+                "navision_code": "23OP04759",
+                "state": "invoicing",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "5b8b3b1c-7fca-11ee-87f8-005056ba2a44",
+                "description": "",
+                "order_date": "2023-11-10 00:00:00",
+                "requested_delivery_date": "2023-11-13 00:00:00",
+                "promised_delivery_date": "0001-01-01 00:00:00",
+                "due_date": "2024-01-12 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 8740.05,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel s.r.o.",
+                "shipping_street": "9. kv\u011btna 2452",
+                "shipping_city": "P\u0159erov 2",
+                "date_modified": "2023-11-13 16:00:01"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/3"
+            }
+        },
+        {
+            "order": {
+                "id": 4,
+                "sugar_id": "1a514cf2-7e05-11ee-9f56-005056ba2a44",
+                "navision_code": "23OP04700",
+                "state": "production",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "03b472a0-7dfe-11ee-9746-005056ba2a44",
+                "description": "",
+                "order_date": "2023-11-08 00:00:00",
+                "requested_delivery_date": "2023-12-01 00:00:00",
+                "promised_delivery_date": "0001-01-01 00:00:00",
+                "due_date": "2024-01-07 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 13196.3,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel s.r.o.",
+                "shipping_street": "Z\u00e1most\u00ed 1798",
+                "shipping_city": "Otrokovice 2",
+                "date_modified": "2023-11-13 16:00:01"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/4"
+            }
+        },
+        {
+            "order": {
+                "id": 5,
+                "sugar_id": "ffefd4b0-1ff3-11ee-b402-005056ba2a44",
+                "navision_code": "23OP02946",
+                "state": "completed",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "9fccea28-1fda-11ee-9b1c-005056ba2a44",
+                "description": "",
+                "order_date": "2023-07-11 00:00:00",
+                "requested_delivery_date": "2023-07-12 00:00:00",
+                "promised_delivery_date": "0001-01-01 00:00:00",
+                "due_date": "2023-09-09 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 12249.6,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel s.r.o.",
+                "shipping_street": "D\u011blnick\u00e1 16",
+                "shipping_city": "Most 3",
+                "date_modified": "2023-11-11 06:02:01"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/5"
+            }
+        },
+        {
+            "order": {
+                "id": 6,
                 "sugar_id": "ffed4d9e-ccff-11e9-9e50-42010a9c0002",
                 "navision_code": "OP151554",
                 "state": "completed",
@@ -15,20 +145,20 @@
                 "due_date": "2015-08-09 00:00:00",
                 "currency_code": "CZK",
                 "total_without_vat": 9044.14,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "pobočka Praha 9 - Kyje",
+                "shipping_street": "pobo\u010dka Praha 9 - Kyje",
                 "shipping_city": "Praha 9",
-                "date_modified": "2023-08-12 06:01:01"
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/1"
+                "@id": "\/api\/platform\/custom\/order\/6"
             }
         },
         {
             "order": {
-                "id": 2,
+                "id": 7,
                 "sugar_id": "ffd23afa-cd17-11e9-a26b-42010a9c0002",
                 "navision_code": "OP162891",
                 "state": "completed",
@@ -41,20 +171,46 @@
                 "due_date": "2016-11-02 00:00:00",
                 "currency_code": "CZK",
                 "total_without_vat": 1543.3,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "Babičkova 6",
+                "shipping_street": "Babi\u010dkova 6",
                 "shipping_city": "Olomouc",
-                "date_modified": "2023-08-12 06:01:01"
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/2"
+                "@id": "\/api\/platform\/custom\/order\/7"
             }
         },
         {
             "order": {
-                "id": 3,
+                "id": 8,
+                "sugar_id": "ffc139c0-1ff3-11ee-84d0-005056ba2a44",
+                "navision_code": "23OP02945",
+                "state": "completed",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "045bbb9a-1fdb-11ee-879d-005056ba2a44",
+                "description": "",
+                "order_date": "2023-07-11 00:00:00",
+                "requested_delivery_date": "2023-07-12 00:00:00",
+                "promised_delivery_date": "0001-01-01 00:00:00",
+                "due_date": "2023-09-10 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 4641.45,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel s.r.o.",
+                "shipping_street": "D\u011blnick\u00e1 16",
+                "shipping_city": "Most 3",
+                "date_modified": "2023-11-11 06:02:01"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/8"
+            }
+        },
+        {
+            "order": {
+                "id": 9,
                 "sugar_id": "ff890cce-cd01-11e9-9ff6-42010a9c0002",
                 "navision_code": "OP152252",
                 "state": "completed",
@@ -67,20 +223,20 @@
                 "due_date": "2015-09-22 00:00:00",
                 "currency_code": "CZK",
                 "total_without_vat": 1303.2,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "U Technoplynu 1572/1",
+                "shipping_street": "U Technoplynu 1572\/1",
                 "shipping_city": "Praha 9",
-                "date_modified": "2023-08-12 06:01:01"
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/3"
+                "@id": "\/api\/platform\/custom\/order\/9"
             }
         },
         {
             "order": {
-                "id": 4,
+                "id": 10,
                 "sugar_id": "ff676f60-ccd9-11e9-a410-42010a9c0002",
                 "navision_code": "OP113931",
                 "state": "completed",
@@ -92,21 +248,21 @@
                 "promised_delivery_date": "0001-01-01 00:00:00",
                 "due_date": "2012-04-03 00:00:00",
                 "currency_code": "CZK",
-                "total_without_vat": 28116,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_without_vat": 28116.0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "Křižíkova 70",
-                "shipping_city": "Brno 12 - Královo Pole",
-                "date_modified": "2023-08-12 06:01:01"
+                "shipping_street": "K\u0159i\u017e\u00edkova 70",
+                "shipping_city": "Brno 12 - Kr\u00e1lovo Pole",
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/4"
+                "@id": "\/api\/platform\/custom\/order\/10"
             }
         },
         {
             "order": {
-                "id": 5,
+                "id": 11,
                 "sugar_id": "ff648122-ccdb-11e9-b116-42010a9c0002",
                 "navision_code": "OP123385",
                 "state": "completed",
@@ -119,20 +275,72 @@
                 "due_date": "2013-01-21 00:00:00",
                 "currency_code": "CZK",
                 "total_without_vat": 20193.25,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "Hradišťská 407",
-                "shipping_city": "Staré Hradiště u Pardubic",
-                "date_modified": "2023-08-12 06:01:01"
+                "shipping_street": "Hradi\u0161\u0165sk\u00e1 407",
+                "shipping_city": "Star\u00e9 Hradi\u0161t\u011b u Pardubic",
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/5"
+                "@id": "\/api\/platform\/custom\/order\/11"
             }
         },
         {
             "order": {
-                "id": 6,
+                "id": 12,
+                "sugar_id": "ff5ed3a2-1ff3-11ee-8b4b-005056ba2a44",
+                "navision_code": "23OP02943",
+                "state": "completed",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "784c6554-1fdb-11ee-8394-005056ba2a44",
+                "description": "",
+                "order_date": "2023-07-11 00:00:00",
+                "requested_delivery_date": "2023-07-12 00:00:00",
+                "promised_delivery_date": "0001-01-01 00:00:00",
+                "due_date": "2023-09-10 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 2570.7,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel s.r.o.",
+                "shipping_street": "K\u0159i\u017e\u00edkova 2107",
+                "shipping_city": "Bene\u0161ov u Prahy",
+                "date_modified": "2023-11-11 06:02:01"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/12"
+            }
+        },
+        {
+            "order": {
+                "id": 13,
+                "sugar_id": "ff44269a-26e4-11ee-9e1a-005056ba2a44",
+                "navision_code": "23OP03110",
+                "state": "completed",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "2f6c7c12-26bf-11ee-96bb-005056ba2a44",
+                "description": "",
+                "order_date": "2023-07-20 00:00:00",
+                "requested_delivery_date": "2023-07-21 00:00:00",
+                "promised_delivery_date": "0001-01-01 00:00:00",
+                "due_date": "2023-09-18 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 8206.55,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel Praha",
+                "shipping_street": "U Technoplynu 1572\/1",
+                "shipping_city": "Praha 98 - Kyje",
+                "date_modified": "2023-11-11 06:02:01"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/13"
+            }
+        },
+        {
+            "order": {
+                "id": 14,
                 "sugar_id": "ff2f5a04-d7c7-11ea-8612-005056baa4be",
                 "navision_code": "20OP03120",
                 "state": "completed",
@@ -145,20 +353,20 @@
                 "due_date": "2020-11-04 00:00:00",
                 "currency_code": "CZK",
                 "total_without_vat": 640.2,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "Stavební 1066",
-                "shipping_city": "Hradec Králové 3 - Slezské Př",
-                "date_modified": "2023-08-12 06:01:01"
+                "shipping_street": "Stavebn\u00ed 1066",
+                "shipping_city": "Hradec Kr\u00e1lov\u00e9 3 - Slezsk\u00e9 P\u0159",
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/6"
+                "@id": "\/api\/platform\/custom\/order\/14"
             }
         },
         {
             "order": {
-                "id": 7,
+                "id": 15,
                 "sugar_id": "ff109658-251b-11ec-ae41-005056baa4be",
                 "navision_code": "21OP04368",
                 "state": "completed",
@@ -171,20 +379,20 @@
                 "due_date": "2021-12-04 00:00:00",
                 "currency_code": "CZK",
                 "total_without_vat": 3737.25,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "Stavební 1066",
-                "shipping_city": "Hradec Králové 3 - Slezské Př",
-                "date_modified": "2023-08-12 06:01:01"
+                "shipping_street": "Stavebn\u00ed 1066",
+                "shipping_city": "Hradec Kr\u00e1lov\u00e9 3 - Slezsk\u00e9 P\u0159",
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/7"
+                "@id": "\/api\/platform\/custom\/order\/15"
             }
         },
         {
             "order": {
-                "id": 8,
+                "id": 16,
                 "sugar_id": "fef16fde-cd08-11e9-bf50-42010a9c0002",
                 "navision_code": "OP153820",
                 "state": "completed",
@@ -197,20 +405,20 @@
                 "due_date": "2016-01-13 00:00:00",
                 "currency_code": "CZK",
                 "total_without_vat": 25320.27,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "U Technoplynu 1572/1",
+                "shipping_street": "U Technoplynu 1572\/1",
                 "shipping_city": "Praha 9",
-                "date_modified": "2023-08-12 06:01:01"
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/8"
+                "@id": "\/api\/platform\/custom\/order\/16"
             }
         },
         {
             "order": {
-                "id": 9,
+                "id": 17,
                 "sugar_id": "fec28ca0-ccdb-11e9-883b-42010a9c0002",
                 "navision_code": "OP123379",
                 "state": "completed",
@@ -222,21 +430,47 @@
                 "promised_delivery_date": "0001-01-01 00:00:00",
                 "due_date": "2013-01-24 00:00:00",
                 "currency_code": "CZK",
-                "total_without_vat": 11115,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_without_vat": 11115.0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "Křižíkova 2107",
-                "shipping_city": "Benešov u Prahy",
-                "date_modified": "2023-08-12 06:01:01"
+                "shipping_street": "K\u0159i\u017e\u00edkova 2107",
+                "shipping_city": "Bene\u0161ov u Prahy",
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/9"
+                "@id": "\/api\/platform\/custom\/order\/17"
             }
         },
         {
             "order": {
-                "id": 10,
+                "id": 18,
+                "sugar_id": "fe16a04a-26e4-11ee-8f3f-005056ba2a44",
+                "navision_code": "23OP03105",
+                "state": "completed",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "8d2581a4-26d9-11ee-b3f2-005056ba2a44",
+                "description": "",
+                "order_date": "2023-07-20 00:00:00",
+                "requested_delivery_date": "2023-07-20 00:00:00",
+                "promised_delivery_date": "0001-01-01 00:00:00",
+                "due_date": "2023-09-18 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 3920.4,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel s.r.o.",
+                "shipping_street": "Bab\u00ed\u010dkova 1123\/6",
+                "shipping_city": "Olomouc - Hodolany",
+                "date_modified": "2023-11-11 06:02:01"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/18"
+            }
+        },
+        {
+            "order": {
+                "id": 19,
                 "sugar_id": "fe0b5478-cd02-11e9-bb39-42010a9c0002",
                 "navision_code": "OP152636",
                 "state": "completed",
@@ -249,15 +483,41 @@
                 "due_date": "2015-10-18 00:00:00",
                 "currency_code": "CZK",
                 "total_without_vat": 1391.5,
-                "total_with_vat": 0,
-                "total_vat": 0,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
                 "shipping_name": "Richter + Frenzel s.r.o.",
-                "shipping_street": "U Technoplynu 1572/1",
+                "shipping_street": "U Technoplynu 1572\/1",
                 "shipping_city": "Praha 9",
-                "date_modified": "2023-08-12 06:01:01"
+                "date_modified": "2023-11-11 06:02:01"
             },
             "orderDetail": {
-                "@id": "/api/platform/custom/order/10"
+                "@id": "\/api\/platform\/custom\/order\/19"
+            }
+        },
+        {
+            "order": {
+                "id": 20,
+                "sugar_id": "fdff746a-8731-11eb-9e09-005056baa4be",
+                "navision_code": "21OP01053",
+                "state": "completed",
+                "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+                "opportunity_id": "209f9808-8721-11eb-a4da-005056baa4be",
+                "description": "",
+                "order_date": "2021-03-17 00:00:00",
+                "requested_delivery_date": "2021-03-22 00:00:00",
+                "promised_delivery_date": "0001-01-01 00:00:00",
+                "due_date": "2021-05-16 00:00:00",
+                "currency_code": "CZK",
+                "total_without_vat": 7818.25,
+                "total_with_vat": 0.0,
+                "total_vat": 0.0,
+                "shipping_name": "Richter + Frenzel Praha",
+                "shipping_street": "Pobo\u010dka Praha 9 - Kyje",
+                "shipping_city": "Praha 98 - Kyje",
+                "date_modified": "2023-11-11 06:02:01"
+            },
+            "orderDetail": {
+                "@id": "\/api\/platform\/custom\/order\/20"
             }
         }
     ],

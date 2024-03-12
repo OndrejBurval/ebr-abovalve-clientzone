@@ -1,0 +1,49 @@
+{
+    "order": {
+        "id": 3,
+        "sugar_id": "55b0bb26-7fda-11ee-817a-005056ba2a44",
+        "navision_code": "23OP04759",
+        "state": "invoicing",
+        "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+        "opportunity_id": "5b8b3b1c-7fca-11ee-87f8-005056ba2a44",
+        "description": "",
+        "order_date": "2023-11-10 00:00:00",
+        "requested_delivery_date": "2023-11-13 00:00:00",
+        "promised_delivery_date": "0001-01-01 00:00:00",
+        "due_date": "2024-01-12 00:00:00",
+        "currency_code": "CZK",
+        "total_without_vat": 8740.05,
+        "total_with_vat": 0.0,
+        "total_vat": 0.0,
+        "shipping_name": "Richter + Frenzel s.r.o.",
+        "shipping_street": "9. kv\u011btna 2452",
+        "shipping_city": "P\u0159erov 2",
+        "date_modified": "2023-11-13 16:00:01"
+    },
+    "orderItems": [
+        {
+            "id": 7,
+            "sugar_id": "55c829b4-7fda-11ee-af60-005056ba2a44",
+            "navision_code": "924B06501",
+            "navision_order_code": "23OP04759",
+            "name": "924B06501 - BFV 924B06501 lever",
+            "unit": "KS",
+            "quantity": 2.0,
+            "total_cost": 2637.8,
+            "unit_cost": 2398.0,
+            "date_modified": "2023-11-13 16:00:01"
+        },
+        {
+            "id": 8,
+            "sugar_id": "55c4353e-7fda-11ee-bc21-005056ba2a44",
+            "navision_code": "924B05001",
+            "navision_order_code": "23OP04759",
+            "name": "924B05001 - BFV 924B05001 lever",
+            "unit": "KS",
+            "quantity": 5.0,
+            "total_cost": 6102.25,
+            "unit_cost": 2219.0,
+            "date_modified": "2023-11-13 16:00:01"
+        }
+    ]
+}

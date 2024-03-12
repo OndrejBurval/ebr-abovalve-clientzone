@@ -21,6 +21,9 @@ const Detail = () => {
 	const { userData } = useUserData();
 
 	const orderDate = useDateString(data?.order.order_date);
+	const requestedDate = useDateString(data?.order.requested_delivery_date);
+	const promisedDate = useDateString(data?.order.promised_delivery_date);
+	const dueDate = useDateString(data?.order.due_date);
 
 	if (isLoading) {
 		return <PageLoading />;
@@ -38,13 +41,28 @@ const Detail = () => {
 				<Card title={t("zakladniPrehled")} className="orderDetail--info">
 					<ul>
 						<li className="info">
-							<strong>{t("datumZalozeni")}:</strong>
+							<strong>{t("datumObjednani")}:</strong>
 
 							<span> {orderDate} </span>
 						</li>
 
 						<li className="info">
-							<strong> {t("cenaCelkem")}: </strong>
+							<strong>{t("datumExpirace")}:</strong>
+
+							<span>
+								{requestedDate} - {promisedDate}
+							</span>
+						</li>
+
+						<li className="info">
+							<strong> {t("cenaCelkemDPH")}: </strong>
+							<span>
+								{data.order.total_with_vat}&nbsp;{data.order.currency_code}
+							</span>
+						</li>
+
+						<li className="info">
+							<strong> {t("cenaCelkemBezDPH")}: </strong>
 							<span>
 								{data.order.total_without_vat}&nbsp;{data.order.currency_code}
 							</span>
@@ -52,18 +70,15 @@ const Detail = () => {
 
 						<li className="info">
 							<strong> {t("stav")}: </strong>
-							<span>{data.order.state || ""}</span>
+							<span>{data.order.state || "-"}</span>
 						</li>
 
-						<li className="info">
-							<strong> {t("doprava")}: </strong>
-							<span> {data.order.shipping_name || "--"} </span>
-						</li>
-
-						<li className="info">
-							<strong> {t("platba")}: </strong>
-							<span> {userData.account.payment_method} </span>
-						</li>
+						{data.order.state !== "completed" && (
+							<li className="info">
+								<strong> {t("ocekavaneDatumExpirace")}: </strong>
+								<span> {dueDate || "--"} </span>
+							</li>
+						)}
 					</ul>
 				</Card>
 
@@ -89,6 +104,15 @@ const Detail = () => {
 						</div>
 					</>
 				</Card>
+
+				{data.order?.description && data.order.description.length > 0 && (
+					<Card
+						title={t("poznamka")}
+						className="orderDetail--desc"
+						isLoading={isLoading}>
+						{data.order.description}
+					</Card>
+				)}
 			</div>
 
 			<section className="orderDetail--table">

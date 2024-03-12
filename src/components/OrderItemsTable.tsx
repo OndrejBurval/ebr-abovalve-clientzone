@@ -65,97 +65,99 @@ const OrderItemsTable = ({
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<table>
-				<thead className="text-left">
-					<tr>
-						<th>
-							<Checkbox
-								name="orderAgainAll"
-								id="orderAgainAll"
-								checked={checkedStateAll}
-								onChange={(e) => {
-									setCheckedState(
-										new Array(items.length).fill(e.target.checked)
-									);
-									setCheckedStateAll(e.target.checked);
-								}}
-							/>
-						</th>
-						<th> {t("kodProduktu")} </th>
-						<th> {t("nazev")} </th>
-						<th> {t("mnozstvi")} </th>
-						<th> {t("cenaZaKus")} </th>
-						<th> {t("cenaCelkem")} </th>
-					</tr>
-				</thead>
-
-				<tbody>
-					{!isLoading &&
-						items.map((item, index) => (
-							<tr key={item.id}>
-								<td>
-									<Checkbox
-										checked={checkedState[index]}
-										name={`orderAgain-${item.id}`}
-										id={`orderAgain-${item.id}`}
-										value={JSON.stringify({
-											id: item.id,
-											name: item.name,
-											price: item.unit_cost,
-											quantity: item.quantity,
-										})}
-										onChange={(e) => {
-											setCheckedState((prevState) => {
-												const newState = [...prevState];
-												newState[index] = e.target.checked;
-												return newState;
-											});
-											if (checkedState.includes(false)) {
-												setCheckedStateAll(false);
-											}
-										}}
-									/>
-								</td>
-								<td> {item.id} </td>
-								<td> {item.name} </td>
-								<td> {item.quantity} </td>
-								<td>
-									{item.unit_cost}&nbsp;{currencyCode}
-								</td>
-								<td>
-									{item.total_cost ? item.total_cost : null}&nbsp;{currencyCode}
-								</td>
-							</tr>
-						))}
-
-					{!isLoading ? (
+			<div className="table--responsive">
+				<table>
+					<thead className="text-left">
 						<tr>
-							<td colSpan={5}>
-								<strong>{t("celkemBezDph")}</strong>
-							</td>
-							<td>
-								{totalPriceExcVat || ""}&nbsp;{currencyCode}
-							</td>
+							<th>
+								<Checkbox
+									name="orderAgainAll"
+									id="orderAgainAll"
+									checked={checkedStateAll}
+									onChange={(e) => {
+										setCheckedState(
+											new Array(items.length).fill(e.target.checked)
+										);
+										setCheckedStateAll(e.target.checked);
+									}}
+								/>
+							</th>
+							<th> {t("kodProduktu")} </th>
+							<th> {t("nazev")} </th>
+							<th> {t("mnozstvi")} </th>
+							<th> {t("cenaZaKus")} </th>
+							<th> {t("cenaCelkem")} </th>
 						</tr>
-					) : null}
+					</thead>
 
-					{isLoading &&
-						Array(3)
-							.fill(null)
-							.map((_, index) => (
-								<tr key={index}>
-									{Array(6)
-										.fill(null)
-										.map((_, innerIndex) => (
-											<td key={innerIndex}>
-												<Skeleton />
-											</td>
-										))}
+					<tbody>
+						{!isLoading &&
+							items.map((item, index) => (
+								<tr key={item.id}>
+									<td>
+										<Checkbox
+											checked={checkedState[index]}
+											name={`orderAgain-${item.id}`}
+											id={`orderAgain-${item.id}`}
+											value={JSON.stringify({
+												id: item.id,
+												name: item.name,
+												price: item.unit_cost,
+												quantity: item.quantity,
+											})}
+											onChange={(e) => {
+												setCheckedState((prevState) => {
+													const newState = [...prevState];
+													newState[index] = e.target.checked;
+													return newState;
+												});
+												if (checkedState.includes(false)) {
+													setCheckedStateAll(false);
+												}
+											}}
+										/>
+									</td>
+									<td> {item.navision_code} </td>
+									<td> {item.name} </td>
+									<td> {item.quantity} </td>
+									<td>
+										{item.unit_cost}&nbsp;{currencyCode}
+									</td>
+									<td>
+										{item.total_cost ? item.total_cost : null}&nbsp;
+										{currencyCode}
+									</td>
 								</tr>
 							))}
-				</tbody>
-			</table>
 
+						{!isLoading ? (
+							<tr>
+								<td colSpan={5}>
+									<strong>{t("celkemBezDph")}</strong>
+								</td>
+								<td>
+									{totalPriceExcVat || ""}&nbsp;{currencyCode}
+								</td>
+							</tr>
+						) : null}
+
+						{isLoading &&
+							Array(3)
+								.fill(null)
+								.map((_, index) => (
+									<tr key={index}>
+										{Array(6)
+											.fill(null)
+											.map((_, innerIndex) => (
+												<td key={innerIndex}>
+													<Skeleton />
+												</td>
+											))}
+									</tr>
+								))}
+					</tbody>
+				</table>
+			</div>
 			<div className="orderDetail--table--action">
 				{checkedState.includes(true) && (
 					<button type="submit" className="btn btn--primary">
