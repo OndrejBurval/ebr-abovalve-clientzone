@@ -8,18 +8,22 @@ type OrdersResponse = {
     totalCount: number;
 };
 
-const getOrders = async (page = 1, limit = 10, year = null): Promise<OrdersResponse> => {
+const getOrders = async (page = 1, limit = 10, year = null, archive = false): Promise<OrdersResponse> => {
     const params = new URLSearchParams({
         page: page.toString(),
-        limit: limit.toString(),
+        limit: limit.toString()
       });
       
-      if (year && year > 0) {
+      if (year && year > 0 && !archive) {
         params.append('year', year.toString());
       }
 
+      if (archive) {
+        params.append('archive', '1');
+      }
+
     const fetchUrl = import.meta.env.DEV
-        ? `/api/platform/custom/orders.json`
+        ? `/api/platform/custom/orders.json?${params}`
         : `/api/platform/custom/orders?${params}`;
 
     const res = await fetch(fetchUrl);
@@ -49,11 +53,12 @@ const getOrders = async (page = 1, limit = 10, year = null): Promise<OrdersRespo
 const useOrders = (PAGE_LIMIT = 10, key: string = "default") => {
     const [page, setPage] = useState(1);
     const [year, setYear] = useState<number | null | string>(null);
+    const [archive, setArchive] = useState<boolean>(false);
     
 
     const { data, isFetched, isLoading, isFetching } = useQuery({
-        queryKey: ["orders", key, year, page],
-        queryFn: () => getOrders(page, PAGE_LIMIT, year),
+        queryKey: ["orders", key, year, page, archive],
+        queryFn: () => getOrders(page, PAGE_LIMIT, year, archive),
         keepPreviousData: true,
         refetchOnWindowFocus: false,
         retry: false,
@@ -61,8 +66,16 @@ const useOrders = (PAGE_LIMIT = 10, key: string = "default") => {
 
     const loadMore = () => setPage(page + 1)
 
-    const setYearFilter = (year: number | string) => {
-        setYear(year === -1 ? "archive" : year);
+    const setYearFilter = (year: number | "archive") => {
+        if (year === "archive") {
+            setYear(null);
+            setPage(1);
+            setArchive(true);
+            return;
+        }
+
+        setArchive(false);
+        setYear(year);
         setPage(1);
     };
 

@@ -92,7 +92,10 @@ const Table = ({
 							<td className="px-5">
 								{item.total_without_vat}&nbsp;{item.currency_code}
 							</td>
-							<td className="px-5"> {item.state} </td>
+							<td
+								className="px-5"
+								dangerouslySetInnerHTML={{ __html: item.state }}
+							/>
 							<td className="px-5"> --- </td>
 							<td className="px-5">
 								<Link to={`/objednavka/${item.id}`}>

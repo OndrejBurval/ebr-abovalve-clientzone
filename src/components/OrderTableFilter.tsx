@@ -7,9 +7,9 @@ type Props = {
 
 const OrderTableFilter = ({ onYearSelect }: Props) => {
 	const { t } = useTranslation();
-	const [activeYear, setActiveYear] = useState<number | null | string>(null);
+	const [activeYear, setActiveYear] = useState<number | null | "archive">(null);
 
-	const handleYearSelect = (year: number | string) => {
+	const handleYearSelect = (year: number | "archive") => {
 		if (year === activeYear) return;
 		setActiveYear(year);
 		onYearSelect(year);

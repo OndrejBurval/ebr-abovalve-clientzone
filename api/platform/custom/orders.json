@@ -5,7 +5,7 @@
                 "id": 1,
                 "sugar_id": "a0ee7f1a-877d-11ee-bfdc-005056ba93ff",
                 "navision_code": "231OP00025",
-                "state": "",
+                "state": "<span class=\"status\" style=\"color: #e310e3;\">Fakturace</span>",
                 "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
                 "opportunity_id": "",
                 "description": "",

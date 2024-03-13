@@ -70,10 +70,13 @@ const Detail = () => {
 
 						<li className="info">
 							<strong> {t("stav")}: </strong>
-							<span>{data.order.state || "-"}</span>
+							<td
+								className="px-5"
+								dangerouslySetInnerHTML={{ __html: data.order.state }}
+							/>
 						</li>
 
-						{data.order.state !== "completed" && (
+						{!data.order.state.includes("Kompletní") && (
 							<li className="info">
 								<strong> {t("ocekavaneDatumExpirace")}: </strong>
 								<span> {dueDate || "--"} </span>

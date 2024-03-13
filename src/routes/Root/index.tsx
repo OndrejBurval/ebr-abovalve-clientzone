@@ -8,6 +8,7 @@ import UserCard from "@/components/UserCard";
 import Card from "@/components/ui/Card";
 
 import { Link } from "react-router-dom";
+import ProductBoxList from "@/components/ProductBoxList";
 
 export default function Root() {
 	const { t } = useTranslation();
@@ -28,6 +29,10 @@ export default function Root() {
 						<UserCard isLoading={userIsLoading} user={userData?.user} />
 					</Card>
 				</div>
+			</section>
+
+			<section>
+				<ProductBoxList />
 			</section>
 		</Layout>
 	);
