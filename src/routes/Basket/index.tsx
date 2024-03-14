@@ -61,10 +61,6 @@ const Basket = () => {
 	const [snackbarMessage, setSnackbarMessage] = useState("");
 
 	const handleSubmit = async () => {
-		console.log("basket.items", basket.items);
-		console.log("note", note);
-		console.log("packing", packing);
-
 		if (!validateInput()) return;
 
 		setOpenModal(true);
@@ -90,7 +86,7 @@ const Basket = () => {
 				}),
 			});
 
-			if (!res.ok || res.status !== 200) {
+			if (!res.ok) {
 				throw new Error("Orders network response error");
 			}
 
@@ -191,7 +187,7 @@ const Basket = () => {
 											}}
 											options={packingOptions.map((option) => option.label)}
 											renderInput={(params) => (
-												<TextField {...params}> foo </TextField>
+												<TextField {...params}> </TextField>
 											)}
 										/>
 									</div>
@@ -215,6 +211,7 @@ const Basket = () => {
 
 						<ProductList
 							products={basket.items}
+							discount={userData.account.default_discount}
 							interactive
 							onQuantityChange={basket.updateQuantity}
 							onRemove={basket.remove}

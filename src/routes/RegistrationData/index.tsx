@@ -13,6 +13,7 @@ import MailSvg from "@/components/svg/Mail";
 import AccountSvg from "@/components/svg/Account";
 import CitySvg from "@/components/svg/City";
 import Pen from "@/components/svg/Pen";
+import useCurrency from "@/hooks/useCurrency";
 
 const RegistrationData = () => {
 	const { userData, userIsLoading } = useUserData();
@@ -89,17 +90,17 @@ const RegistrationData = () => {
 							<li className="info">
 								<span>{t("sleva")}</span>
 								<span>
-									{userData.account.default_discount_c
-										? userData.account.default_discount_c
+									{userData.account.default_discount
+										? userData.account.default_discount
 										: "0"}
 									%
 								</span>
 							</li>
 							<li className="info">
-								<span>{t("fakturyPoSplatnosti")}</span>
+								<span>{t("hodnotaFakturPoSplatnosti")}</span>
 								<span>
 									{userData.account.invoice_balance_due_total
-										? userData.account.invoice_balance_due_total
+										? useCurrency(userData.account.invoice_balance_due_total)
 										: "0"}
 								</span>
 							</li>

@@ -495,3 +495,14 @@ html:has(.icon-logout) .logged-user-only {
 		}
 	}
 }
+
+.complaintPage {
+	&--wrapper {
+		display: grid;
+		gap: 1rem;
+
+		@media (min-width: 768px) {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}

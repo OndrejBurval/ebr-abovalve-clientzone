@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import Alert from "@mui/material/Alert";
 
 export default function ErrorPage() {
-	const { t } = useTranslation();
+	const { t, i18n } = useTranslation();
 	const error = useRouteError();
 	const [searchParams] = useSearchParams();
 
@@ -14,8 +14,15 @@ export default function ErrorPage() {
 				{error instanceof Error && error.message}
 			</Alert>
 
-			<a href="/" className="btn" style={{ marginTop: "2rem" }}>
+			<a
+				href="/"
+				className="btn"
+				style={{ marginBlock: "2rem", marginRight: "1rem" }}>
 				{t("zpetNaUvod")}
+			</a>
+
+			<a className="btn" href={`/clientzone_logout/${i18n.language}`}>
+				{t("odhlasitSe")}
 			</a>
 		</div>
 	);

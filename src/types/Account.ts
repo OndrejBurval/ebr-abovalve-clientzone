@@ -24,7 +24,7 @@ type Account = {
     date_modified: string;
     reg_id_c?: string;
     vat_id_c?: string;
-    default_discount_c?: number;
+    default_discount?: number;
 }
 
 export default Account;

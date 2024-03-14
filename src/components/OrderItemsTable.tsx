@@ -7,10 +7,11 @@ import Snackbar from "@mui/material/Snackbar";
 import Skeleton from "@/components/ui/Skeleton";
 import Product from "@/types/Product";
 import Checkbox from "@mui/material/Checkbox";
+import useCurrency from "@/hooks/useCurrency";
 
 type Props = {
 	items?: OrderItem[];
-	totalPriceExcVat?: number;
+	totalPriceExcVat?: string;
 	currencyCode?: string;
 	isLoading?: boolean;
 };
@@ -120,12 +121,12 @@ const OrderItemsTable = ({
 									<td> {item.navision_code} </td>
 									<td> {item.name} </td>
 									<td> {item.quantity} </td>
+									<td>{useCurrency(item.unit_cost, currencyCode)}</td>
 									<td>
-										{item.unit_cost}&nbsp;{currencyCode}
-									</td>
-									<td>
-										{item.total_cost ? item.total_cost : null}&nbsp;
-										{currencyCode}
+										{item.total_cost
+											? useCurrency(item.total_cost, currencyCode)
+											: "-"}
+										&nbsp;
 									</td>
 								</tr>
 							))}
@@ -135,9 +136,7 @@ const OrderItemsTable = ({
 								<td colSpan={5}>
 									<strong>{t("celkemBezDph")}</strong>
 								</td>
-								<td>
-									{totalPriceExcVat || ""}&nbsp;{currencyCode}
-								</td>
+								<td>{totalPriceExcVat || ""}</td>
 							</tr>
 						) : null}
 

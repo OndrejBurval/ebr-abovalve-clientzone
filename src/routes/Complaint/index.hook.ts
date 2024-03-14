@@ -10,11 +10,20 @@ const getComplaints = async (): Promise<Complaint[]> => {
     }
 
     const data = await res.json()
+
+    if (!data || [...data].length === 0) {
+        return [];
+    }
+
     return data.map((item) => item.complaint);
 };
 
 const useComplaintPage = () => {
-	return useQuery(`complaints`, getComplaints);
+	return useQuery({
+        queryKey: 'complaints',
+        queryFn: getComplaints,
+        retry: false
+    });
 };
 
 export { useComplaintPage };

@@ -8,6 +8,7 @@ import { useOrderDetailPage } from "@/routes/OrderDetail/index.hook";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDateString } from "@/hooks/useDateString";
+import useCurrency from "@/hooks/useCurrency";
 
 import BillingAddress from "@/components/BillingAddress";
 import DeliveryAddress from "@/components/DeliveryAddress";
@@ -31,7 +32,9 @@ const Detail = () => {
 
 	return (
 		<Layout
-			title={`${t("objednavkaCislo")}: ${id}`}
+			title={`${t("objednavkaCislo")}: ${
+				data.order.navision_code ? data.order.navision_code : ""
+			}`}
 			header={
 				<Link to="/objednavky" className="btn btn--primary">
 					{t("zpetNaObjednavky")}
@@ -47,24 +50,12 @@ const Detail = () => {
 						</li>
 
 						<li className="info">
-							<strong>{t("datumExpirace")}:</strong>
-
-							<span>
-								{requestedDate} - {promisedDate}
-							</span>
-						</li>
-
-						<li className="info">
-							<strong> {t("cenaCelkemDPH")}: </strong>
-							<span>
-								{data.order.total_with_vat}&nbsp;{data.order.currency_code}
-							</span>
-						</li>
-
-						<li className="info">
 							<strong> {t("cenaCelkemBezDPH")}: </strong>
 							<span>
-								{data.order.total_without_vat}&nbsp;{data.order.currency_code}
+								{useCurrency(
+									data.order.total_without_vat,
+									data.order.currency_code
+								)}
 							</span>
 						</li>
 
@@ -76,12 +67,20 @@ const Detail = () => {
 							/>
 						</li>
 
-						{!data.order.state.includes("Kompletní") && (
+						{dueDate && (
 							<li className="info">
-								<strong> {t("ocekavaneDatumExpirace")}: </strong>
+								<strong> {t("ocekavaneDatumExpedice")}: </strong>
 								<span> {dueDate || "--"} </span>
 							</li>
 						)}
+
+						<li className="info">
+							<strong>{t("datumExpedice")}:</strong>
+
+							<span>
+								{promisedDate > requestedDate ? promisedDate : requestedDate}
+							</span>
+						</li>
 					</ul>
 				</Card>
 
@@ -123,7 +122,10 @@ const Detail = () => {
 				<OrderItemsTable
 					items={data.orderItems}
 					currencyCode={data.order.currency_code}
-					totalPriceExcVat={data.order.total_without_vat}
+					totalPriceExcVat={useCurrency(
+						data.order.total_without_vat,
+						data.order.currency_code
+					)}
 				/>
 			</section>
 

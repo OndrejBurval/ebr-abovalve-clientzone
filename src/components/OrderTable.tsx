@@ -7,6 +7,7 @@ import useOrders from "@/hooks/useOrders";
 import OrderTableSeleton from "./OrderTableSkeleton";
 import OrderTableFilter from "./OrderTableFilter";
 import { useState, useEffect } from "react";
+import useCurrency from "@/hooks/useCurrency";
 
 type Props = {
 	showFilter?: boolean;
@@ -90,7 +91,7 @@ const Table = ({
 								{getDateString(item.order_date || "")}
 							</td>
 							<td className="px-5">
-								{item.total_without_vat}&nbsp;{item.currency_code}
+								{useCurrency(item.total_without_vat, item.currency_code)}
 							</td>
 							<td
 								className="px-5"

@@ -100,5 +100,13 @@
     "cenaCelkemDPH": "Cena celkem s DPH",
     "cenaCelkemBezDPH": "Cena celkem bez DPH",
     "ocekavaneDatumExpirace": "Očekávané datum expirace",
-    "archiv": "Archiv"
+    "archiv": "Archiv",
+    "datumPosledniZmeny": "Datum poslední změny",
+    "vyjadreni": "Vyjádření",
+    "datumExpedice": "Datum expedice",
+    "ocekavaneDatumExpedice": "Očekávané datum expedice",
+    "hodnotaFakturPoSplatnosti": "Hodnota faktur po splatnosti",
+    "zadneReklamace": "Nemáte žádné reklamace",
+    "zadnyPopis": "Žádný popis",
+    "zadneVyjadreni": "Zatím nebylo vyjádřeno"
 }

@@ -51,13 +51,16 @@ const ProductBoxList = () => {
 };
 
 const CategoryItem = ({ category }: { category: CategoryBox }) => {
+	const IMAGE_PLACEHOLDER =
+		"/assets/frontend/abovalvemyebranacom/img/image.svg";
+
 	return (
 		<li className="cProductList__categories__item cProductList__categories__item--box desk--one-fifth lap--one-third palm--one-half">
 			<a
 				href={category.link}
 				className="cProductList__categories__item__in cProductList__categories__item__in--box">
 				<div className="cProductList__categories__img">
-					<img src={category.image} />
+					<img src={category.image || IMAGE_PLACEHOLDER} />
 				</div>
 
 				<span className="cProductList__categories__title">{category.name}</span>
@@ -67,12 +70,15 @@ const CategoryItem = ({ category }: { category: CategoryBox }) => {
 };
 
 const ProductItem = ({ product }: { product: ProductBox }) => {
+	const IMAGE_PLACEHOLDER =
+		"/assets/frontend/abovalvemyebranacom/img/image.svg";
+
 	return (
 		<div className="grid__item desk--one-third lap--one-half palm--one-whole">
 			<div className="cProductListImg">
 				<div className="cProductListImg__img">
 					<a href={product.link} className="cProductListImg__link">
-						<img src="-" alt="obrázek" />
+						<img src={product.image || IMAGE_PLACEHOLDER} />
 					</a>
 				</div>
 

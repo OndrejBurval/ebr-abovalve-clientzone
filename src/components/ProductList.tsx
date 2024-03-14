@@ -4,9 +4,11 @@ import Card from "@/components/ui/Card";
 import { useTranslation } from "react-i18next";
 import type ProductType from "@/types/Product";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import useCurrency from "@/hooks/useCurrency";
 
 type CommonProps = {
 	products: ProductType[];
+	discount?: number;
 };
 
 type InteractiveProps = CommonProps & {
@@ -25,6 +27,7 @@ type Props = InteractiveProps | NonInteractiveProps;
 
 const ProductList = ({
 	products,
+	discount,
 	interactive,
 	onQuantityChange,
 	onRemove,
@@ -33,14 +36,12 @@ const ProductList = ({
 	const { t } = useTranslation();
 
 	const getTotalPrice = () => {
-		if (products.some((item) => item.price === 0)) {
-			return t("naDotaz");
-		}
-
-		return (
-			products.reduce((acc, item) => acc + item.price * item.quantity, 0) +
-			" Kč"
+		const value = products.reduce(
+			(acc, item) => acc + item.price * item.quantity,
+			0
 		);
+
+		return useCurrency(value);
 	};
 
 	const list = products.map((product) => {
@@ -63,9 +64,18 @@ const ProductList = ({
 				{list}
 			</div>
 
-			<div className="productList--total">
-				<strong>{t("celkem")}</strong>
-				<span>{getTotalPrice()}</span>
+			<div className="productList--price">
+				{discount && (
+					<div className="productList--total">
+						<strong>{t("sleva")}</strong>
+						<span>{discount}%</span>
+					</div>
+				)}
+
+				<div className="productList--total">
+					<strong>{t("celkem")}</strong>
+					<span>{getTotalPrice()}</span>
+				</div>
 			</div>
 		</Card>
 	);
