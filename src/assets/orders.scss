@@ -24,3 +24,23 @@
 		}
 	}
 }
+
+.actionCol {
+	max-width: 140px;
+
+	a {
+		display: inline-block;
+		margin-right: 0.5rem;
+		margin-bottom: 0.5rem;
+
+		@media (max-width: 1400px) {
+			display: block;
+
+			width: 100%;
+		}
+
+		button {
+			width: 100%;
+		}
+	}
+}

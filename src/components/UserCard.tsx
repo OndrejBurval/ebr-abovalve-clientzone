@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import usePhoneFormat from "@/hooks/usePhoneFormat";
 import type User from "@/types/User";
 import Skeleton from "./ui/Skeleton";
 
@@ -40,7 +41,9 @@ const UserData = (user: User) => {
 		<>
 			{user.name && <p>{`${user.first_name} ${user.last_name}`}</p>}
 			{user.phone && (
-				<a href={`tel:${user.phone.replace(/ /g, "")}`}> {user.phone} </a>
+				<a href={`tel:${user.phone.replace(/ /g, "")}`}>
+					{usePhoneFormat(user.phone)}
+				</a>
 			)}
 		</>
 	);

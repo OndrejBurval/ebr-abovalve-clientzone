@@ -13,6 +13,7 @@ import useCurrency from "@/hooks/useCurrency";
 import BillingAddress from "@/components/BillingAddress";
 import DeliveryAddress from "@/components/DeliveryAddress";
 import { useUserData } from "@/hooks/useUserData";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const Detail = () => {
 	const { t } = useTranslation();
@@ -22,9 +23,7 @@ const Detail = () => {
 	const { userData } = useUserData();
 
 	const orderDate = useDateString(data?.order.order_date);
-	const requestedDate = useDateString(data?.order.requested_delivery_date);
-	const promisedDate = useDateString(data?.order.promised_delivery_date);
-	const dueDate = useDateString(data?.order.due_date);
+	const dueDate = useDateString(data?.order.promised_delivery_date);
 
 	if (isLoading) {
 		return <PageLoading />;
@@ -40,6 +39,16 @@ const Detail = () => {
 					{t("zpetNaObjednavky")}
 				</Link>
 			}>
+			<Breadcrumb
+				links={[
+					{ href: "/objednavky", label: t("objednavky") },
+					{
+						href: `/objednavka/${data.order.id || ""}`,
+						label: data.order.navision_code || "",
+					},
+				]}
+			/>
+
 			<div className="orderDetail--wrapper">
 				<Card title={t("zakladniPrehled")} className="orderDetail--info">
 					<ul>
@@ -73,14 +82,6 @@ const Detail = () => {
 								<span> {dueDate || "--"} </span>
 							</li>
 						)}
-
-						<li className="info">
-							<strong>{t("datumExpedice")}:</strong>
-
-							<span>
-								{promisedDate > requestedDate ? promisedDate : requestedDate}
-							</span>
-						</li>
 					</ul>
 				</Card>
 

@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import { useBasket } from "@/hooks/useBasket";
 import { useUserData } from "@/hooks/useUserData";
 import { useState } from "react";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const Basket = () => {
 	const { t } = useTranslation();
@@ -21,27 +22,39 @@ const Basket = () => {
 
 	const packingOptions = [
 		{
-			label: t("nakladniDopravce"),
-			value: "cargo",
+			label: t("road"),
+			value: "road",
 		},
 		{
-			label: t("namorniDoprava"),
-			value: "ship",
-		},
-		{
-			label: t("leteckaDoprava"),
+			label: t("air"),
 			value: "air",
+		},
+		{
+			label: t("sea"),
+			value: "sea",
 		},
 	];
 
 	const deliveryOptions = [
 		{
-			label: t("fca"),
-			value: "FCA",
+			label: t("truck"),
+			value: "Truck",
 		},
 		{
-			label: t("cfr"),
-			value: "CFR",
+			label: t("sea_freight"),
+			value: "sea_freight",
+		},
+		{
+			label: t("air_freight"),
+			value: "air_freight",
+		},
+		{
+			label: t("customer_transportation"),
+			value: "customer_transportation",
+		},
+		{
+			label: t("supplier_transportation"),
+			value: "supplier_transportation",
 		},
 	];
 
@@ -111,7 +124,12 @@ const Basket = () => {
 	};
 
 	return (
-		<Layout title={`${t("kosik")}`} className="basket">
+		<Layout
+			title={`${t("kosik")}`}
+			subtitle={`${t("kosikPodnadpis")}`}
+			className="basket">
+			<Breadcrumb links={[{ href: "/kosik", label: t("kosik") }]} />
+
 			<div className="basket--wrapper">
 				{basket.items.length > 0 && !userIsLoading ? (
 					<>

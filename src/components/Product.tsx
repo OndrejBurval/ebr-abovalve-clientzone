@@ -2,6 +2,8 @@ import { useTranslation } from "react-i18next";
 
 import type ProductType from "@/types/Product";
 import Close from "@/components/svg/Close";
+import { useState } from "react";
+import useCurrency from "@/hooks/useCurrency";
 
 type CommonProps = {
 	product: ProductType;
@@ -28,11 +30,7 @@ const Product = ({
 	onRemove,
 }: Props) => {
 	const { t } = useTranslation();
-
-	const getPrice = (price: number) => {
-		if (price < 1) return t("naDotaz");
-		return `${price} Kč`;
-	};
+	const [price, setPrice] = useState(product.price || 0);
 
 	return (
 		<div className="productBox">
@@ -47,7 +45,9 @@ const Product = ({
 			<div className="productBox--inner">
 				<div className="productBox--name">{product.name}</div>
 
-				<div className="productBox--price">{getPrice(product.price)}</div>
+				<div className="productBox--price">
+					{product.price > 0 ? useCurrency(price) : t("naDotaz")}
+				</div>
 
 				<span className="productBox--id">{product.id}</span>
 
@@ -65,11 +65,13 @@ const Product = ({
 								const value = parseInt(e.target.value);
 								if (isNaN(value) || value < 1) {
 									e.currentTarget.value = "1";
+									return;
 								}
 								onQuantityChange(
 									product.id,
 									isNaN(value) || value < 1 ? 1 : value
 								);
+								setPrice(product.price * value);
 							}}
 						/>
 					) : (

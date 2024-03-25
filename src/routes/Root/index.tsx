@@ -9,6 +9,7 @@ import Card from "@/components/ui/Card";
 
 import { Link } from "react-router-dom";
 import ProductBoxList from "@/components/ProductBoxList";
+import Breadcrumb from "@/components/Breadcrumb";
 
 export default function Root() {
 	const { t } = useTranslation();
@@ -16,6 +17,8 @@ export default function Root() {
 
 	return (
 		<Layout title={t("klientskaZona")}>
+			<Breadcrumb />
+
 			<section className="clientZone--dashboard">
 				<div className="clientZone--dashboard--orders">
 					<Card>

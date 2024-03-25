@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useWebConfig } from "@/hooks/useWebConfig";
 import { type TFunction } from "i18next";
@@ -51,24 +51,24 @@ const NavItems = ({ t, lang }: NavItemsProps) => {
 				</a>
 			</li>
 			<li className="nav__item">
-				<Link className="nav__item__in" to="/muj-ucet">
+				<NavLink className="nav__item__in" to="/muj-ucet">
 					{t("prehled")}
-				</Link>
+				</NavLink>
 			</li>
 			<li className="nav__item">
-				<Link className="nav__item__in" to="/registracni-udaje">
+				<NavLink className="nav__item__in" to="/registracni-udaje">
 					{t("registracniUdaje")}
-				</Link>
+				</NavLink>
 			</li>
 			<li className="nav__item">
-				<Link className="nav__item__in" to="/objednavky">
+				<NavLink className="nav__item__in" to="/objednavky">
 					{t("objednavky")}
-				</Link>
+				</NavLink>
 			</li>
 			<li className="nav__item">
-				<Link className="nav__item__in" to="/reklamace">
+				<NavLink className="nav__item__in" to="/reklamace">
 					{t("reklamace")}
-				</Link>
+				</NavLink>
 			</li>
 
 			<li className="nav__item">
@@ -99,7 +99,7 @@ const DescHeader = ({ t, lang, onLanguageChange }: DescHeaderProps) => {
 				<NavItems t={t} lang={lang} />
 			</div>
 
-			<div className="cHeader__component cHeader__lang">
+			<div className="cHeader__component cHeader__lang none">
 				<div
 					className="cLang cLang--iconOnly cLang--drop _p _iA js__langswitch "
 					data-a-init-langswitch='{"c.init": {}}'>
@@ -113,9 +113,9 @@ const DescHeader = ({ t, lang, onLanguageChange }: DescHeaderProps) => {
 			</div>
 
 			<div className="cHeader__component cHeader__cta">
-				<Link className="nav__item__in" to="/kosik">
+				<NavLink className="nav__item__in" to="/kosik">
 					{t("kosik")}
-				</Link>
+				</NavLink>
 			</div>
 		</div>
 	);
@@ -158,9 +158,9 @@ const MobileHeader = ({ t, lang }: DescHeaderProps) => {
 					</div>
 
 					<div className="mobileHeader__component mobileHeader__component--cta">
-						<Link className=" btn btn--cta" to="/kosik">
+						<NavLink className=" btn btn--cta" to="/kosik">
 							{t("kosik")}
-						</Link>
+						</NavLink>
 					</div>
 				</div>
 			</div>

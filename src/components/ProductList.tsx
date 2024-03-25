@@ -65,7 +65,7 @@ const ProductList = ({
 			</div>
 
 			<div className="productList--price">
-				{discount && (
+				{!!discount && (
 					<div className="productList--total">
 						<strong>{t("sleva")}</strong>
 						<span>{discount}%</span>

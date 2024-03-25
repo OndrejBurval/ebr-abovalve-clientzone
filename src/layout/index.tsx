@@ -9,13 +9,21 @@ import Snackbar from "@mui/material/Snackbar";
 
 type Props = {
 	title?: string;
+	subtitle?: string;
 	children?: ReactNode;
 	header?: ReactNode;
 	isLoading?: boolean;
 	className?: string;
 };
 
-const Default = ({ children, header, title, isLoading, className }: Props) => {
+const Default = ({
+	children,
+	header,
+	title,
+	subtitle,
+	isLoading,
+	className,
+}: Props) => {
 	const { userIsLoading } = useUserData();
 	const { state } = useLocation();
 
@@ -36,7 +44,11 @@ const Default = ({ children, header, title, isLoading, className }: Props) => {
 				{isLoading ? <Skeleton className="w-52" /> : null}
 
 				<div className="main--header">
-					{title && !isLoading ? <h1>{title}</h1> : null}
+					{title && !isLoading ? (
+						<h1>
+							{title} {subtitle && <span className="subtitle">{subtitle}</span>}
+						</h1>
+					) : null}
 
 					{!isLoading && header ? header : null}
 				</div>

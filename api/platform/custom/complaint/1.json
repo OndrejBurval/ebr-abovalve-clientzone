@@ -1,0 +1,133 @@
+{
+    "complaint": {
+        "id": 25,
+        "sugar_id": "b75f3086-e1ec-11ee-9636-005056ba93ff",
+        "name": "Objedn\u00e1vka portal: test update.",
+        "description": "4 - 3 ks\n5 - 3 ks\n6 - 4 ks\n620B10001 - 1 ks\n923B20001 - 5 ks",
+        "case_number": "127418",
+        "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
+        "claim_status": "",
+        "claim_resolution": "",
+        "contact_id": "ee00e170-80f9-11ed-8300-005056ba2a44",
+        "date_create": "2024-03-14 00:00:00",
+        "date_update": "2024-03-14 00:00:00",
+        "type": "PortalOrder",
+        "date_modified": "2024-03-14 11:22:09",
+        "documents": [
+            {
+                "id": 2,
+                "sugar_id": "6a340ab6-e629-11ee-8f41-005056ba93ff",
+                "parent_sugar_id": "040e5108-e541-11ee-adfe-005056ba93ff",
+                "name": "sample.pdf",
+                "description": "Testovac\u00ed p\u0159\u00edloha od DJ",
+                "type": "Other",
+                "filename": "sample.pdf",
+                "file_size": 3028,
+                "date_create": "2024-03-19 00:00:00",
+                "date_modified": "2024-03-19 20:46:44"
+            },
+            {
+                "id": 3,
+                "sugar_id": "040e9f00-e541-11ee-bf4b-005056ba93ff",
+                "parent_sugar_id": "040e5108-e541-11ee-adfe-005056ba93ff",
+                "name": "dummy.pdf",
+                "description": "Testovac\u00ed p\u0159\u00edloha od DJ",
+                "type": "Other",
+                "filename": "dummy.pdf",
+                "file_size": 13264,
+                "date_create": "2024-03-18 00:00:00",
+                "date_modified": "2024-03-18 17:18:41"
+            }
+        ]
+    },
+    "documents": [
+        {
+            "document": {
+                "id": 2,
+                "sugar_id": "6a340ab6-e629-11ee-8f41-005056ba93ff",
+                "parent_sugar_id": "040e5108-e541-11ee-adfe-005056ba93ff",
+                "name": "sample.pdf",
+                "description": "Testovac\u00ed p\u0159\u00edloha od DJ",
+                "type": "Other",
+                "filename": "sample.pdf",
+                "file_size": 3028,
+                "date_create": "2024-03-19 00:00:00",
+                "date_modified": "2024-03-19 20:46:44",
+                "complaint": {
+                    "id": 25,
+                    "sugar_id": "b75f3086-e1ec-11ee-9636-005056ba93ff",
+                    "name": "Objedn\u00e1vka portal: test update.",
+                    "description": "4 - 3 ks\n5 - 3 ks\n6 - 4 ks\n620B10001 - 1 ks\n923B20001 - 5 ks",
+                    "case_number": "127418",
+                    "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
+                    "claim_status": "",
+                    "claim_resolution": "",
+                    "contact_id": "ee00e170-80f9-11ed-8300-005056ba2a44",
+                    "date_create": "2024-03-14 00:00:00",
+                    "date_update": "2024-03-14 00:00:00",
+                    "type": "PortalOrder",
+                    "date_modified": "2024-03-14 11:22:09",
+                    "documents": {
+                        "1": {
+                            "id": 3,
+                            "sugar_id": "040e9f00-e541-11ee-bf4b-005056ba93ff",
+                            "parent_sugar_id": "040e5108-e541-11ee-adfe-005056ba93ff",
+                            "name": "dummy.pdf",
+                            "description": "Testovac\u00ed p\u0159\u00edloha od DJ",
+                            "type": "Other",
+                            "filename": "dummy.pdf",
+                            "file_size": 13264,
+                            "date_create": "2024-03-18 00:00:00",
+                            "date_modified": "2024-03-18 17:18:41"
+                        }
+                    }
+                }
+            },
+            "link": "\/api\/platform\/custom\/complaint\/file\/2"
+        },
+        {
+            "document": {
+                "id": 3,
+                "sugar_id": "040e9f00-e541-11ee-bf4b-005056ba93ff",
+                "parent_sugar_id": "040e5108-e541-11ee-adfe-005056ba93ff",
+                "name": "dummy.pdf",
+                "description": "Testovac\u00ed p\u0159\u00edloha od DJ",
+                "type": "Other",
+                "filename": "dummy.pdf",
+                "file_size": 13264,
+                "date_create": "2024-03-18 00:00:00",
+                "date_modified": "2024-03-18 17:18:41",
+                "complaint": {
+                    "id": 25,
+                    "sugar_id": "b75f3086-e1ec-11ee-9636-005056ba93ff",
+                    "name": "Objedn\u00e1vka portal: test update.",
+                    "description": "4 - 3 ks\n5 - 3 ks\n6 - 4 ks\n620B10001 - 1 ks\n923B20001 - 5 ks",
+                    "case_number": "127418",
+                    "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
+                    "claim_status": "",
+                    "claim_resolution": "",
+                    "contact_id": "ee00e170-80f9-11ed-8300-005056ba2a44",
+                    "date_create": "2024-03-14 00:00:00",
+                    "date_update": "2024-03-14 00:00:00",
+                    "type": "PortalOrder",
+                    "date_modified": "2024-03-14 11:22:09",
+                    "documents": [
+                        {
+                            "id": 2,
+                            "sugar_id": "6a340ab6-e629-11ee-8f41-005056ba93ff",
+                            "parent_sugar_id": "040e5108-e541-11ee-adfe-005056ba93ff",
+                            "name": "sample.pdf",
+                            "description": "Testovac\u00ed p\u0159\u00edloha od DJ",
+                            "type": "Other",
+                            "filename": "sample.pdf",
+                            "file_size": 3028,
+                            "date_create": "2024-03-19 00:00:00",
+                            "date_modified": "2024-03-19 20:46:44"
+                        }
+                    ]
+                }
+            },
+            "link": "\/api\/platform\/custom\/complaint\/file\/3"
+        }
+    ]
+}

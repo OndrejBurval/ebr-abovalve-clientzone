@@ -16520,6 +16520,30 @@ img.mfp-img {
     top: 0;
     left: 0;
     width: 100%; }
+  .cHeader--hasLogoFullHeight.cHeader--classic .cHeader__wrapper {
+    max-width: 1410px;
+    margin-inline: auto;
+    padding-inline: 12px ;
+    padding-inline: 0.8rem ; }
+  .cHeader--hasLogoFullHeight .cHeader__wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1rem; }
+    .cHeader--hasLogoFullHeight .cHeader__wrapper > .cHeader__logo {
+      grid-row: 1 / 3;
+      place-self: center;
+      margin-left: 12px ;
+      margin-left: 0.8rem ; }
+    .cHeader--hasLogoFullHeight .cHeader__wrapper > .cHeader__inner {
+      margin-inline: auto 0;
+      width: 100%; }
+    .cHeader--hasLogoFullHeight .cHeader__wrapper .navbar__inner {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-inline: auto 0; }
+    .cHeader--hasLogoFullHeight .cHeader__wrapper .navbar__left, .cHeader--hasLogoFullHeight .cHeader__wrapper .navbar__right {
+      width: max-content; }
   .cHeader__inner {
     display: flex;
     align-items: center; }
@@ -20259,8 +20283,8 @@ Kosticka VICEPRACE
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     width: 100%;
-    top: 40%;
-    text-align: center; }
+    top: 5%;
+    left: 5%; }
     @media screen and (min-width: 1410px) {
       .cHtmlSlider__box {
         max-width: 1410px; } }
@@ -21337,6 +21361,16 @@ Kosticka POPIS STRANKY
   @media screen and (min-width: 768px) {
     .cImageBox__textContent {
       flex-grow: 1; } }
+  @media screen and (max-width: 767px) {
+    .cImageBox[data-infobox-height-enabled] {
+      height: var(--_height-mobile); } }
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .cImageBox[data-infobox-height-enabled] {
+    height: var(--_height-tablet); } }
+  @media screen and (min-width: 1024px) {
+    .cImageBox[data-infobox-height-enabled] {
+      height: var(--_height-desc); } }
   .cImageBox--bg-color, .cImageBox--has-border {
     padding: 24px; }
   .cImageBox__title {
@@ -26302,6 +26336,9 @@ Kosticka POPIS STRANKY
 .btn, .cClientZone__logout {
   border: 0;
   transition: all ease 0.33s; }
+  .btn--register {
+    text-align: center !important;
+    text-transform: uppercase; }
 
 .cc-banner-wrap .js-cc-banner-confirmChoices-btn,
 .cc-banner-wrap .js-cc-banner-confirmAll-btn {
@@ -27013,6 +27050,15 @@ table,
   100% {
     transform: rotate(360deg); } }
 
+body[data-logged-user="true"] .not-logged-only {
+  display: none !important; }
+
+body[data-logged-user="false"] .logged-only {
+  display: none !important; }
+
+.js_loading {
+  display: none !important; }
+
 h1 {
   font-weight: 900; }
   @media screen and (min-width: 1600px) {
@@ -27323,7 +27369,7 @@ ol > li {
       margin-top: 2rem;
       width: max-content; } }
   .page--productDetail .row--soubory .cFilesContainer {
-    padding: 1rem 2rem; }
+    padding: 0.75rem 1rem; }
   .page--productDetail .row--soubory .cFiles {
     margin-bottom: 0; }
     .page--productDetail .row--soubory .cFiles__icon {
@@ -27382,6 +27428,18 @@ ol > li {
 .page--productDetail .cProductListParams .cHeading {
   font-size: 1.5rem;
   margin-bottom: 0.5rem; }
+
+.row--list .cText {
+  margin-bottom: 0; }
+  .row--list .cText ul {
+    margin-bottom: 0.5rem; }
+    .row--list .cText ul li:last-of-type {
+      margin-bottom: 0; }
+    .row--list .cText ul li {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem; }
+      .row--list .cText ul li p {
+        margin-bottom: 0; }
 
 /* ==========================================================================================
 Kosticka SOUBORY KE STAZENI - designova vrstva
@@ -28540,6 +28598,9 @@ Kosticka POPIS STRANKY - designova vrstva
 .cClientZone.fullScreen .cForm label {
   color: #2A2A2A; }
 
+#clientzoneLogin ul > .grid__item:last-of-type .form-fields__inner, #clientzoneLogin ul > .label--inline:last-of-type .form-fields__inner, #clientzoneLogin ul > .label--inline + .field:last-of-type .form-fields__inner {
+  margin-bottom: 0.5rem; }
+
 .row--sikme-rozcestniky {
   margin-bottom: 0; }
   @media screen and (max-width: 767px) {
@@ -28931,7 +28992,7 @@ Kosticka POPIS STRANKY - designova vrstva
     .cForm .grid .grid__item, .cForm .grid .label--inline, .cForm .grid .label--inline + .field {
       padding-left: 1.2rem; }
   .cForm .cForm__inner {
-    background-color: #F6F6F6;
+    background-color: #f6f6f6;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -28961,7 +29022,7 @@ Kosticka POPIS STRANKY - designova vrstva
     .cForm .top-m {
       margin-top: -0.6667rem; } }
   .cForm .field {
-    background-color: #ECECEC;
+    background-color: #ececec;
     border: 0;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -28974,7 +29035,7 @@ Kosticka POPIS STRANKY - designova vrstva
   .cForm .checkbox-design label,
   .cForm .radio-design label {
     border-color: #dfdfdf;
-    background-color: #ECECEC;
+    background-color: #ececec;
     top: 1px !important; }
   .cForm .gdpr {
     font-size: 13px;
@@ -29043,11 +29104,11 @@ Kosticka POPIS STRANKY - designova vrstva
       padding-left: 0; }
 
 .row--form {
-  background-color: #F6F6F6; }
+  background-color: #f6f6f6; }
   @media screen and (min-width: 1350px) {
     .row--form {
       background-image: url(../img/znak-abovalve.svg);
-      background-color: #F6F6F6;
+      background-color: #f6f6f6;
       background-repeat: no-repeat;
       background-size: 250px auto;
       background-position: -85px center; } }
@@ -29083,6 +29144,35 @@ Kosticka POPIS STRANKY - designova vrstva
   @media screen and (min-width: 768px) {
     .row--form textarea {
       min-height: 327px; } }
+
+.cFormBasket--wrapper .cForm__inner {
+  padding: 0;
+  background-color: transparent; }
+
+.cFormBasket--inner {
+  padding-block: 2rem; }
+
+.cFormBasket .drawer--empty,
+.cFormBasket h3 {
+  font-weight: 700;
+  margin-top: 1.5rem;
+  color: #355a4d;
+  text-transform: uppercase;
+  font-size: 0.86667rem; }
+
+.cFormBasket h3 {
+  margin-top: 0; }
+
+.cFormBasket .productBox--inner {
+  grid-template-columns: 2fr 1fr; }
+
+.cFormBasket .productBox--quantity {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0.5rem; }
+  .cFormBasket .productBox--quantity input {
+    max-width: 5rem; }
 
 @media screen and (min-width: 768px) {
   .cHeader--hamburger {
@@ -29133,7 +29223,7 @@ Kosticka POPIS STRANKY - designova vrstva
   visibility: hidden;
   opacity: 0; }
   #mm-blocker.mm-slideout {
-    transition: all .3s ease-in-out; }
+    transition: all 0.3s ease-in-out; }
   #mm-blocker.mm-slideout--active {
     background-color: rgba(246, 246, 246, 0.3); }
 
@@ -29232,7 +29322,8 @@ Kosticka POPIS STRANKY - designova vrstva
       transition: all ease 0.33s;
       text-transform: uppercase;
       padding: 17px 29px 17px 29px ;
-      padding: 1.13333rem 1.93333rem 1.13333rem 1.93333rem ; }
+      padding: 1.13333rem 1.93333rem 1.13333rem 1.93333rem ;
+      white-space: nowrap; }
       @media screen and (min-width: 1200px) {
         .cHeader .cHeader__inner .cHeader__cta a {
           padding: 18px 44px 18px 44px ;
@@ -29269,6 +29360,16 @@ Kosticka POPIS STRANKY - designova vrstva
           .cHeader .cHeader__inner .cHeader__cta a:hover {
             padding: 17px 55px 17px 23px ;
             padding: 1.13333rem 3.66667rem 1.13333rem 1.53333rem ; } }
+    .cHeader .cHeader__inner .cHeader__cta ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      gap: 0.5rem; }
+      .cHeader .cHeader__inner .cHeader__cta ul li {
+        margin-bottom: 0;
+        height: max-content; }
     @media screen and (min-width: 768px) and (max-width: 1023px) {
       .cHeader .cHeader__inner .cHeader__mainNav {
         position: absolute;
@@ -29303,27 +29404,9 @@ Kosticka POPIS STRANKY - designova vrstva
     @media screen and (min-width: 1024px) {
       .cHeader .cHeader__inner .cHeader__clientZone {
         top: 2px; } }
-    .cHeader .cHeader__inner .cHeader__clientZone .icon-login:before {
-      content: "";
-      background-image: url(../img/login.svg);
-      background-color: transparent;
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center center;
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 0.5rem;
-      width: 13px;
-      height: 14px; }
-    @media screen and (min-width: 1024px) {
-      .cHeader .cHeader__inner .cHeader__clientZone .icon-login:after {
-        font-weight: 800;
-        color: #EE1D23;
-        text-decoration: underline;
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 14px;
-        font-size: 0.93333rem; } }
+    .cHeader .cHeader__inner .cHeader__clientZone svg {
+      margin-bottom: -0.25rem;
+      margin-right: 0.5rem; }
 
 /*.cHeader {
     .cHeader__lang {
@@ -29345,6 +29428,37 @@ Kosticka POPIS STRANKY - designova vrstva
         }
     }
 }*/
+.icon-login::before {
+  content: "" !important;
+  width: 1.15rem;
+  height: 1.15rem;
+  display: inline-block;
+  background-image: url(../img/login.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center; }
+
+.icon-logout::before {
+  content: "" !important;
+  width: 1.15rem;
+  height: 1.15rem;
+  display: inline-block;
+  background-image: url(../img/logout.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center; }
+
+@media (min-width: 1024px) {
+  .page--productDetail .cHeader__mainNav,
+  .page--productList .cHeader__mainNav {
+    padding-left: 3rem !important;
+    flex-grow: 1 !important;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center; } }
+
 .cCrumb .breadcrumb__item {
   font-size: 12px;
   font-size: 0.8rem; }
@@ -31060,6 +31174,9 @@ Magnific popup - CUSTOM STYLY
     width: 100%;
     margin-bottom: 12px ;
     margin-bottom: 0.8rem ; }
+    @media (min-width: 768px) {
+      [data-logged-user="false"] .cProduct__availability {
+        margin-bottom: 0; } }
     .cProduct__availability__title {
       display: table-cell;
       width: 50%;
@@ -31883,10 +32000,18 @@ html:not([lang="cs"]) .cHeader__clientZone {
 html:has(.icon-logout) .logged-user-only {
   display: block; }
 
+@media (max-width: 850px) {
+  #root .cHeader__inner .nav__item__in {
+    font-size: 0.7rem !important; } }
+
+@media (max-width: 1500px) {
+  #root .cHeader__inner .nav__item__in {
+    font-size: 0.9rem; } }
+
 #root .main {
   margin-block: 2rem;
   max-width: 1410px;
-  padding-inline: 1rem;
+  padding-inline: 1rem !important;
   margin-inline: auto; }
   #root .main--header {
     display: flex;
@@ -31898,11 +32023,19 @@ html:has(.icon-logout) .logged-user-only {
     #root .main--header h1 {
       margin-bottom: 0; }
 
+#root h2, #root .cInfobox .cHeading, .cInfobox #root .cHeading,
+#root h3 {
+  font-weight: 600; }
+
 #root h1 {
-  font-size: 2rem; }
+  font-weight: 700;
+  font-size: 1.5rem; }
 
 #root h2, #root .cInfobox .cHeading, .cInfobox #root .cHeading {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem; }
+
+#root h3 {
   margin-bottom: 0.5rem; }
 
 .clientZoneConfig {
@@ -31911,6 +32044,9 @@ html:has(.icon-logout) .logged-user-only {
 .page--clientZone .cHeader__inner {
   margin-inline: auto;
   padding-inline: 1rem; }
+
+.page--clientZone .cCrumb {
+  margin-bottom: 2rem !important; }
 
 .page--clientZone table {
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
@@ -31925,6 +32061,10 @@ html:has(.icon-logout) .logged-user-only {
 .registrationData--wrapper .userCard {
   grid-row: 1 / 3;
   grid-column: 4 / 5; }
+
+@media (min-width: 768px) {
+  .registrationData--wrapper .userData--connected {
+    grid-column: span 2; } }
 
 .userCard {
   display: flex;
@@ -31974,22 +32114,31 @@ html:has(.icon-logout) .logged-user-only {
   border-radius: 0;
   outline: none; }
 
-#root .basket textarea {
+#root .basket textarea,
+#root .basket input[type="text"] {
   padding: 1rem;
-  width: 100%; }
+  width: 100%;
+  outline: none !important; }
 
 #root .basket .MuiInputBase-root,
-#root .basket textarea {
+#root .basket textarea,
+#root .basket input[type="text"] {
   border: solid 1px #dddddd !important;
   background-color: #ffffff !important;
   border-radius: 0;
   font-size: 0.9rem !important; }
   #root .basket .MuiInputBase-root *,
-  #root .basket textarea * {
+  #root .basket textarea *,
+  #root .basket input[type="text"] * {
+    border: none !important; }
+  #root .basket .MuiInputBase-root fieldset,
+  #root .basket textarea fieldset,
+  #root .basket input[type="text"] fieldset {
     border: none !important; }
 
 #root .basket .MuiInputBase-root {
-  padding: 0.25rem !important; }
+  padding: 0 !important;
+  border: none !important; }
 
 #root .basket--wrapper {
   display: grid;
@@ -32011,12 +32160,18 @@ html:has(.icon-logout) .logged-user-only {
 #root .filter {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.5rem;
+  overflow-x: auto;
   margin-bottom: 1rem; }
-  #root .filter .btn:not([data-active="true"]), #root .filter .cClientZone__logout:not([data-active="true"]) {
-    background-color: #e2e2e2;
-    color: #002a2a; }
+  @media (max-width: 767px) {
+    #root .filter {
+      padding-block: 0.5rem; } }
+  #root .filter .btn, #root .filter .cClientZone__logout {
+    width: max-content; }
+    #root .filter .btn:not([data-active="true"]), #root .filter .cClientZone__logout:not([data-active="true"]) {
+      background-color: #e2e2e2;
+      color: #002a2a; }
   #root .filter:not(:has([data-active="true"])) .btn--all {
     background-color: #e70d21;
     color: #fff; }
@@ -32058,7 +32213,8 @@ html:has(.icon-logout) .logged-user-only {
   .productBox--name {
     font-weight: 600;
     font-size: 0.9rem;
-    line-height: 1.2; }
+    line-height: 1.2;
+    max-width: 30rem; }
   .productBox--price {
     line-height: 1.2;
     font-size: 0.85rem;
@@ -32074,18 +32230,21 @@ html:has(.icon-logout) .logged-user-only {
   font-size: 0.8rem;
   height: 2rem !important; }
 
-.userInput .card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; }
+.userInput {
+  margin-top: 1rem; }
+  .userInput .card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; }
 
 .userData--connected {
-  margin-bottom: 1rem; }
+  margin-bottom: 0 !important; }
   .userData--connected strong {
     display: block;
     margin-bottom: 0.5rem; }
   .userData--connected .card__body {
-    display: grid; }
+    display: grid;
+    height: 100%; }
     @media (min-width: 450px) {
       .userData--connected .card__body {
         grid-template-columns: repeat(2, 1fr); } }
@@ -32149,12 +32308,59 @@ html:has(.icon-logout) .logged-user-only {
     .userData--info li p {
       font-size: 0.85rem;
       margin-bottom: 0; }
+      .userData--info li p span {
+        display: block;
+        font-size: 0.8rem; }
+
+.nav__item__in.active,
+.nav__item.page--active .nav__item__in {
+  color: #e70d21;
+  border-bottom: solid 3px #e70d21; }
+
+#root .main--header {
+  margin-bottom: 1rem !important; }
+
+#root .clientZone--dashboard--orders {
+  max-width: calc(100vw - 2rem); }
+
+#root .table--responsive {
+  overflow-x: auto; }
+  #root .table--responsive table {
+    min-width: 800px; }
+
+#root .mm-panels {
+  position: fixed !important;
+  inset: 0 !important;
+  pointer-events: none; }
+  #root .mm-panels .btn, #root .mm-panels .cClientZone__logout {
+    padding: 0.75rem 2rem; }
+  #root .mm-panels .mobileHeader__inner {
+    padding-top: 3rem; }
+    #root .mm-panels .mobileHeader__inner.active {
+      pointer-events: all; }
+    #root .mm-panels .mobileHeader__inner:not(.active) {
+      transform: translateY(-100%) !important;
+      pointer-events: none; }
+
+@media (min-width: 768px) {
+  .orderDetail--desc {
+    grid-column: span 2; } }
+
+.complaintPage--wrapper {
+  display: grid;
+  gap: 1rem; }
+  @media (min-width: 768px) {
+    .complaintPage--wrapper {
+      grid-template-columns: repeat(2, 1fr); } }
+
+table p {
+  margin-bottom: 0; }
 
 .clientZone--dashboard {
   display: grid;
   gap: 2rem;
   place-items: center; }
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     .clientZone--dashboard {
       grid-template-columns: 3fr 1fr; } }
   .clientZone--dashboard--orders {
@@ -32168,6 +32374,142 @@ html:has(.icon-logout) .logged-user-only {
     width: 100%; }
   .clientZone--dashboard--orders, .clientZone--dashboard--userCard {
     height: 100%; }
+
+.skeleton {
+  display: block;
+  height: 2rem;
+  min-width: 3rem;
+  background-color: #efefef;
+  border-radius: 1rem;
+  animation: pulse 0.75s infinite alternate; }
+
+@keyframes pulse {
+  0% {
+    opacity: 1; }
+  100% {
+    opacity: 0.5; } }
+  tbody tr:nth-child(odd) .skeleton {
+    background-color: #e2e2e2; }
+
+li.info {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem; }
+
+.card {
+  border: solid 1px #dfdfdf;
+  padding: 1rem;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.05);
+  position: relative; }
+  .card table {
+    box-shadow: none; }
+  .card .icon-pen {
+    position: absolute;
+    inset: 1rem 1rem auto auto; }
+    .card .icon-pen svg {
+      width: 1.5rem; }
+  .card h3 {
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.25rem;
+    position: relative;
+    font-size: 1rem;
+    font-weight: 600; }
+    .card h3::before {
+      content: unset; }
+  .card ul {
+    margin-bottom: 0; }
+  .card li {
+    margin-bottom: 0.5rem; }
+  .card .icon-pen, .card--basicInfo .icon-pen {
+    inset: auto 1rem 1rem auto !important; }
+
+.userCard p {
+  line-height: 1; }
+
+.userCard h3 {
+  font-weight: 500 !important; }
+
+.clientZone--form {
+  max-width: 600px;
+  margin: auto; }
+  .clientZone--form .MuiInputBase-root {
+    padding: 0 !important; }
+  .clientZone--form fieldset {
+    border: none !important; }
+  .clientZone--form input {
+    box-shadow: none !important;
+    border: solid 1px #dddddd !important;
+    border-radius: 0 !important;
+    font-size: 0.9rem;
+    outline: none;
+    transition: 0.25s;
+    padding: 0.75rem 1.25rem !important; }
+    .clientZone--form input:focus {
+      border-color: #afafaf !important; }
+  .clientZone--form--inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; }
+  .clientZone--form label {
+    font-size: 0.85rem; }
+  .clientZone--form--inner > div {
+    display: flex;
+    flex-direction: column; }
+    .clientZone--form--inner > div span.error {
+      font-size: 0.8rem;
+      color: #ee1d23;
+      padding: 0.5rem; }
+  .clientZone--form button {
+    width: max-content;
+    margin-inline: auto; }
+
+.error > input {
+  border-color: #ee1d23 !important; }
+
+.orderDetail--wrapper {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem; }
+  @media (min-width: 768px) {
+    .orderDetail--wrapper {
+      grid-template-columns: 1fr 1fr; } }
+
+.orderDetail--table {
+  margin-bottom: 2rem; }
+  .orderDetail--table--action {
+    text-align: right; }
+
+.orderDetail--info {
+  font-size: 0.9rem; }
+  .orderDetail--info li {
+    line-height: 1.4; }
+
+.registrationData--wrapper {
+  display: grid;
+  gap: 1rem; }
+  @media (min-width: 768px) {
+    .registrationData--wrapper {
+      grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) {
+    .registrationData--wrapper {
+      grid-template-columns: repeat(4, 1fr); } }
+  @media (min-width: 768px) {
+    .registrationData--wrapper .card:has(.userCard) {
+      display: grid;
+      place-items: center;
+      grid-column: 4 / 5;
+      grid-row: 1 / 3; } }
+  @media (min-width: 768px) {
+    .registrationData--wrapper .card--basicOverview {
+      grid-column: span 2; } }
+  @media (min-width: 768px) {
+    .registrationData--wrapper.noUserData {
+      grid-template-columns: 1fr 2fr; } }
+  .registrationData--wrapper.noUserData > div {
+    grid-column: span 1; }
+
+.main:has(.noUserData) {
+  max-width: 1000px !important; }
 
 .cBasketDrawer {
   position: fixed;
@@ -32272,6 +32614,3 @@ html:has(.icon-logout) .logged-user-only {
     border: none;
     padding: 0.5rem var(--_input-right-p) 0.5rem 1rem;
     width: 100%; }
-
-html:has(.row--productInfo .cAvailability--nStock) .cAddToCart {
-  display: none; }

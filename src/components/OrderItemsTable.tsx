@@ -8,6 +8,7 @@ import Skeleton from "@/components/ui/Skeleton";
 import Product from "@/types/Product";
 import Checkbox from "@mui/material/Checkbox";
 import useCurrency from "@/hooks/useCurrency";
+import { useSearchParams } from "react-router-dom";
 
 type Props = {
 	items?: OrderItem[];
@@ -24,19 +25,26 @@ const OrderItemsTable = ({
 }: Props) => {
 	const { t } = useTranslation();
 	const basket = useBasket();
+	const [searchParams] = useSearchParams();
+
+	console.log(!!searchParams.get("orderAgain"));
 
 	const [snackbar, setSnackbar] = useState(false);
 	const [snackbarMessage, setSnackbarMessage] = useState("");
-	const [checkedStateAll, setCheckedStateAll] = useState(false);
+	const [checkedStateAll, setCheckedStateAll] = useState(
+		!!searchParams.get("orderAgain")
+	);
 	const [checkedState, setCheckedState] = useState(
-		new Array(items?.length || 0).fill(false)
+		new Array(items?.length || 0).fill(!!searchParams.get("orderAgain"))
 	);
 
 	useEffect(() => {
 		if (items) {
-			setCheckedState(new Array(items.length).fill(false));
+			setCheckedState(
+				new Array(items.length).fill(!!searchParams.get("orderAgain"))
+			);
 		}
-	}, [items]);
+	}, [items, searchParams]);
 
 	if ((!items || items.length === 0) && !isLoading) {
 		return <p>{t("zadnePolozkyObjednavky")}</p>;

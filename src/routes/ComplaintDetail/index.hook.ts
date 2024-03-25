@@ -1,17 +1,24 @@
 import type Complaint from "@/types/Complaint";
+import type Document from "@/types/Document";
 import { useEffect } from "react";
 
 import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 
-const getComplaint = async (id: number | string): Promise<Complaint> => {
+type ComplaintDetailPageRes = {
+    complaint: Complaint;
+    documents: { document:  Document, link: string }[];
+}
+
+const getComplaint = async (id: number | string): Promise<ComplaintDetailPageRes> => {
     const res = await fetch(`/api/platform/custom/complaint/${id}${import.meta.env.DEV ? '.json' : ''}`)
 
     if (!res.ok) {
         throw new Error('Orders network response error')
     }
 
-    return await res.json();
+    const data: { complaint: Complaint, documents: { document:  Document, link: string }[] } = await res.json()
+    return data;
 };
 const useComplaintDetailPage = (id: number | string) => {
 	const navigate = useNavigate();

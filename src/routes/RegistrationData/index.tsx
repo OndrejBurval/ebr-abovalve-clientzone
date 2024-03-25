@@ -14,6 +14,7 @@ import AccountSvg from "@/components/svg/Account";
 import CitySvg from "@/components/svg/City";
 import Pen from "@/components/svg/Pen";
 import useCurrency from "@/hooks/useCurrency";
+import Breadcrumb from "@/components/Breadcrumb";
 
 const RegistrationData = () => {
 	const { userData, userIsLoading } = useUserData();
@@ -22,6 +23,10 @@ const RegistrationData = () => {
 
 	return (
 		<Layout title={t("registracniUdaje")}>
+			<Breadcrumb
+				links={[{ href: "/registracni-udaje", label: t("registracniUdaje") }]}
+			/>
+
 			<section
 				className={`registrationData--wrapper ${
 					!userData?.user ? "noUserData" : ""
@@ -88,7 +93,7 @@ const RegistrationData = () => {
 					{!userIsLoading && userData.account && (
 						<ul>
 							<li className="info">
-								<span>{t("sleva")}</span>
+								<span>{t("zakladniSleva")}</span>
 								<span>
 									{userData.account.default_discount
 										? userData.account.default_discount
@@ -107,10 +112,9 @@ const RegistrationData = () => {
 							<li className="info">
 								<span>{t("rozpracovaneObjednavky")}</span>
 								<span>
-									{" "}
-									{userData.account.open_opportunities_count
-										? userData.account.open_opportunities_count
-										: "0"}{" "}
+									{userData.account.outstanding_orders_czk
+										? userData.account.outstanding_orders_czk
+										: "0"}
 								</span>
 							</li>
 						</ul>

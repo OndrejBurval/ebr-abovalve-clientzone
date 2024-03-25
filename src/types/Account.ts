@@ -25,6 +25,7 @@ type Account = {
     reg_id_c?: string;
     vat_id_c?: string;
     default_discount?: number;
+    outstanding_orders_czk?: number;
 }
 
 export default Account;

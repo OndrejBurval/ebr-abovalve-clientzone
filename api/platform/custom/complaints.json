@@ -1,36 +1,82 @@
 [
-	{
-		"complaint": {
-			"id": 3,
-			"sugar_id": "fdd08e2a-65b5-11ed-b3d7-005056ba2a44",
-			"name": "Fwd: PTFE-Ringklappe DN80",
-			"description": "Von: Wolfgang Scholand <Wolfgang.Scholand@itg-handel.de>\n\nDatum: 16. November 2022 um 14:35:57 MEZ\n\nAn: David Bogatzki <david.bogatzki@abovalve.com>\n\nBetreff: PTFE-Ringklappe DN80\n\n\n\n\n\n\n\n\ufeff\n\n\n\n\nHallo Herr Bogatzki,\n\n\n\n \n\neiner unserer Kunden ist sehr verlegen um\n\n\n\n\n \n\neine Teflonklappe DN80,\n\n\nRingausf\u00fchrung, Geh\u00e4use GGG,\n\n\nScheibe AISI 316\n\n\n\nManschette PTFE mit EPDM hinterlegt\n\n\n\nmit Rasthebel\n\n\n\n \n\nHaben Sie hierf\u00fcr eine kurzfristige Lieferm\u00f6glichkeit?\n\n\n\n \n\nF\u00fcr eine kurze R\u00fcckmeldung mit Preis und Lieferzeit\n\n\nbedanke ich mich im Voraus!\n\n\n\n \n\nMit freundlichen Gr\u00fc\u00dfen\n\n\n\n\ni. A. Wolfgang Scholand\n\n\n- Vertrieb -\n\n\n\n\n \n\n\n\n \n\n\n\n\nITG Collin & Stelling KG\n\n\n\n \n\nHammer Deich 70\n\n\n20537 Hamburg\n\n\n\n \n\nTel.: +49 40 325645 15\n\n\nWolfgang.Scholand@itg-handel.de\n | \nwww.itg-handel.de\n\n\n\n \n\nFirmensitz: Hammer Deich 70, 20537 Hamburg\n\n\nAmtsgericht Hamburg, HRA 105098\n\n\n\n \n\nLass das Drucken - der Umwelt zuliebe!",
-			"case_number": "101405",
-			"status": "Closed",
-			"claim_status": "test",
-			"claim_resolution": "test",
-			"contact_id": "f0182be6-6996-11e8-8605-42010a9c0002",
-			"date_create": "2022-11-16 00:00:00",
-			"date_update": "2024-01-16 00:00:00",
-			"type": "Administration",
-			"date_modified": "2024-01-16 00:00:01"
-		}
-	},
-	{
-		"complaint": {
-			"id": 9,
-			"sugar_id": "fa503b98-8289-11ec-ad0b-005056baa4be",
-			"name": "WG: Anfrage 514815 - alternativ zu EBRO",
-			"description": "Von: Frank Stratmann <frank.stratmann@cea-lu.de> \nGesendet: Montag, 31. Januar 2022 12:34\nAn: David Bogatzki <david.bogatzki@abovalve.com>\nBetreff: Re: Anfrage 514815 - alternativ zu EBRO\n\n\n\n\n\n\n\n \n\n\nhier der Text:\n\n\n \n\n\nHersteller: EBRO\n\nTyp: High Performance Klappe HP 111\n\nNennweite DN: 150\n\nPN (Lochkreis): PN 10/16 - EN 1092-1 / Class 150 - ASME B16.5\n\nWerkstoff Geh\u00e4use: 1.4408\n\nBaul\u00e4nge: DIN EN 558, GR 20\n\nKopf-/Aufbau-Flansch Geh\u00e4use: F 10 - EN ISO 5211\n\nAufbauflansch Konsole: F07 / F10 - EN ISO 5211\n\nAusf\u00fchrung Konsole: Standard\n\nForm der Dichtfl\u00e4che: DIN EN 1092-1 Form B1\n\nWerkstoff Lager: 1.4571 nitriert\n\nWerkstoff Sitzring: R-PTFE, FDA, EG\n\nWerkstoff Klemmring: 1.4408\n\nWerkstoff Scheibe: 1.4408\n\nBetriebsdruck max.: 16,0 bar - Temperatur- und Einsatzabh\u00e4ngig\n\nWerkstoff Welle: 1.4542\n\nWerkstoff Wellendichtung Welle: R-PTFE\n\nAusf\u00fchrung Wellenende: V=14x18mm / L=18mm\n\nUnterer Geh\u00e4useabschluss: Verschlussschraube 1.4408\n\nDruckpr\u00fcfung: DIN EN 12266 - P10, P11, P12\n\nMaterialnachweis Geh\u00e4use: 3.1 - DIN EN 10204 (Werkstoffnorm)\n\nPr\u00fcfbescheinigung & Abnahmebeauftragter: 3.1 - DIN EN 10204\n\n\n\n\nBet\u00e4tigung: Untersetzungsgetriebe\n\nGetriebetyp: 232-06\n\nFlanschanschluss Armatur: F 05 / F 07 - EN ISO 5211\n\nAusf\u00fchrung Wellenaufnahme: V= 14,00 mm\n\nWerkstoff Geh\u00e4use: EN AC-43000 / 3.2381 / Alu-Guss\n\nIP Schutzart: IP 65\n\nKorrosionsschutz/Farbe: RAL 9005 Tiefschwarz\n\n\nSchichtst\u00e4rke (ca.): 40 \u00b5m\n\nHandrad: PS125\n\nWerkstoff Handrad: 1.0037 (St37-2), RAL 9005 Tiefschwarz\n\nWerkstoff Handradwelle: AISI 303\n\nGetriebestellung: A3\n\nDrehrichtung Getriebe: Im Uhrzeigersinn schlie\u00dfend\n\nTemperaturausf\u00fchrung: -20\u00b0C bis +120\u00b0C\n\nUntersetzung: 40:1\n\n-----------\n\n\n\n\n\n \n\n\n\n\n\nHersteller: EBRO\n\nTyp: High Performance Klappe HP 112\n\nNennweite DN: 250\n\nPN (Lochkreis): PN 16 - EN 1092-1\n\nDurchgangsbohrungen: Ja\n\nWerkstoff Geh\u00e4use: 1.4408\n\nBaul\u00e4nge: DIN EN 558, GR 13\n\nKopf-/Aufbau-Flansch Geh\u00e4use: F 12 - EN ISO 5211\n\nAufbauflansch Konsole: F10 / F12 - EN ISO 5211\n\nAusf\u00fchrung Konsole: Standard\n\nForm der Dichtfl\u00e4che: Dichtfl\u00e4che (Raised face)\n\nWerkstoff Lager: 1.4571 nitriert\n\nWerkstoff Sitzring: R-PTFE, FDA, EG\n\nWerkstoff Klemmring: 1.4571\n\nWerkstoff Scheibe: 1.4408\n\nBetriebsdruck max.: 16,0 bar - Temperatur- und Einsatzabh\u00e4ngig\n\nWerkstoff Welle: 1.4418\n\nWerkstoff Wellendichtung Welle: R-PTFE\n\nAusf\u00fchrung Wellenende: V=22x23mm / L=23mm\n\nUnterer Geh\u00e4useabschluss: Verschlussschraube 1.4408\n\nDruckpr\u00fcfung: DIN EN 12266 - P10, P11, P12\n\nMaterialnachweis Geh\u00e4use: 3.1 - DIN EN 10204 (Werkstoffnorm)\n\n\n\n\n\nPr\u00fcfbescheinigung & Abnahmebeauftragter: 3.1 - DIN EN 10204\n\n\n\n\nBet\u00e4tigung: Untersetzungsgetriebe\n\nGetriebetyp: 232-11\n\nFlanschanschluss Armatur: F 10 / F 12 - EN ISO 5211\n\nAusf\u00fchrung Wellenaufnahme: V= 22,00 mm\n\nWerkstoff Geh\u00e4use: EN AC-46000 / 3.2163 / Alu-Guss\n\nIP Schutzart: IP 65\n\nKorrosionsschutz/Farbe: RAL 9005 Tiefschwarz\n\nSchichtst\u00e4rke (ca.): 40 \u00b5m\n\nHandrad: PS200\n\nWerkstoff Handrad: 1.0037 (St37-2), RAL 9005 Tiefschwarz\n\nWerkstoff Handradwelle: AISI 303\n\nGetriebestellung: A3\n\nDrehrichtung Getriebe: Im Uhrzeigersinn schlie\u00dfend\n\nTemperaturausf\u00fchrung: -20\u00b0C bis +120\u00b0C\n\n\n\n\n\n \n\n \n\n\n \n\n\n \n\n\n \n\n\n \n\n\n\nMit freundlichen Gr\u00fc\u00dfen / Kind regards \n\n\n\ni. A. Frank Stratmann\nNiederlassungsleiter Rhein-Ruhr\n\n\n\nCEA Chemie- u. Energie-Armaturen GmbH\nBr\u00fcsseler Stra\u00dfe 67 \u2022 45968 Gladbeck\n\nT. +49 (0) 2043 - 50 35 4 - 10 \u2022 F. +49 (0) 2043 - 50 35 4 - 20\n\n\nM. +49 (0) 1520 - 86 83 409\nfrank.stratmann@cea-lu.de\nwww.cea-lu.de \n\n\n\n\n\nGesch\u00e4ftsf\u00fchrer: Henk-Jan Wegman, Peter Berg\n\nAmtsgericht Ludwigshafen HRB 2205\n\nUst.-ID Nr. DE 209 682 305\n\nSteuer Nr. 027/668/01862 \n\n\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n\n\nOriginal Message processed by david\u00ae\n\n\n\n\n\n \n\n\nAnfrage 514815 - alternativ zu EBRO 31. Januar 2022, 12:27 Uhr\n\n\n\n\n\nVon\n\n\n\n\n\nFrank Stratmann\n\n\n\n\n\nAn\n\n\n\n\n\nDavid Bogatzki\n\n\n\n\n\n\n \n\n\nHallo David,\n\n\n \n\n\nich ben\u00f6tige zu den unten aufgelisteten EBRO Klappen ein alternativ Angebot.\n\n\nDie Lieferzeit sollte 10 Wochen nicht \u00fcberschreiten.\n\n\n \n\n\nDatenbl\u00e4tter findest du anbei.\n\n\n \n\n\nDANKE\n\n\n \n\n\n\nMit freundlichen Gr\u00fc\u00dfen / Kind regards \n\n\n\ni. A. Frank Stratmann\nNiederlassungsleiter Rhein-Ruhr\n\n\n\nCEA Chemie- u. Energie-Armaturen GmbH\nBr\u00fcsseler Stra\u00dfe 67 \u2022 45968 Gladbeck\n\nT. +49 (0) 2043 - 50 35 4 - 10 \u2022 F. +49 (0) 2043 - 50 35 4 - 20\n\n\nM. +49 (0) 1520 - 86 83 409\nfrank.stratmann@cea-lu.de\nwww.cea-lu.de \n\n\n\n\n\nGesch\u00e4ftsf\u00fchrer: Henk-Jan Wegman, Peter Berg\n\nAmtsgericht Ludwigshafen HRB 2205\n\nUst.-ID Nr. DE 209 682 305\n\nSteuer Nr. 027/668/01862 \n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\nRohrklasse\n\n\n\n\n\nMaterial aus Rohrklasse\n\n\n\n\n\nFormnummer\n\n\n\n\n\nDN1\n\n\n\n\n\nDN2\n\n\n\n\n\nDN3\n\n\n\n\n\nBeschreibung\n\n\n\n\n\nIsoliertart\n\n\n\n\n\nIsolierdicke\n\n\n\n\n\nMenge\n\n\n\n\n\nSpindelverl\u00e4ngerung\n\n\n\n\n\nAbnahmepr\u00fcfzeugnis 3.1 nach EN 10204\n\n\n\n\n\nEinheitspreis\n\n\n\n\n\nGesamtpreis\n\n\n\n\n\n \n\n\n\n\n\nHandradtyp\n\n\nG= Getrieb\n\nH= Handrad/-hebel\n\n\n\n\n\nTypenbezeichnung\n\n\n\n\n\nTypennummer\n\n\n\n\n\n \n\n\n\n\n\nDruckstufe\n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n\nW16CA\n\n\n\n\n1.4571\n\n\n\n\nVGK07_16\n\n\n\n\n150\n\n\n\n\n150\n\n\n\n\n0\n\n\n\n\nHandklappe K07 mit Getriebe PN16 DN150\n\n\n\n\nW-ET\n\n\n\n\n30\n\n\n\n\n4\n\n\n\n\n \n\n\n\n\nJa\n\n\n\n\n \n\n\n\n\n0,00 \u20ac\n\n\n\n\n\nG\n\n\n\n\nHP111\n\n\n\n\n\nEBRO\n\n\n\n\n\nW16CA\n\n\n\n\n1.4571\n\n\n\n\nVGK07_16\n\n\n\n\n200\n\n\n\n\n200\n\n\n\n\n0\n\n\n\n\nHandklappe K07 mit Getriebe PN16 DN200\n\n\n\n\nW-ET\n\n\n\n\n40\n\n\n\n\n1\n\n\n\n\n \n\n\n\n\nJa\n\n\n\n\n \n\n\n\n\n0,00 \u20ac\n\n\n\n\n\nG\n\n\n\n\nHP111\n\n\n\n\n\nEBRO\n\n\n\n\n\nW16CA\n\n\n\n\n1.4571\n\n\n\n\nVGK10_16\n\n\n\n\n250\n\n\n\n\n250\n\n\n\n\n0\n\n\n\n\nHandklappe K10 mit Getriebe PN16 DN250\n\n\n\n\n \n\n\n\n\n \n\n\n\n\n3\n\n\n\n\n \n\n\n\n\nJa\n\n\n\n\n \n\n\n\n\n0,00 \u20ac\n\n\n\n\n\nG\n\n\n\n\nHP112\n\n\n\n\n\nEBRO\n\n\n\n\n\nW16CA\n\n\n\n\n1.4571\n\n\n\n\nVHK07_16\n\n\n\n\n80\n\n\n\n\n80\n\n\n\n\n0\n\n\n\n\nHandklappe K07 PN16 DN80\n\n\n\n\nW-ET\n\n\n\n\n40\n\n\n\n\n1\n\n\n\n\n \n\n\n\n\nJa\n\n\n\n\n \n\n\n\n\n0,00 \u20ac\n\n\n\n\n\nH\n\n\n\n\nHP111\n\n\n\n\n\nEBRO\n\n\n\n\n\nW16CA\n\n\n\n\n1.4571\n\n\n\n\nVGK07_16\n\n\n\n\n200\n\n\n\n\n200\n\n\n\n\n0\n\n\n\n\nHandklappe K07 mit Getriebe PN16 DN200\n\n\n\n\nW-ET\n\n\n\n\n40\n\n\n\n\n1\n\n\n\n\n \n\n\n\n\nJa\n\n\n\n\n \n\n\n\n\n0,00 \u20ac\n\n\n\n\n\nG\n\n\n\n\nHP111\n\n\n\n\n\nEBRO\n\n\n\n\n\nW16CA\n\n\n\n\n1.4571\n\n\n\n\nVGK10_16\n\n\n\n\n300\n\n\n\n\n300\n\n\n\n\n0\n\n\n\n\nHandklappe K10 mit Getriebe PN16 DN300\n\n\n\n\n \n\n\n\n\n \n\n\n\n\n1\n\n\n\n\n \n\n\n\n\nJa\n\n\n\n\n \n\n\n\n\n0,00 \u20ac\n\n\n\n\n\nG\n\n\n\n\nHP112\n\n\n\n\n\nEBRO\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\n \n\n\n\n\n\n\n\n\n\nCAUTION: This email originated from outside the organization. Do not click links or open attachments unless you recognize the\n sender and know the content is safe.",
-			"case_number": "78748",
-			"status": "Closed",
-			"claim_status": "",
-			"claim_resolution": "",
-			"contact_id": "f0182be6-6996-11e8-8605-42010a9c0002",
-			"date_create": "2022-01-31 00:00:00",
-			"date_update": "2024-01-16 00:00:00",
-			"type": "Administration",
-			"date_modified": "2024-01-16 00:00:01"
-		}
-	}
+    {
+        "complaint": {
+            "id": 1,
+            "sugar_id": "4016cd48-da23-11ee-aba1-005056ba93ff",
+            "name": "TEST Popt\u00e1vka - ebr\u00e1na",
+            "description": "",
+            "case_number": "127410",
+            "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
+            "claim_status": "",
+            "claim_resolution": "",
+            "contact_id": "0316ab32-da1b-11ee-86e3-005056ba93ff",
+            "date_create": "2024-03-04 00:00:00",
+            "date_update": "2024-03-04 00:00:00",
+            "type": "Administration",
+            "date_modified": "2024-03-04 13:32:42"
+        },
+        "complaintDetail": {
+            "@id": "\/api\/platform\/custom\/complaint\/1"
+        }
+    },
+    {
+        "complaint": {
+            "id": 21,
+            "sugar_id": "0bbe8e9a-df88-11ee-ae4e-005056ba93ff",
+            "name": "Testovac\u00ed reklamace",
+            "description": "Testovac\u00ed obsah description",
+            "case_number": "127411",
+            "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
+            "claim_status": "",
+            "claim_resolution": "",
+            "contact_id": "0316ab32-da1b-11ee-86e3-005056ba93ff",
+            "date_create": "2024-03-11 00:00:00",
+            "date_update": "2024-03-11 00:00:00",
+            "type": "User",
+            "date_modified": "2024-03-11 11:29:28"
+        },
+        "complaintDetail": {
+            "@id": "\/api\/platform\/custom\/complaint\/21"
+        }
+    },
+    {
+        "complaint": {
+            "id": 22,
+            "sugar_id": "a6047046-df88-11ee-8ff7-005056ba93ff",
+            "name": "Objedn\u00e1vka portal: Hugo Testovac\u00ed.",
+            "description": "productCode1 - 10 ks\nproductCode2 - 3 ks\nproductCode3 - 5 ks",
+            "case_number": "127413",
+            "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
+            "claim_status": "",
+            "claim_resolution": "",
+            "contact_id": "0316ab32-da1b-11ee-86e3-005056ba93ff",
+            "date_create": "2024-03-11 00:00:00",
+            "date_update": "2024-03-11 00:00:00",
+            "type": "PortalOrder",
+            "date_modified": "2024-03-11 10:20:48"
+        },
+        "complaintDetail": {
+            "@id": "\/api\/platform\/custom\/complaint\/22"
+        }
+    },
+    {
+        "complaint": {
+            "id": 23,
+            "sugar_id": "6b11fe72-df88-11ee-8226-005056ba93ff",
+            "name": "Objedn\u00e1vka portal: Hugo Testovac\u00ed.",
+            "description": "productCode1 - 10 ks\nproductCode2 - 3 ks\nproductCode3 - 5 ks",
+            "case_number": "127412",
+            "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
+            "claim_status": "",
+            "claim_resolution": "",
+            "contact_id": "0316ab32-da1b-11ee-86e3-005056ba93ff",
+            "date_create": "2024-03-11 00:00:00",
+            "date_update": "2024-03-11 00:00:00",
+            "type": "PortalOrder",
+            "date_modified": "2024-03-11 10:19:09"
+        },
+        "complaintDetail": {
+            "@id": "\/api\/platform\/custom\/complaint\/23"
+        }
+    }
 ]

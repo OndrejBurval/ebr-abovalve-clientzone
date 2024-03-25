@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import Skeleton from "@/components/ui/Skeleton";
 import type Complaint from "@/types/Complaint";
+import { useDateString } from "@/hooks/useDateString";
 
 type Props = {
 	items: Complaint[];
@@ -43,15 +44,9 @@ const ComplaintTable = ({ items, isLoading }: Props) => {
 								<tr key={index}>
 									<td> {item.case_number} </td>
 									<td> {item.name} </td>
-									<td>
-										{new Date(item.date_create).toLocaleDateString("cs-CZ")}
-									</td>
-									<td>
-										{item.status === "Closed"
-											? new Date(item.date_update).toLocaleDateString("cs-CZ")
-											: "-"}
-									</td>
-									<td> {item.status || ""} </td>
+									<td>{useDateString(item.date_create)}</td>
+									<td>-</td>
+									<td dangerouslySetInnerHTML={{ __html: item.status }} />
 									<td>
 										<Link className="btn" to={`/reklamace/${item.id} `}>
 											{t("detail")}

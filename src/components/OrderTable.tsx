@@ -98,9 +98,14 @@ const Table = ({
 								dangerouslySetInnerHTML={{ __html: item.state }}
 							/>
 							<td className="px-5"> --- </td>
-							<td className="px-5">
+							<td className="px-5 actionCol">
 								<Link to={`/objednavka/${item.id}`}>
 									<button className="btn btn--primary">{t("detail")}</button>
+								</Link>
+								<Link to={`/objednavka/${item.id}?orderAgain=true`}>
+									<button className="btn btn--primary">
+										{t("objednatZnovu")}
+									</button>
 								</Link>
 							</td>
 						</tr>
