@@ -13,8 +13,8 @@ type SimpleData = {
 	billing_zip: string;
 	billing_country: string;
 	navision_code: string;
-	reg_id_c?: string;
-	vat_id_c?: string;
+	ein?: string;
+	tin?: string;
 };
 
 type Props = {
@@ -53,12 +53,19 @@ const BillingAddress = ({ data, disableEdit }: Props) => {
 					</li>
 				)}
 
-				<li>
-					<p>
-						IČ: {data.reg_id_c ? data.reg_id_c : "-"} DIČ:{" "}
-						{data.vat_id_c ? data.vat_id_c : "-"}
-					</p>
-				</li>
+				{data.ein && (
+					<li>
+						<Document style={{ visibility: "hidden" }} />
+						<p>IČ: {data.ein}</p>
+					</li>
+				)}
+
+				{data.tin && (
+					<li>
+						<Document style={{ visibility: "hidden" }} />
+						<p>DIČ: {data.tin}</p>
+					</li>
+				)}
 			</ul>
 		</>
 	);

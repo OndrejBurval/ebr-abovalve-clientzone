@@ -15,6 +15,7 @@ import CitySvg from "@/components/svg/City";
 import Pen from "@/components/svg/Pen";
 import useCurrency from "@/hooks/useCurrency";
 import Breadcrumb from "@/components/Breadcrumb";
+import { getPaymentTerm } from "@/data/payment";
 
 const RegistrationData = () => {
 	const { userData, userIsLoading } = useUserData();
@@ -112,11 +113,19 @@ const RegistrationData = () => {
 							<li className="info">
 								<span>{t("rozpracovaneObjednavky")}</span>
 								<span>
-									{userData.account.outstanding_orders_czk
-										? userData.account.outstanding_orders_czk
-										: "0"}
+									{isNaN(userData.account.open_opportunities_count)
+										? "-"
+										: useCurrency(userData.account.open_opportunities_count)}
 								</span>
 							</li>
+							{userData.account.payment_code && (
+								<li className="info">
+									<span>{t("platebniPodminky")}</span>
+									<span>
+										{t(getPaymentTerm(userData.account.payment_code))}
+									</span>
+								</li>
+							)}
 						</ul>
 					)}
 				</Card>

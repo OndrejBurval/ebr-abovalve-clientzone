@@ -75,30 +75,37 @@ const Table = ({
 			<table>
 				<thead>
 					<tr className="text-left">
-						<th className="px-5"> {t("cisloObjednavky")} </th>
-						<th className="px-5 min-w-28"> {t("datum")} </th>
-						<th className="px-5"> {t("cena")} </th>
+						<th className="px-5" style={{ maxWidth: "70px" }}>
+							{t("cisloObjednavky")}
+						</th>
+						<th className="px-5 min-w-28" style={{ maxWidth: "50px" }}>
+							{t("datum")}
+						</th>
 						<th className="px-5"> {t("stav")} </th>
 						<th className="px-5"> {t("faktura")} </th>
-						<th className="px-5"></th>
+						<th className="px-5 text--right"> {t("cena")} </th>
+						<th className="px-5" style={{ maxWidth: "113px" }}></th>
 					</tr>
 				</thead>
 				<tbody>
 					{items.map((item) => (
 						<tr key={item.id}>
-							<td className="px-5"> {item.navision_code} </td>
-							<td className="px-5 min-w-28">
+							<td className="px-5" style={{ maxWidth: "70px" }}>
+								{item.navision_code}
+							</td>
+							<td className="px-5 min-w-28" style={{ maxWidth: "50px" }}>
 								{getDateString(item.order_date || "")}
 							</td>
-							<td className="px-5">
-								{useCurrency(item.total_without_vat, item.currency_code)}
-							</td>
+
 							<td
 								className="px-5"
 								dangerouslySetInnerHTML={{ __html: item.state }}
 							/>
 							<td className="px-5"> --- </td>
-							<td className="px-5 actionCol">
+							<td className="px-5 text--right">
+								{useCurrency(item.total_without_vat, item.currency_code)}
+							</td>
+							<td className="px-5 actionCol" style={{ maxWidth: "113px" }}>
 								<Link to={`/objednavka/${item.id}`}>
 									<button className="btn btn--primary">{t("detail")}</button>
 								</Link>

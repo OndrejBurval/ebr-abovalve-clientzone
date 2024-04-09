@@ -9,7 +9,7 @@ const Complaint = () => {
 	const { data, isLoading } = useComplaintPage();
 
 	return (
-		<Layout title={t("reklamace")}>
+		<Layout title={t("reklamace")} className="container-sm">
 			<Breadcrumb
 				links={[
 					{
@@ -18,7 +18,9 @@ const Complaint = () => {
 					},
 				]}
 			/>
-			<ComplaintTable items={data} isLoading={isLoading} />
+			<div className="inner">
+				<ComplaintTable items={data} isLoading={isLoading} />
+			</div>
 		</Layout>
 	);
 };

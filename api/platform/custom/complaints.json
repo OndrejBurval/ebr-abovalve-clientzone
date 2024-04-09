@@ -1,82 +1,22 @@
 [
     {
         "complaint": {
-            "id": 1,
-            "sugar_id": "4016cd48-da23-11ee-aba1-005056ba93ff",
-            "name": "TEST Popt\u00e1vka - ebr\u00e1na",
+            "id": 607,
+            "sugar_id": "59362b3c-80f8-11ed-90b2-005056ba2a44",
+            "name": "Objedn\u00e1vka zbo\u017e\u00ed od Richter + Frenzel s.r.o.,Brno",
             "description": "",
-            "case_number": "127410",
-            "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
-            "claim_status": "",
-            "claim_resolution": "",
-            "contact_id": "0316ab32-da1b-11ee-86e3-005056ba93ff",
-            "date_create": "2024-03-04 00:00:00",
-            "date_update": "2024-03-04 00:00:00",
-            "type": "Administration",
-            "date_modified": "2024-03-04 13:32:42"
-        },
-        "complaintDetail": {
-            "@id": "\/api\/platform\/custom\/complaint\/1"
-        }
-    },
-    {
-        "complaint": {
-            "id": 21,
-            "sugar_id": "0bbe8e9a-df88-11ee-ae4e-005056ba93ff",
-            "name": "Testovac\u00ed reklamace",
-            "description": "Testovac\u00ed obsah description",
-            "case_number": "127411",
-            "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
-            "claim_status": "",
-            "claim_resolution": "",
-            "contact_id": "0316ab32-da1b-11ee-86e3-005056ba93ff",
-            "date_create": "2024-03-11 00:00:00",
-            "date_update": "2024-03-11 00:00:00",
+            "case_number": "103423",
+            "contact_id": "ee00e170-80f9-11ed-8300-005056ba2a44",
+            "date_create": "2022-12-21 00:00:00",
+            "date_update": "2024-03-21 00:00:00",
             "type": "User",
-            "date_modified": "2024-03-11 11:29:28"
+            "date_modified": "2024-03-21 11:08:56",
+            "date_closed": "2022-12-21 00:00:00",
+            "claim_result": "test",
+            "documents": []
         },
         "complaintDetail": {
-            "@id": "\/api\/platform\/custom\/complaint\/21"
-        }
-    },
-    {
-        "complaint": {
-            "id": 22,
-            "sugar_id": "a6047046-df88-11ee-8ff7-005056ba93ff",
-            "name": "Objedn\u00e1vka portal: Hugo Testovac\u00ed.",
-            "description": "productCode1 - 10 ks\nproductCode2 - 3 ks\nproductCode3 - 5 ks",
-            "case_number": "127413",
-            "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
-            "claim_status": "",
-            "claim_resolution": "",
-            "contact_id": "0316ab32-da1b-11ee-86e3-005056ba93ff",
-            "date_create": "2024-03-11 00:00:00",
-            "date_update": "2024-03-11 00:00:00",
-            "type": "PortalOrder",
-            "date_modified": "2024-03-11 10:20:48"
-        },
-        "complaintDetail": {
-            "@id": "\/api\/platform\/custom\/complaint\/22"
-        }
-    },
-    {
-        "complaint": {
-            "id": 23,
-            "sugar_id": "6b11fe72-df88-11ee-8226-005056ba93ff",
-            "name": "Objedn\u00e1vka portal: Hugo Testovac\u00ed.",
-            "description": "productCode1 - 10 ks\nproductCode2 - 3 ks\nproductCode3 - 5 ks",
-            "case_number": "127412",
-            "status": "<span class=\"status\" style=\"color: #3b2d0b;\">Zad\u00e1no<\/span>",
-            "claim_status": "",
-            "claim_resolution": "",
-            "contact_id": "0316ab32-da1b-11ee-86e3-005056ba93ff",
-            "date_create": "2024-03-11 00:00:00",
-            "date_update": "2024-03-11 00:00:00",
-            "type": "PortalOrder",
-            "date_modified": "2024-03-11 10:19:09"
-        },
-        "complaintDetail": {
-            "@id": "\/api\/platform\/custom\/complaint\/23"
+            "@id": "\/api\/platform\/custom\/complaint\/607"
         }
     }
 ]

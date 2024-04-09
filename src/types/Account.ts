@@ -10,6 +10,8 @@ type Account = {
     shipping_street: string;
     shipping_zip: string;
     shipping_country: string;
+    default_discount: number;
+    navision_id: number;
     open_opportunities_count: number;
     phone_office: string;
     phone_alternate: string;
@@ -22,10 +24,8 @@ type Account = {
     payment_method: string;
     invoice_balance_due_total: number;
     date_modified: string;
-    reg_id_c?: string;
-    vat_id_c?: string;
-    default_discount?: number;
-    outstanding_orders_czk?: number;
+    email: string;
+    payment_code: string;
 }
 
 export default Account;

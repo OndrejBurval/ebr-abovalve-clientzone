@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
 import Skeleton from "@/components/ui/Skeleton";
 import type Complaint from "@/types/Complaint";
@@ -26,8 +25,8 @@ const ComplaintTable = ({ items, isLoading }: Props) => {
 						<th> {t("nazev")} </th>
 						<th> {t("datumZalozeni")} </th>
 						<th> {t("datumUzavreni")} </th>
-						<th> {t("stavReklamace")} </th>
-						<th> </th>
+						<th> {t("vysledek")} </th>
+						{/*<th> </th>*/}
 					</tr>
 				</thead>
 
@@ -45,13 +44,16 @@ const ComplaintTable = ({ items, isLoading }: Props) => {
 									<td> {item.case_number} </td>
 									<td> {item.name} </td>
 									<td>{useDateString(item.date_create)}</td>
-									<td>-</td>
-									<td dangerouslySetInnerHTML={{ __html: item.status }} />
-									<td>
-										<Link className="btn" to={`/reklamace/${item.id} `}>
-											{t("detail")}
-										</Link>
-									</td>
+									<td>{item.date_closed && useDateString(item.date_closed)}</td>
+									<td> {item.claim_result}</td>
+									{/* 
+									{/* 
+                                        <td>
+                                            <Link className="btn" to={`/reklamace/${item.id} `}>
+                                                {t("detail")}
+                                            </Link>
+                                        </td>
+                                    */}
 								</tr>
 							))}
 

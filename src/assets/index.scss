@@ -53,8 +53,12 @@ html:has(.icon-logout) .logged-user-only {
 	}
 
 	h1 {
-		font-weight: 700;
-		font-size: 1.5rem;
+		font-weight: 900;
+		font-size: 1.74rem;
+
+		@media (min-width: 1024px) {
+			font-size: 2.65rem;
+		}
 	}
 
 	h2 {
@@ -64,6 +68,14 @@ html:has(.icon-logout) .logged-user-only {
 
 	h3 {
 		margin-bottom: 0.5rem;
+	}
+
+	.cHeader__clientZone {
+		right: 1rem;
+	}
+
+	.cHeader__mainNav {
+		padding-top: 0;
 	}
 }
 
@@ -535,4 +547,81 @@ h1 {
 		line-height: 1.5;
 		font-weight: 400;
 	}
+}
+
+.container-sm .inner {
+	max-width: 950px !important;
+	margin-inline: auto;
+}
+
+.orderDetail--wrapper {
+	grid-template-columns: 1fr !important;
+
+	@media (min-width: 767px) and (max-width: 1199px) {
+		grid-template-columns: 1fr 1fr !important;
+	}
+
+	h3 {
+		grid-column: 1 / -1;
+	}
+
+	.orderDetail--info {
+		@media (min-width: 1200px) {
+			margin-top: -0.95rem;
+		}
+	}
+}
+
+.orderDetail--table {
+	table {
+		min-width: 670px !important;
+	}
+}
+
+.orderDetail--desc {
+	grid-column: 1 / -1 !important;
+	grid-column: span 1;
+}
+
+.grid.cols-2 {
+	display: grid;
+	margin: 0;
+
+	@media (min-width: 1200px) {
+		gap: 1rem;
+		grid-template-columns: 4fr 6fr;
+	}
+}
+
+.basket--subtitle {
+	margin-bottom: 2rem;
+	color: #ee1d23;
+}
+
+.basket .cCrumb {
+	margin-bottom: 1rem !important;
+}
+
+.basket .info {
+	color: hsl(0, 0%, 60%);
+	margin-top: 0.25rem;
+	font-size: 0.85rem !important;
+}
+
+.client-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+	text-align: left;
+	font-size: 0.8rem;
+	line-height: 1.2;
+}
+
+.cHeader__clientZone__icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	flex-direction: row;
 }

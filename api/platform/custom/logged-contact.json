@@ -11,6 +11,7 @@
         "assigned_user_id": "3eff53ae-25a7-11ec-9b85-005056baa4be",
         "extern_id": "ee00e170-80f9-11ed-8300-005056ba2a44",
         "account_sugar_id": "860ce2bc-02a0-11e8-895e-42010a9c0002",
+        "portal_priv_admin": false,
         "date_modified": "2022-12-21 07:37:24"
     },
     "account": {
@@ -25,23 +26,22 @@
         "shipping_street": "U Technoplynu 1572\/1",
         "shipping_zip": "198 00",
         "shipping_country": "CZ",
-        "default_discount": 10.0,
+        "default_discount": 0.0,
         "navision_id": 0,
-        "open_opportunities_count": 1515930,
+        "open_opportunities_count": 1465,
         "phone_office": "+420 220 301 213",
         "phone_alternate": "",
-        "ein": "",
-        "tin": "",
+        "ein": "04049098",
+        "tin": "CZ04049098",
         "vat_payer": false,
         "extern_id": 860,
         "navision_code": "",
         "price_group": "ABO CZ Domestic",
         "payment_method": "p\u0159evodn\u00edm p\u0159\u00edkazem",
         "invoice_balance_due_total": 59538.95,
-        "date_modified": "2024-01-11 13:35:00",
-        "default_discount_c": 10.0,
-        "reg_id_c": "CZ1234567890",
-        "vat_id_c": "CZ1234567890"
+        "date_modified": "2024-03-21 11:39:14",
+        "email": "",
+        "payment_code": "P"
     },
     "user": {
         "id": 5,
@@ -52,5 +52,25 @@
         "phone": "+420736292668",
         "email": "radislav.nemet@x-abovalve.com-x",
         "date_modified": "2023-12-07 15:15:39"
+    },
+    "payment": {
+        "id": 1,
+        "extern_id": "P",
+        "price": 0.0,
+        "translations": [
+            {
+                "lang": "cs",
+                "name": "P\u0159\u00edkazem"
+            },
+            {
+                "lang": "de"
+            },
+            {
+                "lang": "en"
+            },
+            {
+                "lang": "es"
+            }
+        ]
     }
 }

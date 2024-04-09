@@ -7,9 +7,11 @@ const Orders = () => {
 	const { t } = useTranslation();
 
 	return (
-		<Layout title={t("objednavky")}>
+		<Layout title={t("objednavky")} className="container-sm">
 			<Breadcrumb links={[{ href: "/objednavky", label: t("objednavky") }]} />
-			<OrderTable showFilter infiniteLoading />
+			<div className="inner">
+				<OrderTable showFilter infiniteLoading />
+			</div>
 		</Layout>
 	);
 };

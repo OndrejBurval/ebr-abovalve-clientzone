@@ -27,8 +27,6 @@ const OrderItemsTable = ({
 	const basket = useBasket();
 	const [searchParams] = useSearchParams();
 
-	console.log(!!searchParams.get("orderAgain"));
-
 	const [snackbar, setSnackbar] = useState(false);
 	const [snackbarMessage, setSnackbarMessage] = useState("");
 	const [checkedStateAll, setCheckedStateAll] = useState(
@@ -55,8 +53,13 @@ const OrderItemsTable = ({
 		const productsToOrder: Product[] = [];
 		checkedState.forEach((checked, index) => {
 			if (checked) {
-				const { id, name, unit_cost: price, quantity } = items[index];
-				productsToOrder.push({ id, name, price, quantity });
+				const {
+					navision_code,
+					name,
+					unit_cost: price,
+					quantity,
+				} = items[index];
+				productsToOrder.push({ id: navision_code, name, price, quantity });
 			}
 		});
 

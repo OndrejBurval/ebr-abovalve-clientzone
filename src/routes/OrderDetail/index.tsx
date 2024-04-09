@@ -49,86 +49,93 @@ const Detail = () => {
 				]}
 			/>
 
-			<div className="orderDetail--wrapper">
-				<Card title={t("zakladniPrehled")} className="orderDetail--info">
-					<ul>
-						<li className="info">
-							<strong>{t("datumObjednani")}:</strong>
+			<div className="grid cols-2">
+				<div className="orderDetail--wrapper">
+					<h3> {t("prehledObjednavky")} </h3>
 
-							<span> {orderDate} </span>
-						</li>
-
-						<li className="info">
-							<strong> {t("cenaCelkemBezDPH")}: </strong>
-							<span>
-								{useCurrency(
-									data.order.total_without_vat,
-									data.order.currency_code
-								)}
-							</span>
-						</li>
-
-						<li className="info">
-							<strong> {t("stav")}: </strong>
-							<td
-								className="px-5"
-								dangerouslySetInnerHTML={{ __html: data.order.state }}
-							/>
-						</li>
-
-						{dueDate && (
+					<Card title={t("zakladniPrehled")} className="orderDetail--info">
+						<ul>
 							<li className="info">
-								<strong> {t("ocekavaneDatumExpedice")}: </strong>
-								<span> {dueDate || "--"} </span>
+								<strong>{t("datumObjednani")}:</strong>
+
+								<span> {orderDate} </span>
 							</li>
-						)}
-					</ul>
-				</Card>
 
-				<Card isLoading={isLoading} className="userData--connected">
-					<>
-						<div className="billing">
-							<strong>{t("fakturacniAdresa")}</strong>
-							<BillingAddress disableEdit data={userData.account} />
-						</div>
+							<li className="info">
+								<strong> {t("cenaCelkemBezDPH")}: </strong>
+								<span>
+									{useCurrency(
+										data.order.total_without_vat,
+										data.order.currency_code
+									)}
+								</span>
+							</li>
 
-						<div className="delivery">
-							<strong> {t("dorucovaciAdresa")}</strong>
-							<DeliveryAddress
-								disableEdit
-								data={{
-									name: data.order.shipping_name,
-									shipping_street: data.order.shipping_street,
-									shipping_city: data.order.shipping_city,
-									shipping_zip: "--",
-									shipping_country: "--",
-								}}
-							/>
-						</div>
-					</>
-				</Card>
+							<li className="info">
+								<strong> {t("podminkyPlatby")}: </strong>
+								<span>{userData.account.payment_code}</span>
+							</li>
 
-				{data.order?.description && data.order.description.length > 0 && (
-					<Card
-						title={t("poznamka")}
-						className="orderDetail--desc"
-						isLoading={isLoading}>
-						{data.order.description}
+							<li className="info">
+								<strong> {t("stav")}: </strong>
+								<td
+									className="px-5"
+									dangerouslySetInnerHTML={{ __html: data.order.state }}
+								/>
+							</li>
+
+							{dueDate && (
+								<li className="info">
+									<strong> {t("ocekavaneDatumExpedice")}: </strong>
+									<span> {dueDate || "--"} </span>
+								</li>
+							)}
+						</ul>
 					</Card>
-				)}
-			</div>
+					<Card isLoading={isLoading} className="userData--connected">
+						<>
+							<div className="billing">
+								<strong>{t("fakturacniAdresa")}</strong>
+								<BillingAddress disableEdit data={userData.account} />
+							</div>
 
-			<section className="orderDetail--table">
-				<h3> {t("polozkyObjednavky")} </h3>
-				<OrderItemsTable
-					items={data.orderItems}
-					currencyCode={data.order.currency_code}
-					totalPriceExcVat={useCurrency(
-						data.order.total_without_vat,
-						data.order.currency_code
+							<div className="delivery">
+								<strong> {t("dorucovaciAdresa")}</strong>
+								<DeliveryAddress
+									disableEdit
+									data={{
+										name: data.order.shipping_name,
+										shipping_street: data.order.shipping_street,
+										shipping_city: data.order.shipping_city,
+										shipping_zip: "--",
+										shipping_country: "--",
+									}}
+								/>
+							</div>
+						</>
+					</Card>
+					{data.order?.description && data.order.description.length > 0 && (
+						<Card
+							title={t("poznamka")}
+							className="orderDetail--desc"
+							isLoading={isLoading}>
+							{data.order.description}
+						</Card>
 					)}
-				/>
-			</section>
+				</div>
+
+				<section className="orderDetail--table">
+					<h3> {t("polozkyObjednavky")} </h3>
+					<OrderItemsTable
+						items={data.orderItems}
+						currencyCode={data.order.currency_code}
+						totalPriceExcVat={useCurrency(
+							data.order.total_without_vat,
+							data.order.currency_code
+						)}
+					/>
+				</section>
+			</div>
 
 			<div className="orderDetail--documents none">
 				<Card title={t("dokumenty")}>

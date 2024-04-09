@@ -14,6 +14,7 @@ import { useBasket } from "@/hooks/useBasket";
 import { useUserData } from "@/hooks/useUserData";
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
+import { getPaymentTerm } from "@/data/payment";
 
 const Basket = () => {
 	const { t } = useTranslation();
@@ -24,6 +25,10 @@ const Basket = () => {
 		{
 			label: t("road"),
 			value: "road",
+		},
+		{
+			label: t("roadbox"),
+			value: "roadbox",
 		},
 		{
 			label: t("air"),
@@ -37,26 +42,21 @@ const Basket = () => {
 
 	const deliveryOptions = [
 		{
-			label: t("truck"),
-			value: "Truck",
+			label: t("fca"),
+			value: "FCA",
 		},
 		{
-			label: t("sea_freight"),
-			value: "sea_freight",
-		},
-		{
-			label: t("air_freight"),
-			value: "air_freight",
-		},
-		{
-			label: t("customer_transportation"),
-			value: "customer_transportation",
-		},
-		{
-			label: t("supplier_transportation"),
-			value: "supplier_transportation",
+			label: t("cfr"),
+			value: "CFR",
 		},
 	];
+
+	/*
+	const currencyId = {
+		CZK: "ced318a2-01d5-11e8-a178-42010a9c0002",
+		EUR: "-99",
+	};
+    */
 
 	// User input
 	const [note, setNote] = useState("");
@@ -79,24 +79,26 @@ const Basket = () => {
 		setOpenModal(true);
 		setIsSubmitting(true);
 
+		const data = {
+			opportunity_type: "order",
+			total_cost: basket.getTotalPrice(basket.items),
+			currency: "CZK",
+			shipping: delivery,
+			packing,
+			user_note: note,
+			order_items: basket.items.map((item) => ({
+				product: item.id,
+				amount: item.quantity,
+			})),
+		};
+
 		try {
 			const res = await fetch("/api/platform/custom/create-order", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: JSON.stringify({
-					opportunity_type: "order",
-					total_cost: basket.getTotalPrice(basket.items),
-					currency: "CZK",
-					shipping: delivery,
-					packing,
-					user_note: note,
-					order_items: basket.items.map((item) => ({
-						product: item.id,
-						amount: item.quantity,
-					})),
-				}),
+				body: JSON.stringify(data),
 			});
 
 			if (!res.ok) {
@@ -124,12 +126,9 @@ const Basket = () => {
 	};
 
 	return (
-		<Layout
-			title={`${t("kosik")}`}
-			subtitle={`${t("kosikPodnadpis")}`}
-			className="basket">
+		<Layout title={`${t("kosik")}`} className="basket">
 			<Breadcrumb links={[{ href: "/kosik", label: t("kosik") }]} />
-
+			<div className="basket--subtitle">{t("kosikPodnadpis")}</div>
 			<div className="basket--wrapper">
 				{basket.items.length > 0 && !userIsLoading ? (
 					<>
@@ -163,7 +162,7 @@ const Basket = () => {
 											type="text"
 											name="payment"
 											id="payment"
-											value={userData.account.payment_method}
+											value={t(getPaymentTerm(userData.account.payment_code))}
 											readOnly
 										/>
 									</div>
@@ -187,6 +186,10 @@ const Basket = () => {
 												<TextField {...params}> foo </TextField>
 											)}
 										/>
+
+										{delivery === "CFR" && (
+											<div className="info">{t("cfrInfo")}</div>
+										)}
 									</div>
 
 									<div className="delivery--input">
@@ -235,11 +238,8 @@ const Basket = () => {
 							onRemove={basket.remove}
 						/>
 					</>
-				) : (
-					t("kosikJePrazdny")
-				)}
+				) : null}
 			</div>
-
 			<OrderConfirmModal
 				open={openModal}
 				hasError={hasError}

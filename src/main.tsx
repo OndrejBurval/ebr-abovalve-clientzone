@@ -23,7 +23,7 @@ import Orders from "@/routes/Orders/index";
 import OrderDetail from "@/routes/OrderDetail";
 import RegistrationData from "@/routes/RegistrationData";
 import Complaint from "@/routes/Complaint";
-import ComplaintDetail from "@/routes/ComplaintDetail";
+//import ComplaintDetail from "@/routes/ComplaintDetail";
 import Basket from "./routes/Basket";
 import UserForm from "./routes/UserForm";
 import ContactForm from "./routes/ContactForm";
@@ -63,11 +63,13 @@ const router = createBrowserRouter([
 		element: <Complaint />,
 		errorElement: <ErrorPage />,
 	},
-	{
+	/*
+    {
 		path: "/reklamace/:id",
 		element: <ComplaintDetail />,
 		errorElement: <ErrorPage />,
 	},
+    */
 	{
 		path: "/kosik",
 		element: <Basket />,

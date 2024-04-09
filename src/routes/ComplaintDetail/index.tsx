@@ -1,3 +1,4 @@
+/*
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useComplaintDetailPage } from "./index.hook";
@@ -109,3 +110,4 @@ const ComplaintDetail = () => {
 };
 
 export default ComplaintDetail;
+*/
