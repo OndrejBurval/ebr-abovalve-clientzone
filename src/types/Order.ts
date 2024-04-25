@@ -1,8 +1,8 @@
 type Order = {
     id: number;
+    state: string;
     sugar_id: string;
     navision_code: string;
-    state: string;
     account_sugar_id: string;
     description: string;
     order_date: string;
@@ -17,6 +17,8 @@ type Order = {
     shipping_street: string;
     shipping_city: string;
     date_modified: string;
+    shipment_date: string;
+    order_number: string;
     documents: any[];
 };
 
@@ -29,6 +31,7 @@ type OrderItem = {
 	quantity: number;
 	total_cost: number;
 	unit_cost: number;
+    discount_percent?: number;
 };
 
 export type { Order, OrderItem };

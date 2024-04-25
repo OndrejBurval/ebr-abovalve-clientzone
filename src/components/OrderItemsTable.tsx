@@ -58,8 +58,15 @@ const OrderItemsTable = ({
 					name,
 					unit_cost: price,
 					quantity,
+					discount_percent,
 				} = items[index];
-				productsToOrder.push({ id: navision_code, name, price, quantity });
+				productsToOrder.push({
+					id: navision_code,
+					name,
+					price,
+					quantity,
+					discount: discount_percent,
+				});
 			}
 		});
 

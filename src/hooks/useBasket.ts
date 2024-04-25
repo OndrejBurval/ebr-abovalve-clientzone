@@ -2,116 +2,131 @@ import { useState } from "react";
 import type Basket from "@/types/Basket";
 import Product from "@/types/Product";
 
-export const useBasket = () => {
-    const [basket, setBasket] = useState<Basket | []>(loadBasket());
-    
-    function loadBasket() {
-        const newSession = !document.cookie.includes("basket_session");
+export type UseBasket = {
+	items: Basket | [];
+	add: (product: Product, quantity?: number) => void;
+	addMultiple: (products: Product[]) => void;
+	remove: (id: string, quantity?: "ONE" | "ALL") => void;
+	clear: () => void;
+	updateQuantity: (id: string, quantity?: number) => void;
+	getTotalPrice: (basket: Product[]) => number;
+};
 
-        if (newSession) {
-            document.cookie = "basket_session=true; path=/";
-            localStorage.removeItem("basket");
-        }
+export const useBasket = (): UseBasket => {
+	const [basket, setBasket] = useState<Basket | []>(loadBasket());
 
-        const basket = localStorage.getItem("basket");
-        return basket ? JSON.parse(basket) : [];
-    }
+	function loadBasket() {
+		const newSession = !document.cookie.includes("basket_session");
 
-    function saveBasket(data: Basket | null = null) {
-        const basketToSave = data ? data : basket;
-        localStorage.setItem("basket", JSON.stringify(basketToSave));
-    }
+		if (newSession) {
+			document.cookie = "basket_session=true; path=/";
+			localStorage.removeItem("basket");
+		}
 
-    function add(product: Product, quantity = 1) {
-        setBasket((prevBasket) => {
-            const index = prevBasket.findIndex((item) => item.id === product.id);
-    
-            if (index === -1) {
-                const newBasket = [...prevBasket, { ...product, quantity }];
-                saveBasket(newBasket);
-                return newBasket;
-            } else {
-                const newBasket = [...prevBasket];
-                newBasket[index].quantity += quantity;
-                saveBasket(newBasket);
-                return newBasket;
-            }
-        });
-    }
+		const basket = localStorage.getItem("basket");
+		return basket ? JSON.parse(basket) : [];
+	}
 
-    function updateQuantity(id: string, quantity: number = 1) {
-        if (!quantity || quantity < 1) {
-            return;
-        }
+	function saveBasket(data: Basket | null = null) {
+		const basketToSave = data ? data : basket;
+		localStorage.setItem("basket", JSON.stringify(basketToSave));
+		window.dispatchEvent(new CustomEvent("basket:update"));
+	}
 
-        const index = basket.findIndex((item) => item.id === id);
+	function add(product: Product, quantity = 1) {
+		setBasket((prevBasket) => {
+			const index = prevBasket.findIndex((item) => item.id === product.id);
 
-        if (index === -1) {
-            console.error("Item not found in basket");
-            return;
-        }
+			if (index === -1) {
+				const newBasket = [...prevBasket, { ...product, quantity }];
+				saveBasket(newBasket);
+				return newBasket;
+			} else {
+				const newBasket = [...prevBasket];
+				newBasket[index].quantity += quantity;
+				saveBasket(newBasket);
+				return newBasket;
+			}
+		});
+	}
 
-        basket[index].quantity = quantity;
-        setBasket([...basket]);
-        saveBasket();
-    }
+	function updateQuantity(id: string, quantity: number = 1) {
+		if (!quantity || quantity < 1) {
+			return;
+		}
 
-    function addMultiple(products: Product[]) {
-        const basketData = [...basket];
+		const index = basket.findIndex((item) => item.id === id);
 
-        products.forEach((product) => {
-            const index = basketData.findIndex((item) => item.id === product.id);
-            const quantity = product?.quantity || 1;
+		if (index === -1) {
+			console.error("Item not found in basket");
+			return;
+		}
 
-            if (index === -1) {
-                basketData.push({ ...product, quantity });
-            } else {
-                basketData[index].quantity += quantity;
-            }
-        });
+		basket[index].quantity = quantity;
+		setBasket([...basket]);
+		saveBasket();
+	}
 
-        setBasket([...basketData]);
-        saveBasket([...basketData]);
-    }
+	function addMultiple(products: Product[]) {
+		const basketData = [...basket];
 
-    function remove(id: string, quantity: "ONE" | "ALL" = "ONE") {
-        const index = basket.findIndex((item) => item.id === id);
+		products.forEach((product) => {
+			const index = basketData.findIndex((item) => item.id === product.id);
+			const quantity = product?.quantity || 1;
 
-        if (index === -1) {
-            console.error("Item not found in basket");
-            return;
-        }
+			if (index === -1) {
+				basketData.push({ ...product, quantity });
+			} else {
+				basketData[index].quantity += quantity;
+			}
+		});
 
-        const lastItem = basket[index].quantity === 1;
+		setBasket([...basketData]);
+		saveBasket([...basketData]);
+	}
 
-        if (quantity === "ALL" || lastItem) {
-            basket.splice(index, 1);
-        }
+	function remove(id: string, quantity: "ONE" | "ALL" = "ONE") {
+		const index = basket.findIndex((item) => item.id === id);
 
-        if (quantity === "ONE" && !lastItem) {
-            basket[index].quantity -= 1;
-        }
+		if (index === -1) {
+			console.error("Item not found in basket");
+			return;
+		}
 
-        setBasket([...basket]);
-        saveBasket();
-    }
+		const lastItem = basket[index].quantity === 1;
 
-    function clear() {
-        setBasket([]);
-        localStorage.removeItem("basket");
-    }
+		if (quantity === "ALL" || lastItem) {
+			basket.splice(index, 1);
+		}
 
-    function getTotalPrice(basket: Product[]) {
-        return basket.reduce((acc: number, item: Product) => acc + item.price * item.quantity, 0);
-    }
+		if (quantity === "ONE" && !lastItem) {
+			basket[index].quantity -= 1;
+		}
 
-    return {
-        items: basket,
-        add,
-        addMultiple,
-        remove,
-        clear,
-        updateQuantity,
-        getTotalPrice
-    };
-}
+		setBasket([...basket]);
+		saveBasket();
+	}
+
+	function clear() {
+		setBasket([]);
+		localStorage.removeItem("basket");
+	}
+
+	function getTotalPrice(basket: Product[]) {
+		return basket.reduce(
+			(acc: number, item: Product) => acc + item.price * item.quantity,
+			0
+		);
+	}
+
+	return {
+		items: basket,
+		add,
+		addMultiple,
+		remove,
+		clear,
+		updateQuantity,
+		getTotalPrice,
+	};
+} ;
+

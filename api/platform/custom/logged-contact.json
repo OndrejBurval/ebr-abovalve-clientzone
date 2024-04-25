@@ -26,22 +26,22 @@
         "shipping_street": "U Technoplynu 1572\/1",
         "shipping_zip": "198 00",
         "shipping_country": "CZ",
-        "default_discount": 0.0,
+        "default_discount": 45.0,
         "navision_id": 0,
         "open_opportunities_count": 1465,
         "phone_office": "+420 220 301 213",
         "phone_alternate": "",
-        "ein": "04049098",
-        "tin": "CZ04049098",
+        "ein": "000111222",
+        "tin": "CZ000111222",
         "vat_payer": false,
         "extern_id": 860,
         "navision_code": "",
         "price_group": "ABO CZ Domestic",
         "payment_method": "p\u0159evodn\u00edm p\u0159\u00edkazem",
         "invoice_balance_due_total": 59538.95,
-        "date_modified": "2024-03-21 11:39:14",
+        "date_modified": "2024-04-23 14:51:40",
         "email": "",
-        "payment_code": "P"
+        "payment_code": "30D"
     },
     "user": {
         "id": 5,
@@ -54,13 +54,12 @@
         "date_modified": "2023-12-07 15:15:39"
     },
     "payment": {
-        "id": 1,
-        "extern_id": "P",
-        "price": 0.0,
+        "id": 2,
+        "extern_id": "30D",
         "translations": [
             {
                 "lang": "cs",
-                "name": "P\u0159\u00edkazem"
+                "name": "30 dn\u00ed"
             },
             {
                 "lang": "de"

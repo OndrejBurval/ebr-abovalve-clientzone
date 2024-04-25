@@ -27,56 +27,77 @@ type Props = InteractiveProps | NonInteractiveProps;
 
 const ProductList = ({
 	products,
-	discount,
 	interactive,
 	onQuantityChange,
+	discount,
 	onRemove,
 }: Props) => {
 	const [parent] = useAutoAnimate();
 	const { t } = useTranslation();
 
-	const getTotalPrice = () => {
-		const value = products.reduce(
-			(acc, item) => acc + item.price * item.quantity,
-			0
-		);
+	const getTotalPrice = (incVat = false) => {
+		const value = products.reduce((acc, item) => {
+			const unitPrice = incVat ? item.price * 1.21 : item.price;
+			return acc + unitPrice * item.quantity;
+		}, 0);
 
 		return useCurrency(value);
 	};
 
 	const list = products.map((product) => {
 		return (
-			<div className="productList" key={product.id}>
-				<ProductComponent
-					product={product}
-					interactive={interactive}
-					onQuantityChange={interactive ? onQuantityChange : undefined}
-					onRemove={interactive ? onRemove : undefined}
-				/>
-				<hr />
-			</div>
+			<ProductComponent
+				key={product.id}
+				product={product}
+				accountDiscount={discount || 0}
+				interactive={interactive}
+				onQuantityChange={interactive ? onQuantityChange : undefined}
+				onRemove={interactive ? onRemove : undefined}
+			/>
 		);
 	});
 
 	return (
 		<Card title={t("produkty")} className="productList">
-			<div className="productList--wrapper" ref={parent}>
-				{list}
-			</div>
+			<table className="product-table" ref={parent}>
+				<thead>
+					<tr>
+						{interactive && <th></th>}
+						<th>{t("polozka")}</th>
 
-			<div className="productList--price">
-				{!!discount && (
-					<div className="productList--total">
-						<strong>{t("sleva")}</strong>
-						<span>{discount}%</span>
-					</div>
-				)}
+						<th className=" text--right">{t("cenaBezDph")}</th>
 
-				<div className="productList--total">
-					<strong>{t("celkem")}</strong>
-					<span>{getTotalPrice()}</span>
-				</div>
-			</div>
+						<th className=" text--right" style={{ width: "4rem" }}>
+							{t("sleva")}
+						</th>
+
+						<th className=" text--right">{t("cenaBezDphPoSleve")}</th>
+
+						<th style={{ width: "5rem" }}>{t("pocetKs")}</th>
+
+						<th className=" text--right">{t("cenaBezDphPoSleveCelkem")}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{list}
+					<tr>
+						<td colSpan={interactive ? 6 : 5}>
+							<strong>{t("celkemBezDphOrientacni")}</strong>
+						</td>
+						<td className="text--right">
+							<strong>{getTotalPrice()}</strong>
+						</td>
+					</tr>
+					<tr>
+						<td colSpan={interactive ? 6 : 5}>
+							<strong>{t("celkemOrientacni")}</strong>
+						</td>
+						<td className="text--right">
+							<strong>{getTotalPrice(true)}</strong>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</Card>
 	);
 };

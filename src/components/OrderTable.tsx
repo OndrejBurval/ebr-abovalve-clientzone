@@ -19,10 +19,14 @@ type Props = {
 const OrderTable = ({ showFilter, limit, infiniteLoading, page }: Props) => {
 	const [orders, setOrders] = useState<Order[]>([]);
 	const { t } = useTranslation();
-	const { data, loadMore, isFetching, isLoading, setYearFilter } = useOrders(
-		limit,
-		page ? page : "default"
-	);
+	const {
+		data,
+		loadMore,
+		isFetching,
+		isLoading,
+		setYearFilter,
+		setSortFilter,
+	} = useOrders(limit, page ? page : "default");
 
 	useEffect(() => {
 		if (data) {
@@ -35,6 +39,11 @@ const OrderTable = ({ showFilter, limit, infiniteLoading, page }: Props) => {
 		setYearFilter(year);
 	};
 
+	const handleSort = (field: string) => {
+		setOrders([]);
+		setSortFilter(field);
+	};
+
 	return (
 		<>
 			{showFilter && <OrderTableFilter onYearSelect={handleYearSelect} />}
@@ -42,7 +51,12 @@ const OrderTable = ({ showFilter, limit, infiniteLoading, page }: Props) => {
 			{isLoading ? (
 				<OrderTableSeleton />
 			) : (
-				<Table items={orders} t={t} isFetching={isFetching && !limit} />
+				<Table
+					items={orders}
+					t={t}
+					isFetching={isFetching && !limit}
+					onSort={handleSort}
+				/>
 			)}
 
 			{infiniteLoading && orders.length < data?.totalCount && (
@@ -59,10 +73,12 @@ const OrderTable = ({ showFilter, limit, infiniteLoading, page }: Props) => {
 const Table = ({
 	items,
 	isFetching,
+	onSort,
 	t,
 }: {
 	items: Order[];
 	isFetching: boolean;
+	onSort: (field: string) => void;
 	t: TFunction<"translation", undefined>;
 }) => {
 	const getDateString = (date: string) => {
@@ -75,32 +91,57 @@ const Table = ({
 			<table>
 				<thead>
 					<tr className="text-left">
-						<th className="px-5" style={{ maxWidth: "70px" }}>
+						<th className="px-5" style={{ maxWidth: "90px" }}>
 							{t("cisloObjednavky")}
 						</th>
-						<th className="px-5 min-w-28" style={{ maxWidth: "50px" }}>
-							{t("datum")}
+						{/**
+						<th className="px-5" style={{ maxWidth: "130px" }}>
+							{t("cisloObchodnighoPripadu")}
 						</th>
-						<th className="px-5"> {t("stav")} </th>
-						<th className="px-5"> {t("faktura")} </th>
-						<th className="px-5 text--right"> {t("cena")} </th>
+                         */}
+						<th className="px-5 min-w-28" style={{ maxWidth: "100px" }}>
+							<div className="sortCol">
+								{t("datum")}
+								<SortButton onClick={() => onSort("order_date")} />
+							</div>
+						</th>
+						<th className="px-5">
+							<div className="sortCol">
+								{t("stav")}
+								<SortButton onClick={() => onSort("state")} />
+							</div>
+						</th>
+						<th className="px-5">{t("faktura")}</th>
+						<th className="px-5 text--right">
+							<div className="sortCol">
+								{t("cenaBezDph")}
+								<SortButton onClick={() => onSort("total_without_vat")} />
+							</div>
+						</th>
 						<th className="px-5" style={{ maxWidth: "113px" }}></th>
 					</tr>
 				</thead>
 				<tbody>
 					{items.map((item) => (
-						<tr key={item.id}>
-							<td className="px-5" style={{ maxWidth: "70px" }}>
+						<tr key={item.account_sugar_id}>
+							<td className="px-5" style={{ maxWidth: "90px" }}>
 								{item.navision_code}
 							</td>
-							<td className="px-5 min-w-28" style={{ maxWidth: "50px" }}>
+							{/** 
+							<td className="px-5" style={{ maxWidth: "130px" }}>
+								{item.order_number}
+							</td>
+                            */}
+							<td className="px-5 min-w-28" style={{ maxWidth: "100px" }}>
 								{getDateString(item.order_date || "")}
 							</td>
 
 							<td
-								className="px-5"
-								dangerouslySetInnerHTML={{ __html: item.state }}
+								className="px-5 min-w-28"
+								style={{ maxWidth: "100px" }}
+								dangerouslySetInnerHTML={{ __html: item.state || "" }}
 							/>
+
 							<td className="px-5"> --- </td>
 							<td className="px-5 text--right">
 								{useCurrency(item.total_without_vat, item.currency_code)}
@@ -143,6 +184,23 @@ const Table = ({
 				</tbody>
 			</table>
 		</div>
+	);
+};
+
+const SortButton = ({ onClick }: { onClick: () => void }) => {
+	return (
+		<button type="button" onClick={onClick} className="btn--sort">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="20"
+				height="20"
+				viewBox="0 0 32 32">
+				<path
+					fill="#fff"
+					d="m16 28l-7-7l1.41-1.41L16 25.17l5.59-5.58L23 21zm0-24l7 7l-1.41 1.41L16 6.83l-5.59 5.58L9 11z"
+				/>
+			</svg>
+		</button>
 	);
 };
 

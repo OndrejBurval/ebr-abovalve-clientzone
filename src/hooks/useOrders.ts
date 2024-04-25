@@ -8,7 +8,12 @@ type OrdersResponse = {
     totalCount: number;
 };
 
-const getOrders = async (page = 1, limit = 10, year = null, archive = false): Promise<OrdersResponse> => {
+type Sort = {
+    field: string;
+    direction: "asc" | "desc";
+}
+
+const getOrders = async (page = 1, limit = 10, year = null, archive = false, sort = null): Promise<OrdersResponse> => {
     const params = new URLSearchParams({
         page: page.toString(),
         limit: limit.toString()
@@ -16,6 +21,11 @@ const getOrders = async (page = 1, limit = 10, year = null, archive = false): Pr
       
       if (year && year > 0 && !archive) {
         params.append('year', year.toString());
+      }
+
+      if (sort) {
+        params.append('sortField', sort.field);
+        params.append('sortDirection', sort.direction);
       }
 
       if (archive) {
@@ -49,16 +59,15 @@ const getOrders = async (page = 1, limit = 10, year = null, archive = false): Pr
     };
 };
 
-
 const useOrders = (PAGE_LIMIT = 10, key: string = "default") => {
     const [page, setPage] = useState(1);
     const [year, setYear] = useState<number | null | string>(null);
     const [archive, setArchive] = useState<boolean>(false);
-    
+    const [sort, setSort] = useState<Sort | null>(null);
 
     const { data, isFetched, isLoading, isFetching } = useQuery({
-        queryKey: ["orders", key, year, page, archive],
-        queryFn: () => getOrders(page, PAGE_LIMIT, year, archive),
+        queryKey: ["orders", key, year, page, archive, sort],
+        queryFn: () => getOrders(page, PAGE_LIMIT, year, archive, sort),
         keepPreviousData: true,
         refetchOnWindowFocus: false,
         retry: false,
@@ -79,7 +88,14 @@ const useOrders = (PAGE_LIMIT = 10, key: string = "default") => {
         setPage(1);
     };
 
-    return { data, isFetched, isFetching, isLoading, loadMore, setYearFilter };
+    const setSortFilter = (field: string) => {
+        const direction = sort?.field === field && sort?.direction === "asc" ? "desc" : "asc";
+
+        setSort({ field, direction });
+        setPage(1);
+    }
+
+    return { data, isFetched, isFetching, isLoading, loadMore, setYearFilter, setSortFilter };
 }
 
 export default useOrders;

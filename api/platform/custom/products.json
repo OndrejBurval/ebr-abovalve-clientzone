@@ -1,121 +1,108 @@
 {
     "products": [
         {
+            "id": "012e3885-82eb-4b9c-9a15-c6edef19a4b1",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 913B DN32\/40 s volnou h\u0159\u00eddel\u00ed (GGG40\/GGG40\/NBR)",
+            "product_code": "913B04000Z",
+            "stock": 0.0,
+            "price": 910.404,
+            "price_formatted": "910 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-913b-dn32-40-s-volnou-hrideli-ggg40-ggg40-nbr"
+        },
+        {
+            "id": "d8a501d3-ca2f-4e15-8fb2-498085544843",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 923B DN32\/40 s volnou h\u0159\u00eddel\u00ed (GGG40\/GGG40\/EPDM)",
+            "product_code": "923B0400006",
+            "stock": 0.0,
+            "price": 910.404,
+            "price_formatted": "910 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-923b-dn32-40-s-volnou-hrideli-ggg40-ggg40-epdm"
+        },
+        {
             "id": "02f78f22-a2ac-480b-91c4-e7aa7b1a414d",
-            "name": "Mezipřírubová centrická klapka 623B DN80 s pákou (GG25/GGG40/EPDM)",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 623B DN32\/40 s p\u00e1kou (GG25\/GGG40\/EPDM)",
             "product_code": "623B0400106",
-            "stock": 0,
-            "price": 1378,
-            "price_formatted": "1 378 Kč",
-            "link": "/produkty/meziprirubova-centricka-klapka-623b-dn80-s-pakou-gg25-ggg40-epdm"
-        },
-        {
-            "id": "080b85b9-fcb1-457c-95fd-54cdca6f52ea",
-            "name": "Mezipřírubová centrická klapka 599B DN100 s pákou (GGG40 /Duplexní nerezová ocel+PTFE /PTFE)",
-            "product_code": "599B10001",
-            "stock": 0,
-            "price": 100,
-            "price_formatted": "100 Kč",
-            "link": "/produkty/meziprirubova-centricka-uzaviraci-klapka-599b-dn100-paka"
-        },
-        {
-            "id": "103d8d09-b4e6-4b0c-afd0-65bf47bcf429",
-            "name": "Mezipřírubová centrická klapka 613T DN80 s pákou (GG25/GGG40/NBR)",
-            "product_code": "613T08001",
-            "stock": 0,
-            "price": 1894,
-            "price_formatted": "1 894 Kč",
-            "link": "/produkty/meziprirubova-centricka-klapka-613t-dn80-s-pakou-gg25-ggg40-nbr"
-        },
-        {
-            "id": "11ce9266-7641-4905-8d30-5e1d20ea1fb7",
-            "name": "Mezipřírubová centrická klapka 613B DN125 s pákou (GG25/GGG40/NBR)",
-            "product_code": "613B12501",
-            "stock": 0,
-            "price": 2622,
-            "price_formatted": "2 622 Kč",
-            "link": "/produkty/meziprirubova-centricka-klapka-613b-dn125-s-pakou-gg25-ggg40-nbr"
-        },
-        {
-            "id": "283fc628-bac5-4728-8aa2-0b79131d03e3",
-            "name": "Mezipřírubová klapka s dvojitou excentricitou 5490B DN150 se šnekem (CF8M/CF8M/R-PTFE)",
-            "product_code": "5490B15003",
-            "stock": 5,
-            "price": 14999,
-            "price_formatted": "14 999 Kč",
-            "link": "/produkty/meziprirubova-excentricka-uzaviraci-klapka-5490b-dn150"
+            "stock": 0.0,
+            "price": 917.059,
+            "price_formatted": "917 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-623b-dn32-40-s-pakou-gg25-ggg40-epdm",
+            "image": "\/data\/filecache\/77\/@250x0\/623B-DN32-50-paka-litina-celo.png"
         },
         {
             "id": "3e0da4a3-32b2-46a3-bfe7-c4fb2b7a8af4",
-            "name": "Mezipřírubová centrická klapka 613B DN32/40 s pákou (GG25/GGG40/NBR)",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 613B DN32\/40 s p\u00e1kou (GG25\/GGG40\/NBR)",
             "product_code": "613B0400106",
-            "stock": 0,
-            "price": 1378,
-            "price_formatted": "1 378 Kč",
-            "link": "/produkty/meziprirubova-centricka-klapka-613b-dn32-40-s-pakou-gg25-ggg40-nbr"
+            "stock": 0.0,
+            "price": 917.059,
+            "price_formatted": "917 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-613b-dn32-40-s-pakou-gg25-ggg40-nbr",
+            "image": "\/data\/filecache\/77\/@250x0\/623B-DN32-50-paka-litina-celo.png"
         },
         {
-            "id": "3f1559a0-02fd-4b7e-96eb-fc54f3c18566",
-            "name": "Mezipřírubová centrická klapka 613B DN65 s pákou (GG25/GGG40/NBR)",
-            "product_code": "613B06501",
-            "stock": 0,
-            "price": 1628,
-            "price_formatted": "1 628 Kč",
-            "link": "/produkty/meziprirubova-centricka-klapka-613b-dn65-s-pakou-gg25-ggg40-nbr"
+            "id": "2991e8c0-98f6-4ff0-8b99-fa2d284563f8",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 623B DN50 s p\u00e1kou (GG25\/GGG40\/EPDM)",
+            "product_code": "623B05001",
+            "stock": 10.0,
+            "price": 926.376,
+            "price_formatted": "926 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-623b-dn50-s-pakou-gg25-ggg40-epdm",
+            "image": "\/data\/filecache\/77\/@250x0\/623B-DN32-50-paka-litina-celo.png"
         },
         {
-            "id": "419c32ec-b656-4d4d-b081-a636dcd8d7ea",
-            "name": "Mezipřírubová centrická klapka 923B DN80 s pákou (GGG40/GGG40/EPDM)",
-            "product_code": "923B08001",
-            "stock": 0,
-            "price": 100,
-            "price_formatted": "100 Kč",
-            "link": "/produkty/meziprirubova-centricka-uzaviraci-klapka-923b-dn80"
+            "id": "a2965612-8cf4-4cb0-854b-a36579ac3f8f",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 613B DN50 s p\u00e1kou (GG25\/GGG40\/NBR)",
+            "product_code": "613B05001",
+            "stock": 0.0,
+            "price": 926.376,
+            "price_formatted": "926 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-613b-dn50-s-pakou-gg25-ggg40-nbr",
+            "image": "\/data\/filecache\/77\/@250x0\/623B-DN32-50-paka-litina-celo.png"
         },
         {
-            "id": "432b208a-1e3d-4622-8b8c-a6c13468c528",
-            "name": "Mezipřírubová centrická klapka 613T DN50 s pákou (GG25/GGG40/NBR)",
-            "product_code": "613T05001",
-            "stock": 0,
-            "price": 1611,
-            "price_formatted": "1 611 Kč",
-            "link": "/produkty/meziprirubova-centricka-klapka-613t-dn50-s-pakou-gg25-ggg40-nbr"
+            "id": "bcf4aff1-a39f-4ac2-960f-11dca7ef5d4e",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 923B DN50 s volnou h\u0159\u00eddel\u00ed (GGG40\/GGG40\/EPDM)",
+            "product_code": "923B05000Z",
+            "stock": 0.0,
+            "price": 989.5985,
+            "price_formatted": "990 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-923b-dn50-s-volnou-hrideli-ggg40-ggg40-epdm"
         },
         {
-            "id": "4fdede1b-a3e8-404f-9c91-68b358b1271b",
-            "name": "TEST - parametry + zobrazení (Těleso Tvárná litina GGG40/Disk Nerezová ocel CF8M/Manžeta Viton FPM)",
-            "product_code": "0258",
-            "stock": 250,
-            "price": 2450,
-            "price_formatted": "2 450 Kč",
-            "link": "/produkty/test"
+            "id": "7901fdc5-71a6-4380-a96b-83e128d99780",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 913B DN50 s volnou h\u0159\u00eddel\u00ed (GGG40\/GGG40\/NBR)",
+            "product_code": "913B05000Z",
+            "stock": 0.0,
+            "price": 990.9295,
+            "price_formatted": "991 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-913b-dn50-s-volnou-hrideli-ggg40-ggg40-nbr"
+        },
+        {
+            "id": "a6351306-4751-4fe0-9348-d0a30984fca3",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 914B DN32\/40 s volnou h\u0159\u00eddel\u00ed (GGG40\/CF8M\/NBR)",
+            "product_code": "914B0400006",
+            "stock": 0.0,
+            "price": 1009.5635,
+            "price_formatted": "1 010 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-914b-dn32-40-s-volnou-hrideli-ggg40-cf8m-nbr"
+        },
+        {
+            "id": "f0057281-de5f-4661-a7ad-6e4419512e39",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 924B DN32\/40 s volnou h\u0159\u00eddel\u00ed (GGG40\/CF8M\/EPDM)",
+            "product_code": "924B04000Z",
+            "stock": 0.0,
+            "price": 1009.5635,
+            "price_formatted": "1 010 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-924b-dn32-40-s-volnou-hrideli-ggg40-cf8m-epdm"
         }
     ],
     "categories": [
         {
             "id": "13ae0fb4-5180-4161-a47a-7f261ff727ff",
-            "name": "Centrické",
-            "image": "/data/filecache/57/@200x0/excentricke-uzaviraci-klapky.png",
-            "link": "/kategorie/centricke"
-        },
-        {
-            "id": "36c98b44-df06-4e1d-a696-a7e974fc6908",
-            "name": "Excentrické",
-            "image": "/data/filecache/fe/@200x0/centricke.png",
-            "link": "/kategorie/excentricke"
-        },
-        {
-            "id": "bdb38fe7-812d-421e-a3f5-684b89747d82",
-            "name": "Příslušenství",
-            "image": "/data/filecache/27/@200x0/prislusenstvi_1_1.png",
-            "link": "/kategorie/prislusenstvi"
-        },
-        {
-            "id": "c2735bef-ba97-41b8-84c4-99ac8d780e5c",
-            "name": "Šoupátka a zpětné klapky",
-            "image": "/data/filecache/88/@200x0/abo-valve-spoupatka.png",
-            "link": "/kategorie/soupatka-a-zpetne-klapky"
+            "name": "Centrick\u00e9",
+            "image": "\/data\/filecache\/57\/@200x0\/excentricke-uzaviraci-klapky.png",
+            "link": "\/kategorie\/centricke"
         }
     ],
-    "totalProducts": 28
+    "totalProducts": 250,
+    "discountPercent": 45.0
 }

@@ -3,6 +3,7 @@ type Product = {
 	name: string;
     price?: number;
     quantity?: number;
+    discount?: number;
 };
 
 export default Product;

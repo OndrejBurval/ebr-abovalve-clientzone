@@ -21,6 +21,7 @@ const Basket = () => {
 	const basket = useBasket();
 	const { userData, userIsLoading } = useUserData();
 
+	/**
 	const packingOptions = [
 		{
 			label: t("road"),
@@ -39,6 +40,7 @@ const Basket = () => {
 			value: "sea",
 		},
 	];
+     */
 
 	const deliveryOptions = [
 		{
@@ -60,7 +62,8 @@ const Basket = () => {
 
 	// User input
 	const [note, setNote] = useState("");
-	const [packing, setPacking] = useState(packingOptions[0].value);
+	const [orderNumber, setOrderNumber] = useState("");
+	//const [packing, setPacking] = useState(packingOptions[0].value);
 	const [delivery, setDelivery] = useState(deliveryOptions[0].value);
 
 	// Modal
@@ -71,7 +74,7 @@ const Basket = () => {
 
 	// Snacbar
 	const [openSnackbar, setOpenSnackbar] = useState(false);
-	const [snackbarMessage, setSnackbarMessage] = useState("");
+	const [snackbarMessage] = useState("");
 
 	const handleSubmit = async () => {
 		if (!validateInput()) return;
@@ -84,11 +87,13 @@ const Basket = () => {
 			total_cost: basket.getTotalPrice(basket.items),
 			currency: "CZK",
 			shipping: delivery,
-			packing,
+			//packing,
 			user_note: note,
+			order_number: orderNumber,
 			order_items: basket.items.map((item) => ({
 				product: item.id,
 				amount: item.quantity,
+				price: item.price || 0,
 			})),
 		};
 
@@ -116,11 +121,13 @@ const Basket = () => {
 	};
 
 	const validateInput = () => {
+		/**
 		if (!packing) {
 			setOpenSnackbar(true);
 			setSnackbarMessage(t("vyberteBaleni"));
 			return false;
 		}
+         */
 
 		return true;
 	};
@@ -167,6 +174,17 @@ const Basket = () => {
 										/>
 									</div>
 
+									<div className="order-number--input">
+										<label>{t("cisloObjednavky")}</label>
+										<input
+											type="text"
+											name="orderNumber"
+											id="orderNumber"
+											onChange={(e) => setOrderNumber(e.target.value)}
+											value={orderNumber}
+										/>
+									</div>
+
 									<div className="delivery--input">
 										<label>{t("doprava")}</label>
 										<Autocomplete
@@ -192,6 +210,7 @@ const Basket = () => {
 										)}
 									</div>
 
+									{/** 
 									<div className="delivery--input">
 										<label>{t("baleni")}</label>
 										<Autocomplete
@@ -212,6 +231,7 @@ const Basket = () => {
 											)}
 										/>
 									</div>
+                                */}
 
 									<div className="note--input">
 										<label>{t("poznamkaObjednavky")}</label>

@@ -35,14 +35,24 @@ html:has(.icon-logout) .logged-user-only {
 
 		&--header {
 			display: flex;
-			flex-direction: row;
+			flex-direction: column-reverse;
 			justify-content: space-between;
-			align-items: flex-end;
+			align-items: flex-start;
 			gap: 1rem;
 			margin-bottom: 2rem;
 
+			@media (min-width: 768px) {
+				flex-direction: row;
+			}
+
 			h1 {
 				margin-bottom: 0;
+
+				text-align: left;
+			}
+
+			.btn {
+				width: max-content;
 			}
 		}
 	}
@@ -164,6 +174,10 @@ html:has(.icon-logout) .logged-user-only {
 		}
 	}
 
+	table {
+		max-width: calc(100% - 1px);
+	}
+
 	.table {
 		min-width: 900px;
 		width: 100%;
@@ -229,7 +243,7 @@ html:has(.icon-logout) .logged-user-only {
 			row-gap: 1rem;
 
 			@media (min-width: 768px) {
-				grid-template-columns: 1fr 1fr;
+				grid-template-columns: 2fr 3fr;
 			}
 		}
 	}
@@ -301,6 +315,14 @@ html:has(.icon-logout) .logged-user-only {
 		text-align: right;
 	}
 
+	&--price {
+		> div {
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 0.5rem;
+		}
+	}
+
 	&--remove {
 		position: absolute;
 		inset: -0.25rem 0 auto auto;
@@ -319,8 +341,8 @@ html:has(.icon-logout) .logged-user-only {
 	}
 
 	&--inner {
-		display: grid;
-		grid-template-columns: max-content 1fr;
+		display: flex;
+		flex-direction: column;
 		gap: 0.5rem;
 		padding-bottom: 1rem;
 		padding-top: 1.5rem;
@@ -339,7 +361,7 @@ html:has(.icon-logout) .logged-user-only {
 	}
 
 	&--id {
-		place-self: end start;
+		display: block;
 	}
 
 	span {
@@ -473,6 +495,10 @@ html:has(.icon-logout) .logged-user-only {
 .nav__item.page--active .nav__item__in {
 	color: #e70d21;
 	border-bottom: solid 3px #e70d21;
+}
+
+.btn--basket {
+	border: none !important;
 }
 
 #root {
@@ -612,7 +638,7 @@ h1 {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: flex-start;
+	align-items: center;
 	text-align: left;
 	font-size: 0.8rem;
 	line-height: 1.2;
@@ -623,5 +649,20 @@ h1 {
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
-	flex-direction: row;
+	flex-direction: column;
+}
+
+.btn--shopNow {
+	width: 100% !important;
+	display: none;
+	padding-block: 1.25rem;
+
+	@media (min-width: 768px) {
+		display: block;
+		max-width: 24.5%;
+	}
+
+	@media (min-width: 1500px) {
+		max-width: 340px;
+	}
 }

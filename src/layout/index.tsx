@@ -1,5 +1,7 @@
 import { ReactNode, useState } from "react";
 
+import { ScrollRestoration } from "react-router-dom";
+
 import { useUserData } from "@/hooks/useUserData";
 import { useLocation } from "react-router-dom";
 
@@ -38,6 +40,7 @@ const Default = ({
 
 	return (
 		<>
+			<ScrollRestoration />
 			<Navigation />
 
 			<div className={`main ${className || ""}`}>

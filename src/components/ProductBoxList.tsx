@@ -2,12 +2,19 @@ import useProducts from "@/hooks/useProducts";
 import type ProductBox from "@/types/ProductBox";
 import type CategoryBox from "@/types/CategoryBox";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext, useContext } from "react";
+import { useBasket, type UseBasket } from "@/hooks/useBasket";
+
+type Context = {
+	basket: UseBasket;
+};
+const ProductListContext = createContext<Context | null>(null);
 
 const ProductBoxList = () => {
 	const { t } = useTranslation();
 	const { isLoading, data, loadMore, isFetching } = useProducts();
 	const [products, setProducts] = useState<ProductBox[]>([]);
+	const basket = useBasket();
 
 	useEffect(() => {
 		if (data) {
@@ -16,37 +23,43 @@ const ProductBoxList = () => {
 	}, [data, setProducts]);
 
 	return (
-		<section className="cCube cProductList cProductList--image js__productList--image _p _iA">
-			{isLoading ? <div className="spinner"></div> : null}
+		<ProductListContext.Provider value={{ basket }}>
+			<section className="cCube cProductList cProductList--image js__productList--image _p _iA">
+				{isLoading ? <div className="spinner"></div> : null}
 
-			{!isLoading && data.categories && (
-				<div className="cProductList">
-					<div className="cProductList__categories">
-						<ul className="grid">
-							{data.categories.map((item: CategoryBox) => (
-								<CategoryItem key={item.id} category={item} />
-							))}
-						</ul>
+				{!isLoading && data.categories && (
+					<div className="cProductList">
+						<div className="cProductList__categories">
+							<ul className="grid">
+								{data.categories.map((item: CategoryBox) => (
+									<CategoryItem key={item.id} category={item} />
+								))}
+							</ul>
+						</div>
 					</div>
-				</div>
-			)}
+				)}
 
-			{!isLoading && products && (
-				<div className="grid">
-					{products.map((item: ProductBox) => (
-						<ProductItem key={item.id} product={item} />
-					))}
-				</div>
-			)}
+				{!isLoading && products && (
+					<div className="grid">
+						{products.map((item: ProductBox) => (
+							<ProductItem
+								key={item.id}
+								product={item}
+								discount={data.discountPercent}
+							/>
+						))}
+					</div>
+				)}
 
-			{!isLoading && products.length < data.totalProducts && (
-				<div className="productList--actions">
-					<button className="btn" onClick={loadMore} disabled={isFetching}>
-						{t("nacistDalsi")}
-					</button>
-				</div>
-			)}
-		</section>
+				{!isLoading && products.length < data.totalProducts && (
+					<div className="productList--actions">
+						<button className="btn" onClick={loadMore} disabled={isFetching}>
+							{t("nacistDalsi")}
+						</button>
+					</div>
+				)}
+			</section>
+		</ProductListContext.Provider>
 	);
 };
 
@@ -69,7 +82,15 @@ const CategoryItem = ({ category }: { category: CategoryBox }) => {
 	);
 };
 
-const ProductItem = ({ product }: { product: ProductBox }) => {
+const ProductItem = ({
+	product,
+	discount = null,
+}: {
+	product: ProductBox;
+	discount?: number;
+}) => {
+	const { t } = useTranslation();
+
 	const IMAGE_PLACEHOLDER =
 		"/assets/frontend/abovalvemyebranacom/img/image.svg";
 
@@ -90,13 +111,75 @@ const ProductItem = ({ product }: { product: ProductBox }) => {
 					<div className="cProductListImg__prices">
 						<div className="cProductListImg__item__in cProductListImg__price">
 							<div className="cProductListImg__price">
-								<div className="cProduct__price cProduct__price--incVat">
-									{product.price_formatted}
+								<div className="cProduct__price">
+									<span>{t("cenaZaKsBezDph")}</span>
+									<span className="price">{product.price_formatted}</span>
+									{!!discount && <span>{t("poSleve")}</span>}
 								</div>
 							</div>
 						</div>
 					</div>
+
+					<ProductAvailability product={product} />
+
+					<ProductBuy product={product} />
 				</div>
+			</div>
+		</div>
+	);
+};
+
+const ProductAvailability = ({ product }: { product: ProductBox }) => {
+	const { t } = useTranslation();
+
+	return (
+		<div className="cProductListImg__availability">
+			<span
+				className={`cAvailability ${
+					product.stock > 0 ? "cAvailability--stock" : "cAvailability--nStock"
+				}`}>
+				{product.stock > 0 ? (
+					<>
+						<span className="cAvailability__text">{t("skladem")}</span>
+						{product.stock} Ks
+					</>
+				) : (
+					t("neniSkladem")
+				)}
+			</span>
+		</div>
+	);
+};
+
+const ProductBuy = ({ product }: { product: ProductBox }) => {
+	const context = useContext(ProductListContext);
+	const [count, setCount] = useState(1);
+
+	const { t } = useTranslation();
+
+	const handleBuy = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+		if (!context) return;
+
+		context.basket.add(product, count);
+		setCount(1);
+		setTimeout(() => window.dispatchEvent(new CustomEvent("drawer:open")), 100);
+	};
+
+	return (
+		<div className="cAddToCart">
+			<div className="cAddToCart--inner">
+				<input
+					type="number"
+					name="count"
+					id="count"
+					min={1}
+					value={count}
+					onChange={(e) => setCount(parseInt(e.currentTarget.value))}
+				/>
+				<button type="submit" className="btn btn--default" onClick={handleBuy}>
+					{t("koupit")}
+				</button>
 			</div>
 		</div>
 	);

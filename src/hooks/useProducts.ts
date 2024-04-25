@@ -8,6 +8,7 @@ type FetchResponse = {
 	products: ProductBox[];
     categories: CategoryBox[];
     totalProducts: number;
+    discountPercent?: number;
 };
 
 const getProducts = async (page = 1): Promise<FetchResponse> => {
@@ -16,7 +17,7 @@ const getProducts = async (page = 1): Promise<FetchResponse> => {
       });
 
       const fetchUrl = import.meta.env.DEV
-      ? `http://abovalve.myebrana.com/api/platform/custom/products?${params}`
+      ? `/api/platform/custom/products.json?${params}`
       : `/api/platform/custom/products?${params}`;
 
     const res = await fetch(fetchUrl);
@@ -31,6 +32,8 @@ const getProducts = async (page = 1): Promise<FetchResponse> => {
         if (!data) {
             throw new Error('No data found');
         }
+
+        console.log("data", data);
 
         return data;
     } catch (error) {
