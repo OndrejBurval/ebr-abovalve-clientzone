@@ -1,9 +1,11 @@
 import { useTranslation } from "react-i18next";
 
 import type ProductType from "@/types/Product";
-import Close from "@/components/svg/Close";
+import Trash from "@/components/svg/Trash";
 import { useState } from "react";
 import useCurrency from "@/hooks/useCurrency";
+import { usePriceBeforeDiscount } from "@/hooks/usePriceBeforeDiscount";
+import useDiscount from "@/hooks/useDiscount";
 
 type CommonProps = {
 	product: ProductType;
@@ -37,46 +39,31 @@ const Product = ({
 		product.price * product.quantity || 0
 	);
 
-	const originalPriceBeforeDiscount = (price: number, discount: number) => {
-		return useCurrency(price / (1 - discount / 100));
-	};
-
-	const getDiscount = (product: ProductType) => {
-		if (product.discount && product.discount > 0) return product.discount;
-		if (accountDiscount && accountDiscount > 0) return accountDiscount;
-		return 0;
-	};
-
 	return (
 		<tr className="product-table__row">
-			{interactive && (
-				<td
-					className="product-table__remove"
-					onClick={() => onRemove(product.id, "ALL")}>
-					<Close />
-				</td>
-			)}
-
 			<td className="product-table__name">
-				<strong>{product.name}</strong>
+				<span>{product.name}</span>
 			</td>
 
 			<td className="product-table__singlePrice text--right">
 				{product.price > 0 && (
-					<strong>
-						{originalPriceBeforeDiscount(product.price, getDiscount(product))}
-					</strong>
+					<span>
+						{usePriceBeforeDiscount(
+							product.price,
+							useDiscount(product, accountDiscount)
+						)}
+					</span>
 				)}
 			</td>
 
 			<td className="product-table__discount text--right">
-				<strong>{getDiscount(product)}% </strong>
+				<span>{useDiscount(product, accountDiscount)}% </span>
 			</td>
 
 			<td className="product-table__price text--right">
-				<strong className="product-table__unitPrice">
-					{product.price > 0 && <strong>{useCurrency(price)}</strong>}
-				</strong>
+				<span className="product-table__unitPrice">
+					{product.price > 0 && <span>{useCurrency(price)}</span>}
+				</span>
 			</td>
 
 			<td className="product-table__quantity">
@@ -109,11 +96,17 @@ const Product = ({
 
 			<td className="product-table__price text--right">
 				<div className="product-table__totalPrice">
-					<strong>
-						{totalPrice > 0 ? useCurrency(totalPrice) : t("naDotaz")}
-					</strong>
+					<span>{totalPrice > 0 ? useCurrency(totalPrice) : t("naDotaz")}</span>
 				</div>
 			</td>
+
+			{interactive && (
+				<td
+					className="product-table__remove"
+					onClick={() => onRemove(product.id, "ALL")}>
+					<Trash />
+				</td>
+			)}
 		</tr>
 	);
 };

@@ -62,7 +62,6 @@ const ProductList = ({
 			<table className="product-table" ref={parent}>
 				<thead>
 					<tr>
-						{interactive && <th></th>}
 						<th>{t("polozka")}</th>
 
 						<th className=" text--right">{t("cenaBezDph")}</th>
@@ -76,25 +75,29 @@ const ProductList = ({
 						<th style={{ width: "5rem" }}>{t("pocetKs")}</th>
 
 						<th className=" text--right">{t("cenaBezDphPoSleveCelkem")}</th>
+
+						{interactive && <th></th>}
 					</tr>
 				</thead>
 				<tbody>
 					{list}
 					<tr>
-						<td colSpan={interactive ? 6 : 5}>
+						<td colSpan={interactive ? 5 : 4}>
 							<strong>{t("celkemBezDphOrientacni")}</strong>
 						</td>
 						<td className="text--right">
 							<strong>{getTotalPrice()}</strong>
 						</td>
+						<td></td>
 					</tr>
 					<tr>
-						<td colSpan={interactive ? 6 : 5}>
+						<td colSpan={interactive ? 5 : 4}>
 							<strong>{t("celkemOrientacni")}</strong>
 						</td>
 						<td className="text--right">
 							<strong>{getTotalPrice(true)}</strong>
 						</td>
+						<td></td>
 					</tr>
 				</tbody>
 			</table>

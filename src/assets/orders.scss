@@ -9,6 +9,18 @@
 		}
 	}
 
+	&--layout {
+		.main--header .subtitle {
+			color: #2a2a2a;
+			font-weight: 900;
+			font-size: 1.74rem;
+
+			@media (min-width: 1024px) {
+				font-size: 2.65rem;
+			}
+		}
+	}
+
 	&--table {
 		margin-bottom: 2rem;
 		&--action {
@@ -50,6 +62,10 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	&.text--right {
+		justify-content: flex-end;
+	}
 }
 
 .btn--sort {
@@ -92,5 +108,14 @@
 
 	&__remove {
 		cursor: pointer;
+
+		svg {
+			width: 1.25rem;
+			height: 1.25rem;
+
+			&:hover path {
+				fill: #e70d21;
+			}
+		}
 	}
 }

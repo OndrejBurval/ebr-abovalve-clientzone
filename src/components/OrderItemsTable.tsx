@@ -9,10 +9,15 @@ import Product from "@/types/Product";
 import Checkbox from "@mui/material/Checkbox";
 import useCurrency from "@/hooks/useCurrency";
 import { useSearchParams } from "react-router-dom";
+import {
+	usePriceAfterDiscount,
+	usePriceAmountAfterDiscount,
+} from "@/hooks/usePriceAfterDiscount";
 
 type Props = {
 	items?: OrderItem[];
 	totalPriceExcVat?: string;
+	totalPriceIncVat?: string;
 	currencyCode?: string;
 	isLoading?: boolean;
 };
@@ -21,6 +26,7 @@ const OrderItemsTable = ({
 	items,
 	isLoading,
 	totalPriceExcVat,
+	//totalPriceIncVat,
 	currencyCode,
 }: Props) => {
 	const { t } = useTranslation();
@@ -60,12 +66,13 @@ const OrderItemsTable = ({
 					quantity,
 					discount_percent,
 				} = items[index];
+
 				productsToOrder.push({
 					id: navision_code,
 					name,
-					price,
+					price: usePriceAmountAfterDiscount(price, discount_percent || 0),
 					quantity,
-					discount: discount_percent,
+					discount: discount_percent || 0,
 				});
 			}
 		});
@@ -85,7 +92,7 @@ const OrderItemsTable = ({
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className="table--responsive">
-				<table>
+				<table className="product-table">
 					<thead className="text-left">
 						<tr>
 							<th>
@@ -103,9 +110,13 @@ const OrderItemsTable = ({
 							</th>
 							<th> {t("kodProduktu")} </th>
 							<th> {t("nazev")} </th>
-							<th> {t("mnozstvi")} </th>
-							<th> {t("cenaZaKus")} </th>
-							<th> {t("cenaCelkem")} </th>
+							<th className=" text--right">{t("cenaBezDph")}</th>
+							<th className=" text--right" style={{ width: "4rem" }}>
+								{t("sleva")}
+							</th>
+							<th className=" text--right">{t("cenaBezDphPoSleve")}</th>
+							<th style={{ width: "5rem" }}>{t("pocetKs")}</th>
+							<th className=" text--right">{t("cenaBezDphPoSleveCelkem")}</th>
 						</tr>
 					</thead>
 
@@ -138,9 +149,20 @@ const OrderItemsTable = ({
 									</td>
 									<td> {item.navision_code} </td>
 									<td> {item.name} </td>
+									<td className="text--right">
+										{useCurrency(item.unit_cost, currencyCode)}
+									</td>
+									<td className="text--right">
+										{item.discount_percent || "0"}%{" "}
+									</td>
+									<td className="text--right">
+										{usePriceAfterDiscount(
+											item.unit_cost,
+											item.discount_percent || 0
+										)}
+									</td>
 									<td> {item.quantity} </td>
-									<td>{useCurrency(item.unit_cost, currencyCode)}</td>
-									<td>
+									<td className="text--right">
 										{item.total_cost
 											? useCurrency(item.total_cost, currencyCode)
 											: "-"}
@@ -150,12 +172,22 @@ const OrderItemsTable = ({
 							))}
 
 						{!isLoading ? (
-							<tr>
-								<td colSpan={5}>
-									<strong>{t("celkemBezDph")}</strong>
-								</td>
-								<td>{totalPriceExcVat || ""}</td>
-							</tr>
+							<>
+								<tr>
+									<td colSpan={7}>
+										<strong>{t("celkemBezDphOrientacni")}</strong>
+									</td>
+									<td className="text--right">{totalPriceExcVat || ""}</td>
+								</tr>
+								{/** 
+								<tr>
+									<td colSpan={7}>
+										<strong>{t("celkemOrientacni")}</strong>
+									</td>
+									<td className="text--right">{totalPriceIncVat || ""}</td>
+								</tr>
+                                */}
+							</>
 						) : null}
 
 						{isLoading &&

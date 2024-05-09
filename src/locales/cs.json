@@ -140,5 +140,7 @@
     "pocetKs": "Počet kusů",
     "cenaBezDphPoSleveCelkem": "Cena bez DPH po slevě celkem",
     "celkemBezDphOrientacni": "Celkem bez DPH (orientační)",
-    "celkemOrientacni": "Celkem (orientační)"
+    "celkemOrientacni": "Celkem (orientační)",
+    "vaseReference": "Vaše reference",
+    "terminPlneni": "Termín plnění"
  }

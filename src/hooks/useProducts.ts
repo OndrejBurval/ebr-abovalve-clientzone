@@ -33,8 +33,6 @@ const getProducts = async (page = 1): Promise<FetchResponse> => {
             throw new Error('No data found');
         }
 
-        console.log("data", data);
-
         return data;
     } catch (error) {
         return {

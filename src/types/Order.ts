@@ -20,6 +20,7 @@ type Order = {
     shipment_date: string;
     order_number: string;
     documents: any[];
+    external_document_number?: string;
 };
 
 type OrderItem = {

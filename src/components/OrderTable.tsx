@@ -94,6 +94,11 @@ const Table = ({
 						<th className="px-5" style={{ maxWidth: "90px" }}>
 							{t("cisloObjednavky")}
 						</th>
+
+						<th className="px-5" style={{ maxWidth: "90px" }}>
+							{t("vaseReference")}
+						</th>
+
 						{/**
 						<th className="px-5" style={{ maxWidth: "130px" }}>
 							{t("cisloObchodnighoPripadu")}
@@ -111,9 +116,11 @@ const Table = ({
 								<SortButton onClick={() => onSort("state")} />
 							</div>
 						</th>
-						<th className="px-5">{t("faktura")}</th>
+						{/**
+						    <th className="px-5">{t("faktura")}</th>
+                         */}
 						<th className="px-5 text--right">
-							<div className="sortCol">
+							<div className="sortCol text--right">
 								{t("cenaBezDph")}
 								<SortButton onClick={() => onSort("total_without_vat")} />
 							</div>
@@ -127,6 +134,9 @@ const Table = ({
 							<td className="px-5" style={{ maxWidth: "90px" }}>
 								{item.navision_code}
 							</td>
+
+							<td className="px-5">{item.external_document_number || "-"}</td>
+
 							{/** 
 							<td className="px-5" style={{ maxWidth: "130px" }}>
 								{item.order_number}
@@ -142,7 +152,10 @@ const Table = ({
 								dangerouslySetInnerHTML={{ __html: item.state || "" }}
 							/>
 
-							<td className="px-5"> --- </td>
+							{/**
+    							<td className="px-5"> --- </td>
+                            */}
+
 							<td className="px-5 text--right">
 								{useCurrency(item.total_without_vat, item.currency_code)}
 							</td>

@@ -511,6 +511,7 @@ html:has(.icon-logout) .logged-user-only {
 	}
 	.table--responsive {
 		overflow-x: auto;
+		max-width: calc(100vw - 2rem);
 
 		table {
 			min-width: 800px;

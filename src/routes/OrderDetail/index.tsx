@@ -29,11 +29,19 @@ const Detail = () => {
 		return <PageLoading />;
 	}
 
+	const pageTitle = `${t("objednavkaCislo")}: ${
+		data.order.navision_code ? data.order.navision_code : ""
+	}`;
+
+	const referenceNumber = data.order.external_document_number
+		? `${t("vaseReference")}: ${data.order.external_document_number}`
+		: null;
+
 	return (
 		<Layout
-			title={`${t("objednavkaCislo")}: ${
-				data.order.navision_code ? data.order.navision_code : ""
-			}`}
+			title={pageTitle}
+			subtitle={referenceNumber}
+			className="orderDetail--layout"
 			header={
 				<Link to="/objednavky" className="btn btn--primary">
 					{t("zpetNaObjednavky")}
@@ -71,10 +79,13 @@ const Detail = () => {
 								</span>
 							</li>
 
+							{/**
+                                     * 
 							<li className="info">
 								<strong> {t("podminkyPlatby")}: </strong>
 								<span>{userData.account.payment_code}</span>
 							</li>
+                                     */}
 
 							<li className="info">
 								<strong> {t("stav")}: </strong>
@@ -86,7 +97,7 @@ const Detail = () => {
 
 							{dueDate && (
 								<li className="info">
-									<strong> {t("ocekavaneDatumExpedice")}: </strong>
+									<strong> {t("terminPlneni")}: </strong>
 									<span> {dueDate || "--"} </span>
 								</li>
 							)}
@@ -129,6 +140,7 @@ const Detail = () => {
 					<OrderItemsTable
 						items={data.orderItems}
 						currencyCode={data.order.currency_code}
+						totalPriceIncVat={useCurrency(data.order.total_with_vat)}
 						totalPriceExcVat={useCurrency(
 							data.order.total_without_vat,
 							data.order.currency_code

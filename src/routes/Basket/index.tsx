@@ -15,6 +15,8 @@ import { useUserData } from "@/hooks/useUserData";
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import { getPaymentTerm } from "@/data/payment";
+import { usePriceAmountBeforeDiscount } from "@/hooks/usePriceBeforeDiscount";
+import useDiscount from "@/hooks/useDiscount";
 
 const Basket = () => {
 	const { t } = useTranslation();
@@ -65,6 +67,7 @@ const Basket = () => {
 	const [orderNumber, setOrderNumber] = useState("");
 	//const [packing, setPacking] = useState(packingOptions[0].value);
 	const [delivery, setDelivery] = useState(deliveryOptions[0].value);
+	const [deliveryAddress, setDeliveryAddress] = useState("");
 
 	// Modal
 	const [isSubmitting, setIsSubmitting] = useState(false);
@@ -90,10 +93,18 @@ const Basket = () => {
 			//packing,
 			user_note: note,
 			order_number: orderNumber,
+			delivery_location: deliveryAddress
+				? deliveryAddress
+				: `${userData.account.shipping_street} ${userData.account.shipping_city} ${userData.account.shipping_zip}`,
 			order_items: basket.items.map((item) => ({
 				product: item.id,
 				amount: item.quantity,
 				price: item.price || 0,
+				name: item.name,
+				original_price: usePriceAmountBeforeDiscount(
+					item.price,
+					useDiscount(item, userData.account.default_discount)
+				),
 			})),
 		};
 
@@ -232,6 +243,17 @@ const Basket = () => {
 										/>
 									</div>
                                 */}
+
+									<div className="order-number--input">
+										<label>{t("dorucovaciAdresa")}</label>
+										<input
+											type="text"
+											name="delivaryAddress"
+											id="delivaryAddress"
+											onChange={(e) => setDeliveryAddress(e.target.value)}
+											value={deliveryAddress}
+										/>
+									</div>
 
 									<div className="note--input">
 										<label>{t("poznamkaObjednavky")}</label>
