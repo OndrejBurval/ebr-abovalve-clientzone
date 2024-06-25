@@ -1,3 +1,5 @@
+import type Document from "./Document";
+
 type Order = {
     id: number;
     state: string;
@@ -16,10 +18,12 @@ type Order = {
     shipping_name: string;
     shipping_street: string;
     shipping_city: string;
+    shipping_zip: string;
+    shipping_country?: string;
     date_modified: string;
     shipment_date: string;
     order_number: string;
-    documents: any[];
+    documents: Document[];
     external_document_number?: string;
 };
 

@@ -177,7 +177,9 @@ const OrderItemsTable = ({
 									<td colSpan={7}>
 										<strong>{t("celkemBezDphOrientacni")}</strong>
 									</td>
-									<td className="text--right">{totalPriceExcVat || ""}</td>
+									<td className="text--right">
+										<strong>{totalPriceExcVat || ""}</strong>
+									</td>
 								</tr>
 								{/** 
 								<tr>
@@ -209,7 +211,10 @@ const OrderItemsTable = ({
 			</div>
 			<div className="orderDetail--table--action">
 				{checkedState.includes(true) && (
-					<button type="submit" className="btn btn--primary">
+					<button
+						type="submit"
+						className="btn btn--primary"
+						style={{ marginBottom: "2rem" }}>
 						{t("pridatDoKosiku")}
 					</button>
 				)}

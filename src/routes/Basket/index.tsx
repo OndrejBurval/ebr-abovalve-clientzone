@@ -93,9 +93,7 @@ const Basket = () => {
 			//packing,
 			user_note: note,
 			order_number: orderNumber,
-			delivery_location: deliveryAddress
-				? deliveryAddress
-				: `${userData.account.shipping_street} ${userData.account.shipping_city} ${userData.account.shipping_zip}`,
+			cfr_address: deliveryAddress ? deliveryAddress : null,
 			order_items: basket.items.map((item) => ({
 				product: item.id,
 				amount: item.quantity,
@@ -186,7 +184,7 @@ const Basket = () => {
 									</div>
 
 									<div className="order-number--input">
-										<label>{t("cisloObjednavky")}</label>
+										<label>{t("cisloObjednavkyKosik")}</label>
 										<input
 											type="text"
 											name="orderNumber"
@@ -248,8 +246,8 @@ const Basket = () => {
 										<label>{t("dorucovaciAdresa")}</label>
 										<input
 											type="text"
-											name="delivaryAddress"
-											id="delivaryAddress"
+											name="cfrAddress"
+											id="cfrAddress"
 											onChange={(e) => setDeliveryAddress(e.target.value)}
 											value={deliveryAddress}
 										/>

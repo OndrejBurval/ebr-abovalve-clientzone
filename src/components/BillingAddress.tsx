@@ -38,7 +38,7 @@ const BillingAddress = ({ data, disableEdit }: Props) => {
 					<City />
 					<p>
 						<span>{data.billing_street} </span>
-						<span>{`${data.billing_city} ${data.billing_zip}`}</span>
+						<span>{`${data.billing_city}, ${data.billing_zip}`}</span>
 					</p>
 				</li>
 				<li></li>

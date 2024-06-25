@@ -21,7 +21,21 @@
         "shipment_date": "2023-07-21 00:00:00",
         "order_number": "23OP03125",
         "external_document_number": "1501126438",
-        "documents": []
+        "documents": [
+            {
+                "id": 20,
+                "sugar_id": "694d3040-e215-11ee-82da-005056ba93ff",
+                "parent_sugar_id": "694ce644-e215-11ee-babf-005056ba93ff",
+                "name": "Sni\u0301mek obrazovky 2024-03-14 v\u00a08.47.11.png",
+                "description": "",
+                "type": "Invoice",
+                "filename": "Sni\u0301mek obrazovky 2024-03-14 v\u00a08.47.11.png",
+                "file_size": 34335,
+                "date_create": "2024-03-14 00:00:00",
+                "date_modified": "2024-03-14 16:13:28",
+                "download_link": "\/api\/platform\/custom\/order\/file\/20"
+            }
+        ]
     },
     "orderItems": [
         {

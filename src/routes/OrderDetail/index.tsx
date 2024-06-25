@@ -14,6 +14,7 @@ import BillingAddress from "@/components/BillingAddress";
 import DeliveryAddress from "@/components/DeliveryAddress";
 import { useUserData } from "@/hooks/useUserData";
 import Breadcrumb from "@/components/Breadcrumb";
+import DocumentTable from "@/components/DocumentTable";
 
 const Detail = () => {
 	const { t } = useTranslation();
@@ -23,7 +24,11 @@ const Detail = () => {
 	const { userData } = useUserData();
 
 	const orderDate = useDateString(data?.order.order_date);
+	{
+		/* 
 	const dueDate = useDateString(data?.order.promised_delivery_date);
+    */
+	}
 
 	if (isLoading) {
 		return <PageLoading />;
@@ -94,13 +99,14 @@ const Detail = () => {
 									dangerouslySetInnerHTML={{ __html: data.order.state }}
 								/>
 							</li>
-
+							{/** 
 							{dueDate && (
 								<li className="info">
 									<strong> {t("terminPlneni")}: </strong>
 									<span> {dueDate || "--"} </span>
 								</li>
 							)}
+                            */}
 						</ul>
 					</Card>
 					<Card isLoading={isLoading} className="userData--connected">
@@ -118,13 +124,16 @@ const Detail = () => {
 										name: data.order.shipping_name,
 										shipping_street: data.order.shipping_street,
 										shipping_city: data.order.shipping_city,
-										shipping_zip: "--",
-										shipping_country: "--",
+										shipping_zip: data.order.shipping_zip,
+										shipping_country:
+											data.order.shipping_country ||
+											userData.account.billing_country,
 									}}
 								/>
 							</div>
 						</>
 					</Card>
+
 					{data.order?.description && data.order.description.length > 0 && (
 						<Card
 							title={t("poznamka")}
@@ -146,37 +155,13 @@ const Detail = () => {
 							data.order.currency_code
 						)}
 					/>
+
+					{data.order.documents && data.order.documents.length > 0 && (
+						<Card title={t("souboryKeStazeni")}>
+							<DocumentTable files={data.order.documents} />
+						</Card>
+					)}
 				</section>
-			</div>
-
-			<div className="orderDetail--documents none">
-				<Card title={t("dokumenty")}>
-					<ul>
-						<li className="info">
-							<strong>{t("faktura")}</strong>
-
-							<span>---</span>
-						</li>
-
-						<li className="info">
-							<strong>{t("dodaciList")}</strong>
-
-							<span>---</span>
-						</li>
-
-						<li className="info">
-							<strong>{t("potvrzeni")}</strong>
-
-							<span>---</span>
-						</li>
-
-						<li className="info">
-							<strong>{t("certifikat")}</strong>
-
-							<span>---</span>
-						</li>
-					</ul>
-				</Card>
 			</div>
 		</Layout>
 	);

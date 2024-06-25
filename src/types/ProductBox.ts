@@ -6,6 +6,7 @@ type ProductBox = {
     stock: number;
     price: number;
     price_formatted: string;
+    stock_text: string;
     link: string;
 }
 

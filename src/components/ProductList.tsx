@@ -62,6 +62,8 @@ const ProductList = ({
 			<table className="product-table" ref={parent}>
 				<thead>
 					<tr>
+						<th>{t("kodProduktu")}</th>
+
 						<th>{t("polozka")}</th>
 
 						<th className=" text--right">{t("cenaBezDph")}</th>
@@ -82,7 +84,7 @@ const ProductList = ({
 				<tbody>
 					{list}
 					<tr>
-						<td colSpan={interactive ? 5 : 4}>
+						<td colSpan={interactive ? 6 : 5}>
 							<strong>{t("celkemBezDphOrientacni")}</strong>
 						</td>
 						<td className="text--right">
@@ -91,7 +93,7 @@ const ProductList = ({
 						<td></td>
 					</tr>
 					<tr>
-						<td colSpan={interactive ? 5 : 4}>
+						<td colSpan={interactive ? 6 : 5}>
 							<strong>{t("celkemOrientacni")}</strong>
 						</td>
 						<td className="text--right">

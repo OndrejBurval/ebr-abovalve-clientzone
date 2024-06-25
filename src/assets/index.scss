@@ -243,7 +243,7 @@ html:has(.icon-logout) .logged-user-only {
 			row-gap: 1rem;
 
 			@media (min-width: 768px) {
-				grid-template-columns: 2fr 3fr;
+				grid-template-columns: 4fr 6fr;
 			}
 		}
 	}

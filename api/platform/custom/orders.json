@@ -22,7 +22,32 @@
                 "date_modified": "2024-04-30 11:27:01",
                 "shipment_date": "2024-04-30 00:00:00",
                 "order_number": "241OP01097",
-                "documents": [],
+                "documents": [
+                    {
+                        "id": 21,
+                        "sugar_id": "e4a037a4-c1a1-11ee-98fb-005056ba93ff",
+                        "parent_sugar_id": "e49fcd28-c1a1-11ee-bf40-005056ba93ff",
+                        "name": "Screenshot 2024-02-01 at 20.39.07.png",
+                        "description": "",
+                        "type": "Certificate",
+                        "filename": "Screenshot 2024-02-01 at 20.39.07.png",
+                        "file_size": 163920,
+                        "date_create": "2024-02-02 00:00:00",
+                        "date_modified": "2024-02-02 09:05:56"
+                    },
+                    {
+                        "id": 22,
+                        "sugar_id": "320082f8-0147-11ef-a793-005056ba93ff",
+                        "parent_sugar_id": "32002b0a-0147-11ef-aa82-005056ba93ff",
+                        "name": "INVOICE EBRANA TEST.pdf",
+                        "description": "",
+                        "type": "Invoice",
+                        "filename": "INVOICE EBRANA TEST.pdf",
+                        "file_size": 15654,
+                        "date_create": "2024-04-23 00:00:00",
+                        "date_modified": "2024-04-23 09:57:56"
+                    }
+                ],
                 "external_document_number": "1501126438"
             },
             "orderDetail": {

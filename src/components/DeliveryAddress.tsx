@@ -34,7 +34,7 @@ const DeliveryAddress = ({ data, disableEdit }: Props) => {
 					<City />
 					<p>
 						<span>{data.shipping_street} </span>
-						<span>{`${data.shipping_city} ${data.shipping_zip}`}</span>
+						<span>{`${data.shipping_city}, ${data.shipping_zip}`}</span>
 					</p>
 				</li>
 				<li></li>

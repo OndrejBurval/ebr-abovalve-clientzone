@@ -5,8 +5,11 @@
             "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 913B DN32\/40 s volnou h\u0159\u00eddel\u00ed (GGG40\/GGG40\/NBR)",
             "product_code": "913B04000Z",
             "stock": 0.0,
-            "price": 752.400,
-            "price_formatted": "752 K\u010d",
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 752.4,
+            "price_exc_vat": 752.4,
+            "price_formatted": "752,40 K\u010d",
+            "price_exc_vat_formatted": "752,40 K\u010d",
             "link": "\/produkty\/meziprirubova-centricka-klapka-913b-dn32-40-s-volnou-hrideli-ggg40-ggg40-nbr"
         },
         {
@@ -14,17 +17,23 @@
             "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 923B DN32\/40 s volnou h\u0159\u00eddel\u00ed (GGG40\/GGG40\/EPDM)",
             "product_code": "923B0400006",
             "stock": 0.0,
-            "price": 910.404,
-            "price_formatted": "910 K\u010d",
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 752.4,
+            "price_exc_vat": 752.4,
+            "price_formatted": "752,40 K\u010d",
+            "price_exc_vat_formatted": "752,40 K\u010d",
             "link": "\/produkty\/meziprirubova-centricka-klapka-923b-dn32-40-s-volnou-hrideli-ggg40-ggg40-epdm"
         },
         {
             "id": "02f78f22-a2ac-480b-91c4-e7aa7b1a414d",
             "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 623B DN32\/40 s p\u00e1kou (GG25\/GGG40\/EPDM)",
             "product_code": "623B0400106",
-            "stock": 0.0,
-            "price": 917.059,
-            "price_formatted": "917 K\u010d",
+            "stock": -7.0,
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 757.9,
+            "price_exc_vat": 757.9,
+            "price_formatted": "757,90 K\u010d",
+            "price_exc_vat_formatted": "757,90 K\u010d",
             "link": "\/produkty\/meziprirubova-centricka-klapka-623b-dn32-40-s-pakou-gg25-ggg40-epdm",
             "image": "\/data\/filecache\/77\/@250x0\/623B-DN32-50-paka-litina-celo.png"
         },
@@ -33,19 +42,12 @@
             "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 613B DN32\/40 s p\u00e1kou (GG25\/GGG40\/NBR)",
             "product_code": "613B0400106",
             "stock": 0.0,
-            "price": 917.059,
-            "price_formatted": "917 K\u010d",
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 757.9,
+            "price_exc_vat": 757.9,
+            "price_formatted": "757,90 K\u010d",
+            "price_exc_vat_formatted": "757,90 K\u010d",
             "link": "\/produkty\/meziprirubova-centricka-klapka-613b-dn32-40-s-pakou-gg25-ggg40-nbr",
-            "image": "\/data\/filecache\/77\/@250x0\/623B-DN32-50-paka-litina-celo.png"
-        },
-        {
-            "id": "2991e8c0-98f6-4ff0-8b99-fa2d284563f8",
-            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 623B DN50 s p\u00e1kou (GG25\/GGG40\/EPDM)",
-            "product_code": "623B05001",
-            "stock": 10.0,
-            "price": 926.376,
-            "price_formatted": "926 K\u010d",
-            "link": "\/produkty\/meziprirubova-centricka-klapka-623b-dn50-s-pakou-gg25-ggg40-epdm",
             "image": "\/data\/filecache\/77\/@250x0\/623B-DN32-50-paka-litina-celo.png"
         },
         {
@@ -53,8 +55,11 @@
             "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 613B DN50 s p\u00e1kou (GG25\/GGG40\/NBR)",
             "product_code": "613B05001",
             "stock": 0.0,
-            "price": 926.376,
-            "price_formatted": "926 K\u010d",
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 805.75,
+            "price_exc_vat": 805.75,
+            "price_formatted": "805,75 K\u010d",
+            "price_exc_vat_formatted": "805,75 K\u010d",
             "link": "\/produkty\/meziprirubova-centricka-klapka-613b-dn50-s-pakou-gg25-ggg40-nbr",
             "image": "\/data\/filecache\/77\/@250x0\/623B-DN32-50-paka-litina-celo.png"
         },
@@ -63,8 +68,11 @@
             "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 923B DN50 s volnou h\u0159\u00eddel\u00ed (GGG40\/GGG40\/EPDM)",
             "product_code": "923B05000Z",
             "stock": 0.0,
-            "price": 989.5985,
-            "price_formatted": "990 K\u010d",
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 817.85,
+            "price_exc_vat": 817.85,
+            "price_formatted": "817,85 K\u010d",
+            "price_exc_vat_formatted": "817,85 K\u010d",
             "link": "\/produkty\/meziprirubova-centricka-klapka-923b-dn50-s-volnou-hrideli-ggg40-ggg40-epdm"
         },
         {
@@ -72,8 +80,11 @@
             "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 913B DN50 s volnou h\u0159\u00eddel\u00ed (GGG40\/GGG40\/NBR)",
             "product_code": "913B05000Z",
             "stock": 0.0,
-            "price": 990.9295,
-            "price_formatted": "991 K\u010d",
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 818.95,
+            "price_exc_vat": 818.95,
+            "price_formatted": "818,95 K\u010d",
+            "price_exc_vat_formatted": "818,95 K\u010d",
             "link": "\/produkty\/meziprirubova-centricka-klapka-913b-dn50-s-volnou-hrideli-ggg40-ggg40-nbr"
         },
         {
@@ -81,18 +92,37 @@
             "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 914B DN32\/40 s volnou h\u0159\u00eddel\u00ed (GGG40\/CF8M\/NBR)",
             "product_code": "914B0400006",
             "stock": 0.0,
-            "price": 1009.5635,
-            "price_formatted": "1 010 K\u010d",
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 834.35,
+            "price_exc_vat": 834.35,
+            "price_formatted": "834,35 K\u010d",
+            "price_exc_vat_formatted": "834,35 K\u010d",
             "link": "\/produkty\/meziprirubova-centricka-klapka-914b-dn32-40-s-volnou-hrideli-ggg40-cf8m-nbr"
         },
         {
             "id": "f0057281-de5f-4661-a7ad-6e4419512e39",
             "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 924B DN32\/40 s volnou h\u0159\u00eddel\u00ed (GGG40\/CF8M\/EPDM)",
             "product_code": "924B04000Z",
-            "stock": 0.0,
-            "price": 1009.5635,
-            "price_formatted": "1 010 K\u010d",
+            "stock": -20.0,
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 834.35,
+            "price_exc_vat": 834.35,
+            "price_formatted": "834,35 K\u010d",
+            "price_exc_vat_formatted": "834,35 K\u010d",
             "link": "\/produkty\/meziprirubova-centricka-klapka-924b-dn32-40-s-volnou-hrideli-ggg40-cf8m-epdm"
+        },
+        {
+            "id": "70be8644-c4c7-4875-b957-a1ed5206b662",
+            "name": "Mezip\u0159\u00edrubov\u00e1 centrick\u00e1 klapka 624B DN32\/40 s p\u00e1kou (GG25\/CF8M\/EPDM)",
+            "product_code": "624B0400106",
+            "stock": 0.0,
+            "stock_text": "Na objedn\u00e1vku",
+            "price": 848.1,
+            "price_exc_vat": 848.1,
+            "price_formatted": "848,10 K\u010d",
+            "price_exc_vat_formatted": "848,10 K\u010d",
+            "link": "\/produkty\/meziprirubova-centricka-klapka-624b-dn32-40-s-pakou-gg25-cf8m-epdm",
+            "image": "\/data\/filecache\/be\/@250x0\/624B-DN32-50-s-pakou-celo.png"
         }
     ],
     "categories": [
@@ -103,6 +133,6 @@
             "link": "\/kategorie\/centricke"
         }
     ],
-    "totalProducts": 250,
+    "totalProducts": 372,
     "discountPercent": 45.0
 }

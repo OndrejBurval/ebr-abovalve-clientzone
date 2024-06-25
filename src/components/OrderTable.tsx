@@ -8,6 +8,7 @@ import OrderTableSeleton from "./OrderTableSkeleton";
 import OrderTableFilter from "./OrderTableFilter";
 import { useState, useEffect } from "react";
 import useCurrency from "@/hooks/useCurrency";
+import type Document from "@/types/Document";
 
 type Props = {
 	showFilter?: boolean;
@@ -86,6 +87,23 @@ const Table = ({
 		return dateObj.toLocaleDateString("cs-CZ");
 	};
 
+	const getInvoice = (documents: Document[] | undefined) => {
+		if (!documents || documents.length < 1) return "-";
+
+		const invoice = documents.find((doc) => doc.type === "Invoice");
+		if (!invoice) return "-";
+
+		return (
+			<a
+				href={invoice.download_link}
+				target="_blank"
+				rel="noreferrer"
+				style={{ fontSize: ".8rem", maxWidth: "8rem", display: "block" }}>
+				{invoice.name}
+			</a>
+		);
+	};
+
 	return (
 		<div className="table--responsive">
 			<table>
@@ -116,16 +134,16 @@ const Table = ({
 								<SortButton onClick={() => onSort("state")} />
 							</div>
 						</th>
-						{/**
-						    <th className="px-5">{t("faktura")}</th>
-                         */}
+						<th className="px-5" style={{ width: "120px" }}>
+							{t("faktura")}
+						</th>
 						<th className="px-5 text--right">
 							<div className="sortCol text--right">
 								{t("cenaBezDph")}
 								<SortButton onClick={() => onSort("total_without_vat")} />
 							</div>
 						</th>
-						<th className="px-5" style={{ maxWidth: "113px" }}></th>
+						<th className="px-5" style={{ width: "150px" }}></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -152,9 +170,7 @@ const Table = ({
 								dangerouslySetInnerHTML={{ __html: item.state || "" }}
 							/>
 
-							{/**
-    							<td className="px-5"> --- </td>
-                            */}
+							<td className="px-5"> {getInvoice(item.documents)} </td>
 
 							<td className="px-5 text--right">
 								{useCurrency(item.total_without_vat, item.currency_code)}

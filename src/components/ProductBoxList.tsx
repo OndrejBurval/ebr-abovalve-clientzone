@@ -130,22 +130,13 @@ const ProductItem = ({
 };
 
 const ProductAvailability = ({ product }: { product: ProductBox }) => {
-	const { t } = useTranslation();
-
 	return (
 		<div className="cProductListImg__availability">
 			<span
 				className={`cAvailability ${
 					product.stock > 0 ? "cAvailability--stock" : "cAvailability--nStock"
 				}`}>
-				{product.stock > 0 ? (
-					<>
-						<span className="cAvailability__text">{t("skladem")}</span>
-						{product.stock} Ks
-					</>
-				) : (
-					t("neniSkladem")
-				)}
+				{product.stock_text}
 			</span>
 		</div>
 	);
