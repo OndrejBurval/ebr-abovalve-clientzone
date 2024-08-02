@@ -149,5 +149,7 @@
     "soubor":"Soubor",
     "Invoice":"Faktura",
     "Certificate":"Certifikát",
-    "Order Confirmation":"Potvrzení objednávky"
+    "Order Confirmation":"Potvrzení objednávky",
+    "accessDeniedError": "Nemáte přístup na tuto stránku.",
+    "error": "Nastala chyba"
  }

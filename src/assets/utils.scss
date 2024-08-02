@@ -25,6 +25,15 @@ li.info {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	gap: 1rem;
+
+    span:last-of-type {
+        text-align: right; 
+        
+        @media (max-width: 767px){
+            max-width: 12rem;
+            width: 100%;
+        }
+    }
 }
 
 .card {

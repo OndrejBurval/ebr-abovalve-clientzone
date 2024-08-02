@@ -2,7 +2,7 @@ import useProducts from "@/hooks/useProducts";
 import type ProductBox from "@/types/ProductBox";
 import type CategoryBox from "@/types/CategoryBox";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState, createContext, useContext } from "react";
+import { useEffect, useState, createContext, useContext, useMemo } from "react";
 import { useBasket, type UseBasket } from "@/hooks/useBasket";
 
 type Context = {
@@ -91,8 +91,14 @@ const ProductItem = ({
 }) => {
 	const { t } = useTranslation();
 
-	const IMAGE_PLACEHOLDER =
-		"/assets/frontend/abovalvemyebranacom/img/image.svg";
+	const IMAGE_PLACEHOLDER = useMemo(
+		() =>
+			`/assets/frontend/${window.location.hostname.replace(
+				/\./g,
+				""
+			)}/img/image.svg`,
+		[]
+	);
 
 	return (
 		<div className="grid__item desk--one-third lap--one-half palm--one-whole">
