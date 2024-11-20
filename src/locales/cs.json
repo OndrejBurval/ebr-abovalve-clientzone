@@ -151,5 +151,6 @@
     "Certificate":"Certifikát",
     "Order Confirmation":"Potvrzení objednávky",
     "accessDeniedError": "Nemáte přístup na tuto stránku.",
-    "error": "Nastala chyba"
+    "error": "Nastala chyba",
+    "povinne": "Toto pole je povinné"
  }

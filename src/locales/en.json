@@ -75,5 +75,6 @@
     "fetchFailed": "Failed to Fetch Data",
     "zpetNaUvod": "Back to Homepage",
     "udajeUlozeny": "Details have been successfully saved",
-    "chybaPriUkladani": "Error occurred while saving"
+    "chybaPriUkladani": "Error occurred while saving",
+    "povinne": "This field is required"
 }

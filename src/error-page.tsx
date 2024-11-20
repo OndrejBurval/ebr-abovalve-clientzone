@@ -20,11 +20,18 @@ export default function ErrorPage() {
 		const paragraph = document.createElement("p");
 		paragraph.classList.add("tpl_privatepage");
 
+		const logOutButton = document.createElement("a");
+		logOutButton.classList.add("btn");
+		logOutButton.href = `/clientzone_logout/${i18n.language}`;
+		logOutButton.textContent = t("odhlasitSe");
+
 		if (errorParam === "access-denied") {
 			paragraph.textContent = t("accessDeniedError");
 		} else {
 			paragraph.textContent = `${t("error")}: ${errorParam || "Error"}`;
 		}
+
+		paragraph.appendChild(logOutButton);
 
 		reactAppRoot.insertAdjacentHTML("afterend", paragraph.outerHTML);
 		reactAppRoot.remove();
