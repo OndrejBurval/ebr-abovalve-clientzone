@@ -42,7 +42,7 @@ const Product = ({
 	return (
 		<tr className="product-table__row">
 			<td className="product-table__id">
-				<span>{product.id}</span>
+				<span>{product.product_code ?? product.id}</span>
 			</td>
 
 			<td className="product-table__name">
