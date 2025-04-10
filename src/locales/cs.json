@@ -152,5 +152,7 @@
     "Order Confirmation":"Potvrzení objednávky",
     "accessDeniedError": "Nemáte přístup na tuto stránku.",
     "error": "Nastala chyba",
-    "povinne": "Toto pole je povinné"
+    "povinne": "Toto pole je povinné",
+    "certifikat3": "Certifikát 3.1.",
+    "certifikat3Info": "U zboží s certifikátem 3.1 se dodací doba prodlouží."
  }

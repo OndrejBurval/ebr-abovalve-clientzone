@@ -1,132 +1,173 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type Basket from "@/types/Basket";
 import Product from "@/types/Product";
 
 export type UseBasket = {
-	items: Basket | [];
-	add: (product: Product, quantity?: number) => void;
-	addMultiple: (products: Product[]) => void;
-	remove: (id: string, quantity?: "ONE" | "ALL") => void;
-	clear: () => void;
-	updateQuantity: (id: string, quantity?: number) => void;
-	getTotalPrice: (basket: Product[]) => number;
+  items: Basket | [];
+  add: (product: Product, quantity?: number) => void;
+  addMultiple: (products: Product[]) => void;
+  remove: (id: string, quantity?: "ONE" | "ALL") => void;
+  clear: () => void;
+  updateQuantity: (id: string, quantity?: number) => void;
+  getTotalPrice: (basket: Product[]) => number;
+  updateCertificate: (id: string, certificate: boolean) => void;
 };
 
 export const useBasket = (): UseBasket => {
-	const [basket, setBasket] = useState<Basket | []>(loadBasket());
+  const [basket, setBasket] = useState<Basket | []>([]);
 
-	function loadBasket() {
-		const newSession = !document.cookie.includes("basket_session");
+  useEffect(() => {
+    setBasket(loadBasket());
+  }, []);
 
-		if (newSession) {
-			document.cookie = "basket_session=true; path=/";
-			localStorage.removeItem("basket");
-		}
+  const loadBasket = useCallback(() => {
+    const newSession = !document.cookie.includes("basket_session");
 
-		const basket = localStorage.getItem("basket");
-		return basket ? JSON.parse(basket) : [];
-	}
+    if (newSession) {
+      document.cookie = "basket_session=true; path=/";
+      localStorage.removeItem("basket");
+    }
 
-	function saveBasket(data: Basket | null = null) {
-		const basketToSave = data ? data : basket;
-		localStorage.setItem("basket", JSON.stringify(basketToSave));
-		window.dispatchEvent(new CustomEvent("basket:update"));
-	}
+    const basket = localStorage.getItem("basket");
+    return basket ? JSON.parse(basket) : [];
+  }, []);
 
-	function add(product: Product, quantity = 1) {
-		setBasket((prevBasket) => {
-			const index = prevBasket.findIndex((item) => item.id === product.id);
+  const saveBasket = useCallback(
+    (data: Basket | null = null) => {
+      const basketToSave = data ? data : basket;
+      localStorage.setItem("basket", JSON.stringify(basketToSave));
+      window.dispatchEvent(new CustomEvent("basket:update"));
+    },
+    [basket]
+  );
 
-			if (index === -1) {
-				const newBasket = [...prevBasket, { ...product, quantity }];
-				saveBasket(newBasket);
-				return newBasket;
-			} else {
-				const newBasket = [...prevBasket];
-				newBasket[index].quantity += quantity;
-				saveBasket(newBasket);
-				return newBasket;
-			}
-		});
-	}
+  const add = useCallback(
+    (product: Product, quantity = 1) => {
+      setBasket((prevBasket) => {
+        const index = prevBasket.findIndex((item) => item.id === product.id);
 
-	function updateQuantity(id: string, quantity: number = 1) {
-		if (!quantity || quantity < 1) {
-			return;
-		}
+        if (index === -1) {
+          const newBasket = [...prevBasket, { ...product, quantity }];
+          saveBasket(newBasket);
+          return newBasket;
+        } else {
+          const newBasket = [...prevBasket];
+          const existingProduct = newBasket[index];
+          newBasket[index] = {
+            ...existingProduct,
+            ...product,
+            quantity: existingProduct.quantity + quantity,
+          };
+          saveBasket(newBasket);
+          return newBasket;
+        }
+      });
+    },
+    [basket]
+  );
 
-		const index = basket.findIndex((item) => item.id === id);
+  const updateQuantity = useCallback(
+    (id: string, quantity: number = 1) => {
+      if (!quantity || quantity < 1) {
+        return;
+      }
 
-		if (index === -1) {
-			console.error("Item not found in basket");
-			return;
-		}
+      const index = basket.findIndex((item) => item.id === id);
 
-		basket[index].quantity = quantity;
-		setBasket([...basket]);
-		saveBasket();
-	}
+      if (index === -1) {
+        console.error("Item not found in basket");
+        return;
+      }
 
-	function addMultiple(products: Product[]) {
-		const basketData = [...basket];
+      basket[index].quantity = quantity;
+      setBasket([...basket]);
+      saveBasket();
+    },
+    [basket]
+  );
 
-		products.forEach((product) => {
-			const index = basketData.findIndex((item) => item.id === product.id);
-			const quantity = product?.quantity || 1;
+  const updateCertificate = useCallback(
+    (id: string, certificate: boolean) => {
+      const index = basket.findIndex((item) => item.id === id);
+      basket[index].certificate = certificate;
+      setBasket([...basket]);
+      saveBasket();
+    },
+    [basket]
+  );
 
-			if (index === -1) {
-				basketData.push({ ...product, quantity });
-			} else {
-				basketData[index].quantity += quantity;
-			}
-		});
+  const addMultiple = useCallback(
+    (products: Product[]) => {
+      const basketData = [...basket];
 
-		setBasket([...basketData]);
-		saveBasket([...basketData]);
-	}
+      products.forEach((product) => {
+        const index = basketData.findIndex((item) => item.id === product.id);
+        const quantity = product?.quantity || 1;
 
-	function remove(id: string, quantity: "ONE" | "ALL" = "ONE") {
-		const index = basket.findIndex((item) => item.id === id);
+        if (index === -1) {
+          basketData.push({ ...product, quantity });
+        } else {
+          const existingProduct = basketData[index];
+          basketData[index] = {
+            ...existingProduct,
+            ...product,
+            quantity: existingProduct.quantity + quantity,
+          };
+          saveBasket([...basket]);
+        }
+      });
 
-		if (index === -1) {
-			console.error("Item not found in basket");
-			return;
-		}
+      setBasket([...basketData]);
+      saveBasket([...basketData]);
+    },
+    [basket]
+  );
 
-		const lastItem = basket[index].quantity === 1;
+  const remove = useCallback(
+    (id: string, quantity: "ONE" | "ALL" = "ONE") => {
+      const index = basket.findIndex((item) => item.id === id);
 
-		if (quantity === "ALL" || lastItem) {
-			basket.splice(index, 1);
-		}
+      if (index === -1) {
+        console.error("Item not found in basket");
+        return;
+      }
 
-		if (quantity === "ONE" && !lastItem) {
-			basket[index].quantity -= 1;
-		}
+      const lastItem = basket[index].quantity === 1;
 
-		setBasket([...basket]);
-		saveBasket();
-	}
+      if (quantity === "ALL" || lastItem) {
+        basket.splice(index, 1);
+      }
 
-	function clear() {
-		setBasket([]);
-		localStorage.removeItem("basket");
-	}
+      if (quantity === "ONE" && !lastItem) {
+        basket[index].quantity -= 1;
+      }
 
-	function getTotalPrice(basket: Product[]) {
-		return basket.reduce(
-			(acc: number, item: Product) => acc + item.price * item.quantity,
-			0
-		);
-	}
+      setBasket([...basket]);
+      saveBasket();
+    },
+    [basket]
+  );
 
-	return {
-		items: basket,
-		add,
-		addMultiple,
-		remove,
-		clear,
-		updateQuantity,
-		getTotalPrice,
-	};
-} ;
+  const clear = useCallback(() => {
+    setBasket([]);
+    localStorage.removeItem("basket");
+  }, []);
 
+  const getTotalPrice = useCallback((basket: Product[]) => {
+    return basket.reduce(
+      (acc: number, item: Product) => acc + item.price * item.quantity,
+      0
+    );
+  }, []);
+
+  return {
+    items: basket,
+    add,
+    addMultiple,
+    remove,
+    clear,
+    updateQuantity,
+    updateCertificate,
+    getTotalPrice,
+  };
+};

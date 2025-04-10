@@ -104,6 +104,7 @@ const Basket = () => {
           item.price,
           useDiscount(item, userData.account.default_discount)
         ),
+        certificate: item.certificate || false,
       })),
     };
 
@@ -283,11 +284,8 @@ const Basket = () => {
             </div>
 
             <ProductList
-              products={basket.items}
               discount={userData.account.default_discount}
               interactive
-              onQuantityChange={basket.updateQuantity}
-              onRemove={basket.remove}
             />
           </>
         ) : null}
