@@ -4,6 +4,7 @@ type Product = {
     price?: number;
     quantity?: number;
     discount?: number;
+    product_code?: string;
 };
 
 export default Product;
