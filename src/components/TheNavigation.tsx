@@ -7,7 +7,6 @@ import { useRef, useState } from "react";
 import logo from "@/assets/logo.png";
 import { useUserData } from "@/hooks/useUserData";
 import { useBasket } from "@/hooks/useBasket";
-import SearchHeader from "./SearchHeader";
 
 const Navigation = () => {
 	const { t, i18n } = useTranslation();
@@ -111,7 +110,6 @@ const DescHeader = ({ t, lang, onLanguageChange }: DescHeaderProps) => {
 			<div className="cHeader__component cHeader__mainNav">
 				<NavItems t={t} lang={lang} />
 			</div>
-			<SearchHeader />
 			<div className="cHeader__component cHeader__clientZone">
 				<NavLink to={`/muj-ucet`} className="cHeader__component__link">
 					<span className="cHeader__clientZone__icon">
