@@ -156,7 +156,12 @@ const Basket = () => {
       <div className="basket--wrapper">
         {basket.items.length > 0 && !userIsLoading ? (
           <>
-            <div>
+            <ProductList
+              discount={userData.account.default_discount}
+              interactive
+            />
+
+            <div className="basket--data">
               <Card isLoading={userIsLoading} className="userData--connected">
                 {!userIsLoading && userData.account && (
                   <>
@@ -282,11 +287,6 @@ const Basket = () => {
                 </Card>
               </div>
             </div>
-
-            <ProductList
-              discount={userData.account.default_discount}
-              interactive
-            />
           </>
         ) : null}
       </div>

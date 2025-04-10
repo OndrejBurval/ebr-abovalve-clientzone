@@ -33537,6 +33537,9 @@ html:has(.icon-logout) .logged-user-only {
     font-weight: 700;
     margin-bottom: 0.5rem; }
 
+#root .cHeader__search {
+  display: none; }
+
 #root .btn--remove {
   padding: 0.5rem;
   background-color: transparent;
@@ -33601,11 +33604,26 @@ html:has(.icon-logout) .logged-user-only {
 
 #root .basket--wrapper {
   display: grid;
-  column-gap: 2rem;
-  row-gap: 1rem; }
-  @media (min-width: 768px) {
-    #root .basket--wrapper {
-      grid-template-columns: 4fr 6fr; } }
+  gap: 1rem;
+  margin-inline: auto; }
+
+#root .basket--data {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem; }
+  #root .basket--data .userInput {
+    margin: 0; }
+  #root .basket--data .userData--connected {
+    height: max-content; }
+    #root .basket--data .userData--connected .card__body {
+      grid-template-columns: 1fr !important; }
+      #root .basket--data .userData--connected .card__body .billing {
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: solid 1px #dddddd;
+        margin-right: 0;
+        padding-right: 0;
+        border-right: none; }
 
 #root .col-remove {
   width: 4rem; }
@@ -34114,6 +34132,9 @@ li.info {
     height: 1.25rem; }
     .product-table__remove svg:hover path {
       fill: #e70d21; }
+
+.product-table .icon::before {
+  color: #fff; }
 
 .registrationData--wrapper {
   display: grid;
