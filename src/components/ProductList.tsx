@@ -35,7 +35,9 @@ const ProductList = ({ interactive, discount }: Props) => {
     const products = items as ProductType[];
     const value = products.reduce((acc: number, item: ProductType) => {
       const unitPrice = incVat ? item.price * 1.21 : item.price;
-      return acc + unitPrice * item.quantity;
+      const unitPriceWithGlobalDiscount =
+        unitPrice * (1 - globalDiscount / 100);
+      return acc + unitPriceWithGlobalDiscount * item.quantity;
     }, 0);
 
     return useCurrency(value);
@@ -62,7 +64,7 @@ const ProductList = ({ interactive, discount }: Props) => {
           <tr>
             <th>{t("kodProduktu")}</th>
 
-            <th>{t("polozka")}</th>
+            <th style={{ minWidth: "10rem" }}>{t("polozka")}</th>
 
             <th className=" text--right">{t("cenaBezDph")}</th>
 
@@ -70,11 +72,9 @@ const ProductList = ({ interactive, discount }: Props) => {
               {t("sleva")}
             </th>
 
-            <th className=" text--right">{t("eshopSleva")}</th>
-
-            <th className=" text--right">{t("cenaBezDphPoSleve")}</th>
-
-            <th style={{ width: "5rem" }}>{t("pocetKs")}</th>
+            <th style={{ minWidth: "8rem" }} className=" text--right">
+              {t("eshopSleva")}
+            </th>
 
             <th style={{ width: "8rem" }}>
               {t("certifikat3")}
@@ -84,7 +84,15 @@ const ProductList = ({ interactive, discount }: Props) => {
                 title={t("certifikat3Info")}></span>
             </th>
 
-            <th className="text--right">{t("cenaBezDphPoSleveCelkem")}</th>
+            <th style={{ width: "5rem" }}>{t("pocetKs")}</th>
+
+            <th className="text--right" style={{ minWidth: "8rem" }}>
+              {t("cenaBezDphPoSleve")}
+            </th>
+
+            <th style={{ minWidth: "8rem" }} className="text--right">
+              {t("cenaBezDphPoSleveCelkem")}
+            </th>
 
             {interactive && <th></th>}
           </tr>

@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 
 import type ProductType from "@/types/Product";
 import Trash from "@/components/svg/Trash";
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import useCurrency from "@/hooks/useCurrency";
 import { usePriceBeforeDiscount } from "@/hooks/usePriceBeforeDiscount";
 import useDiscount from "@/hooks/useDiscount";
@@ -40,10 +40,14 @@ const Product = ({
   const basket = useBasket();
   const { t } = useTranslation();
   const [certificate, setCertificate] = useState(product.certificate);
-  const [price] = useState(product.price || 0);
-  const [totalPrice, setTotalPrice] = useState(
-    product.price * product.quantity || 0
-  );
+
+  const withGlobalDiscount = useMemo(() => {
+    return product.price * (1 - eshopDiscount / 100);
+  }, [product.price, eshopDiscount]);
+
+  const totalPriceWithDiscount = useMemo(() => {
+    return withGlobalDiscount * product.quantity;
+  }, [withGlobalDiscount, product.quantity]);
 
   const handleQuantityChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +57,6 @@ const Product = ({
         return;
       }
       onQuantityChange(product.id, isNaN(value) || value < 1 ? 1 : value);
-      setTotalPrice(product.price * value);
     },
     [onQuantityChange, product.id, product.price]
   );
@@ -95,10 +98,14 @@ const Product = ({
         <span>{eshopDiscount}% </span>
       </td>
 
-      <td className="product-table__price text--right">
-        <span className="product-table__unitPrice">
-          {product.price > 0 && <span>{useCurrency(price)}</span>}
-        </span>
+      <td className="product-table__certificate text--right">
+        <Checkbox
+          disabled={!interactive}
+          name="orderAgainAll"
+          id="orderAgainAll"
+          checked={certificate}
+          onChange={handleCertificateChange}
+        />
       </td>
 
       <td className="product-table__quantity">
@@ -118,19 +125,21 @@ const Product = ({
         )}
       </td>
 
-      <td className="product-table__certificate text--right">
-        <Checkbox
-          disabled={!interactive}
-          name="orderAgainAll"
-          id="orderAgainAll"
-          checked={certificate}
-          onChange={handleCertificateChange}
-        />
+      <td className="product-table__price text--right">
+        <span className="product-table__unitPrice">
+          {withGlobalDiscount > 0 && (
+            <span>{useCurrency(withGlobalDiscount)}</span>
+          )}
+        </span>
       </td>
 
       <td className="product-table__price text--right">
         <div className="product-table__totalPrice">
-          <span>{totalPrice > 0 ? useCurrency(totalPrice) : t("naDotaz")}</span>
+          <span>
+            {totalPriceWithDiscount > 0
+              ? useCurrency(totalPriceWithDiscount)
+              : t("naDotaz")}
+          </span>
         </div>
       </td>
 

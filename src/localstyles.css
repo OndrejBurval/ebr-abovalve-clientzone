@@ -33460,8 +33460,14 @@ html:has(.icon-logout) .logged-user-only {
 #root .main {
   margin-block: 2rem;
   max-width: 1410px;
-  padding-inline: 2rem !important;
-  margin-inline: auto; }
+  margin-inline: auto;
+  padding-inline: 2rem !important; }
+  @media (min-width: 768px) {
+    #root .main {
+      padding-inline: 3rem !important; } }
+  @media (min-width: 1024px) {
+    #root .main {
+      padding-inline: 2rem !important; } }
   #root .main--header {
     display: flex;
     flex-direction: column-reverse;
@@ -33606,24 +33612,37 @@ html:has(.icon-logout) .logged-user-only {
   display: grid;
   gap: 1rem;
   margin-inline: auto; }
+  #root .basket--wrapper .productList {
+    width: 100%;
+    overflow-x: auto; }
 
 #root .basket--data {
   display: grid;
-  grid-template-columns: 1fr 3fr;
   gap: 1rem; }
+  @media (min-width: 768px) {
+    #root .basket--data {
+      grid-template-columns: 3fr 2fr; } }
+  @media (min-width: 1200px) {
+    #root .basket--data {
+      grid-template-columns: 3fr 1fr; } }
   #root .basket--data .userInput {
     margin: 0; }
   #root .basket--data .userData--connected {
     height: max-content; }
-    #root .basket--data .userData--connected .card__body {
-      grid-template-columns: 1fr !important; }
+    @media (min-width: 768px) {
+      #root .basket--data .userData--connected {
+        order: 2; } }
+    @media (min-width: 768px) {
+      #root .basket--data .userData--connected .card__body {
+        grid-template-columns: 1fr !important; } }
+    @media (min-width: 768px) {
       #root .basket--data .userData--connected .card__body .billing {
         margin-bottom: 0.5rem;
         padding-bottom: 0.5rem;
         border-bottom: solid 1px #dddddd;
         margin-right: 0;
         padding-right: 0;
-        border-right: none; }
+        border-right: none; } }
 
 #root .col-remove {
   width: 4rem; }
@@ -33812,7 +33831,7 @@ html:has(.icon-logout) .logged-user-only {
 
 #root .table--responsive {
   overflow-x: auto;
-  max-width: calc(100vw - 4rem); }
+  max-width: calc(100vw - 2rem); }
   #root .table--responsive table {
     min-width: 800px; }
 
