@@ -118,6 +118,7 @@ const OrderItemsTable = ({
               </th>
               <th className=" text--right">{t("cenaBezDphPoSleve")}</th>
               <th style={{ width: "5rem" }}>{t("pocetKs")}</th>
+              <th style={{ width: "5rem" }}>{t("certifikat3")}</th>
               <th className=" text--right">{t("cenaBezDphPoSleveCelkem")}</th>
             </tr>
           </thead>
@@ -164,6 +165,7 @@ const OrderItemsTable = ({
                     )}
                   </td>
                   <td> {item.quantity} </td>
+                  <td> {item.certificate ? t("ano") : t("ne")} </td>
                   <td className="text--right">
                     {item.total_cost
                       ? useCurrency(item.total_cost, currencyCode)
@@ -176,7 +178,7 @@ const OrderItemsTable = ({
             {!isLoading ? (
               <>
                 <tr>
-                  <td colSpan={7}>
+                  <td colSpan={9}>
                     <strong>{t("celkemBezDphOrientacni")}</strong>
                   </td>
                   <td className="text--right">

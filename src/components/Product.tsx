@@ -12,6 +12,7 @@ import { useBasket } from "@/hooks/useBasket";
 type CommonProps = {
   product: ProductType;
   accountDiscount?: number;
+  eshopDiscount?: number;
 };
 
 type InteractiveProps = CommonProps & {
@@ -31,6 +32,7 @@ type Props = InteractiveProps | NonInteractiveProps;
 const Product = ({
   product,
   accountDiscount,
+  eshopDiscount,
   interactive,
   onQuantityChange,
   onRemove,
@@ -87,6 +89,10 @@ const Product = ({
 
       <td className="product-table__discount text--right">
         <span>{useDiscount(product, accountDiscount)}% </span>
+      </td>
+
+      <td className="product-table__discount product-table__discount--eshop text--right">
+        <span>{eshopDiscount}% </span>
       </td>
 
       <td className="product-table__price text--right">

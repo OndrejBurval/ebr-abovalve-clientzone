@@ -78,5 +78,9 @@
     "chybaPriUkladani": "Error occurred while saving",
     "povinne": "This field is required",
     "certifikat3": "Certificate 3.1.",
-    "certifikat3Info": "The delivery time for products with certificate 3.1 is extended."
+    "certifikat3Info": "The delivery time for products with certificate 3.1 is extended.",
+    "predpokladanaDodavka": "Expected Delivery Date",
+    "ano": "Yes",
+    "ne": "No",
+    "eshopSleva": "Eshop Discount"
 }

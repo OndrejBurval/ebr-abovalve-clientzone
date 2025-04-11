@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
-
 const SearchHeader = () => {
   const [isSearchVisible, setSearchVisible] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -10,7 +9,6 @@ const SearchHeader = () => {
   const handleSearchToggle = () => {
     setSearchVisible((prev) => !prev);
     setError(""); // Reset error message when toggling
-    console.log(isSearchVisible)
   };
 
   const handleInputChange = (e) => {
@@ -31,8 +29,6 @@ const SearchHeader = () => {
       setError("Hledaný výraz musí mít více jak 2 znaky.");
       return;
     }
-    // Replace with your search submission logic
-    console.log("Search submitted:", searchValue);
   };
 
   return (
@@ -44,8 +40,7 @@ const SearchHeader = () => {
           onClick={(e) => {
             e.preventDefault();
             handleSearchToggle();
-          }}
-        >
+          }}>
           <FaSearch className="cHeader__search__icon icon-search" />
         </a>
         {isSearchVisible && (
@@ -55,16 +50,14 @@ const SearchHeader = () => {
               role="search"
               action="//www.abovalve.com/vyhledavani"
               method="POST"
-              onSubmit={handleSubmit}
-            >
+              onSubmit={handleSubmit}>
               <fieldset>
                 <legend className="visuallyhidden">Vyhledávání</legend>
                 <div className="cftSearch__input">
                   <label
                     className="cftSearch__label"
                     style={{ cursor: "text" }}
-                    htmlFor="searchField"
-                  >
+                    htmlFor="searchField">
                     Vyhledávání
                   </label>
                   <input
@@ -80,14 +73,13 @@ const SearchHeader = () => {
                   <button
                     type="submit"
                     className="cftSearch__submit"
-                    disabled={searchValue.length < 3}
-                  >
+                    disabled={searchValue.length < 3}>
                     <span className="visuallyhidden">Hledat</span>
                     <FaSearch className="icon-search" />
                     <span
-                      className={`loader loader--small loader--dark ${searchValue.length < 3 ? "visuallyhidden" : ""
-                        }`}
-                    ></span>
+                      className={`loader loader--small loader--dark ${
+                        searchValue.length < 3 ? "visuallyhidden" : ""
+                      }`}></span>
                   </button>
                 </div>
               </fieldset>

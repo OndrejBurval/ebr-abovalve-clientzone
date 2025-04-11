@@ -154,5 +154,9 @@
     "error": "Nastala chyba",
     "povinne": "Toto pole je povinné",
     "certifikat3": "Certifikát 3.1.",
-    "certifikat3Info": "U zboží s certifikátem 3.1 se dodací doba prodlouží."
+    "certifikat3Info": "U zboží s certifikátem 3.1 se dodací doba prodlouží.",
+    "predpokladanaDodavka": "Předpokládané datum odeslání",
+    "ano": "Ano",
+    "ne": "Ne",
+    "eshopSleva": "Sleva za nákup v e-shopu"
  }

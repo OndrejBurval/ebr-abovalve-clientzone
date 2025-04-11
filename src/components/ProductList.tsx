@@ -7,6 +7,7 @@ import { useAutoAnimate } from "@formkit/auto-animate/react";
 import useCurrency from "@/hooks/useCurrency";
 import { memo } from "react";
 import { useBasket } from "@/hooks/useBasket";
+import { useUserData } from "@/hooks/useUserData";
 
 type CommonProps = {
   discount?: number;
@@ -26,6 +27,8 @@ const ProductList = ({ interactive, discount }: Props) => {
   const [parent] = useAutoAnimate();
   const { t } = useTranslation();
   const { items, updateQuantity, remove } = useBasket();
+  const { userData } = useUserData();
+  const { globalDiscount } = userData;
 
   const getTotalPrice = (incVat = false) => {
     if (!items || items.length === 0) return;
@@ -44,6 +47,7 @@ const ProductList = ({ interactive, discount }: Props) => {
         key={product.id}
         product={product}
         accountDiscount={discount || 0}
+        eshopDiscount={globalDiscount || 0}
         interactive={interactive}
         onQuantityChange={interactive ? updateQuantity : undefined}
         onRemove={interactive ? remove : undefined}
@@ -66,6 +70,8 @@ const ProductList = ({ interactive, discount }: Props) => {
               {t("sleva")}
             </th>
 
+            <th className=" text--right">{t("eshopSleva")}</th>
+
             <th className=" text--right">{t("cenaBezDphPoSleve")}</th>
 
             <th style={{ width: "5rem" }}>{t("pocetKs")}</th>
@@ -87,7 +93,7 @@ const ProductList = ({ interactive, discount }: Props) => {
         <tbody>
           {list}
           <tr>
-            <td colSpan={interactive ? 7 : 6}>
+            <td colSpan={interactive ? 8 : 7}>
               <strong>{t("celkemBezDphOrientacni")}</strong>
             </td>
             <td className="text--right">
@@ -96,7 +102,7 @@ const ProductList = ({ interactive, discount }: Props) => {
             <td></td>
           </tr>
           <tr>
-            <td colSpan={interactive ? 7 : 6}>
+            <td colSpan={interactive ? 8 : 7}>
               <strong>{t("celkemOrientacni")}</strong>
             </td>
             <td className="text--right">
