@@ -11,6 +11,7 @@ export type UseBasket = {
   updateQuantity: (id: string, quantity?: number) => void;
   getTotalPrice: (basket: Product[]) => number;
   updateCertificate: (id: string, certificate: boolean) => void;
+  loadBasket: () => Product[];
 };
 
 export const useBasket = (): UseBasket => {
@@ -169,5 +170,6 @@ export const useBasket = (): UseBasket => {
     updateQuantity,
     updateCertificate,
     getTotalPrice,
+    loadBasket,
   };
 };

@@ -17,6 +17,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { getPaymentTerm } from "@/data/payment";
 import { usePriceAmountBeforeDiscount } from "@/hooks/usePriceBeforeDiscount";
 import useDiscount from "@/hooks/useDiscount";
+import Product from "@/types/Product";
 
 const Basket = () => {
   const { t } = useTranslation();
@@ -83,22 +84,33 @@ const Basket = () => {
   const handleSubmit = async () => {
     if (!validateInput()) return;
 
+    const finalBasketData: Product[] = basket.loadBasket();
+
+    const globalDiscountPercentage = userData.globalDiscount || 0;
+
     setOpenModal(true);
     setIsSubmitting(true);
 
+    const addGlobalDiscount = (item: any) => {
+      return (
+        Math.round(item.price * (1 - globalDiscountPercentage / 100) * 100) /
+        100
+      );
+    };
+
     const data = {
       opportunity_type: "order",
-      total_cost: basket.getTotalPrice(basket.items),
+      total_cost: basket.getTotalPrice(finalBasketData),
       currency: "CZK",
       shipping: delivery,
       //packing,
       user_note: note,
       order_number: orderNumber,
       cfr_address: deliveryAddress ? deliveryAddress : null,
-      order_items: basket.items.map((item) => ({
+      order_items: finalBasketData.map((item) => ({
         product: item.id,
         amount: item.quantity,
-        price: item.price || 0,
+        price: addGlobalDiscount(item) || 0,
         name: item.name,
         original_price: usePriceAmountBeforeDiscount(
           item.price,
