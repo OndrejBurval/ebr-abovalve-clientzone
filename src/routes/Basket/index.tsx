@@ -100,7 +100,10 @@ const Basket = () => {
 
     const data = {
       opportunity_type: "order",
-      total_cost: basket.getTotalPrice(finalBasketData),
+      total_cost: basket.getTotalPrice(
+        finalBasketData,
+        globalDiscountPercentage
+      ),
       currency: "CZK",
       shipping: delivery,
       //packing,

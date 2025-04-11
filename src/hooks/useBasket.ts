@@ -9,7 +9,7 @@ export type UseBasket = {
   remove: (id: string, quantity?: "ONE" | "ALL") => void;
   clear: () => void;
   updateQuantity: (id: string, quantity?: number) => void;
-  getTotalPrice: (basket: Product[]) => number;
+  getTotalPrice: (basket: Product[], globalDiscount: number) => number;
   updateCertificate: (id: string, certificate: boolean) => void;
   loadBasket: () => Product[];
 };
@@ -154,12 +154,15 @@ export const useBasket = (): UseBasket => {
     localStorage.removeItem("basket");
   }, []);
 
-  const getTotalPrice = useCallback((basket: Product[]) => {
-    return basket.reduce(
-      (acc: number, item: Product) => acc + item.price * item.quantity,
-      0
-    );
-  }, []);
+  const getTotalPrice = useCallback(
+    (basket: Product[], globalDiscount: number = 0) => {
+      return basket.reduce((acc: number, item: Product) => {
+        const price = item.price * (1 - globalDiscount / 100);
+        return acc + price * item.quantity;
+      }, 0);
+    },
+    []
+  );
 
   return {
     items: basket,
