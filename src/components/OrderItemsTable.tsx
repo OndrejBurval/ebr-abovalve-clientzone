@@ -178,7 +178,7 @@ const OrderItemsTable = ({
             {!isLoading ? (
               <>
                 <tr>
-                  <td colSpan={9}>
+                  <td colSpan={8}>
                     <strong>{t("celkemBezDphOrientacni")}</strong>
                   </td>
                   <td className="text--right">
