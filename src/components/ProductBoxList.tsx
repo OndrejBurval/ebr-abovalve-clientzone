@@ -201,7 +201,7 @@ const ProductBuy = ({ product }: { product: ProductBox }) => {
         <span
           className="icon icon-info"
           data-toggle="tooltip"
-          title={t("certifikat3Info")}></span>
+          data-title={t("certifikat3Info")}></span>
       </div>
     </div>
   );

@@ -81,7 +81,7 @@ const ProductList = ({ interactive, discount }: Props) => {
               <span
                 className="icon icon-info"
                 data-toggle="tooltip"
-                title={t("certifikat3Info")}></span>
+                data-title={t("certifikat3Info")}></span>
             </th>
 
             <th style={{ width: "5rem" }}>{t("pocetKs")}</th>

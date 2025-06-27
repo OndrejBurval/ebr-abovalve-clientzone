@@ -10247,19 +10247,25 @@ textarea:focus + .help-notice--focus {
   visibility: visible; }
 
 .alert {
-  width: 100%; }
+  --_fs: 1.25rem;
+  --_fw: 700;
+  --_bg: transparent;
+  --_c: #2A2A2A;
+  width: 100%;
+  font-size: var(--_fs);
+  font-weight: var(--_fw);
+  background-color: var(--_bg);
+  color: var(--_c); }
   .alert__icon {
     display: table-cell; }
   .alert__desc {
     display: table-cell; }
   .alert--success {
-    background-color: #dffbe4;
-    border: 1px solid #89cb52;
-    color: #89cb52; }
+    --_bg: #2f8d33;
+    --_c: #fff; }
   .alert--danger {
-    background-color: #ffdddd;
-    border: 1px solid #e83f3e;
-    color: #e83f3e; }
+    --_bg: #a50000;
+    --_c: #fff; }
 
 .form-fields .grid__item, .form-fields .label--inline, .form-fields .label--inline + .field {
   margin-bottom: 0; }
@@ -21441,6 +21447,10 @@ Kosticka POPIS STRANKY
     align-items: center;
     justify-content: center;
     padding: 20px; }
+  .cGallery.cGallery--preview.cGallery--ratio1-1 .rsSlide > a picture, .cGallery.cGallery--preview.cGallery--ratio4-3 .rsSlide > a picture, .cGallery.cGallery--preview.cGallery--ratio16-9 .rsSlide > a picture {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
   .cGallery.cGallery--preview.cGallery--ratio1-1 .rsSlide {
     position: relative;
     display: inline-block;
@@ -25265,15 +25275,17 @@ form.is-disabled {
     width: 100%;
     height: 100%;
     object-fit: cover; }
-  @media (min-width: 768px) {
-    .cPerson--under .cPerson__photo::before {
-      transition: 0.4s ease-out;
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: black;
-      background: linear-gradient(0deg, black 0%, rgba(0, 58, 102, 0) 60%);
-      opacity: 0.6; } }
+  .cPerson--under .cPerson__photo::before {
+    pointer-events: none; }
+    @media (min-width: 768px) {
+      .cPerson--under .cPerson__photo::before {
+        transition: 0.4s ease-out;
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: black;
+        background: linear-gradient(0deg, black 0%, rgba(0, 58, 102, 0) 60%);
+        opacity: 0.6; } }
 
 .cPerson--under .cPerson__info, .cPerson--under .cPerson__extra {
   position: relative;
@@ -25284,18 +25296,21 @@ form.is-disabled {
   display: grid;
   place-items: end start;
   align-content: flex-end;
-  padding-top: 20px; }
+  padding-top: 20px;
+  pointer-events: none; }
   @media (min-width: 768px) {
     .cPerson--under .cPerson__info {
       grid-row: 1 / 2;
       color: white; } }
 
-@media (min-width: 768px) {
-  .cPerson--under .cPerson__extra {
-    transition: 0.8s;
-    max-height: 0px;
-    opacity: 0;
-    grid-row: 2 / 3; } }
+.cPerson--under .cPerson__extra {
+  pointer-events: all; }
+  @media (min-width: 768px) {
+    .cPerson--under .cPerson__extra {
+      transition: 0.8s;
+      max-height: 0px;
+      opacity: 0;
+      grid-row: 2 / 3; } }
 
 @media (min-width: 768px) {
   .cPerson--under .cPerson__title {
@@ -28448,6 +28463,30 @@ html:not(:has(.client-info .customer-name)) .tpl_privatepage .btn, html:not(:has
   .siteWrapper:has(#root) header.pageHeader .cHeader {
     background-color: transparent;
     border: none; }
+
+[data-toggle="tooltip"] {
+  position: relative;
+  cursor: help; }
+  [data-toggle="tooltip"]::after {
+    position: absolute;
+    inset: 0 auto auto 50%;
+    content: attr(data-title);
+    font-size: 0.8rem;
+    color: white;
+    font-family: inherit;
+    transform: translateX(calc(-50% - .5rem)) translateY(calc(-100% - .25rem));
+    transition: opacity 0.15s ease;
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 0.5rem;
+    border-radius: .25rem;
+    pointer-events: none;
+    z-index: 1000;
+    width: 10.5rem;
+    line-height: 1.35;
+    text-align: center;
+    opacity: 0; }
+  [data-toggle="tooltip"]:hover::after {
+    opacity: 1; }
 
 h1 {
   font-weight: 900; }
@@ -32753,7 +32792,7 @@ Magnific popup - CUSTOM STYLY
   .cProductList__categories > .grid {
     display: grid;
     grid-column: 2 / 3;
-    row-gap: 0.75rem; }
+    row-gap: 0.5rem; }
     @media (min-width: 350px) {
       .cProductList__categories > .grid {
         grid-template-columns: repeat(2, 1fr); } }
@@ -32777,6 +32816,7 @@ Magnific popup - CUSTOM STYLY
       .cProductList__categories__item__in .cProductList__categories__img,
       .cProductList__categories__item__in img {
         height: 4rem;
+        min-width: 4.25rem;
         min-height: unset; }
       .cProductList__categories__item__in img {
         max-width: 100%;
@@ -32821,13 +32861,11 @@ Magnific popup - CUSTOM STYLY
     max-width: 100% !important; }
   .cProductList__categories__title {
     margin: 0;
-    font-size: 0.9rem;
+    font-size: .875rem !important;
     font-weight: 700;
     color: #2a2a2a;
-    transition: var(--_transition); }
-    @media (min-width: 768px) {
-      .cProductList__categories__title {
-        font-size: 1rem; } }
+    transition: var(--_transition);
+    line-height: 1.2; }
 
 .cProductList__type {
   border: none; }
@@ -32905,13 +32943,14 @@ Magnific popup - CUSTOM STYLY
   .cProductList--image .cProductListImg__title {
     margin-bottom: 0;
     margin-top: 1.5rem;
-    transition: var(--_transition); }
+    transition: var(--_transition);
+    line-height: 1.35; }
     .cProductList--image .cProductListImg__title a {
       text-decoration: none !important;
       display: block;
       max-width: 15rem;
       margin: auto;
-      font-size: 1rem;
+      font-size: .875rem;
       font-weight: 700;
       color: #2a2a2a; }
   .cProductList--image .cProductListImg__labels {
@@ -33092,7 +33131,7 @@ html:has(.cProductList__wrapper) .row--top {
   .cProductList__categories > .grid {
     display: grid;
     grid-column: 2 / 3;
-    row-gap: 0.75rem; }
+    row-gap: 0.5rem; }
     @media (min-width: 350px) {
       .cProductList__categories > .grid {
         grid-template-columns: repeat(2, 1fr); } }
@@ -33107,7 +33146,7 @@ html:has(.cProductList__wrapper) .row--top {
   .cProductList__categories__item {
     margin-bottom: 0 !important; }
     .cProductList__categories__item__in {
-      --_box-padding: 1rem;
+      --_box-padding: 1rem 1.5rem 1rem 1rem;
       --_arrow-h: 1.5rem;
       --_transition: 0.35s;
       box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.05);
@@ -33130,9 +33169,6 @@ html:has(.cProductList__wrapper) .row--top {
         position: relative;
         overflow: hidden;
         gap: 0.5rem; }
-        @media (min-width: 1300px) {
-          .cProductList__categories__item__in--box {
-            gap: 1rem; } }
         .cProductList__categories__item__in--box::before {
           content: unset; }
         .cProductList__categories__item__in--box::after, .cProductList--image .cProductListImg::after {
@@ -33140,7 +33176,7 @@ html:has(.cProductList__wrapper) .row--top {
           inset: 0 0 0 auto;
           margin-block: auto;
           display: block;
-          width: 2rem;
+          width: 1.5rem;
           height: 100%;
           border-radius: 0;
           background-color: #EE1D23;
@@ -33940,6 +33976,9 @@ h1 .subtitle {
   @media (min-width: 1500px) {
     .btn--shopNow {
       max-width: 340px; } }
+
+.card {
+  max-width: calc(100vw - 2rem); }
 
 .clientZone--dashboard {
   display: grid;
