@@ -82,7 +82,7 @@ const Table = ({
   onSort: (field: string) => void;
   t: TFunction<"translation", undefined>;
 }) => {
-  const getDateString = (date: string) => {
+  const getDateString = (date: string | null) => {
     const dateObj = new Date(date);
     return dateObj.toLocaleDateString("cs-CZ");
   };
@@ -174,8 +174,7 @@ const Table = ({
               />
 
               <td className="px-5">
-                {" "}
-                {getDateString(item.requested_delivery_date || "")}{" "}
+                {getDateString(item.promised_delivery_date)}
               </td>
 
               <td className="px-5"> {getInvoice(item.documents)} </td>
