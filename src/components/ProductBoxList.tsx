@@ -92,11 +92,7 @@ const ProductItem = ({
   const { t } = useTranslation();
 
   const IMAGE_PLACEHOLDER = useMemo(
-    () =>
-      `/assets/frontend/${window.location.hostname.replace(
-        /\./g,
-        ""
-      )}/img/image.svg`,
+    () => `/assets/frontend/abovalvecom/img/image.svg`,
     []
   );
 
