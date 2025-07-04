@@ -84,7 +84,8 @@ const Product = ({
           <span>
             {usePriceBeforeDiscount(
               product.price,
-              useDiscount(product, accountDiscount)
+              accountDiscount,
+              eshopDiscount
             )}
           </span>
         )}
@@ -127,9 +128,7 @@ const Product = ({
 
       <td className="product-table__price text--right">
         <span className="product-table__unitPrice">
-          {withGlobalDiscount > 0 && (
-            <span>{useCurrency(withGlobalDiscount)}</span>
-          )}
+          {product.price > 0 && <span>{useCurrency(product.price)}</span>}
         </span>
       </td>
 
