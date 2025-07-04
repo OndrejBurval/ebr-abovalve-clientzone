@@ -24,9 +24,9 @@ const Detail = () => {
   const { userData } = useUserData();
 
   const orderDate = useDateString(data?.order.order_date);
-  const promisedDeliveryDate = useDateString(
-    data?.order.promised_delivery_date
-  );
+  const promisedDeliveryDate = data?.order.promised_delivery_date
+    ? useDateString(data?.order.promised_delivery_date)
+    : "-";
   {
     /*
 	const dueDate = useDateString(data?.order.promised_delivery_date);

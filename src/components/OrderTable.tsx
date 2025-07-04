@@ -174,7 +174,9 @@ const Table = ({
               />
 
               <td className="px-5">
-                {getDateString(item.promised_delivery_date)}
+                {item.promised_delivery_date
+                  ? getDateString(item.promised_delivery_date)
+                  : "-"}
               </td>
 
               <td className="px-5"> {getInvoice(item.documents)} </td>

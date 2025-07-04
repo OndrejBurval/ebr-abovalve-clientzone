@@ -15,9 +15,8 @@ import { useUserData } from "@/hooks/useUserData";
 import { useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import { getPaymentTerm } from "@/data/payment";
-import { usePriceAmountBeforeDiscount } from "@/hooks/usePriceBeforeDiscount";
-import useDiscount from "@/hooks/useDiscount";
 import Product from "@/types/Product";
+import calculateOriginalPrice from "@/utils/calcOriginalPrice";
 
 const Basket = () => {
   const { t } = useTranslation();
@@ -91,13 +90,6 @@ const Basket = () => {
     setOpenModal(true);
     setIsSubmitting(true);
 
-    const addGlobalDiscount = (item: any) => {
-      return (
-        Math.round(item.price * (1 - globalDiscountPercentage / 100) * 100) /
-        100
-      );
-    };
-
     const data = {
       opportunity_type: "order",
       total_cost: basket.getTotalPrice(
@@ -113,15 +105,15 @@ const Basket = () => {
       order_items: finalBasketData.map((item) => ({
         product: item.id,
         amount: item.quantity,
-        price: addGlobalDiscount(item) || 0,
+        price: item.price || 0,
         name: item.name,
-        original_price: usePriceAmountBeforeDiscount(
-          item.price,
-          useDiscount(item, userData.account.default_discount)
-        ),
+        original_price: calculateOriginalPrice(item.price, [
+          userData.account.default_discount,
+        ]),
         certificate: item.certificate || false,
       })),
     };
+    return console.log(data);
 
     try {
       const res = await fetch("/api/platform/custom/create-order", {
@@ -237,9 +229,7 @@ const Basket = () => {
                         );
                       }}
                       options={deliveryOptions.map((option) => option.label)}
-                      renderInput={(params) => (
-                        <TextField {...params}> foo </TextField>
-                      )}
+                      renderInput={(params) => <TextField {...params} />}
                     />
 
                     {delivery === "CFR" && (

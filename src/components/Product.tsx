@@ -58,7 +58,7 @@ const Product = ({
       }
       onQuantityChange(product.id, isNaN(value) || value < 1 ? 1 : value);
     },
-    [onQuantityChange, product.id, product.price]
+    [onQuantityChange, product]
   );
 
   const handleCertificateChange = useCallback(

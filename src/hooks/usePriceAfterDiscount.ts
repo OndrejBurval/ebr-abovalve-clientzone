@@ -1,11 +1,17 @@
 import useCurrency from "@/hooks/useCurrency";
 
-const usePriceAmountAfterDiscount = (price: number, discount: number) => {
-    return price - price * discount / 100;
-}
+const usePriceAmountAfterDiscount = (price: number, discounts: number[]) => {
+  let finalPrice = price;
 
-const usePriceAfterDiscount = (price: number, discount: number) => {
-    return useCurrency(usePriceAmountAfterDiscount(price, discount));
-}
+  for (const discount of discounts) {
+    finalPrice *= 1 - discount / 100;
+  }
 
-export {usePriceAfterDiscount, usePriceAmountAfterDiscount};
+  return parseFloat(finalPrice.toFixed(2));
+};
+
+const usePriceAfterDiscount = (price: number, discounts: number[]) => {
+  return useCurrency(usePriceAmountAfterDiscount(price, discounts));
+};
+
+export { usePriceAfterDiscount, usePriceAmountAfterDiscount };

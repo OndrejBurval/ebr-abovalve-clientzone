@@ -13,6 +13,7 @@ import {
   usePriceAfterDiscount,
   usePriceAmountAfterDiscount,
 } from "@/hooks/usePriceAfterDiscount";
+import { useUserData } from "@/hooks/useUserData";
 
 type Props = {
   items?: OrderItem[];
@@ -32,6 +33,7 @@ const OrderItemsTable = ({
   const { t } = useTranslation();
   const basket = useBasket();
   const [searchParams] = useSearchParams();
+  const { userData } = useUserData();
 
   const [snackbar, setSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
@@ -71,7 +73,10 @@ const OrderItemsTable = ({
         productsToOrder.push({
           id: navision_code,
           name,
-          price: usePriceAmountAfterDiscount(price, discount_percent || 0),
+          price: usePriceAmountAfterDiscount(price, [
+            discount_percent,
+            userData.globalDiscount,
+          ]),
           quantity,
           discount: discount_percent || 0,
           certificate: certificate ? true : false,
@@ -159,10 +164,9 @@ const OrderItemsTable = ({
                     {item.discount_percent || "0"}%{" "}
                   </td>
                   <td className="text--right">
-                    {usePriceAfterDiscount(
-                      item.unit_cost,
-                      item.discount_percent || 0
-                    )}
+                    {usePriceAfterDiscount(item.unit_cost, [
+                      item.discount_percent,
+                    ])}
                   </td>
                   <td> {item.quantity} </td>
                   <td> {item.certificate ? t("ano") : t("ne")} </td>
