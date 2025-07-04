@@ -35,9 +35,7 @@ const ProductList = ({ interactive, discount }: Props) => {
     const products = items as ProductType[];
     const value = products.reduce((acc: number, item: ProductType) => {
       const unitPrice = incVat ? item.price * 1.21 : item.price;
-      const unitPriceWithGlobalDiscount =
-        unitPrice * (1 - globalDiscount / 100);
-      return acc + unitPriceWithGlobalDiscount * item.quantity;
+      return acc + unitPrice * item.quantity;
     }, 0);
 
     return useCurrency(value);

@@ -41,13 +41,9 @@ const Product = ({
   const { t } = useTranslation();
   const [certificate, setCertificate] = useState(product.certificate);
 
-  const withGlobalDiscount = useMemo(() => {
-    return product.price * (1 - eshopDiscount / 100);
-  }, [product.price, eshopDiscount]);
-
   const totalPriceWithDiscount = useMemo(() => {
-    return withGlobalDiscount * product.quantity;
-  }, [withGlobalDiscount, product.quantity]);
+    return product.price * product.quantity;
+  }, [product.price, product.quantity]);
 
   const handleQuantityChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
