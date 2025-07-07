@@ -8,6 +8,7 @@ import useCurrency from "@/hooks/useCurrency";
 import { memo } from "react";
 import { useBasket } from "@/hooks/useBasket";
 import { useUserData } from "@/hooks/useUserData";
+import { usePriceAmountAfterDiscount } from "@/hooks/usePriceAfterDiscount";
 
 type CommonProps = {
   discount?: number;
@@ -33,8 +34,14 @@ const ProductList = ({ interactive, discount }: Props) => {
   const getTotalPrice = (incVat = false) => {
     if (!items || items.length === 0) return;
     const products = items as ProductType[];
+
     const value = products.reduce((acc: number, item: ProductType) => {
-      const unitPrice = incVat ? item.price * 1.21 : item.price;
+      const priveWithGlobalDiscount = usePriceAmountAfterDiscount(item.price, [
+        globalDiscount,
+      ]);
+      const unitPrice = incVat
+        ? priveWithGlobalDiscount * 1.21
+        : priveWithGlobalDiscount;
       return acc + unitPrice * item.quantity;
     }, 0);
 

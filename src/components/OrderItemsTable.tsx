@@ -73,10 +73,7 @@ const OrderItemsTable = ({
         productsToOrder.push({
           id: navision_code,
           name,
-          price: usePriceAmountAfterDiscount(price, [
-            discount_percent,
-            userData.globalDiscount,
-          ]),
+          price: usePriceAmountAfterDiscount(price, [discount_percent]),
           quantity,
           discount: discount_percent || 0,
           certificate: certificate ? true : false,

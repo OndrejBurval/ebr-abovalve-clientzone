@@ -8,6 +8,7 @@ import { usePriceBeforeDiscount } from "@/hooks/usePriceBeforeDiscount";
 import useDiscount from "@/hooks/useDiscount";
 import Checkbox from "@mui/material/Checkbox";
 import { useBasket } from "@/hooks/useBasket";
+import { usePriceAmountAfterDiscount } from "@/hooks/usePriceAfterDiscount";
 
 type CommonProps = {
   product: ProductType;
@@ -41,9 +42,13 @@ const Product = ({
   const { t } = useTranslation();
   const [certificate, setCertificate] = useState(product.certificate);
 
-  const totalPriceWithDiscount = useMemo(() => {
-    return product.price * product.quantity;
-  }, [product.price, product.quantity]);
+  const priceWithGlobalDiscount = useMemo(() => {
+    return usePriceAmountAfterDiscount(product.price, [eshopDiscount]);
+  }, [product.price, eshopDiscount]);
+
+  const totalPrice = useMemo(() => {
+    return priceWithGlobalDiscount * product.quantity;
+  }, [priceWithGlobalDiscount, product.quantity]);
 
   const handleQuantityChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -77,13 +82,7 @@ const Product = ({
 
       <td className="product-table__singlePrice text--right">
         {product.price > 0 && (
-          <span>
-            {usePriceBeforeDiscount(
-              product.price,
-              accountDiscount,
-              eshopDiscount
-            )}
-          </span>
+          <span>{usePriceBeforeDiscount(product.price, accountDiscount)}</span>
         )}
       </td>
 
@@ -124,17 +123,15 @@ const Product = ({
 
       <td className="product-table__price text--right">
         <span className="product-table__unitPrice">
-          {product.price > 0 && <span>{useCurrency(product.price)}</span>}
+          {product.price > 0 && (
+            <span>{useCurrency(priceWithGlobalDiscount)}</span>
+          )}
         </span>
       </td>
 
       <td className="product-table__price text--right">
         <div className="product-table__totalPrice">
-          <span>
-            {totalPriceWithDiscount > 0
-              ? useCurrency(totalPriceWithDiscount)
-              : t("naDotaz")}
-          </span>
+          <span>{totalPrice > 0 ? useCurrency(totalPrice) : t("naDotaz")}</span>
         </div>
       </td>
 

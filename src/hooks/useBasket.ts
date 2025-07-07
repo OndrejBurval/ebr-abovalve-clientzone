@@ -158,7 +158,8 @@ export const useBasket = (): UseBasket => {
     (basket: Product[], globalDiscount: number = 0) => {
       return basket.reduce((acc: number, item: Product) => {
         const price = item.price * (1 - globalDiscount / 100);
-        return acc + price * item.quantity;
+        const value = acc + price * item.quantity;
+        return parseFloat(value.toFixed(2));
       }, 0);
     },
     []

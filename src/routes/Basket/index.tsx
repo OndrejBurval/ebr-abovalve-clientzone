@@ -17,6 +17,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { getPaymentTerm } from "@/data/payment";
 import Product from "@/types/Product";
 import calculateOriginalPrice from "@/utils/calcOriginalPrice";
+import { usePriceAmountAfterDiscount } from "@/hooks/usePriceAfterDiscount";
 
 const Basket = () => {
   const { t } = useTranslation();
@@ -86,6 +87,7 @@ const Basket = () => {
     const finalBasketData: Product[] = basket.loadBasket();
 
     const globalDiscountPercentage = userData.globalDiscount || 0;
+    console.log(globalDiscountPercentage);
 
     setOpenModal(true);
     setIsSubmitting(true);
@@ -98,14 +100,15 @@ const Basket = () => {
       ),
       currency: "CZK",
       shipping: delivery,
-      //packing,
       user_note: note,
       order_number: orderNumber,
       cfr_address: deliveryAddress ? deliveryAddress : null,
       order_items: finalBasketData.map((item) => ({
         product: item.id,
         amount: item.quantity,
-        price: item.price || 0,
+        price: usePriceAmountAfterDiscount(item.price, [
+          globalDiscountPercentage,
+        ]),
         name: item.name,
         original_price: calculateOriginalPrice(item.price, [
           userData.account.default_discount,
@@ -113,7 +116,6 @@ const Basket = () => {
         certificate: item.certificate || false,
       })),
     };
-    return console.log(data);
 
     try {
       const res = await fetch("/api/platform/custom/create-order", {
