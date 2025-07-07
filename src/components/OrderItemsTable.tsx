@@ -13,7 +13,6 @@ import {
   usePriceAfterDiscount,
   usePriceAmountAfterDiscount,
 } from "@/hooks/usePriceAfterDiscount";
-import { useUserData } from "@/hooks/useUserData";
 
 type Props = {
   items?: OrderItem[];
@@ -33,7 +32,6 @@ const OrderItemsTable = ({
   const { t } = useTranslation();
   const basket = useBasket();
   const [searchParams] = useSearchParams();
-  const { userData } = useUserData();
 
   const [snackbar, setSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
